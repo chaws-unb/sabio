@@ -1,4 +1,4 @@
 sabio
 =====
 
-Sábio é um software capaz de compilar códigos em C corrigindo fraquezas comuns (CWEs)
+Sabio is capable compile and correct the Common Weakness Enumeration (CWE) of source code wrote in C.
