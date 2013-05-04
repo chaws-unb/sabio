@@ -12,7 +12,8 @@ Após a alteração ter sido concluída, devemos adicionar os arquivos e fazer o
 	$git commit -m "mensagem de commit"
 
 Após fazer o commit local, devemos fazer o merge com a branch principal:
-	$git merge <<nome da branch>> master
+	$git checkout master
+	$git merge <<nome da branch>>
 
 E fazer o commit para o repositório remoto:
 	$git push origin master
