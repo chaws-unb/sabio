@@ -1,0 +1,31 @@
+======= Dia a dia Git ===========
+
+- Ao iniciar o trabalho devemos atualizar o repositório local:
+	$git pull origin master
+
+- Antes de fazer uma nova alteração, devemos criar uma branch local para que as alterações não afetem diretamente o master (ainda!):
+	$git branch <<nome da branch>>
+	$git checkout <<nome da branch>>
+
+Após a alteração ter sido concluída, devemos adicionar os arquivos e fazer o commit local:
+	$git add . (ou $git add <<nome do arquivo>>)
+	$git commit -m "mensagem de commit"
+
+Após fazer o commit local, devemos fazer o merge com a branch principal:
+	$git merge <<nome da branch>> master
+
+E fazer o commit para o repositório remoto:
+	$git push origin master
+
+Caso não queira mais usar a branch que foi criada anteriormente, podemos excluí-la:
+	$git branch -d <<nome da branch>>
+
+Pronto!
+
+==== Tricks ====
+
+$git status -s ##mostra o status das alterações locais
+$git log       ##mostra o log de todas as alterações
+
+
+
