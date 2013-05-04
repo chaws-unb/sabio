@@ -1,5 +1,8 @@
 ======= Dia a dia Git ===========
 
+- Na primeira vez usando o Git, deve-se fazer clone do repositório remoto:
+	$git clone git@github.com:chaws/sabio.git
+
 - Ao iniciar o trabalho devemos atualizar o repositório local:
 	$git pull origin master
 
