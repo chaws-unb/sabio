@@ -1,0 +1,11 @@
+Lex and YACC primer/HOWTO: http://tldp.org/HOWTO/Lex-YACC-HOWTO.html
+
+What are Flex and Bison?: http://aquamentus.com/flex_bison.html
+
+Bison The YACC-compatible Parser Generator: http://dinosaur.compilertools.net/bison/index.html
+
+Flex, version 2.5 A fast scanner generator: http://dinosaur.compilertools.net/flex/
+
+Writing Your Own Toy Compiler Using Flex, Bison and LLVM: http://gnuu.org/2009/09/18/writing-your-own-toy-compiler/
+
+Abstract syntax trees: http://www.cs.mcgill.ca/~cs520/2011/slides/ast.pdf
