@@ -9,3 +9,11 @@ Flex, version 2.5 A fast scanner generator: http://dinosaur.compilertools.net/fl
 Writing Your Own Toy Compiler Using Flex, Bison and LLVM: http://gnuu.org/2009/09/18/writing-your-own-toy-compiler/
 
 Abstract syntax trees: http://www.cs.mcgill.ca/~cs520/2011/slides/ast.pdf
+
+Graphviz - Graph Visualization Software: http://www.graphviz.org/Home.php
+
+Using Flex and Bison: http://www.mactech.com/articles/mactech/Vol.16/16.07/UsingFlexandBison/index.html
+
+Re-entrant flex/bison parser to make Abstract Syntax Tree: http://www.wischik.com/lu/programmer/re-ast.html
+
+Building Abstract Syntax Trees: http://web.eecs.utk.edu/~bvz/cs461/notes/parse_tree/
