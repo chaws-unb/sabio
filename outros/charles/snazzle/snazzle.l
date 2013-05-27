@@ -1,16 +1,16 @@
 %{
 #include <iostream>
-using namespace std;
+#include "snazzle.tab.h"
 #define YY_DECL extern "C" int yylex()
+using namespace std;
 %}
 %%
 [ \t\n];
-[0-9]+\.[0-9] {cout << "Found a floating-point number: " << yytext << endl; }
-[0-9]+		  {cout << "Found an integer: " << yytext << endl; }
-[a-zA-Z0-9]+  {cout << "Found a string: " << yytext << endl; }
+sNaZZle 	  {return SNAZZLE;}
+type 		  {return TYPE;}
+end			  {return END;}
+[0-9]+\.[0-9] {yylval.fval = atof(yytext); return FLOAT;}
+[0-9]+		  {yylval.ival = atoi(yytext); return INT;}
+[0-9a-zA-Z]+  {yylval.sval = strdup(yytext); return STRING;}
+. ;
 %%
-main()
-{
-	// Lex through the input
-	yylex();
-}
