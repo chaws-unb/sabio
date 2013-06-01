@@ -1,0 +1,7 @@
+yamltk
+sudo cpan Getopt::Std::Strict
+Warning: prerequisite Smart::Comments 1 not found.
+Warning: prerequisite Text::CSV 0 not found.
+Warning: prerequisite Text::CSV::Slurp 0 not found.
+Warning: prerequisite XML::Dumper 0.81 not found.
+
