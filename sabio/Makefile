@@ -4,33 +4,12 @@ OBJPACK = obj/
 BINPACK = bin/
 OTHERSPACK = others/
 
-flags#flags
-GCC = gcc
-CFLAG = -c 
-FLEXFLAG = -lfl
-BISONFLAG = --verbose --debug -d 
+compile: 
+	bison -d $(SRCPACK)parser.y 
+	mv parser.tab.c parser.tab.h src/  
+	flex -o $(SRCPACK)lexer.lex.c  $(SRCPACK)lexer.l
+	gcc -o sabio $(SRCPACK)parser.tab.c $(SRCPACK)lexer.lex.c $(SRCPACK)sabio_funcs.c
 
-all : project 
-
-project : lexer parser lex.yy.o 
-  $(GCC) lex.yy.o parser.c -o $(BINPACK)sabio
-
-#flex bindconfig2.l
-lexer : lexer.l 
-  flex $^
-
-#bison --verbose --debug -d filename.y -o  filename.cc
-parser.c : parser.y
-  bison $(BISONFLAG) $^ -o $@ 
-
-#cc -c lex.yy.c -o lex.yy.o
-
-lex.yy.o : lex.yy.c 
-  $(GCC) $(CFLAG) $^ -o $@
- 
-
-
-
-
-
+clean:
+	rm $(SRCPACK)lexer.lex.c $(SRCPACK)parser.tab.c $(SRCPACK)parser.tab.h sabio
 
