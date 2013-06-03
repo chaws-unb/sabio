@@ -1,6 +1,8 @@
 #ifndef _SYMBOL_TABLE_H_
 #define _SYMBOL_TABLE_H
 
+
+
 /**
 * @def SIZE_SYMBOL_TABLE
 * @brief Initial size for symbol table
