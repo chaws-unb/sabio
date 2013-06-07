@@ -6,11 +6,15 @@
 #define _DATA_TYPE_H_
 
 /**
-* @param _list 
-* @param _symNode
-* @return 
-* @brief 
+* @def SIZE_SYMBOL_TABLE
+* @brief Initial size for symbol table
 */
-extern int pushRef(refList * _list, symbol * _symNode);
+#define SIZE_SYMBOL_TABLE 9997
+
+/**
+ * @def HASH_CALC
+ * @brief Value for calculus of hash.
+ **/
+#define HASH_CALC 9
 
 #endif

@@ -1,51 +1,53 @@
 /**
  * @file symbolTable.h
- * @brief This file keeps some definitions and declaration for works
- * 	with symbol table.
+ * @brief 
  **/
 #ifndef _SYMBOL_TABLE_H_
 #define _SYMBOL_TABLE_H_
 
-#define SIZE_HASH 9997
-
 /**
- * @struct _referenceSymbol
- * @brief Keeps some informations about reference, mainly the number of
- *	line and the name file.
- **/
-typedef struct _infoRefSymbol
-{
-	struct _infoRefSymbol * next;
-	char * fileName;
-	int flags;	/**< Gives some additional information.*/
-	int lineno;	/**< Line that the reference was found.*/
-}infoRefSymbol;
-
-/**
- * @struct _symbol
- * @brief Keeps the name of symbol and information about them in a list.
- */
+* @struct _symbol 
+* @brief Keeps the name and informations about symbol.
+*/
 typedef struct _symbol
 {
-	infoRefSymbol * reflist;
-	char * name;
+	refList * refInfoList;	/**< Linked list with informations about symbol.*/
+	char * symbolName;		/**< Name of symbol.*/
 }symbol;
 
 /**
- * @param _symbolName Name of symbol for inspection in symbol table.
- * @return If the symbol exist this function return the reference of
- * 	them. Otherwise the function will enter with the new name.
- * @brief Look inside of symbol table and try to find the symbol.
+ * @struct _refList
+ * @brief Linked list that keeps the details about one specific symbol.
  **/
-extern symbol * lookup(char * _symbolName);
+typedef struct _refList
+{
+	struct _refList * next;
+	char * fileName;
+	int flags;		/**< Flags with some extra information about symbol.*/
+	int lineno;		/**< Line that the symbols was found.*/
+}refList;
 
 /**
- * @param _lineRef Number of line in file that the symbol was found.
- * @param _fileName Name of file that was analysed.
- * @param _word Name of word found. 
- * @param _flag Extra information about the word.
- * @brief Adds the informations about the word in found in symbol table.
+* @param _lineno The number of line that the symbol was found.
+* @param _fileName The name of file where symbol was found.
+* @param _word The name of symbol in file.
+* @param _flag Extra information
+* @return Upon succesfull completition, addSymbolRef() shall return a
+* non-negative integer. Otherwise, the function shall return one negative
+* number that correspond an internal code error.
+* @brief Every time that one symbol is found, this function is involked
+* 	for add them in a list of symbol.
+*/
+extern int addSymbolRef(int _lineno, char * _fileName, char * _word, int _flag);
+
+/**
+ * @param _symbolName The name of symbol that would like to check in symbol table
+ * @return Upon succesfull completition, lookUp shall return a reference to the
+ * symbol. Otherwise, the function shall return NULL.
+ * @brief Check the symbol table, if the element exist the function just return
+ * the reference to them. If doesn't exists it's the lookUp() will insert the
+ * new element and them return the reference. In case of error return NULL.
  **/
-extern void addRef(int _lineRef, char * _fileName, char * _word, int _flag);
+extern symbol * lookUp(char * _symbolName);
 
 #endif
