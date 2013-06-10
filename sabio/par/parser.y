@@ -1,7 +1,7 @@
 %{
 #  include <stdio.h>
 #  include <stdlib.h>
-#  include "sabio.h"
+#  include "../inc/sabio.h"
 %}
 
 %union {

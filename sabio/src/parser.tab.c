@@ -66,11 +66,11 @@
 /* Copy the first part of user declarations.  */
 
 /* Line 268 of yacc.c  */
-#line 1 "src/parser.y"
+#line 1 "par/parser.y"
 
 #  include <stdio.h>
 #  include <stdlib.h>
-#  include "sabio.h"
+#  include "../inc/sabio.h"
 
 
 /* Line 268 of yacc.c  */
@@ -113,7 +113,7 @@ typedef union YYSTYPE
 {
 
 /* Line 293 of yacc.c  */
-#line 7 "src/parser.y"
+#line 7 "par/parser.y"
 
   struct ast *a;
   double d;
@@ -1362,7 +1362,7 @@ yyreduce:
         case 3:
 
 /* Line 1806 of yacc.c  */
-#line 21 "src/parser.y"
+#line 21 "par/parser.y"
     {
      printf("= %4.4g\n", eval((yyvsp[(2) - (3)].a)));
      printAST((yyvsp[(2) - (3)].a));
@@ -1374,63 +1374,63 @@ yyreduce:
   case 4:
 
 /* Line 1806 of yacc.c  */
-#line 28 "src/parser.y"
+#line 28 "par/parser.y"
     { printf("> "); }
     break;
 
   case 6:
 
 /* Line 1806 of yacc.c  */
-#line 32 "src/parser.y"
+#line 32 "par/parser.y"
     { (yyval.a) = newast('+', (yyvsp[(1) - (3)].a),(yyvsp[(3) - (3)].a)); }
     break;
 
   case 7:
 
 /* Line 1806 of yacc.c  */
-#line 33 "src/parser.y"
+#line 33 "par/parser.y"
     { (yyval.a) = newast('-', (yyvsp[(1) - (3)].a),(yyvsp[(3) - (3)].a));}
     break;
 
   case 9:
 
 /* Line 1806 of yacc.c  */
-#line 37 "src/parser.y"
+#line 37 "par/parser.y"
     { (yyval.a) = newast('*', (yyvsp[(1) - (3)].a),(yyvsp[(3) - (3)].a)); }
     break;
 
   case 10:
 
 /* Line 1806 of yacc.c  */
-#line 38 "src/parser.y"
+#line 38 "par/parser.y"
     { (yyval.a) = newast('/', (yyvsp[(1) - (3)].a),(yyvsp[(3) - (3)].a)); }
     break;
 
   case 11:
 
 /* Line 1806 of yacc.c  */
-#line 41 "src/parser.y"
+#line 41 "par/parser.y"
     { (yyval.a) = newnum((yyvsp[(1) - (1)].d)); }
     break;
 
   case 12:
 
 /* Line 1806 of yacc.c  */
-#line 42 "src/parser.y"
+#line 42 "par/parser.y"
     { (yyval.a) = newast('|', (yyvsp[(2) - (2)].a), NULL); }
     break;
 
   case 13:
 
 /* Line 1806 of yacc.c  */
-#line 43 "src/parser.y"
+#line 43 "par/parser.y"
     { (yyval.a) = (yyvsp[(2) - (3)].a); }
     break;
 
   case 14:
 
 /* Line 1806 of yacc.c  */
-#line 44 "src/parser.y"
+#line 44 "par/parser.y"
     { (yyval.a) = newast('M', (yyvsp[(2) - (2)].a), NULL); }
     break;
 
@@ -1668,6 +1668,6 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 46 "src/parser.y"
+#line 46 "par/parser.y"
 
 
