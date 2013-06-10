@@ -9,7 +9,6 @@ EXP ([Ee][-+]?[0-9]+)
 ILEN ([Uu](L|l|LL|ll)?|(L|l|LL|ll)[Uu]?)
 
 %{
-	#include <FlexLexer.h>
 	#include "lexer.h"
 	#include "dataType.h"
 	#include "symbolTable.h"
@@ -19,7 +18,6 @@ ILEN ([Uu](L|l|LL|ll)?|(L|l|LL|ll)[Uu]?)
 %}
 
 %%
-
 "/*"
 	{
 		BEGIN(COMMENT);

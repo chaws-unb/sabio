@@ -889,14 +889,13 @@ char *yytext;
 
 
 #line 12 "lex/lexer.l"
-	#include <FlexLexer.h>
 	#include "lexer.h"
 	#include "dataType.h"
 	#include "symbolTable.h"
 	#include "handleFile.h"
 
 	int defining = 0;
-#line 900 "build/lexer.lex.c"
+#line 899 "build/lexer.lex.c"
 
 #define INITIAL 0
 #define COMMENT 1
@@ -1088,10 +1087,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 21 "lex/lexer.l"
+#line 20 "lex/lexer.l"
 
-
-#line 1095 "build/lexer.lex.c"
+#line 1093 "build/lexer.lex.c"
 
 	if ( !(yy_init) )
 		{
@@ -1187,43 +1185,43 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 23 "lex/lexer.l"
+#line 21 "lex/lexer.l"
 
 	YY_BREAK
 
 case 2:
 YY_RULE_SETUP
-#line 25 "lex/lexer.l"
+#line 23 "lex/lexer.l"
 
 	YY_BREAK
 
 case 3:
 YY_RULE_SETUP
-#line 27 "lex/lexer.l"
+#line 25 "lex/lexer.l"
 
 	YY_BREAK
 
 case 4:
 YY_RULE_SETUP
-#line 29 "lex/lexer.l"
+#line 27 "lex/lexer.l"
 
 	YY_BREAK
 
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 31 "lex/lexer.l"
+#line 29 "lex/lexer.l"
 
 	YY_BREAK
 /* Comentário C++, uma extesão comum */
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 33 "lex/lexer.l"
+#line 31 "lex/lexer.l"
 
 	YY_BREAK
 case YY_STATE_EOF(COMMENT):
-#line 35 "lex/lexer.l"
+#line 33 "lex/lexer.l"
 {
 		printf("%s:%d: Unterminated comment\n", currentFileName, yylineno);
 		return 0;
@@ -1232,216 +1230,216 @@ case YY_STATE_EOF(COMMENT):
 /*Declaração de palavras chaves. Repare que foi feita uma divisão entre
   * palavras chaves que introduzem uma definição das demais */
 case 7:
-#line 43 "lex/lexer.l"
+#line 41 "lex/lexer.l"
 case 8:
-#line 44 "lex/lexer.l"
+#line 42 "lex/lexer.l"
 case 9:
-#line 45 "lex/lexer.l"
+#line 43 "lex/lexer.l"
 case 10:
-#line 46 "lex/lexer.l"
+#line 44 "lex/lexer.l"
 case 11:
-#line 47 "lex/lexer.l"
+#line 45 "lex/lexer.l"
 case 12:
-#line 48 "lex/lexer.l"
+#line 46 "lex/lexer.l"
 case 13:
-#line 49 "lex/lexer.l"
+#line 47 "lex/lexer.l"
 case 14:
-#line 50 "lex/lexer.l"
+#line 48 "lex/lexer.l"
 case 15:
-#line 51 "lex/lexer.l"
+#line 49 "lex/lexer.l"
 case 16:
-#line 52 "lex/lexer.l"
+#line 50 "lex/lexer.l"
 case 17:
-#line 53 "lex/lexer.l"
+#line 51 "lex/lexer.l"
 case 18:
-#line 54 "lex/lexer.l"
+#line 52 "lex/lexer.l"
 case 19:
-#line 55 "lex/lexer.l"
+#line 53 "lex/lexer.l"
 case 20:
-#line 56 "lex/lexer.l"
+#line 54 "lex/lexer.l"
 case 21:
-#line 57 "lex/lexer.l"
+#line 55 "lex/lexer.l"
 case 22:
-#line 58 "lex/lexer.l"
+#line 56 "lex/lexer.l"
 case 23:
-#line 59 "lex/lexer.l"
+#line 57 "lex/lexer.l"
 case 24:
-#line 60 "lex/lexer.l"
+#line 58 "lex/lexer.l"
 case 25:
-#line 61 "lex/lexer.l"
+#line 59 "lex/lexer.l"
 case 26:
-#line 62 "lex/lexer.l"
+#line 60 "lex/lexer.l"
 case 27:
-#line 63 "lex/lexer.l"
+#line 61 "lex/lexer.l"
 case 28:
-#line 64 "lex/lexer.l"
+#line 62 "lex/lexer.l"
 case 29:
-#line 65 "lex/lexer.l"
+#line 63 "lex/lexer.l"
 case 30:
 YY_RULE_SETUP
-#line 65 "lex/lexer.l"
+#line 63 "lex/lexer.l"
 { defining = 1;}
 	YY_BREAK
 /*Keywords*/
 case 31:
 YY_RULE_SETUP
-#line 68 "lex/lexer.l"
+#line 66 "lex/lexer.l"
 
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 69 "lex/lexer.l"
+#line 67 "lex/lexer.l"
 
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 70 "lex/lexer.l"
+#line 68 "lex/lexer.l"
 
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 71 "lex/lexer.l"
+#line 69 "lex/lexer.l"
 
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 72 "lex/lexer.l"
+#line 70 "lex/lexer.l"
 
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 73 "lex/lexer.l"
+#line 71 "lex/lexer.l"
 
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 74 "lex/lexer.l"
+#line 72 "lex/lexer.l"
 
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 75 "lex/lexer.l"
+#line 73 "lex/lexer.l"
 
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 76 "lex/lexer.l"
+#line 74 "lex/lexer.l"
 
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 77 "lex/lexer.l"
+#line 75 "lex/lexer.l"
 
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 78 "lex/lexer.l"
+#line 76 "lex/lexer.l"
 
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 79 "lex/lexer.l"
+#line 77 "lex/lexer.l"
 
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 80 "lex/lexer.l"
+#line 78 "lex/lexer.l"
 
 	YY_BREAK
 /*Constantes. Note o uso dos subpadrões aqui*/
 /*Inteiros*/
 case 44:
 YY_RULE_SETUP
-#line 84 "lex/lexer.l"
+#line 82 "lex/lexer.l"
 
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 85 "lex/lexer.l"
+#line 83 "lex/lexer.l"
 
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 86 "lex/lexer.l"
+#line 84 "lex/lexer.l"
 
 	YY_BREAK
 /*Decimal float*/
 case 47:
 YY_RULE_SETUP
-#line 89 "lex/lexer.l"
+#line 87 "lex/lexer.l"
 
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 90 "lex/lexer.l"
+#line 88 "lex/lexer.l"
 
 	YY_BREAK
 /*Hex float*/
 case 49:
 YY_RULE_SETUP
-#line 93 "lex/lexer.l"
+#line 91 "lex/lexer.l"
 
 	YY_BREAK
 /* char const */
 case 50:
 /* rule 50 can match eol */
 YY_RULE_SETUP
-#line 96 "lex/lexer.l"
+#line 94 "lex/lexer.l"
 
 	YY_BREAK
 /* string literal */
 case 51:
 /* rule 51 can match eol */
 YY_RULE_SETUP
-#line 99 "lex/lexer.l"
+#line 97 "lex/lexer.l"
 
 	YY_BREAK
 /*Pontuadores*/
 case 52:
 YY_RULE_SETUP
-#line 102 "lex/lexer.l"
+#line 100 "lex/lexer.l"
 {defining = 0;}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 104 "lex/lexer.l"
+#line 102 "lex/lexer.l"
 
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 105 "lex/lexer.l"
+#line 103 "lex/lexer.l"
 
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 106 "lex/lexer.l"
+#line 104 "lex/lexer.l"
 
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 107 "lex/lexer.l"
+#line 105 "lex/lexer.l"
 
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 108 "lex/lexer.l"
+#line 106 "lex/lexer.l"
 
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 109 "lex/lexer.l"
+#line 107 "lex/lexer.l"
 
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 110 "lex/lexer.l"
+#line 108 "lex/lexer.l"
 
 	YY_BREAK
 /*Identificador. Neste ponto é realizado o reconhecimento de variáveis,
   * palavra-chave, dentre outros.*/
 case 60:
 YY_RULE_SETUP
-#line 114 "lex/lexer.l"
+#line 112 "lex/lexer.l"
 {
 		addSymbolRef(yylineno, currentFileName, yytext, defining);
 	}
@@ -1450,7 +1448,7 @@ YY_RULE_SETUP
 case 61:
 /* rule 61 can match eol */
 YY_RULE_SETUP
-#line 118 "lex/lexer.l"
+#line 116 "lex/lexer.l"
 
 	YY_BREAK
 /* Linha de continuação*/
@@ -1459,44 +1457,44 @@ case 62:
 (yy_c_buf_p) = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 120 "lex/lexer.l"
+#line 118 "lex/lexer.l"
 
 	YY_BREAK
 /*Alguns tratamento para pré-processador*/
 case 63:
 /* rule 63 can match eol */
 YY_RULE_SETUP
-#line 123 "lex/lexer.l"
+#line 121 "lex/lexer.l"
 
 	YY_BREAK
 case 64:
 /* rule 64 can match eol */
 YY_RULE_SETUP
-#line 124 "lex/lexer.l"
+#line 122 "lex/lexer.l"
 
 	YY_BREAK
 case 65:
 /* rule 65 can match eol */
 YY_RULE_SETUP
-#line 125 "lex/lexer.l"
+#line 123 "lex/lexer.l"
 
 	YY_BREAK
 case 66:
 /* rule 66 can match eol */
 YY_RULE_SETUP
-#line 126 "lex/lexer.l"
+#line 124 "lex/lexer.l"
 
 	YY_BREAK
 case 67:
 /* rule 67 can match eol */
 YY_RULE_SETUP
-#line 127 "lex/lexer.l"
+#line 125 "lex/lexer.l"
 
 	YY_BREAK
 /*Reconhece include*/
 case 68:
 YY_RULE_SETUP
-#line 130 "lex/lexer.l"
+#line 128 "lex/lexer.l"
 {
 		BEGIN IFILE;
 	}
@@ -1504,7 +1502,7 @@ YY_RULE_SETUP
 case 69:
 /* rule 69 can match eol */
 YY_RULE_SETUP
-#line 133 "lex/lexer.l"
+#line 131 "lex/lexer.l"
 {
 		{
 			int c;
@@ -1517,7 +1515,7 @@ YY_RULE_SETUP
 case 70:
 /* rule 70 can match eol */
 YY_RULE_SETUP
-#line 142 "lex/lexer.l"
+#line 140 "lex/lexer.l"
 {
 		fprintf(stderr, "%s:%d bad include line\n", currentFileName, yylineno);
 		BEGIN INITIAL;
@@ -1525,7 +1523,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(IFILE):
-#line 147 "lex/lexer.l"
+#line 145 "lex/lexer.l"
 {
 		if(!popFile()) yyterminate();
 	}
@@ -1533,17 +1531,17 @@ case YY_STATE_EOF(IFILE):
 /*Caracter invalido*/
 case 71:
 YY_RULE_SETUP
-#line 152 "lex/lexer.l"
+#line 150 "lex/lexer.l"
 {
 	printf("%s, %d: Mystery character '%s'\n", currentFileName, yylineno, yytext);
   }
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 155 "lex/lexer.l"
+#line 153 "lex/lexer.l"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 1547 "build/lexer.lex.c"
+#line 1545 "build/lexer.lex.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -2553,7 +2551,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 155 "lex/lexer.l"
+#line 153 "lex/lexer.l"
 
 
 
