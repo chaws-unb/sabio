@@ -1,4 +1,5 @@
 %option noyywrap nodefault yylineno
+<<<<<<< HEAD
 %option header-file="lexer.h"
 
 %x COMMENT
@@ -9,6 +10,15 @@ EXP ([Ee][-+]?[0-9]+)
 ILEN ([Uu](L|l|LL|ll)?|(L|l|LL|ll)[Uu]?)
 
 %{
+=======
+%x IFILE
+
+%{
+#  include "../inc/sabio.h"
+#  include "../inc/bufStack.h"
+#  include "../inc/parser.tab.h"
+%}
+>>>>>>> e8357c3507e65a5114802429a0eac53581287dcb
 
 	#include "lexer.h"
 	#include "dataType.h"
@@ -20,6 +30,7 @@ ILEN ([Uu](L|l|LL|ll)?|(L|l|LL|ll)[Uu]?)
 
 %%
 
+<<<<<<< HEAD
 "/*"
 	{
 		BEGIN(COMMENT);
@@ -152,6 +163,49 @@ L?\"([^\"\\]|\\['"?\\abfnrtv]|\\[0-7]{1,3}|\\[Xx][0-9a-fA-F]+|{UCN})+\"
 . {
 	printf("%s, %d: Mystery character '%s'\n", currentFileName, yylineno, yytext);
   }
+=======
+^"#"[ \t]*include[ \t]*\[\"<] { BEGIN IFILE; }	
+
+ /*handle filename up to the closing quote, >, o EOF*/
+<IFILE>[^ \t\n\">]+	      {			 
+				int c;
+				while((c = input()) && c!= '\n')
+				{
+				  yylineno++;
+				}
+/*the filename is passed to newfile to stack the current input file and set up the next level of input*/
+				if(!newfile(yytext))
+				  yyterminate();  /*no such file*/
+				BEGIN INITIAL;
+			      }
+
+<IFILE>.|\n		      {fprintf(stderr, "%4d bad include line\n", yylineno);
+				yyterminate();
+			      }
+
+<<EOF>>			      {if(!popfile()) yyterminate();}
+
+^.			      {fprintf(yyout, "%4d %s", yylineno, yytext);}
+^\n			      {fprintf(yyout, "%4d %s", yylineno++, yytext);}
+\n			      {ECHO; yylineno++;}
+.			      {ECHO;}
+
+
+"+" |
+"-" |
+"*" |
+"/" |
+"|" |
+"(" |
+")"     { return yytext[0]; }
+[0-9]+"."[0-9]*{EXP}? |
+"."?[0-9]+{EXP}? { yylval.d = atof(yytext); return NUMBER; }
+
+\n      { return EOL; }
+"//".*  
+[ \t]   { /* ignore white space */ }
+.	{ yyerror("Mystery character %c\n", *yytext); }
+>>>>>>> e8357c3507e65a5114802429a0eac53581287dcb
 %%
 
 int main(int argc, char ** argv)
