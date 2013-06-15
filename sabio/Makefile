@@ -18,6 +18,7 @@ PACKBUILD	= build
 OTHERSPACK	= others
 PACKLEX		= lex
 PACKPAR		= par
+PACKOBJ		= obj
 #Flags
 CC			= gcc
 BISON		= bison
@@ -35,27 +36,31 @@ all: sabio
 # Dependencies are inserted by: $(CSOURCES:src/%.c=obj/%.o)
 #	*Basically capture all the elements of list and change the pieces
 #	 with "src/%.c" by "obj/%.o".
-sabio: confBuild lexer
+obj/%.o: src/%.c
+	$(CC) -c $< -o $@ $(CFLAGS) -I./build
+
+sabio: lexerCode $(CSOURCES:src/%.c=obj/%.o) confBuild
 	@echo "________________________________________________"
-	@echo "Generate object file."
-	$(CC) -c $(PACKBUILD)/symbolTable.c -o $(PACKBUILD)/symbolTable.o $(LEXFLAGS)
-	$(CC) -c $(PACKBUILD)/handleFile.c -o $(PACKBUILD)/handleFile.o $(LEXFLAGS)
-	$(CC) -c $(PACKBUILD)/lexer.lex.c -o $(PACKBUILD)/lexer.lex.o $(LEXFLAGS)
-	$(CC) -Wall $(PACKBUILD)/handleFile.o $(PACKBUILD)/symbolTable.o $(PACKBUILD)/lexer.lex.o -o bin/$@ -I./$(PACKBUILD) $(LEXFLAGS)
+	@echo "### Build binary ###"
+
+	$(CC) $(PACKBUILD)/lexer.lex.c $(PACKBUILD)/*.o -o bin/$@ -I./$(PACKBUILD) $(LEXFLAGS) $(CFLAGS)
 	@echo "________________________________________________"
+
+# Generate lexer Code
+lexerCode: $(LEXSOURCES)
+	@echo "_______________________________________________"
+	@echo "### Generate C code with flex ###"
+
+	$(LEXER) -o $(PACKBUILD)/lexer.lex.c $^
+	mv clexer.h build/clexer.h
+	@echo "_______________________________________________"
 
 confBuild:
-	@echo "Prepare folder \"build\" for compilation."
 	@echo "________________________________________________"
-	cp $(PACKINC)/* $(PACKBUILD)
-	cp $(PACKLEX)/* $(PACKBUILD)
-	cp $(PACKSRC)/* $(PACKBUILD)
+	@echo "### Prepare folder \"build\" for compilation ###"
 
-lexer: $(LEXSOURCES)
-	@echo "________________________________________________"
-	@echo "Generate C code with flex"
-	$(LEXER) -o $(PACKBUILD)/lexer.lex.c $^
-	mv lexer.h build/lexer.h
+	cp $(PACKLEX)/* $(PACKBUILD)
+	cp $(PACKOBJ)/* $(PACKBUILD)
 
 build/%.o: src/%.c
 	$(CC) -c $< -o $@ $(CFLAGS) $(LEXFLAGS)
@@ -65,6 +70,8 @@ clean:
 	@echo "________________________________________________"
 	rm -f build/*
 	rm -f bin/*
+	rm -f obj/*
 	touch build/tmp.txt
+	cp others/simple2.c bin/
 	@echo "________________________________________________"
 

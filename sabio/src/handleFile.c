@@ -1,12 +1,10 @@
 /**
  * @file handleFile.c
  **/
-
+#include "clexer.h"
 #include "handleFile.h"
-#include "lexer.h"
-#include <stdio.h>
-#include <stdlib.h>
 
+/* nested input files */
 int newFile(char * _fileName)
 {
 	FILE * file = fopen(_fileName, "r");
@@ -45,9 +43,9 @@ int newFile(char * _fileName)
 	return 1;
 }
 
-int popFile()
+int popFile(void)
 {
-	bufferStack * buffStack = curbs;
+		bufferStack * buffStack = curbs;
 	bufferStack * previousBuffStack = 0;
 
 	if(!buffStack)
@@ -61,7 +59,7 @@ int popFile()
 
 	if(!previousBuffStack)
 	{
-		return -1;
+		return 0;
 	}
 
 	yy_switch_to_buffer(previousBuffStack->bufferState);
@@ -69,5 +67,5 @@ int popFile()
 	yylineno = curbs->lineno;
 	currentFileName = curbs->fileName;
 	
-	return 1; 
+	return 1;
 }

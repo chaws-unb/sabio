@@ -885,17 +885,14 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "lex/lexer.l"
+#line 1 "lex/clexer.l"
 
 
-#line 12 "lex/lexer.l"
-	#include "lexer.h"
-	#include "dataType.h"
-	#include "symbolTable.h"
+#line 12 "lex/clexer.l"
 	#include "handleFile.h"
-
-	int defining = 0;
-#line 899 "build/lexer.lex.c"
+	#include "symbolTable.h"
+	#include "dataType.h"
+#line 896 "build/lexer.lex.c"
 
 #define INITIAL 0
 #define COMMENT 1
@@ -1087,9 +1084,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 20 "lex/lexer.l"
+#line 17 "lex/clexer.l"
 
-#line 1093 "build/lexer.lex.c"
+#line 1090 "build/lexer.lex.c"
 
 	if ( !(yy_init) )
 		{
@@ -1185,316 +1182,314 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 21 "lex/lexer.l"
+#line 18 "lex/clexer.l"
 
 	YY_BREAK
 
 case 2:
 YY_RULE_SETUP
-#line 23 "lex/lexer.l"
+#line 20 "lex/clexer.l"
 
 	YY_BREAK
 
 case 3:
 YY_RULE_SETUP
-#line 25 "lex/lexer.l"
+#line 22 "lex/clexer.l"
 
 	YY_BREAK
 
 case 4:
 YY_RULE_SETUP
-#line 27 "lex/lexer.l"
+#line 24 "lex/clexer.l"
 
 	YY_BREAK
 
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 29 "lex/lexer.l"
+#line 26 "lex/clexer.l"
 
 	YY_BREAK
-/* Comentário C++, uma extesão comum */
+/* Comments in C++*/
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 31 "lex/lexer.l"
+#line 28 "lex/clexer.l"
 
 	YY_BREAK
 case YY_STATE_EOF(COMMENT):
-#line 33 "lex/lexer.l"
+#line 30 "lex/clexer.l"
 {
 		printf("%s:%d: Unterminated comment\n", currentFileName, yylineno);
 		return 0;
 	}
 	YY_BREAK
-/*Declaração de palavras chaves. Repare que foi feita uma divisão entre
-  * palavras chaves que introduzem uma definição das demais */
+/*Set Keywords. Note that we divide keywords that introduce definition
+  * from the others. */
 case 7:
-#line 41 "lex/lexer.l"
+#line 38 "lex/clexer.l"
 case 8:
-#line 42 "lex/lexer.l"
+#line 39 "lex/clexer.l"
 case 9:
-#line 43 "lex/lexer.l"
+#line 40 "lex/clexer.l"
 case 10:
-#line 44 "lex/lexer.l"
+#line 41 "lex/clexer.l"
 case 11:
-#line 45 "lex/lexer.l"
+#line 42 "lex/clexer.l"
 case 12:
-#line 46 "lex/lexer.l"
+#line 43 "lex/clexer.l"
 case 13:
-#line 47 "lex/lexer.l"
+#line 44 "lex/clexer.l"
 case 14:
-#line 48 "lex/lexer.l"
+#line 45 "lex/clexer.l"
 case 15:
-#line 49 "lex/lexer.l"
+#line 46 "lex/clexer.l"
 case 16:
-#line 50 "lex/lexer.l"
+#line 47 "lex/clexer.l"
 case 17:
-#line 51 "lex/lexer.l"
+#line 48 "lex/clexer.l"
 case 18:
-#line 52 "lex/lexer.l"
+#line 49 "lex/clexer.l"
 case 19:
-#line 53 "lex/lexer.l"
+#line 50 "lex/clexer.l"
 case 20:
-#line 54 "lex/lexer.l"
+#line 51 "lex/clexer.l"
 case 21:
-#line 55 "lex/lexer.l"
+#line 52 "lex/clexer.l"
 case 22:
-#line 56 "lex/lexer.l"
+#line 53 "lex/clexer.l"
 case 23:
-#line 57 "lex/lexer.l"
+#line 54 "lex/clexer.l"
 case 24:
-#line 58 "lex/lexer.l"
+#line 55 "lex/clexer.l"
 case 25:
-#line 59 "lex/lexer.l"
+#line 56 "lex/clexer.l"
 case 26:
-#line 60 "lex/lexer.l"
+#line 57 "lex/clexer.l"
 case 27:
-#line 61 "lex/lexer.l"
+#line 58 "lex/clexer.l"
 case 28:
-#line 62 "lex/lexer.l"
+#line 59 "lex/clexer.l"
 case 29:
-#line 63 "lex/lexer.l"
+#line 60 "lex/clexer.l"
 case 30:
 YY_RULE_SETUP
-#line 63 "lex/lexer.l"
+#line 60 "lex/clexer.l"
 { defining = 1;}
 	YY_BREAK
 /*Keywords*/
 case 31:
 YY_RULE_SETUP
-#line 66 "lex/lexer.l"
+#line 63 "lex/clexer.l"
 
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 67 "lex/lexer.l"
+#line 64 "lex/clexer.l"
 
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 68 "lex/lexer.l"
+#line 65 "lex/clexer.l"
 
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 69 "lex/lexer.l"
+#line 66 "lex/clexer.l"
 
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 70 "lex/lexer.l"
+#line 67 "lex/clexer.l"
 
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 71 "lex/lexer.l"
+#line 68 "lex/clexer.l"
 
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 72 "lex/lexer.l"
+#line 69 "lex/clexer.l"
 
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 73 "lex/lexer.l"
+#line 70 "lex/clexer.l"
 
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 74 "lex/lexer.l"
+#line 71 "lex/clexer.l"
 
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 75 "lex/lexer.l"
+#line 72 "lex/clexer.l"
 
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 76 "lex/lexer.l"
+#line 73 "lex/clexer.l"
 
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 77 "lex/lexer.l"
+#line 74 "lex/clexer.l"
 
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 78 "lex/lexer.l"
+#line 75 "lex/clexer.l"
 
 	YY_BREAK
-/*Constantes. Note o uso dos subpadrões aqui*/
-/*Inteiros*/
+/*Constantes, note the use of subpatterns.*/
 case 44:
 YY_RULE_SETUP
-#line 82 "lex/lexer.l"
+#line 78 "lex/clexer.l"
 
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 83 "lex/lexer.l"
+#line 79 "lex/clexer.l"
 
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 84 "lex/lexer.l"
+#line 80 "lex/clexer.l"
 
 	YY_BREAK
 /*Decimal float*/
 case 47:
 YY_RULE_SETUP
-#line 87 "lex/lexer.l"
+#line 83 "lex/clexer.l"
 
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 88 "lex/lexer.l"
+#line 84 "lex/clexer.l"
 
 	YY_BREAK
 /*Hex float*/
 case 49:
 YY_RULE_SETUP
-#line 91 "lex/lexer.l"
+#line 87 "lex/clexer.l"
 
 	YY_BREAK
 /* char const */
 case 50:
 /* rule 50 can match eol */
 YY_RULE_SETUP
-#line 94 "lex/lexer.l"
+#line 90 "lex/clexer.l"
 
 	YY_BREAK
-/* string literal */
+/* literal string */
 case 51:
 /* rule 51 can match eol */
 YY_RULE_SETUP
-#line 97 "lex/lexer.l"
+#line 93 "lex/clexer.l"
 
 	YY_BREAK
 /*Pontuadores*/
 case 52:
 YY_RULE_SETUP
-#line 100 "lex/lexer.l"
+#line 96 "lex/clexer.l"
 {defining = 0;}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 102 "lex/lexer.l"
+#line 98 "lex/clexer.l"
 
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 103 "lex/lexer.l"
+#line 99 "lex/clexer.l"
 
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 104 "lex/lexer.l"
+#line 100 "lex/clexer.l"
 
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 105 "lex/lexer.l"
+#line 101 "lex/clexer.l"
 
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 106 "lex/lexer.l"
+#line 102 "lex/clexer.l"
 
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 107 "lex/lexer.l"
+#line 103 "lex/clexer.l"
 
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 108 "lex/lexer.l"
+#line 104 "lex/clexer.l"
 
 	YY_BREAK
-/*Identificador. Neste ponto é realizado o reconhecimento de variáveis,
-  * palavra-chave, dentre outros.*/
+/*Identification. In this point are recognize variables.*/
 case 60:
 YY_RULE_SETUP
-#line 112 "lex/lexer.l"
+#line 107 "lex/clexer.l"
 {
 		addSymbolRef(yylineno, currentFileName, yytext, defining);
 	}
 	YY_BREAK
-/*Espaço em branco*/
+/*White space*/
 case 61:
 /* rule 61 can match eol */
 YY_RULE_SETUP
-#line 116 "lex/lexer.l"
+#line 111 "lex/clexer.l"
 
 	YY_BREAK
-/* Linha de continuação*/
+/*Line of continuation*/
 case 62:
 *yy_cp = (yy_hold_char); /* undo effects of setting up yytext */
 (yy_c_buf_p) = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 118 "lex/lexer.l"
+#line 113 "lex/clexer.l"
 
 	YY_BREAK
-/*Alguns tratamento para pré-processador*/
+/*Basic Pre-processor*/
 case 63:
 /* rule 63 can match eol */
 YY_RULE_SETUP
-#line 121 "lex/lexer.l"
+#line 116 "lex/clexer.l"
 
 	YY_BREAK
 case 64:
 /* rule 64 can match eol */
 YY_RULE_SETUP
-#line 122 "lex/lexer.l"
+#line 117 "lex/clexer.l"
 
 	YY_BREAK
 case 65:
 /* rule 65 can match eol */
 YY_RULE_SETUP
-#line 123 "lex/lexer.l"
+#line 118 "lex/clexer.l"
 
 	YY_BREAK
 case 66:
 /* rule 66 can match eol */
 YY_RULE_SETUP
-#line 124 "lex/lexer.l"
+#line 119 "lex/clexer.l"
 
 	YY_BREAK
 case 67:
 /* rule 67 can match eol */
 YY_RULE_SETUP
-#line 125 "lex/lexer.l"
+#line 120 "lex/clexer.l"
 
 	YY_BREAK
-/*Reconhece include*/
+/*Recognize include*/
 case 68:
 YY_RULE_SETUP
-#line 128 "lex/lexer.l"
+#line 123 "lex/clexer.l"
 {
 		BEGIN IFILE;
 	}
@@ -1502,7 +1497,7 @@ YY_RULE_SETUP
 case 69:
 /* rule 69 can match eol */
 YY_RULE_SETUP
-#line 131 "lex/lexer.l"
+#line 126 "lex/clexer.l"
 {
 		{
 			int c;
@@ -1515,7 +1510,7 @@ YY_RULE_SETUP
 case 70:
 /* rule 70 can match eol */
 YY_RULE_SETUP
-#line 140 "lex/lexer.l"
+#line 135 "lex/clexer.l"
 {
 		fprintf(stderr, "%s:%d bad include line\n", currentFileName, yylineno);
 		BEGIN INITIAL;
@@ -1523,25 +1518,25 @@ YY_RULE_SETUP
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(IFILE):
-#line 145 "lex/lexer.l"
+#line 140 "lex/clexer.l"
 {
 		if(!popFile()) yyterminate();
 	}
 	YY_BREAK
-/*Caracter invalido*/
+/*Invalid character*/
 case 71:
 YY_RULE_SETUP
-#line 150 "lex/lexer.l"
+#line 145 "lex/clexer.l"
 {
 	printf("%s, %d: Mystery character '%s'\n", currentFileName, yylineno, yytext);
   }
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 153 "lex/lexer.l"
+#line 148 "lex/clexer.l"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 1545 "build/lexer.lex.c"
+#line 1540 "build/lexer.lex.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -2551,29 +2546,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 153 "lex/lexer.l"
+#line 148 "lex/clexer.l"
 
 
-
-int main(int argc, char ** argv)
-{
-	int i = 0;
-
-	if(argc < 2)
-	{
-		fprintf(stderr, "need filename\n");
-		return 1;
-	}
-
-	for(i = 1; i < argc; i++)
-	{
-		if(newFile(argv[i]))
-		{
-			yylex();
-		}
-	}
-
-	printrefs();
-	return 0;
-}
 
