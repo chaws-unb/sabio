@@ -897,7 +897,7 @@ char *yytext;
 /*Lembrando que + e ? procura qualquer elemento a esquerda do indicado*/
 /* Tamanho do inteiro*/
 /*Tabela de símbolos*/
-#line 21 "cref.l"
+#line 22 "cref.l"
 	/*Lista contendo um nó e o nome*/
 	struct symbol
 	{
@@ -1129,7 +1129,7 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 61 "cref.l"
+#line 62 "cref.l"
 
 
 #line 1136 "lex.yy.c"
@@ -1228,43 +1228,43 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 63 "cref.l"
+#line 64 "cref.l"
 
 	YY_BREAK
 
 case 2:
 YY_RULE_SETUP
-#line 65 "cref.l"
+#line 66 "cref.l"
 
 	YY_BREAK
 
 case 3:
 YY_RULE_SETUP
-#line 67 "cref.l"
+#line 68 "cref.l"
 
 	YY_BREAK
 
 case 4:
 YY_RULE_SETUP
-#line 69 "cref.l"
+#line 70 "cref.l"
 
 	YY_BREAK
 
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 71 "cref.l"
+#line 72 "cref.l"
 
 	YY_BREAK
 /* Comentário C++, uma extesão comum */
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 73 "cref.l"
+#line 74 "cref.l"
 
 	YY_BREAK
 case YY_STATE_EOF(COMMENT):
-#line 75 "cref.l"
+#line 76 "cref.l"
 {
 		printf("%s:%d: Unterminated comment\n", curfilename, yylineno);
 		return 0;
@@ -1273,216 +1273,216 @@ case YY_STATE_EOF(COMMENT):
 /*Declaração de palavras chaves. Repare que foi feita uma divisão entre
   * palavras chaves que introduzem uma definição das demais */
 case 7:
-#line 83 "cref.l"
-case 8:
 #line 84 "cref.l"
-case 9:
+case 8:
 #line 85 "cref.l"
-case 10:
+case 9:
 #line 86 "cref.l"
-case 11:
+case 10:
 #line 87 "cref.l"
-case 12:
+case 11:
 #line 88 "cref.l"
-case 13:
+case 12:
 #line 89 "cref.l"
-case 14:
+case 13:
 #line 90 "cref.l"
-case 15:
+case 14:
 #line 91 "cref.l"
-case 16:
+case 15:
 #line 92 "cref.l"
-case 17:
+case 16:
 #line 93 "cref.l"
-case 18:
+case 17:
 #line 94 "cref.l"
-case 19:
+case 18:
 #line 95 "cref.l"
-case 20:
+case 19:
 #line 96 "cref.l"
-case 21:
+case 20:
 #line 97 "cref.l"
-case 22:
+case 21:
 #line 98 "cref.l"
-case 23:
+case 22:
 #line 99 "cref.l"
-case 24:
+case 23:
 #line 100 "cref.l"
-case 25:
+case 24:
 #line 101 "cref.l"
-case 26:
+case 25:
 #line 102 "cref.l"
-case 27:
+case 26:
 #line 103 "cref.l"
-case 28:
+case 27:
 #line 104 "cref.l"
-case 29:
+case 28:
 #line 105 "cref.l"
+case 29:
+#line 106 "cref.l"
 case 30:
 YY_RULE_SETUP
-#line 105 "cref.l"
+#line 106 "cref.l"
 { defining = 1;}
 	YY_BREAK
 /*Keywords*/
 case 31:
 YY_RULE_SETUP
-#line 108 "cref.l"
+#line 109 "cref.l"
 
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 109 "cref.l"
+#line 110 "cref.l"
 
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 110 "cref.l"
+#line 111 "cref.l"
 
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 111 "cref.l"
+#line 112 "cref.l"
 
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 112 "cref.l"
+#line 113 "cref.l"
 
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 113 "cref.l"
+#line 114 "cref.l"
 
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 114 "cref.l"
+#line 115 "cref.l"
 
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 115 "cref.l"
+#line 116 "cref.l"
 
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 116 "cref.l"
+#line 117 "cref.l"
 
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 117 "cref.l"
+#line 118 "cref.l"
 
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 118 "cref.l"
+#line 119 "cref.l"
 
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 119 "cref.l"
+#line 120 "cref.l"
 
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 120 "cref.l"
+#line 121 "cref.l"
 
 	YY_BREAK
 /*Constantes. Note o uso dos subpadrões aqui*/
 /*Inteiros*/
 case 44:
 YY_RULE_SETUP
-#line 124 "cref.l"
+#line 125 "cref.l"
 
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 125 "cref.l"
+#line 126 "cref.l"
 
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 126 "cref.l"
+#line 127 "cref.l"
 
 	YY_BREAK
 /*Decimal float*/
 case 47:
 YY_RULE_SETUP
-#line 129 "cref.l"
+#line 130 "cref.l"
 
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 130 "cref.l"
+#line 131 "cref.l"
 
 	YY_BREAK
 /*Hex float*/
 case 49:
 YY_RULE_SETUP
-#line 133 "cref.l"
+#line 134 "cref.l"
 
 	YY_BREAK
 /* char const */
 case 50:
 /* rule 50 can match eol */
 YY_RULE_SETUP
-#line 136 "cref.l"
+#line 137 "cref.l"
 
 	YY_BREAK
 /* string literal */
 case 51:
 /* rule 51 can match eol */
 YY_RULE_SETUP
-#line 139 "cref.l"
+#line 140 "cref.l"
 
 	YY_BREAK
 /*Pontuadores*/
 case 52:
 YY_RULE_SETUP
-#line 142 "cref.l"
+#line 143 "cref.l"
 {defining = 0;}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 144 "cref.l"
+#line 145 "cref.l"
 
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 145 "cref.l"
+#line 146 "cref.l"
 
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 146 "cref.l"
+#line 147 "cref.l"
 
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 147 "cref.l"
+#line 148 "cref.l"
 
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 148 "cref.l"
+#line 149 "cref.l"
 
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 149 "cref.l"
+#line 150 "cref.l"
 
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 150 "cref.l"
+#line 151 "cref.l"
 
 	YY_BREAK
 /*Identificador. Neste ponto é realizado o reconhecimento de variáveis,
   * palavra-chave, dentre outros.*/
 case 60:
 YY_RULE_SETUP
-#line 154 "cref.l"
+#line 155 "cref.l"
 {
 		addref(yylineno, curfilename, yytext, defining);
 	}
@@ -1491,7 +1491,7 @@ YY_RULE_SETUP
 case 61:
 /* rule 61 can match eol */
 YY_RULE_SETUP
-#line 158 "cref.l"
+#line 159 "cref.l"
 
 	YY_BREAK
 /* Linha de continuação*/
@@ -1500,44 +1500,44 @@ case 62:
 (yy_c_buf_p) = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 160 "cref.l"
+#line 161 "cref.l"
 
 	YY_BREAK
 /*Alguns tratamento para pré-processador*/
 case 63:
 /* rule 63 can match eol */
 YY_RULE_SETUP
-#line 163 "cref.l"
+#line 164 "cref.l"
 
 	YY_BREAK
 case 64:
 /* rule 64 can match eol */
 YY_RULE_SETUP
-#line 164 "cref.l"
+#line 165 "cref.l"
 
 	YY_BREAK
 case 65:
 /* rule 65 can match eol */
 YY_RULE_SETUP
-#line 165 "cref.l"
+#line 166 "cref.l"
 
 	YY_BREAK
 case 66:
 /* rule 66 can match eol */
 YY_RULE_SETUP
-#line 166 "cref.l"
+#line 167 "cref.l"
 
 	YY_BREAK
 case 67:
 /* rule 67 can match eol */
 YY_RULE_SETUP
-#line 167 "cref.l"
+#line 168 "cref.l"
 
 	YY_BREAK
 /*Reconhece include*/
 case 68:
 YY_RULE_SETUP
-#line 170 "cref.l"
+#line 171 "cref.l"
 {
 		BEGIN IFILE;
 	}
@@ -1545,7 +1545,7 @@ YY_RULE_SETUP
 case 69:
 /* rule 69 can match eol */
 YY_RULE_SETUP
-#line 173 "cref.l"
+#line 174 "cref.l"
 {
 		{
 			int c;
@@ -1558,7 +1558,7 @@ YY_RULE_SETUP
 case 70:
 /* rule 70 can match eol */
 YY_RULE_SETUP
-#line 182 "cref.l"
+#line 183 "cref.l"
 {
 		fprintf(stderr, "%s:%d bad include line\n", curfilename, yylineno);
 		BEGIN INITIAL;
@@ -1566,7 +1566,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(IFILE):
-#line 187 "cref.l"
+#line 188 "cref.l"
 {
 		if(!popfile()) yyterminate();
 	}
@@ -1574,14 +1574,14 @@ case YY_STATE_EOF(IFILE):
 /*Caracter invalido*/
 case 71:
 YY_RULE_SETUP
-#line 192 "cref.l"
+#line 193 "cref.l"
 {
 	printf("%s, %d: Mystery character '%s'\n", curfilename, yylineno, yytext);
   }
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 195 "cref.l"
+#line 196 "cref.l"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
 #line 1588 "lex.yy.c"
@@ -2594,7 +2594,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 195 "cref.l"
+#line 196 "cref.l"
 
 
 
@@ -2780,6 +2780,4 @@ int popfile(void)
   curfilename = curbs->filename;
   return 1; 
 }
-
-
 

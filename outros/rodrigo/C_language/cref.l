@@ -1,4 +1,5 @@
 %option noyywrap nodefault yylineno
+%option header-file="lexer.h"
 
 /*Lembrando que %x indica que somente o estado será executado*/
 /*Define dois estados, onde o primeiro liga com comentário e o segundo com arquivos.*/

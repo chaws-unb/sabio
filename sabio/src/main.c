@@ -1,3 +1,6 @@
+/**
+ * @file main.c
+ **/
 #include <stdio.h>
 #include "clexer.h"
 #include "dataType.h"
@@ -18,6 +21,6 @@ int main(int argc, char **argv)
 		if(newFile(argv[i])) yylex();
 	}
 
-	printrefs();
+	printReferences();
 	return 0;
 }

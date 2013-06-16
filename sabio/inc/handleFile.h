@@ -32,7 +32,11 @@ bufferStack * curbs;
  **/
 char * currentFileName;
 
-int defining;	//Esta nova variável será utilizada para indicar se é uma definição ou não
+/**
+ * @var defining
+ * @brief Used for indicating if some expression is a definition or not.
+ **/
+int defining;
 
 /**
  * @param _fileName Current name of the file.
@@ -44,8 +48,8 @@ int defining;	//Esta nova variável será utilizada para indicar se é uma defin
 extern int newFile(char * _fileName);
 
 /**
- * @return 
- * @brief 
+ * @return Upon succesfull, shall return a non-negative integer.
+ * @brief Dequeue symbol from table.
  **/
 extern int popFile();
 

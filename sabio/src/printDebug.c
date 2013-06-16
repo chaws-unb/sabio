@@ -24,7 +24,7 @@ static int symcompare(const void *xa, const void *xb)
   return strcmp(a->symbolName, b->symbolName);
 }
 
-void printrefs()
+void printReferences()
 {
 	symbol *sp;
 

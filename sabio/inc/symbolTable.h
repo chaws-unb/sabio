@@ -1,6 +1,6 @@
 /**
  * @file symbolTable.h
- * @brief 
+ * @brief Keeps functions for handle symbol table
  **/
 #ifndef _SYMBOL_H_
 #define _SYMBOL_H_
