@@ -19,15 +19,21 @@ OTHERSPACK	= others
 PACKLEX		= lex
 PACKPAR		= par
 PACKOBJ		= obj
+PACKTESTS	= tests
 #Flags
 CC			= gcc
 BISON		= bison
 LEXER		= flex
 LEXFLAGS	= -lfl
 CFLAGS		= -Wall -I./$(PACKINC)
+CUNIT		= -lcunit
 #Create one list with all sources
 LEXSOURCES	= $(wildcard lex/*l)
 CSOURCES	= $(wildcard src/*c)
+TESTSOURCES	= $(wildcard tests/*c)
+
+#Shell commands
+RUNCOMMAND	= $(shell ./)
 
 # TRAGETS
 all: sabio
@@ -65,12 +71,23 @@ confBuild:
 build/%.o: src/%.c
 	$(CC) -c $< -o $@ $(CFLAGS) $(LEXFLAGS)
 
+# Compiling and running tests
+runTests: $(TESTSOURCES) 
+	@echo "_______________________________________________"
+	@echo "### Compiling Unit Tests ###"
+	$(CC) $(CFLAGS) $^ $(CUNIT) -o $(PACKTESTS)/runTests
+	@echo "_______________________________________________"
+	@echo "### Running Unit Tests ###"
+	$(RUNCOMMAND) $(PACKTESTS)/runTests 
+	@echo "_______________________________________________"
+
 # Clean all
 clean:
 	@echo "________________________________________________"
 	rm -f build/*
 	rm -f bin/*
 	rm -f obj/*
+	rm -f tests/runTests
 	touch build/tmp.txt
 	cp others/simple2.c bin/
 	@echo "________________________________________________"
