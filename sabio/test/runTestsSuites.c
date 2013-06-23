@@ -10,7 +10,7 @@ static FILE * temp_file = NULL;
 
 int init_suite1(void)
 {
-	if (NULL == (temp_file = fopen("temp.txt", "w+")))
+	if (NULL == (temp_file = fopen("bin/temp.txt", "w+")))
 	{
 		return -1;
 	}
