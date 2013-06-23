@@ -19,7 +19,7 @@ OTHERSPACK	= others
 PACKLEX		= lex
 PACKPAR		= par
 PACKOBJ		= obj
-PACKTESTS	= tests
+PACKTESTS	= test
 #Flags
 CC			= gcc
 BISON		= bison
@@ -30,10 +30,6 @@ CUNIT		= -lcunit
 #Create one list with all sources
 LEXSOURCES	= $(wildcard lex/*l)
 CSOURCES	= $(wildcard src/*c)
-TESTSOURCES	= $(wildcard test/*c)
-
-#Shell commands
-RUNCOMMAND	= $(shell ./)
 
 # TRAGETS
 all: sabio
@@ -45,7 +41,7 @@ all: sabio
 obj/%.o: src/%.c
 	$(CC) -c $< -o $@ $(CFLAGS) -I./build
 
-sabio: lexerCode $(CSOURCES:src/%.c=obj/%.o) confBuild
+sabio: lexerCode $(CSOURCES:src/%.c=obj/%.o) confBuild runTest
 	@echo "________________________________________________"
 	@echo "### Build binary ###"
 
@@ -74,17 +70,19 @@ build/%.o: src/%.c
 # 
 # Unitary test
 #
-obj/unit_%.o: test/%.c
-	$(CC) -c $< -o $@ $(CFLAGS) $(CUNIT)
-
-runTests: $(TESTSOURCES:test/%.c=obj/unit_%.o)
-	@echo "_______________________________________________"
-	@echo "### Compiling Unit Tests ###"
-	$(CC) $(CFLAGS) $^ $(CUNIT) -o $(PACKTESTS)/runTests
+runTest: runTestsSuites
 	@echo "_______________________________________________"
 	@echo "### Running Unit Tests ###"
-	$(RUNCOMMAND) $(PACKTESTS)/runTests 
+	$(PACKBIN)/runTestsSuites
 	@echo "_______________________________________________"
+
+# Compile tests
+runTestsSuites: test/runTestsSuites.c
+	@echo "_______________________________________________"
+	@echo "### Generate object file ###"
+	$(CC) -c $< -o obj/runTestsSuites.o -I./$(PACKINC) $(CUNIT)
+	@echo "### Compiling Unit Tests ###"
+	$(CC) $(PACKBUILD)/handleFile.o $(PACKBUILD)/symbolTable.o $(PACKBUILD)/lexer.lex.c $^ -o bin/$@ -I./$(PACKBUILD) $(CUNIT) -I./$(PACKINC)
 
 # Clean all
 clean:

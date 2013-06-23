@@ -1,6 +1,9 @@
+/**
+ * @file runTestsSuites.c
+ **/
+
 #include <stdio.h>
 #include <string.h>
-#include "runTestsSuites.h"
 #include "CUnit/Basic.h"
 
 static FILE * temp_file = NULL;
@@ -41,7 +44,7 @@ void testFPRINTF(void)
 
 	if (NULL != temp_file)
 	{
-		CU_ASSERT(0 == fprintf(temp_file, ""));
+		//CU_ASSERT(0 == fprintf(temp_file, ""));
 		CU_ASSERT(2 == fprintf(temp_file, "Q\n"));
 		CU_ASSERT(7 == fprintf(temp_file, "i1 = %d", i1));
 	}
@@ -49,7 +52,7 @@ void testFPRINTF(void)
 
 void testFREAD(void)
 {
-	unsigned char buffer[20];
+	char buffer[20];
 
 	if (NULL != temp_file)
 	{
