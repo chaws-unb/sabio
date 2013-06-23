@@ -30,7 +30,7 @@ CUNIT		= -lcunit
 #Create one list with all sources
 LEXSOURCES	= $(wildcard lex/*l)
 CSOURCES	= $(wildcard src/*c)
-TESTSOURCES	= $(wildcard tests/*c)
+TESTSOURCES	= $(wildcard test/*c)
 
 #Shell commands
 RUNCOMMAND	= $(shell ./)
@@ -71,8 +71,13 @@ confBuild:
 build/%.o: src/%.c
 	$(CC) -c $< -o $@ $(CFLAGS) $(LEXFLAGS)
 
-# Compiling and running tests
-runTests: $(TESTSOURCES) 
+# 
+# Unitary test
+#
+obj/unit_%.o: test/%.c
+	$(CC) -c $< -o $@ $(CFLAGS) $(CUNIT)
+
+runTests: $(TESTSOURCES:test/%.c=obj/unit_%.o)
 	@echo "_______________________________________________"
 	@echo "### Compiling Unit Tests ###"
 	$(CC) $(CFLAGS) $^ $(CUNIT) -o $(PACKTESTS)/runTests
