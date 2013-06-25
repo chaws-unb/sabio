@@ -1,6 +1,10 @@
 ======= Dia a dia Git ===========
 
 - Na primeira vez usando o Git, deve-se fazer clone do repositório remoto:
+	$git clone https://seuNomeDeUsuario@github.com/chaws/sabio.git
+ou
+	$git clone https://seuNomeDeUsuario:senha@github.com/chaws/sabio.git
+ou
 	$git clone git@github.com:chaws/sabio.git
 
 - Ao iniciar o trabalho devemos atualizar o repositório local:
@@ -13,6 +17,9 @@
 Após a alteração ter sido concluída, devemos adicionar os arquivos e fazer o commit local:
 	$git add . (ou $git add <<nome do arquivo>>)
 	$git commit -m "mensagem de commit"
+
+	Caso tenha feito o trabalho de codificação com várias pessoas utilize o comando abaixo para adicionar os autores
+	$git commit --author "Kamilla <holanda.kamilla@gmail.com, Rodrigo <rodrigosiqueiramelo@gmail.com, Charles <18oliveira.charles@gmail.com>"
 
 Após fazer o commit local, devemos fazer o merge com a branch principal:
 	$git checkout master
@@ -31,5 +38,9 @@ Pronto!
 $git status -s ##mostra o status das alterações locais
 $git log       ##mostra o log de todas as alterações
 
+==== Erros ====
+Erro 1:
+	fatal: Not a git repository (or any of the parent directories): .git
+	Solução: $git init
 
 

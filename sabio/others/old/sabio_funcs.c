@@ -10,7 +10,8 @@
 #  include <stdio.h>
 #  include <stdlib.h>
 #  include <stdarg.h>
-#  include "sabio.h"
+#  include "../inc/sabio.h"
+#  include "files_funcs.c"
 
 struct ast *newast(int nodetype, struct ast *l, struct ast *r)
 {
@@ -109,8 +110,14 @@ void printAST(struct ast *a)
   }
 }
 
-int main()
+int main(int argc, char **argv)
 {
-  printf("> "); 
+  if(argc < 2)
+  {
+    fprintf(stderr, "need filename\n");
+    return 1;
+  }
+  if(newfile(argv[1]))
+    yylex();
   return yyparse();
 }
