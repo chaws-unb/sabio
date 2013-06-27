@@ -21,7 +21,7 @@ PACKPAR		= par
 PACKOBJ		= obj
 PACKTESTS	= test
 #Flags
-CC			= gcc
+CC		= gcc
 BISON		= bison
 LEXER		= flex
 LEXFLAGS	= -lfl
@@ -29,12 +29,13 @@ CFLAGS		= -Wall -I./$(PACKINC)
 CUNIT		= -lcunit
 #Create one list with all sources
 LEXSOURCES	= $(wildcard lex/*l)
+BISONSOURCES	= $(wildcard par/*y)
 CSOURCES	= $(wildcard src/*c)
 
-# TRAGETS
+# TARGETS
 all: sabio
 
-# Main target, whose the objective is generate binary files. 
+# Main target, whose the goal is generate binary files. 
 # Dependencies are inserted by: $(CSOURCES:src/%.c=obj/%.o)
 #	*Basically capture all the elements of list and change the pieces
 #	 with "src/%.c" by "obj/%.o".
@@ -84,13 +85,13 @@ runTestsSuites: test/runTestsSuites.c
 	@echo "### Compiling Unit Tests ###"
 	$(CC) $(PACKBUILD)/handleFile.o $(PACKBUILD)/symbolTable.o $(PACKBUILD)/lexer.lex.c $^ -o bin/$@ -I./$(PACKBUILD) $(CUNIT) -I./$(PACKINC)
 
+
 # Clean all
 clean:
 	@echo "________________________________________________"
 	rm -f build/*
 	rm -f bin/*
 	rm -f obj/*
-	rm -f tests/runTests
 	touch build/tmp.txt
 	cp others/simple2.c bin/
 	@echo "________________________________________________"
