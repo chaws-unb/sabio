@@ -1950,17 +1950,1487 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 5:
+        case 2:
+
+/* Line 1806 of yacc.c  */
+#line 21 "cGrammar.y"
+    {printf(": primary_expression->IDENTIFIER\n");}
+    break;
+
+  case 3:
+
+/* Line 1806 of yacc.c  */
+#line 22 "cGrammar.y"
+    {printf(": primary_expression->CONSTANT\n");}
+    break;
+
+  case 4:
+
+/* Line 1806 of yacc.c  */
+#line 23 "cGrammar.y"
+    {printf(": primary_expression->STRING_LITERAL\n");}
+    break;
+
+  case 5:
 
 /* Line 1806 of yacc.c  */
 #line 24 "cGrammar.y"
-    {printf("Compiled!\n");}
+    {printf(": primary_expression->(expression)\n");}
+    break;
+
+  case 6:
+
+/* Line 1806 of yacc.c  */
+#line 28 "cGrammar.y"
+    {printf(": postfix_expression->primary_expression\n");}
+    break;
+
+  case 7:
+
+/* Line 1806 of yacc.c  */
+#line 29 "cGrammar.y"
+    {printf(": postfix_expression->[expression]\n");}
+    break;
+
+  case 8:
+
+/* Line 1806 of yacc.c  */
+#line 30 "cGrammar.y"
+    {printf(": postfix_expression->()\n");}
+    break;
+
+  case 9:
+
+/* Line 1806 of yacc.c  */
+#line 31 "cGrammar.y"
+    {printf(": postfix_expression->(argument_expression_list)\n");}
+    break;
+
+  case 10:
+
+/* Line 1806 of yacc.c  */
+#line 32 "cGrammar.y"
+    {printf(": postfix_expression->IDENTIFIER\n");}
+    break;
+
+  case 11:
+
+/* Line 1806 of yacc.c  */
+#line 33 "cGrammar.y"
+    {printf(": postfix_expression->'->'IDENTIFIER\n");}
+    break;
+
+  case 12:
+
+/* Line 1806 of yacc.c  */
+#line 34 "cGrammar.y"
+    {printf(": postfix_expression->++\n");}
+    break;
+
+  case 13:
+
+/* Line 1806 of yacc.c  */
+#line 35 "cGrammar.y"
+    {printf(": postfix_expression->--\n");}
+    break;
+
+  case 14:
+
+/* Line 1806 of yacc.c  */
+#line 39 "cGrammar.y"
+    {printf(": argument_expression_list->assignment_expression \n");}
+    break;
+
+  case 15:
+
+/* Line 1806 of yacc.c  */
+#line 40 "cGrammar.y"
+    {printf(": argument_expression_list->argument_expression_list,assignment_expression \n");}
+    break;
+
+  case 16:
+
+/* Line 1806 of yacc.c  */
+#line 44 "cGrammar.y"
+    {printf(": unary_expression->postfix_expression \n");}
+    break;
+
+  case 17:
+
+/* Line 1806 of yacc.c  */
+#line 45 "cGrammar.y"
+    {printf(": unary_expression->++ unary_expression \n");}
+    break;
+
+  case 18:
+
+/* Line 1806 of yacc.c  */
+#line 46 "cGrammar.y"
+    {printf(": unary_expression->-- unary_expression \n");}
+    break;
+
+  case 19:
+
+/* Line 1806 of yacc.c  */
+#line 47 "cGrammar.y"
+    {printf(": unary_expression->unary_operator cast_expression \n");}
+    break;
+
+  case 20:
+
+/* Line 1806 of yacc.c  */
+#line 48 "cGrammar.y"
+    {printf(": unary_expression->sizeof unary_operator\n");}
+    break;
+
+  case 21:
+
+/* Line 1806 of yacc.c  */
+#line 49 "cGrammar.y"
+    {printf(": unary_expression->sizeof (type_name)\n");}
+    break;
+
+  case 22:
+
+/* Line 1806 of yacc.c  */
+#line 53 "cGrammar.y"
+    {printf(": unary_operator->&\n");}
+    break;
+
+  case 23:
+
+/* Line 1806 of yacc.c  */
+#line 54 "cGrammar.y"
+    {printf(": unary_operator->*\n");}
+    break;
+
+  case 24:
+
+/* Line 1806 of yacc.c  */
+#line 55 "cGrammar.y"
+    {printf(": unary_operator->+\n");}
+    break;
+
+  case 25:
+
+/* Line 1806 of yacc.c  */
+#line 56 "cGrammar.y"
+    {printf(": unary_operator->-\n");}
+    break;
+
+  case 26:
+
+/* Line 1806 of yacc.c  */
+#line 57 "cGrammar.y"
+    {printf(": unary_operator->~\n");}
+    break;
+
+  case 27:
+
+/* Line 1806 of yacc.c  */
+#line 58 "cGrammar.y"
+    {printf(": unary_operator->!\n");}
+    break;
+
+  case 28:
+
+/* Line 1806 of yacc.c  */
+#line 62 "cGrammar.y"
+    {printf(": cast_expression->unary_expression\n");}
+    break;
+
+  case 29:
+
+/* Line 1806 of yacc.c  */
+#line 63 "cGrammar.y"
+    {printf(": cast_expression->(type_name)\n");}
+    break;
+
+  case 30:
+
+/* Line 1806 of yacc.c  */
+#line 67 "cGrammar.y"
+    {printf(": multiplicative_expression->cast_expression\n");}
+    break;
+
+  case 31:
+
+/* Line 1806 of yacc.c  */
+#line 68 "cGrammar.y"
+    {printf(": multiplicative_expression->multiplicative_expression * cast_expression\n");}
+    break;
+
+  case 32:
+
+/* Line 1806 of yacc.c  */
+#line 69 "cGrammar.y"
+    {printf(": multiplicative_expression->multiplicative_expression / cast_expression\n");}
+    break;
+
+  case 33:
+
+/* Line 1806 of yacc.c  */
+#line 70 "cGrammar.y"
+    {printf(": multiplicative_expression->multiplicative_expression %% cast_expression\n");}
+    break;
+
+  case 34:
+
+/* Line 1806 of yacc.c  */
+#line 74 "cGrammar.y"
+    {printf(": additive_expression->multiplicative_expression\n");}
+    break;
+
+  case 35:
+
+/* Line 1806 of yacc.c  */
+#line 75 "cGrammar.y"
+    {printf(": additive_expression->additive_expression + multiplicative_expression\n");}
+    break;
+
+  case 36:
+
+/* Line 1806 of yacc.c  */
+#line 76 "cGrammar.y"
+    {printf(": additive_expression->additive_expression - multiplicative_expression\n");}
+    break;
+
+  case 37:
+
+/* Line 1806 of yacc.c  */
+#line 80 "cGrammar.y"
+    {printf(": shift_expression->additive_expression\n");}
+    break;
+
+  case 38:
+
+/* Line 1806 of yacc.c  */
+#line 81 "cGrammar.y"
+    {printf(": shift_expression->shift_expression << additive_expression\n");}
+    break;
+
+  case 39:
+
+/* Line 1806 of yacc.c  */
+#line 82 "cGrammar.y"
+    {printf(": shift_expression->shift_expression >> additive_expression\n");}
+    break;
+
+  case 40:
+
+/* Line 1806 of yacc.c  */
+#line 86 "cGrammar.y"
+    {printf(": relational_expression->shift_expression\n");}
+    break;
+
+  case 41:
+
+/* Line 1806 of yacc.c  */
+#line 87 "cGrammar.y"
+    {printf(": relational_expression->relational_expression < shift_expression\n");}
+    break;
+
+  case 42:
+
+/* Line 1806 of yacc.c  */
+#line 88 "cGrammar.y"
+    {printf(": relational_expression->relational_expression > shift_expression\n");}
+    break;
+
+  case 43:
+
+/* Line 1806 of yacc.c  */
+#line 89 "cGrammar.y"
+    {printf(": relational_expression->relational_expression >= shift_expression\n");}
+    break;
+
+  case 44:
+
+/* Line 1806 of yacc.c  */
+#line 90 "cGrammar.y"
+    {printf(": relational_expression->relational_expression <= shift_expression\n");}
+    break;
+
+  case 45:
+
+/* Line 1806 of yacc.c  */
+#line 94 "cGrammar.y"
+    {printf(": equality_expression->relational_expression\n");}
+    break;
+
+  case 46:
+
+/* Line 1806 of yacc.c  */
+#line 95 "cGrammar.y"
+    {printf(": equality_expression->equality_expression == relational_expression\n");}
+    break;
+
+  case 47:
+
+/* Line 1806 of yacc.c  */
+#line 96 "cGrammar.y"
+    {printf(": equality_expression->equality_expression != relational_expression\n");}
+    break;
+
+  case 48:
+
+/* Line 1806 of yacc.c  */
+#line 100 "cGrammar.y"
+    {printf(": and_expression->equality_expression\n");}
+    break;
+
+  case 49:
+
+/* Line 1806 of yacc.c  */
+#line 101 "cGrammar.y"
+    {printf(": and_expression->and_expression '&' equality_expression\n");}
+    break;
+
+  case 50:
+
+/* Line 1806 of yacc.c  */
+#line 105 "cGrammar.y"
+    {printf(": exclusive_or_expression->and_expression\n");}
+    break;
+
+  case 51:
+
+/* Line 1806 of yacc.c  */
+#line 106 "cGrammar.y"
+    {printf(": exclusive_or_expression->exclusive_or_expression ^ and_expression\n");}
+    break;
+
+  case 52:
+
+/* Line 1806 of yacc.c  */
+#line 110 "cGrammar.y"
+    {printf(": inclusive_or_expression->exclusive_or_expression\n");}
+    break;
+
+  case 53:
+
+/* Line 1806 of yacc.c  */
+#line 111 "cGrammar.y"
+    {printf(": inclusive_or_expression->inclusive_or_expression | exclusive_or_expression\n");}
+    break;
+
+  case 54:
+
+/* Line 1806 of yacc.c  */
+#line 115 "cGrammar.y"
+    {printf(": logical_and_expression->inclusive_or_expression\n");}
+    break;
+
+  case 55:
+
+/* Line 1806 of yacc.c  */
+#line 116 "cGrammar.y"
+    {printf(": logical_and_expression->logical_and_expression && inclusive_or_expression\n");}
+    break;
+
+  case 56:
+
+/* Line 1806 of yacc.c  */
+#line 120 "cGrammar.y"
+    {printf(": logical_or_expression->logical_and_expression\n");}
+    break;
+
+  case 57:
+
+/* Line 1806 of yacc.c  */
+#line 121 "cGrammar.y"
+    {printf(": logical_or_expression->logical_or_expression || logical_and_expression\n");}
+    break;
+
+  case 58:
+
+/* Line 1806 of yacc.c  */
+#line 125 "cGrammar.y"
+    {printf(": conditional_expression->logical_or_expression\n");}
+    break;
+
+  case 59:
+
+/* Line 1806 of yacc.c  */
+#line 126 "cGrammar.y"
+    {printf(": conditional_expression->logical_or_expression ? expression : conditional_expression\n");}
+    break;
+
+  case 60:
+
+/* Line 1806 of yacc.c  */
+#line 130 "cGrammar.y"
+    {printf(": assignment_expression->conditional_expression\n");}
+    break;
+
+  case 61:
+
+/* Line 1806 of yacc.c  */
+#line 131 "cGrammar.y"
+    {printf(": assignment_expression->unary_expression assignment_operator assignment_expression\n");}
+    break;
+
+  case 62:
+
+/* Line 1806 of yacc.c  */
+#line 135 "cGrammar.y"
+    {printf(": assignment_operator->=\n");}
+    break;
+
+  case 63:
+
+/* Line 1806 of yacc.c  */
+#line 136 "cGrammar.y"
+    {printf(": assignment_operator->*=\n");}
+    break;
+
+  case 64:
+
+/* Line 1806 of yacc.c  */
+#line 137 "cGrammar.y"
+    {printf(": assignment_operator->/=\n");}
+    break;
+
+  case 65:
+
+/* Line 1806 of yacc.c  */
+#line 138 "cGrammar.y"
+    {printf(": assignment_operator->%%=\n");}
+    break;
+
+  case 66:
+
+/* Line 1806 of yacc.c  */
+#line 139 "cGrammar.y"
+    {printf(": assignment_operator->+=\n");}
+    break;
+
+  case 67:
+
+/* Line 1806 of yacc.c  */
+#line 140 "cGrammar.y"
+    {printf(": assignment_operator->-=\n");}
+    break;
+
+  case 68:
+
+/* Line 1806 of yacc.c  */
+#line 141 "cGrammar.y"
+    {printf(": assignment_operator-><<=\n");}
+    break;
+
+  case 69:
+
+/* Line 1806 of yacc.c  */
+#line 142 "cGrammar.y"
+    {printf(": assignment_operator->>>=\n");}
+    break;
+
+  case 70:
+
+/* Line 1806 of yacc.c  */
+#line 143 "cGrammar.y"
+    {printf(": assignment_operator->&=\n");}
+    break;
+
+  case 71:
+
+/* Line 1806 of yacc.c  */
+#line 144 "cGrammar.y"
+    {printf(": assignment_operator->^=\n");}
+    break;
+
+  case 72:
+
+/* Line 1806 of yacc.c  */
+#line 145 "cGrammar.y"
+    {printf(": assignment_operator->|=\n");}
+    break;
+
+  case 73:
+
+/* Line 1806 of yacc.c  */
+#line 149 "cGrammar.y"
+    {printf(": expression->assignment_expression\n");}
+    break;
+
+  case 74:
+
+/* Line 1806 of yacc.c  */
+#line 150 "cGrammar.y"
+    {printf(": expression->expression , assignment_expression\n");}
+    break;
+
+  case 75:
+
+/* Line 1806 of yacc.c  */
+#line 154 "cGrammar.y"
+    {printf(": constant_expression->conditional_expression\n");}
+    break;
+
+  case 76:
+
+/* Line 1806 of yacc.c  */
+#line 158 "cGrammar.y"
+    {printf(": declaration->declaration_specifiers ;\n");}
+    break;
+
+  case 77:
+
+/* Line 1806 of yacc.c  */
+#line 159 "cGrammar.y"
+    {printf(": declaration->declaration_specifiers init_declarator_list ;\n");}
+    break;
+
+  case 78:
+
+/* Line 1806 of yacc.c  */
+#line 163 "cGrammar.y"
+    {printf(": declaration_specifiers->storage_class_specifier\n");}
+    break;
+
+  case 79:
+
+/* Line 1806 of yacc.c  */
+#line 164 "cGrammar.y"
+    {printf(": declaration_specifiers->storage_class_specifier declaration_specifiers\n");}
+    break;
+
+  case 80:
+
+/* Line 1806 of yacc.c  */
+#line 165 "cGrammar.y"
+    {printf(": declaration_specifiers->type_specifier\n");}
+    break;
+
+  case 81:
+
+/* Line 1806 of yacc.c  */
+#line 166 "cGrammar.y"
+    {printf(": declaration_specifiers->type_specifier declaration_specifiers\n");}
+    break;
+
+  case 82:
+
+/* Line 1806 of yacc.c  */
+#line 167 "cGrammar.y"
+    {printf(": declaration_specifiers->type_qualifier\n");}
+    break;
+
+  case 83:
+
+/* Line 1806 of yacc.c  */
+#line 168 "cGrammar.y"
+    {printf(": declaration_specifiers->type_qualifier declaration_specifiers\n");}
+    break;
+
+  case 84:
+
+/* Line 1806 of yacc.c  */
+#line 172 "cGrammar.y"
+    {printf(": init_declarator_list->init_declarator\n");}
+    break;
+
+  case 85:
+
+/* Line 1806 of yacc.c  */
+#line 173 "cGrammar.y"
+    {printf(": init_declarator_list->init_declarator_list , init_declarator\n");}
+    break;
+
+  case 86:
+
+/* Line 1806 of yacc.c  */
+#line 177 "cGrammar.y"
+    {printf(": init_declarator->declarator\n");}
+    break;
+
+  case 87:
+
+/* Line 1806 of yacc.c  */
+#line 178 "cGrammar.y"
+    {printf(": init_declarator->declarator = initializer\n");}
+    break;
+
+  case 88:
+
+/* Line 1806 of yacc.c  */
+#line 182 "cGrammar.y"
+    {printf(": storage_class_specifier->TYPEDEF\n");}
+    break;
+
+  case 89:
+
+/* Line 1806 of yacc.c  */
+#line 183 "cGrammar.y"
+    {printf(": storage_class_specifier->EXTERN\n");}
+    break;
+
+  case 90:
+
+/* Line 1806 of yacc.c  */
+#line 184 "cGrammar.y"
+    {printf(": storage_class_specifier->STATIC\n");}
+    break;
+
+  case 91:
+
+/* Line 1806 of yacc.c  */
+#line 185 "cGrammar.y"
+    {printf(": storage_class_specifier->AUTO\n");}
+    break;
+
+  case 92:
+
+/* Line 1806 of yacc.c  */
+#line 186 "cGrammar.y"
+    {printf(": storage_class_specifier->REGISTER\n");}
+    break;
+
+  case 93:
+
+/* Line 1806 of yacc.c  */
+#line 190 "cGrammar.y"
+    {printf(": type_specifier->VOID\n");}
+    break;
+
+  case 94:
+
+/* Line 1806 of yacc.c  */
+#line 191 "cGrammar.y"
+    {printf(": type_specifier->CHAR\n");}
+    break;
+
+  case 95:
+
+/* Line 1806 of yacc.c  */
+#line 192 "cGrammar.y"
+    {printf(": type_specifier->SHORT\n");}
+    break;
+
+  case 96:
+
+/* Line 1806 of yacc.c  */
+#line 193 "cGrammar.y"
+    {printf(": type_specifier->INT\n");}
+    break;
+
+  case 97:
+
+/* Line 1806 of yacc.c  */
+#line 194 "cGrammar.y"
+    {printf(": type_specifier->LONG\n");}
+    break;
+
+  case 98:
+
+/* Line 1806 of yacc.c  */
+#line 195 "cGrammar.y"
+    {printf(": type_specifier->FLOAT\n");}
+    break;
+
+  case 99:
+
+/* Line 1806 of yacc.c  */
+#line 196 "cGrammar.y"
+    {printf(": type_specifier->DOUBLE\n");}
+    break;
+
+  case 100:
+
+/* Line 1806 of yacc.c  */
+#line 197 "cGrammar.y"
+    {printf(": type_specifier->SIGNED\n");}
+    break;
+
+  case 101:
+
+/* Line 1806 of yacc.c  */
+#line 198 "cGrammar.y"
+    {printf(": type_specifier->UNSIGNED\n");}
+    break;
+
+  case 102:
+
+/* Line 1806 of yacc.c  */
+#line 199 "cGrammar.y"
+    {printf(": type_specifier->struct_or_union_specifier\n");}
+    break;
+
+  case 103:
+
+/* Line 1806 of yacc.c  */
+#line 200 "cGrammar.y"
+    {printf(": type_specifier->enum_specifier\n");}
+    break;
+
+  case 104:
+
+/* Line 1806 of yacc.c  */
+#line 201 "cGrammar.y"
+    {printf(": type_specifier->TYPE_NAME\n");}
+    break;
+
+  case 105:
+
+/* Line 1806 of yacc.c  */
+#line 205 "cGrammar.y"
+    {printf(": struct_or_union_specifier->struct_or_union IDENTIFIER { struct_declaration_list }\n");}
+    break;
+
+  case 106:
+
+/* Line 1806 of yacc.c  */
+#line 206 "cGrammar.y"
+    {printf(": struct_or_union_specifier->struct_or_union { struct_declaration_list }\n");}
+    break;
+
+  case 107:
+
+/* Line 1806 of yacc.c  */
+#line 207 "cGrammar.y"
+    {printf(": struct_or_union_specifier->struct_or_union IDENTIFIER\n");}
+    break;
+
+  case 108:
+
+/* Line 1806 of yacc.c  */
+#line 211 "cGrammar.y"
+    {printf(": struct_or_union->STRUCT\n");}
+    break;
+
+  case 109:
+
+/* Line 1806 of yacc.c  */
+#line 212 "cGrammar.y"
+    {printf(": struct_or_union->UNION\n");}
+    break;
+
+  case 110:
+
+/* Line 1806 of yacc.c  */
+#line 216 "cGrammar.y"
+    {printf(": struct_declaration_list->struct_declaration\n");}
+    break;
+
+  case 111:
+
+/* Line 1806 of yacc.c  */
+#line 217 "cGrammar.y"
+    {printf(": struct_declaration_list->struct_declaration_list struct_declaration\n");}
+    break;
+
+  case 112:
+
+/* Line 1806 of yacc.c  */
+#line 221 "cGrammar.y"
+    {printf(": struct_declaration->specifier_qualifier_list struct_declarator_list ;\n");}
+    break;
+
+  case 113:
+
+/* Line 1806 of yacc.c  */
+#line 225 "cGrammar.y"
+    {printf(": specifier_qualifier_list->type_specifier specifier_qualifier_list\n");}
+    break;
+
+  case 114:
+
+/* Line 1806 of yacc.c  */
+#line 226 "cGrammar.y"
+    {printf(": specifier_qualifier_list->type_specifier\n");}
+    break;
+
+  case 115:
+
+/* Line 1806 of yacc.c  */
+#line 227 "cGrammar.y"
+    {printf(": specifier_qualifier_list->type_qualifier specifier_qualifier_list\n");}
+    break;
+
+  case 116:
+
+/* Line 1806 of yacc.c  */
+#line 228 "cGrammar.y"
+    {printf(": specifier_qualifier_list->type_qualifier\n");}
+    break;
+
+  case 117:
+
+/* Line 1806 of yacc.c  */
+#line 232 "cGrammar.y"
+    {printf(": struct_declarator_list->struct_declarator\n");}
+    break;
+
+  case 118:
+
+/* Line 1806 of yacc.c  */
+#line 233 "cGrammar.y"
+    {printf(": struct_declarator_list->struct_declarator_list , struct_declarator\n");}
+    break;
+
+  case 119:
+
+/* Line 1806 of yacc.c  */
+#line 237 "cGrammar.y"
+    {printf(": struct_declarator->declarator\n");}
+    break;
+
+  case 120:
+
+/* Line 1806 of yacc.c  */
+#line 238 "cGrammar.y"
+    {printf(": struct_declarator->: constant_expression\n");}
+    break;
+
+  case 121:
+
+/* Line 1806 of yacc.c  */
+#line 239 "cGrammar.y"
+    {printf(": struct_declarator->declarator : constant_expression\n");}
+    break;
+
+  case 122:
+
+/* Line 1806 of yacc.c  */
+#line 243 "cGrammar.y"
+    {printf(": enum_specifier->ENUM { enumerator_list }\n");}
+    break;
+
+  case 123:
+
+/* Line 1806 of yacc.c  */
+#line 244 "cGrammar.y"
+    {printf(": enum_specifier->ENUM IDENTIFIER { enumerator_list }\n");}
+    break;
+
+  case 124:
+
+/* Line 1806 of yacc.c  */
+#line 245 "cGrammar.y"
+    {printf(": enum_specifier->ENUM IDENTIFIER\n");}
+    break;
+
+  case 125:
+
+/* Line 1806 of yacc.c  */
+#line 249 "cGrammar.y"
+    {printf(": enumerator_list->enumerator\n");}
+    break;
+
+  case 126:
+
+/* Line 1806 of yacc.c  */
+#line 250 "cGrammar.y"
+    {printf(": enumerator_list->enumerator_list , enumerator\n");}
+    break;
+
+  case 127:
+
+/* Line 1806 of yacc.c  */
+#line 254 "cGrammar.y"
+    {printf(": enumerator->IDENTIFIER\n");}
+    break;
+
+  case 128:
+
+/* Line 1806 of yacc.c  */
+#line 255 "cGrammar.y"
+    {printf(": enumerator->IDENTIFIER = constant_expression\n");}
+    break;
+
+  case 129:
+
+/* Line 1806 of yacc.c  */
+#line 259 "cGrammar.y"
+    {printf(": type_qualifier->CONST\n");}
+    break;
+
+  case 130:
+
+/* Line 1806 of yacc.c  */
+#line 260 "cGrammar.y"
+    {printf(": type_qualifier->VOLATILE\n");}
+    break;
+
+  case 131:
+
+/* Line 1806 of yacc.c  */
+#line 264 "cGrammar.y"
+    {printf(": declarator->pointer direct_declarator\n");}
+    break;
+
+  case 132:
+
+/* Line 1806 of yacc.c  */
+#line 265 "cGrammar.y"
+    {printf(": declarator->direct_declarator\n");}
+    break;
+
+  case 133:
+
+/* Line 1806 of yacc.c  */
+#line 269 "cGrammar.y"
+    {printf(": direct_declarator->IDENTIFIER\n");}
+    break;
+
+  case 134:
+
+/* Line 1806 of yacc.c  */
+#line 270 "cGrammar.y"
+    {printf(": direct_declarator->( declarator )\n");}
+    break;
+
+  case 135:
+
+/* Line 1806 of yacc.c  */
+#line 271 "cGrammar.y"
+    {printf(": direct_declarator->direct_declarator [ constant_expression ]\n");}
+    break;
+
+  case 136:
+
+/* Line 1806 of yacc.c  */
+#line 272 "cGrammar.y"
+    {printf(": direct_declarator->direct_declarator [ ]\n");}
+    break;
+
+  case 137:
+
+/* Line 1806 of yacc.c  */
+#line 273 "cGrammar.y"
+    {printf(": direct_declarator->direct_declarator ( parameter_type_list )\n");}
+    break;
+
+  case 138:
+
+/* Line 1806 of yacc.c  */
+#line 274 "cGrammar.y"
+    {printf(": direct_declarator->direct_declarator ( identifier_list )\n");}
+    break;
+
+  case 139:
+
+/* Line 1806 of yacc.c  */
+#line 275 "cGrammar.y"
+    {printf(": direct_declarator->direct_declarator ( )\n");}
+    break;
+
+  case 140:
+
+/* Line 1806 of yacc.c  */
+#line 279 "cGrammar.y"
+    {printf(": pointer->*\n");}
+    break;
+
+  case 141:
+
+/* Line 1806 of yacc.c  */
+#line 280 "cGrammar.y"
+    {printf(": pointer->* type_qualifier_list\n");}
+    break;
+
+  case 142:
+
+/* Line 1806 of yacc.c  */
+#line 281 "cGrammar.y"
+    {printf(": pointer->* pointer\n");}
+    break;
+
+  case 143:
+
+/* Line 1806 of yacc.c  */
+#line 282 "cGrammar.y"
+    {printf(": pointer->* type_qualifier_list pointer\n");}
+    break;
+
+  case 144:
+
+/* Line 1806 of yacc.c  */
+#line 286 "cGrammar.y"
+    {printf(": type_qualifier_list->type_qualifier\n");}
+    break;
+
+  case 145:
+
+/* Line 1806 of yacc.c  */
+#line 287 "cGrammar.y"
+    {printf(": type_qualifier_list->type_qualifier_list type_qualifier\n");}
+    break;
+
+  case 146:
+
+/* Line 1806 of yacc.c  */
+#line 292 "cGrammar.y"
+    {printf(": parameter_type_list->parameter_list\n");}
+    break;
+
+  case 147:
+
+/* Line 1806 of yacc.c  */
+#line 293 "cGrammar.y"
+    {printf(": parameter_type_list->parameter_list , ...\n");}
+    break;
+
+  case 148:
+
+/* Line 1806 of yacc.c  */
+#line 297 "cGrammar.y"
+    {printf(": parameter_list->parameter_declaration\n");}
+    break;
+
+  case 149:
+
+/* Line 1806 of yacc.c  */
+#line 298 "cGrammar.y"
+    {printf(": parameter_list->parameter_list , parameter_declaration\n");}
+    break;
+
+  case 150:
+
+/* Line 1806 of yacc.c  */
+#line 302 "cGrammar.y"
+    {printf(": parameter_declaration->declaration_specifiers declarator\n");}
+    break;
+
+  case 151:
+
+/* Line 1806 of yacc.c  */
+#line 303 "cGrammar.y"
+    {printf(": parameter_declaration->declaration_specifiers abstract_declarator\n");}
+    break;
+
+  case 152:
+
+/* Line 1806 of yacc.c  */
+#line 304 "cGrammar.y"
+    {printf(": parameter_declaration->declaration_specifiers\n");}
+    break;
+
+  case 153:
+
+/* Line 1806 of yacc.c  */
+#line 308 "cGrammar.y"
+    {printf(": identifier_list->IDENTIFIER\n");}
+    break;
+
+  case 154:
+
+/* Line 1806 of yacc.c  */
+#line 309 "cGrammar.y"
+    {printf(": identifier_list->identifier_list , IDENTIFIER\n");}
+    break;
+
+  case 155:
+
+/* Line 1806 of yacc.c  */
+#line 313 "cGrammar.y"
+    {printf(": type_name->specifier_qualifier_list\n");}
+    break;
+
+  case 156:
+
+/* Line 1806 of yacc.c  */
+#line 314 "cGrammar.y"
+    {printf(": type_name->specifier_qualifier_list abstract_declarator\n");}
+    break;
+
+  case 157:
+
+/* Line 1806 of yacc.c  */
+#line 318 "cGrammar.y"
+    {printf(": abstract_declarator->pointer\n");}
+    break;
+
+  case 158:
+
+/* Line 1806 of yacc.c  */
+#line 319 "cGrammar.y"
+    {printf(": abstract_declarator->direct_abstract_declarator\n");}
+    break;
+
+  case 159:
+
+/* Line 1806 of yacc.c  */
+#line 320 "cGrammar.y"
+    {printf(": abstract_declarator->pointer direct_abstract_declarator\n");}
+    break;
+
+  case 160:
+
+/* Line 1806 of yacc.c  */
+#line 324 "cGrammar.y"
+    {printf(": direct_abstract_declarator->( abstract_declarator )\n");}
+    break;
+
+  case 161:
+
+/* Line 1806 of yacc.c  */
+#line 325 "cGrammar.y"
+    {printf(": direct_abstract_declarator->[ ]\n");}
+    break;
+
+  case 162:
+
+/* Line 1806 of yacc.c  */
+#line 326 "cGrammar.y"
+    {printf(": direct_abstract_declarator->[ constant_expression ]\n");}
+    break;
+
+  case 163:
+
+/* Line 1806 of yacc.c  */
+#line 327 "cGrammar.y"
+    {printf(": direct_abstract_declarator->direct_abstract_declarator [ ]\n");}
+    break;
+
+  case 164:
+
+/* Line 1806 of yacc.c  */
+#line 328 "cGrammar.y"
+    {printf(": direct_abstract_declarator->direct_abstract_declarator [ constant_expression ]\n");}
+    break;
+
+  case 165:
+
+/* Line 1806 of yacc.c  */
+#line 329 "cGrammar.y"
+    {printf(": direct_abstract_declarator->( )\n");}
+    break;
+
+  case 166:
+
+/* Line 1806 of yacc.c  */
+#line 330 "cGrammar.y"
+    {printf(": direct_abstract_declarator->( parameter_type_list )\n");}
+    break;
+
+  case 167:
+
+/* Line 1806 of yacc.c  */
+#line 331 "cGrammar.y"
+    {printf(": direct_abstract_declarator->direct_abstract_declarator ( )\n");}
+    break;
+
+  case 168:
+
+/* Line 1806 of yacc.c  */
+#line 332 "cGrammar.y"
+    {printf(": direct_abstract_declarator->direct_abstract_declarator ( parameter_type_list )\n");}
+    break;
+
+  case 169:
+
+/* Line 1806 of yacc.c  */
+#line 336 "cGrammar.y"
+    {printf(": initializer->assignment_expression\n");}
+    break;
+
+  case 170:
+
+/* Line 1806 of yacc.c  */
+#line 337 "cGrammar.y"
+    {printf(": initializer->{ initializer_list }\n");}
+    break;
+
+  case 171:
+
+/* Line 1806 of yacc.c  */
+#line 338 "cGrammar.y"
+    {printf(": initializer->{ initializer_list , }\n");}
+    break;
+
+  case 172:
+
+/* Line 1806 of yacc.c  */
+#line 342 "cGrammar.y"
+    {printf(": initializer_list->initializer\n");}
+    break;
+
+  case 173:
+
+/* Line 1806 of yacc.c  */
+#line 343 "cGrammar.y"
+    {printf(": initializer_list->initializer_list , initializer\n");}
+    break;
+
+  case 174:
+
+/* Line 1806 of yacc.c  */
+#line 347 "cGrammar.y"
+    {printf(": statement->labeled_statement\n");}
+    break;
+
+  case 175:
+
+/* Line 1806 of yacc.c  */
+#line 348 "cGrammar.y"
+    {printf(": statement->compound_statement\n");}
+    break;
+
+  case 176:
+
+/* Line 1806 of yacc.c  */
+#line 349 "cGrammar.y"
+    {printf(": statement->expression_statement\n");}
+    break;
+
+  case 177:
+
+/* Line 1806 of yacc.c  */
+#line 350 "cGrammar.y"
+    {printf(": statement->selection_statement\n");}
+    break;
+
+  case 178:
+
+/* Line 1806 of yacc.c  */
+#line 351 "cGrammar.y"
+    {printf(": statement->iteration_statement\n");}
+    break;
+
+  case 179:
+
+/* Line 1806 of yacc.c  */
+#line 352 "cGrammar.y"
+    {printf(": statement->jump_statement\n");}
+    break;
+
+  case 180:
+
+/* Line 1806 of yacc.c  */
+#line 356 "cGrammar.y"
+    {printf(": labeled_statement->IDENTIFIER : statement\n");}
+    break;
+
+  case 181:
+
+/* Line 1806 of yacc.c  */
+#line 357 "cGrammar.y"
+    {printf(": labeled_statement->CASE constant_expression : statement\n");}
+    break;
+
+  case 182:
+
+/* Line 1806 of yacc.c  */
+#line 358 "cGrammar.y"
+    {printf(": labeled_statement->DEFAULT : statement\n");}
+    break;
+
+  case 183:
+
+/* Line 1806 of yacc.c  */
+#line 362 "cGrammar.y"
+    {printf(": compound_statement->{ }\n");}
+    break;
+
+  case 184:
+
+/* Line 1806 of yacc.c  */
+#line 363 "cGrammar.y"
+    {printf(": compound_statement->{ statement_list }\n");}
+    break;
+
+  case 185:
+
+/* Line 1806 of yacc.c  */
+#line 364 "cGrammar.y"
+    {printf(": compound_statement->{ declaration_list }\n");}
+    break;
+
+  case 186:
+
+/* Line 1806 of yacc.c  */
+#line 365 "cGrammar.y"
+    {printf(": compound_statement->{ declaration_list statement_list }\n");}
+    break;
+
+  case 187:
+
+/* Line 1806 of yacc.c  */
+#line 369 "cGrammar.y"
+    {printf(": declaration_list->declaration\n");}
+    break;
+
+  case 188:
+
+/* Line 1806 of yacc.c  */
+#line 370 "cGrammar.y"
+    {printf(": declaration_list->declaration_list declaration\n");}
+    break;
+
+  case 189:
+
+/* Line 1806 of yacc.c  */
+#line 374 "cGrammar.y"
+    {printf(": statement_list->statement\n");}
+    break;
+
+  case 190:
+
+/* Line 1806 of yacc.c  */
+#line 375 "cGrammar.y"
+    {printf(": statement_list->statement_list statement\n");}
+    break;
+
+  case 191:
+
+/* Line 1806 of yacc.c  */
+#line 379 "cGrammar.y"
+    {printf(": expression_statement->;\n");}
+    break;
+
+  case 192:
+
+/* Line 1806 of yacc.c  */
+#line 380 "cGrammar.y"
+    {printf(": expression_statement->expression ;\n");}
+    break;
+
+  case 193:
+
+/* Line 1806 of yacc.c  */
+#line 384 "cGrammar.y"
+    {printf(": selection_statement->IF ( expression ) statement\n");}
+    break;
+
+  case 194:
+
+/* Line 1806 of yacc.c  */
+#line 385 "cGrammar.y"
+    {printf(": selection_statement->IF ( expression ) statement ELSE statement\n");}
+    break;
+
+  case 195:
+
+/* Line 1806 of yacc.c  */
+#line 386 "cGrammar.y"
+    {printf(": selection_statement->SWITCH ( expression ) statement\n");}
+    break;
+
+  case 196:
+
+/* Line 1806 of yacc.c  */
+#line 390 "cGrammar.y"
+    {printf(": iteration_statement->WHILE ( expression ) statement\n");}
+    break;
+
+  case 197:
+
+/* Line 1806 of yacc.c  */
+#line 391 "cGrammar.y"
+    {printf(": iteration_statement->DO statement WHILE ( expression ) ;\n");}
+    break;
+
+  case 198:
+
+/* Line 1806 of yacc.c  */
+#line 392 "cGrammar.y"
+    {printf(": iteration_statement->FOR ( expression_statement expression_statement ) statement\n");}
+    break;
+
+  case 199:
+
+/* Line 1806 of yacc.c  */
+#line 393 "cGrammar.y"
+    {printf(": iteration_statement->FOR ( expression_statement expression_statement expression ) statement\n");}
+    break;
+
+  case 200:
+
+/* Line 1806 of yacc.c  */
+#line 397 "cGrammar.y"
+    {printf(": jump_statement->GOTO IDENTIFIER ;\n");}
+    break;
+
+  case 201:
+
+/* Line 1806 of yacc.c  */
+#line 398 "cGrammar.y"
+    {printf(": jump_statement->CONTINUE ;\n");}
+    break;
+
+  case 202:
+
+/* Line 1806 of yacc.c  */
+#line 399 "cGrammar.y"
+    {printf(": jump_statement->BREAK ;\n");}
+    break;
+
+  case 203:
+
+/* Line 1806 of yacc.c  */
+#line 400 "cGrammar.y"
+    {printf(": jump_statement->RETURN ;\n");}
+    break;
+
+  case 204:
+
+/* Line 1806 of yacc.c  */
+#line 401 "cGrammar.y"
+    {printf(": jump_statement->RETURN expression ;\n");}
+    break;
+
+  case 205:
+
+/* Line 1806 of yacc.c  */
+#line 405 "cGrammar.y"
+    {printf(": translation_unit->external_declaration\n");}
+    break;
+
+  case 206:
+
+/* Line 1806 of yacc.c  */
+#line 406 "cGrammar.y"
+    {printf(": translation_unit->translation_unit external_declaration\n");}
+    break;
+
+  case 207:
+
+/* Line 1806 of yacc.c  */
+#line 410 "cGrammar.y"
+    {printf(": external_declaration->function_definition\n");}
+    break;
+
+  case 208:
+
+/* Line 1806 of yacc.c  */
+#line 411 "cGrammar.y"
+    {printf(": external_declaration->declaration\n");}
+    break;
+
+  case 209:
+
+/* Line 1806 of yacc.c  */
+#line 415 "cGrammar.y"
+    {printf(": function_definition->declaration_specifiers declarator declaration_list compound_statement\n");}
+    break;
+
+  case 210:
+
+/* Line 1806 of yacc.c  */
+#line 416 "cGrammar.y"
+    {printf(": function_definition->declaration_specifiers declarator compound_statement\n");}
+    break;
+
+  case 211:
+
+/* Line 1806 of yacc.c  */
+#line 417 "cGrammar.y"
+    {printf(": function_definition->declarator declaration_list compound_statement\n");}
+    break;
+
+  case 212:
+
+/* Line 1806 of yacc.c  */
+#line 418 "cGrammar.y"
+    {printf(": function_definition->declarator compound_statement\n");}
     break;
 
 
 
 /* Line 1806 of yacc.c  */
-#line 1964 "cGrammar.tab.c"
+#line 3434 "cGrammar.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2201,7 +3671,7 @@ extern int yylex();
 extern int yyparse();
 extern FILE * yyin;
 
-main() 
+int main() 
 {
 
 	FILE * input = fopen("input.c", "r");
@@ -2213,10 +3683,12 @@ main()
 	yyin = input;
 
 	// Faz todo parsing
+	printf("\n*** INICIO ***\n");
 	do
 	{
 		yyparse();
 	}while(!feof(yyin));
+	printf("\n*** FIM ***\n");
 }
 
 yyerror(s)
