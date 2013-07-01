@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tree type="+" result="37.00">
+	<left type="+" result="7.00">
+		<left type="K" result="1.00">
+		</left>
+		<right type="*" result="6.00">
+			<left type="K" result="2.00">
+			</left>
+			<right type="K" result="3.00">
+			</right>
+		</right>
+	</left>
+	<right type="*" result="30.00">
+		<left type="K" result="5.00">
+		</left>
+		<right type="K" result="6.00">
+		</right>
+	</right>
+</tree>

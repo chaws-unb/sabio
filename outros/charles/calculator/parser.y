@@ -8,9 +8,12 @@
 /* calculator with AST */
 
 %{
-#  include <stdio.h>
-#  include <stdlib.h>
-#  include "functions.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "functions.h"
+#include "../xml/simpleXML.h"
+xmlNode * xml;
+char nomeArquivo[50];
 %}
 
 %union {
@@ -29,7 +32,21 @@
 calclist: /* nothing */
 | calclist exp EOL {
 	 printf(": calclist->calclist exp EOL\n");
-     printf("= %4.4g\n", eval($2));
+
+     // Pega a linha pra fazer o nome do arquivo
+     xml = NULL;
+     xml = newSimpleXml("tree");
+
+     printf("= %4.4g\n", eval($2, xml));
+
+     // Salva num arquivo
+     sprintf(nomeArquivo, "treeOfLine_%i.xml", yylineno - 1);
+     if(!saveToFile(xml, nomeArquivo))
+		printf("Done serializing the tree!\n");
+	 else
+		printf("Ops, something wrong happened serializing the tree!\n");
+	 destroyNode(xml);
+
      treefree($2);
      printf("> ");
  }

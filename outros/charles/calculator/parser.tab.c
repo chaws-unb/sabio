@@ -68,13 +68,16 @@
 /* Line 268 of yacc.c  */
 #line 10 "parser.y"
 
-#  include <stdio.h>
-#  include <stdlib.h>
-#  include "functions.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "functions.h"
+#include "../xml/simpleXML.h"
+xmlNode * xml;
+char nomeArquivo[50];
 
 
 /* Line 268 of yacc.c  */
-#line 78 "parser.tab.c"
+#line 81 "parser.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -113,7 +116,7 @@ typedef union YYSTYPE
 {
 
 /* Line 293 of yacc.c  */
-#line 16 "parser.y"
+#line 19 "parser.y"
 
   struct ast *a;
   double d;
@@ -121,7 +124,7 @@ typedef union YYSTYPE
 
 
 /* Line 293 of yacc.c  */
-#line 125 "parser.tab.c"
+#line 128 "parser.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -133,7 +136,7 @@ typedef union YYSTYPE
 
 
 /* Line 343 of yacc.c  */
-#line 137 "parser.tab.c"
+#line 140 "parser.tab.c"
 
 #ifdef short
 # undef short
@@ -423,8 +426,8 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    29,    29,    30,    37,    40,    41,    42,    45,    46,
-      47,    50,    51,    52,    53
+       0,    32,    32,    33,    54,    57,    58,    59,    62,    63,
+      64,    67,    68,    69,    70
 };
 #endif
 
@@ -1362,10 +1365,24 @@ yyreduce:
         case 3:
 
 /* Line 1806 of yacc.c  */
-#line 30 "parser.y"
+#line 33 "parser.y"
     {
 	 printf(": calclist->calclist exp EOL\n");
-     printf("= %4.4g\n", eval((yyvsp[(2) - (3)].a)));
+
+     // Pega a linha pra fazer o nome do arquivo
+     xml = NULL;
+     xml = newSimpleXml("tree");
+
+     printf("= %4.4g\n", eval((yyvsp[(2) - (3)].a), xml));
+
+     // Salva num arquivo
+     sprintf(nomeArquivo, "treeOfLine_%i.xml", yylineno - 1);
+     if(!saveToFile(xml, nomeArquivo))
+		printf("Done serializing the tree!\n");
+	 else
+		printf("Ops, something wrong happened serializing the tree!\n");
+	 destroyNode(xml);
+
      treefree((yyvsp[(2) - (3)].a));
      printf("> ");
  }
@@ -1374,84 +1391,84 @@ yyreduce:
   case 4:
 
 /* Line 1806 of yacc.c  */
-#line 37 "parser.y"
+#line 54 "parser.y"
     { printf(": calclist->calclist EOL\n"); printf("> "); }
     break;
 
   case 5:
 
 /* Line 1806 of yacc.c  */
-#line 40 "parser.y"
+#line 57 "parser.y"
     { printf(": exp->factor\n");}
     break;
 
   case 6:
 
 /* Line 1806 of yacc.c  */
-#line 41 "parser.y"
+#line 58 "parser.y"
     { printf(": exp->exp + factor\n"); (yyval.a) = newast('+', (yyvsp[(1) - (3)].a),(yyvsp[(3) - (3)].a)); }
     break;
 
   case 7:
 
 /* Line 1806 of yacc.c  */
-#line 42 "parser.y"
+#line 59 "parser.y"
     { printf(": exp->exp - factor\n"); (yyval.a) = newast('-', (yyvsp[(1) - (3)].a),(yyvsp[(3) - (3)].a));}
     break;
 
   case 8:
 
 /* Line 1806 of yacc.c  */
-#line 45 "parser.y"
+#line 62 "parser.y"
     {printf(": factor->term\n");}
     break;
 
   case 9:
 
 /* Line 1806 of yacc.c  */
-#line 46 "parser.y"
+#line 63 "parser.y"
     {printf(": factor->factor * term\n"); (yyval.a) = newast('*', (yyvsp[(1) - (3)].a),(yyvsp[(3) - (3)].a)); }
     break;
 
   case 10:
 
 /* Line 1806 of yacc.c  */
-#line 47 "parser.y"
+#line 64 "parser.y"
     {printf(": factor->factor / term\n"); (yyval.a) = newast('/', (yyvsp[(1) - (3)].a),(yyvsp[(3) - (3)].a)); }
     break;
 
   case 11:
 
 /* Line 1806 of yacc.c  */
-#line 50 "parser.y"
+#line 67 "parser.y"
     {printf(": term->NUMBER \n"); (yyval.a) = newnum((yyvsp[(1) - (1)].d)); }
     break;
 
   case 12:
 
 /* Line 1806 of yacc.c  */
-#line 51 "parser.y"
+#line 68 "parser.y"
     {printf(": term->| term\n"); (yyval.a) = newast('|', (yyvsp[(2) - (2)].a), NULL); }
     break;
 
   case 13:
 
 /* Line 1806 of yacc.c  */
-#line 52 "parser.y"
+#line 69 "parser.y"
     {printf(": term->( exp )\n"); (yyval.a) = (yyvsp[(2) - (3)].a); }
     break;
 
   case 14:
 
 /* Line 1806 of yacc.c  */
-#line 53 "parser.y"
+#line 70 "parser.y"
     {printf(": term->- term\n"); (yyval.a) = newast('M', (yyvsp[(2) - (2)].a), NULL); }
     break;
 
 
 
 /* Line 1806 of yacc.c  */
-#line 1455 "parser.tab.c"
+#line 1472 "parser.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1682,6 +1699,6 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 55 "parser.y"
+#line 72 "parser.y"
 
 

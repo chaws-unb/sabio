@@ -49,7 +49,7 @@ typedef union YYSTYPE
 {
 
 /* Line 2068 of yacc.c  */
-#line 16 "parser.y"
+#line 19 "parser.y"
 
   struct ast *a;
   double d;

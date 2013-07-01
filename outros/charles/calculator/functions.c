@@ -7,10 +7,12 @@
 /*
  * helper functions for fb3-1
  */
-#  include <stdio.h>
-#  include <stdlib.h>
-#  include <stdarg.h>
-#  include "functions.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <string.h>
+#include "functions.h"
+#include "../xml/simpleXML.h"
 
 struct ast *
 newast(int nodetype, struct ast *l, struct ast *r)
@@ -42,21 +44,68 @@ newnum(double d)
 }
 
 double
-eval(struct ast *a)
+eval(struct ast *a, xmlNode * xml)
 {
   double v;
 
-  switch(a->nodetype) {
-  case 'K': v = ((struct numval *)a)->number; break;
+  // Cria o no dessa arvore
+  xmlNode * leftNode = NULL, * rightNode = NULL;
 
-  case '+': v = eval(a->l) + eval(a->r); break;
-  case '-': v = eval(a->l) - eval(a->r); break;
-  case '*': v = eval(a->l) * eval(a->r); break;
-  case '/': v = eval(a->l) / eval(a->r); break;
-  case '|': v = eval(a->l); if(v < 0) v = -v; break;
-  case 'M': v = -eval(a->l); break;
+  switch(a->nodetype) {
+  case 'K': 
+    v = ((struct numval *)a)->number; 
+    break;
+
+  case '+': 
+    leftNode = createNode(xml, "left"); 
+    rightNode = createNode(xml, "right"); 
+    v = eval(a->l, leftNode) + eval(a->r, rightNode); 
+    break;
+
+  case '-': 
+    leftNode = createNode(xml, "left"); 
+    rightNode = createNode(xml, "right"); 
+    v = eval(a->l, leftNode) - eval(a->r, rightNode); 
+    break;
+
+  case '*': 
+    leftNode = createNode(xml, "left"); 
+    rightNode = createNode(xml, "right"); 
+    v = eval(a->l, leftNode) * eval(a->r, rightNode); 
+    break;
+
+  case '/': 
+    leftNode = createNode(xml, "left"); 
+    rightNode = createNode(xml, "right"); 
+    v = eval(a->l, leftNode) / eval(a->r, rightNode); 
+    break;
+
+  case '|': 
+    leftNode = createNode(xml, "left"); 
+    rightNode = createNode(xml, "right"); 
+    v = eval(a->l, leftNode); 
+    if(v < 0) 
+      v = -v; 
+    break;
+
+  case 'M': 
+    leftNode = createNode(xml, "left"); 
+    v = -eval(a->l, leftNode); 
+    break;
+
   default: printf("internal error: bad node %c\n", a->nodetype);
   }
+
+  // Adiciona o resultado
+  char result[10] = {0};
+  char type[10] = {0};
+
+  sprintf(result, "%.2f", v);
+  sprintf(type, "%c", a->nodetype);
+
+  addAttribute(xml, "type", type); 
+  addAttribute(xml, "result", result);
+    
   return v;
 }
 

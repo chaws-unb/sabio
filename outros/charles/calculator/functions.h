@@ -8,6 +8,9 @@
  * Declarations for a calculator fb3-1
  */
 
+/* Para escrever num XML !!! MULK DOIDO!!! */
+#include "../xml/simpleXML.h"
+
 /* interface to the lexer */
 extern int yylineno; /* from lexer */
 extern FILE * yyin;
@@ -29,8 +32,8 @@ struct numval {
 struct ast *newast(int nodetype, struct ast *l, struct ast *r);
 struct ast *newnum(double d);
 
-/* evaluate an AST */
-double eval(struct ast *);
+/* evaluate an AST and writes it into a xml file =D */
+double eval(struct ast *, xmlNode * xml);
 
 /* delete and free an AST */
 void treefree(struct ast *);
