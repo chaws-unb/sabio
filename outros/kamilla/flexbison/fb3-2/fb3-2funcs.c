@@ -439,7 +439,7 @@ main()
 }
 
 /* debugging: dump out an AST */
-int debug = 0;
+int debug = 1;
 void
 dumpast(struct ast *a, int level)
 {
