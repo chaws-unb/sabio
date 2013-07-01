@@ -121,5 +121,5 @@ extern int yylineno; /* from lexer */
 void yyerror(char *s, ...);
 
 extern int debug;
-void dumpast(struct ast *a, int level);
 
+void dumpast(struct ast *a, int level);  
