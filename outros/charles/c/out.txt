@@ -1,0 +1,304 @@
+
+*** INICIO ***
+int: type_specifier->INT
+ 
+
+func: declaration_specifiers->type_specifier
+: direct_declarator->IDENTIFIER
+
+
+(
+
+int: type_specifier->INT
+ 
+
+arg: declaration_specifiers->type_specifier
+: direct_declarator->IDENTIFIER
+
+
+): declarator->direct_declarator
+: parameter_declaration->declaration_specifiers declarator
+: parameter_list->parameter_declaration
+: parameter_type_list->parameter_list
+: direct_declarator->direct_declarator ( parameter_type_list )
+
+
+{: declarator->direct_declarator
+	
+
+if
+
+(
+
+arg: primary_expression->IDENTIFIER
+: postfix_expression->primary_expression
+ 
+
+>: unary_expression->postfix_expression 
+: cast_expression->unary_expression
+: multiplicative_expression->cast_expression
+: additive_expression->multiplicative_expression
+: shift_expression->additive_expression
+: relational_expression->shift_expression
+ 
+
+10: primary_expression->CONSTANT
+: postfix_expression->primary_expression
+
+
+): unary_expression->postfix_expression 
+: cast_expression->unary_expression
+: multiplicative_expression->cast_expression
+: additive_expression->multiplicative_expression
+: shift_expression->additive_expression
+: relational_expression->relational_expression > shift_expression
+: equality_expression->relational_expression
+: and_expression->equality_expression
+: exclusive_or_expression->and_expression
+: inclusive_or_expression->exclusive_or_expression
+: logical_and_expression->inclusive_or_expression
+: logical_or_expression->logical_and_expression
+: conditional_expression->logical_or_expression
+: assignment_expression->conditional_expression
+: expression->assignment_expression
+
+		
+return 
+
+arg: primary_expression->IDENTIFIER
+: postfix_expression->primary_expression
+ 
+
+*: unary_expression->postfix_expression 
+: cast_expression->unary_expression
+: multiplicative_expression->cast_expression
+ 
+
+2: primary_expression->CONSTANT
+: postfix_expression->primary_expression
+
+
+;: unary_expression->postfix_expression 
+: cast_expression->unary_expression
+: multiplicative_expression->multiplicative_expression * cast_expression
+: additive_expression->multiplicative_expression
+: shift_expression->additive_expression
+: relational_expression->shift_expression
+: equality_expression->relational_expression
+: and_expression->equality_expression
+: exclusive_or_expression->and_expression
+: inclusive_or_expression->exclusive_or_expression
+: logical_and_expression->inclusive_or_expression
+: logical_or_expression->logical_and_expression
+: conditional_expression->logical_or_expression
+: assignment_expression->conditional_expression
+: expression->assignment_expression
+: jump_statement->RETURN expression ;
+: statement->jump_statement
+
+
+else
+
+return 
+
+arg: primary_expression->IDENTIFIER
+: postfix_expression->primary_expression
+ 
+
+*: unary_expression->postfix_expression 
+: cast_expression->unary_expression
+: multiplicative_expression->cast_expression
+ 
+
+4: primary_expression->CONSTANT
+: postfix_expression->primary_expression
+
+
+;: unary_expression->postfix_expression 
+: cast_expression->unary_expression
+: multiplicative_expression->multiplicative_expression * cast_expression
+: additive_expression->multiplicative_expression
+: shift_expression->additive_expression
+: relational_expression->shift_expression
+: equality_expression->relational_expression
+: and_expression->equality_expression
+: exclusive_or_expression->and_expression
+: inclusive_or_expression->exclusive_or_expression
+: logical_and_expression->inclusive_or_expression
+: logical_or_expression->logical_and_expression
+: conditional_expression->logical_or_expression
+: assignment_expression->conditional_expression
+: expression->assignment_expression
+: jump_statement->RETURN expression ;
+: statement->jump_statement
+: selection_statement->IF ( expression ) statement ELSE statement
+: statement->selection_statement
+: statement_list->statement
+
+
+}: compound_statement->{ statement_list }
+: function_definition->declaration_specifiers declarator compound_statement
+: external_declaration->function_definition
+: translation_unit->external_declaration
+
+
+int: type_specifier->INT
+ 
+
+main: declaration_specifiers->type_specifier
+: direct_declarator->IDENTIFIER
+
+
+(
+
+): direct_declarator->direct_declarator ( )
+
+
+{: declarator->direct_declarator
+
+	
+int: type_specifier->INT
+ 
+
+a: declaration_specifiers->type_specifier
+: direct_declarator->IDENTIFIER
+
+
+,: declarator->direct_declarator
+: init_declarator->declarator
+: init_declarator_list->init_declarator
+ 
+
+b: direct_declarator->IDENTIFIER
+
+
+;: declarator->direct_declarator
+: init_declarator->declarator
+: init_declarator_list->init_declarator_list , init_declarator
+: declaration->declaration_specifiers init_declarator_list ;
+: declaration_list->declaration
+
+	
+a 
+
+=: primary_expression->IDENTIFIER
+: postfix_expression->primary_expression
+: unary_expression->postfix_expression 
+: assignment_operator->=
+ 
+
+10: primary_expression->CONSTANT
+: postfix_expression->primary_expression
+
+
+;: unary_expression->postfix_expression 
+: cast_expression->unary_expression
+: multiplicative_expression->cast_expression
+: additive_expression->multiplicative_expression
+: shift_expression->additive_expression
+: relational_expression->shift_expression
+: equality_expression->relational_expression
+: and_expression->equality_expression
+: exclusive_or_expression->and_expression
+: inclusive_or_expression->exclusive_or_expression
+: logical_and_expression->inclusive_or_expression
+: logical_or_expression->logical_and_expression
+: conditional_expression->logical_or_expression
+: assignment_expression->conditional_expression
+: assignment_expression->unary_expression assignment_operator assignment_expression
+: expression->assignment_expression
+: expression_statement->expression ;
+: statement->expression_statement
+: statement_list->statement
+
+
+
+b 
+
+=: primary_expression->IDENTIFIER
+: postfix_expression->primary_expression
+: unary_expression->postfix_expression 
+: assignment_operator->=
+ 
+
+func: primary_expression->IDENTIFIER
+: postfix_expression->primary_expression
+
+
+(
+
+a: primary_expression->IDENTIFIER
+: postfix_expression->primary_expression
+
+
+): unary_expression->postfix_expression 
+: cast_expression->unary_expression
+: multiplicative_expression->cast_expression
+: additive_expression->multiplicative_expression
+: shift_expression->additive_expression
+: relational_expression->shift_expression
+: equality_expression->relational_expression
+: and_expression->equality_expression
+: exclusive_or_expression->and_expression
+: inclusive_or_expression->exclusive_or_expression
+: logical_and_expression->inclusive_or_expression
+: logical_or_expression->logical_and_expression
+: conditional_expression->logical_or_expression
+: assignment_expression->conditional_expression
+: argument_expression_list->assignment_expression 
+: postfix_expression->(argument_expression_list)
+
+
+;: unary_expression->postfix_expression 
+: cast_expression->unary_expression
+: multiplicative_expression->cast_expression
+: additive_expression->multiplicative_expression
+: shift_expression->additive_expression
+: relational_expression->shift_expression
+: equality_expression->relational_expression
+: and_expression->equality_expression
+: exclusive_or_expression->and_expression
+: inclusive_or_expression->exclusive_or_expression
+: logical_and_expression->inclusive_or_expression
+: logical_or_expression->logical_and_expression
+: conditional_expression->logical_or_expression
+: assignment_expression->conditional_expression
+: assignment_expression->unary_expression assignment_operator assignment_expression
+: expression->assignment_expression
+: expression_statement->expression ;
+: statement->expression_statement
+: statement_list->statement_list statement
+
+	
+return
+
+0: primary_expression->CONSTANT
+: postfix_expression->primary_expression
+
+
+;: unary_expression->postfix_expression 
+: cast_expression->unary_expression
+: multiplicative_expression->cast_expression
+: additive_expression->multiplicative_expression
+: shift_expression->additive_expression
+: relational_expression->shift_expression
+: equality_expression->relational_expression
+: and_expression->equality_expression
+: exclusive_or_expression->and_expression
+: inclusive_or_expression->exclusive_or_expression
+: logical_and_expression->inclusive_or_expression
+: logical_or_expression->logical_and_expression
+: conditional_expression->logical_or_expression
+: assignment_expression->conditional_expression
+: expression->assignment_expression
+: jump_statement->RETURN expression ;
+: statement->jump_statement
+: statement_list->statement_list statement
+
+
+}: compound_statement->{ declaration_list statement_list }
+: function_definition->declaration_specifiers declarator compound_statement
+: external_declaration->function_definition
+: translation_unit->translation_unit external_declaration
+
+*** FIM ***
