@@ -3,16 +3,6 @@
 #include "build_ast.h"
 %}
 
-%parse-param 
-{
-	int *var
-}
-
-%parse-param
-{
-	struct ast* newAST_pointer
-}
-
 %union {
   struct ast *a;
   double d;
@@ -210,7 +200,7 @@ type_specifier
 	: VOID 						{printf(": type_specifier->VOID\n");}
 	| CHAR 						{printf(": type_specifier->CHAR\n");}
 	| SHORT 					{printf(": type_specifier->SHORT\n");}
-	| INT 						{var = 123; printf("%d %s : type_specifier->INT\n", *&var, $1);}
+	| INT 						{newAST($1, NULL, NULL, NULL); printf("%s : type_specifier->INT\n", $1);}
 	| LONG 						{printf(": type_specifier->LONG\n");}
 	| FLOAT 					{printf(": type_specifier->FLOAT\n");}
 	| DOUBLE 					{printf(": type_specifier->DOUBLE\n");}
@@ -449,12 +439,7 @@ extern FILE * yyin;
 
 int main() 
 {
-
-	int var;
-	//struct ast* (*newAST_pointer)(enum nodeType, char , struct ast *, struct ast *) = newAST;
-	
-	struct ast* newAST_pointer = newAST;
-	
+		
 	FILE * input = fopen("input2.c", "r");
 	if(!input){
 		printf("Ops, no file!\n");
@@ -467,7 +452,7 @@ int main()
 	printf("\n*** INICIO ***\n");
 	do
 	{
-		yyparse(&var, &newAST_pointer );
+		yyparse();
 	}while(!feof(yyin));
 	printf("\n*** FIM ***\n");
 }

@@ -129,7 +129,11 @@ typedef union YYSTYPE
   double d;
   struct symbol *s;		/* which symbol */
   struct symlist *sl;
+<<<<<<< HEAD
   char * fn;			/* which function */
+=======
+  int fn;			/* which function */
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 
 
 
@@ -1456,7 +1460,11 @@ yyreduce:
 
 /* Line 1806 of yacc.c  */
 #line 59 "fb3-2.y"
+<<<<<<< HEAD
     { printf("exp = %s\n", (yyvsp[(2) - (3)].fn)); (yyval.a) = newcmp((yyvsp[(2) - (3)].fn), (yyvsp[(1) - (3)].a), (yyvsp[(3) - (3)].a)); }
+=======
+    { (yyval.a) = newcmp((yyvsp[(2) - (3)].fn), (yyvsp[(1) - (3)].a), (yyvsp[(3) - (3)].a)); }
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
     break;
 
   case 9:
@@ -1519,7 +1527,11 @@ yyreduce:
 
 /* Line 1806 of yacc.c  */
 #line 68 "fb3-2.y"
+<<<<<<< HEAD
     { printf("Result = %d\n", (yyvsp[(1) - (4)].fn)); (yyval.a) = newfunc((yyvsp[(1) - (4)].fn), (yyvsp[(3) - (4)].a)); }
+=======
+    { (yyval.a) = newfunc((yyvsp[(1) - (4)].fn), (yyvsp[(3) - (4)].a)); }
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
     break;
 
   case 18:

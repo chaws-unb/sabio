@@ -48,11 +48,11 @@ void count();
 "volatile"		{ count(); return(VOLATILE); }
 "while"			{ count(); return(WHILE); }
 
-{L}({L}|{D})*		{ yylval.string = (char*)yytext; return(check_type()); }
+{L}({L}|{D})*		{ yylval.string = strdup(yytext); return(check_type()); }
 
 0[xX]{H}+{IS}?		{ count(); return(CONSTANT); }
 0{D}+{IS}?			{ count(); return(CONSTANT); }
-{D}+{IS}?			{ yylval.string = (char*)yytext; return(CONSTANT); }
+{D}+{IS}?			{ yylval.string = strdup(yytext); return(CONSTANT); }
 L?'(\\.|[^\\'])+'	{ count(); return(CONSTANT); }
 
 {D}+{E}{FS}?			{ count(); return(CONSTANT); }

@@ -23,7 +23,7 @@ enum nodeType
  * @brief Nodes to build the AST
  **/
 typedef struct _ast {
-	enum nodeType nodeType;
+	char * nodeType;
 	char *value;
 	struct ast *leftTree;
 	struct ast *rightTree;
@@ -40,6 +40,6 @@ typedef struct _ast {
 * @brief Every time that one symbol is found, this function is involked
 * 	for add them in a list of symbol.
 */
-struct ast *newAST(enum nodeType _nodeType, char *_value, struct ast *_leftTree, struct ast *_rightTree);
+struct _ast *newAST(char *_nodeType, char *_value, struct ast *_leftTree, struct ast *_rightTree);
 
 #endif

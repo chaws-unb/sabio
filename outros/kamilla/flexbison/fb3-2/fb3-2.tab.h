@@ -65,7 +65,11 @@ typedef union YYSTYPE
   double d;
   struct symbol *s;		/* which symbol */
   struct symlist *sl;
+<<<<<<< HEAD
   char * fn;			/* which function */
+=======
+  int fn;			/* which function */
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 
 
 

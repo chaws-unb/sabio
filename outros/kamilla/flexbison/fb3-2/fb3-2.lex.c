@@ -869,7 +869,11 @@ YY_RULE_SETUP
 case 14:
 YY_RULE_SETUP
 #line 35 "fb3-2.l"
+<<<<<<< HEAD
 { yylval.fn = "=="; return CMP; }
+=======
+{ yylval.fn = 4; return CMP; }
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
@@ -884,64 +888,109 @@ YY_RULE_SETUP
 /* keywords */
 case 17:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 40 "fb3-2.l"
+=======
+#line 41 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 { return IF; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 41 "fb3-2.l"
+=======
+#line 42 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 { return THEN; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 42 "fb3-2.l"
+=======
+#line 43 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 { return ELSE; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 43 "fb3-2.l"
+=======
+#line 44 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 { return WHILE; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 44 "fb3-2.l"
+=======
+#line 45 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 { return DO; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 45 "fb3-2.l"
+=======
+#line 46 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 { return LET;}
 	YY_BREAK
 /* built in functions */
 case 23:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 48 "fb3-2.l"
+=======
+#line 49 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 { yylval.fn = B_sqrt; return FUNC; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 49 "fb3-2.l"
+=======
+#line 50 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 { yylval.fn = B_exp; return FUNC; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 50 "fb3-2.l"
+=======
+#line 51 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 { yylval.fn = B_log; return FUNC; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 51 "fb3-2.l"
+=======
+#line 52 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 { yylval.fn = B_print; return FUNC; }
 	YY_BREAK
 /* debug hack */
 case 27:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 54 "fb3-2.l"
+=======
+#line 55 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 { debug = atoi(&yytext[5]); printf("debug set to %d\n", debug); }
 	YY_BREAK
 /* names */
 case 28:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 57 "fb3-2.l"
 { yylval.s = lookup(yytext); return NAME; }
 	YY_BREAK
@@ -950,38 +999,72 @@ case 29:
 case 30:
 YY_RULE_SETUP
 #line 60 "fb3-2.l"
+=======
+#line 58 "fb3-2.l"
+{ yylval.s = lookup(yytext); return NAME; }
+	YY_BREAK
+case 29:
+#line 61 "fb3-2.l"
+case 30:
+YY_RULE_SETUP
+#line 61 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 { yylval.d = atof(yytext); return NUMBER; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 62 "fb3-2.l"
+=======
+#line 63 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 63 "fb3-2.l"
+=======
+#line 64 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 /* ignore white space */ 
 	YY_BREAK
 case 33:
 /* rule 33 can match eol */
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 64 "fb3-2.l"
+=======
+#line 65 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 printf("c> "); /* ignore line continuation */
 	YY_BREAK
 case 34:
 /* rule 34 can match eol */
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 65 "fb3-2.l"
+=======
+#line 66 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 { return EOL; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 67 "fb3-2.l"
+=======
+#line 68 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 { yyerror("Mystery character %c\n", *yytext); }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 68 "fb3-2.l"
+=======
+#line 69 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
 #line 988 "fb3-2.lex.c"
@@ -1994,7 +2077,11 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
+<<<<<<< HEAD
 #line 68 "fb3-2.l"
+=======
+#line 69 "fb3-2.l"
+>>>>>>> 43bd45ec58bc7b4bf94ca247b8054169e7c2c453
 
 
 
