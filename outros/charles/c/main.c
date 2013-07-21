@@ -10,7 +10,7 @@ int debugMode = 0;
 
 int main(int argc, char ** argv)
 {
-	if(argc < 3)
+	if(argc < 2)
 	{
 		printf("sabioCC: no input files\n");
 		return;
