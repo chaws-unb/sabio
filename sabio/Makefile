@@ -40,13 +40,13 @@ all: sabio
 #	*Basically capture all the elements of list and change the pieces
 #	 with "src/%.c" by "obj/%.o".
 obj/%.o: src/%.c
-	$(CC) -c $< -o $@ $(CFLAGS) -I./build
+	$(CC) -c $< -o $@ $(CFLAGS) -I./build -lm
 
-sabio: lexerCode $(CSOURCES:src/%.c=obj/%.o) confBuild runTest
+sabio: lexerCode bisonCode $(CSOURCES:src/%.c=obj/%.o) confBuild
 	@echo "________________________________________________"
 	@echo "### Build binary ###"
 
-	$(CC) $(PACKBUILD)/lexer.lex.c $(PACKBUILD)/*.o -o bin/$@ -I./$(PACKBUILD) $(LEXFLAGS) $(CFLAGS)
+	$(CC) $(PACKBUILD)/lexer.lex.c build/cparser.tab.c $(PACKBUILD)/*.o -o bin/$@ -I./$(PACKBUILD) $(LEXFLAGS) $(CFLAGS) -I./build -lm
 	@echo "________________________________________________"
 
 # Generate lexer Code
@@ -56,6 +56,16 @@ lexerCode: $(LEXSOURCES)
 
 	$(LEXER) -o $(PACKBUILD)/lexer.lex.c $^
 	mv clexer.h build/clexer.h
+	@echo "_______________________________________________"
+
+# Generate bison Code
+bisonCode: $(BISONSOURCES)
+	@echo "_______________________________________________"
+	@echo "### Generate C code with bison ###"
+
+	$(BISON) -d $^
+	mv cparser.tab.c build/cparser.tab.c
+	mv cparser.tab.h build/cparser.tab.h
 	@echo "_______________________________________________"
 
 confBuild:

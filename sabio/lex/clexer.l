@@ -15,9 +15,11 @@ EXP	([Ee][-+]?[0-9]+)
 ILEN	([Uu](L|l|LL|ll)?|(L|l|LL|ll)[Uu]?)
 
 %{
-	#include "handleFile.h"
-	#include "symbolTable.h"
-	#include "dataType.h"
+	#include <abstractTree.h>
+	#include <handleFile.h>
+	#include <symbolTable.h>
+	#include <dataType.h>
+	#include <cparser.tab.h>
 %}
 
 %%

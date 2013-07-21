@@ -1,7 +1,0 @@
--c  Compile or assemble the source files, but do not link.  The linking stage simply is not done.  The ultimate
-           output is in the form of an object file for each source file.
-
-           By default, the object file name for a source file is made by replacing the suffix .c, .i, .s, etc., with .o.
-
-           Unrecognized input files, not requiring compilation or assembly, are ignored.
-
