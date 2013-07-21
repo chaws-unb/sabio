@@ -48,7 +48,7 @@ void symlistfree(struct symlist *sl);
 
 enum bifs {			/* built-in functions */
   B_sqrt = 1,
-  B_exp,
+  B_exp = 2,
   B_log,
   B_print
 };
