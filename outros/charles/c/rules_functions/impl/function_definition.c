@@ -12,7 +12,7 @@ void function_definition__declaration_specifiers__declarator__declaration_list__
 
 void function_definition__declaration_specifiers__declarator__compound_statement()
 {
-	
+	if(debugMode) printf(": function_definition->declaration_specifiers declarator compound_statement\n");
 }
 
 

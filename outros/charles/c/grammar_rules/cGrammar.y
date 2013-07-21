@@ -178,8 +178,8 @@ declaration
 declaration_specifiers
 	: storage_class_specifier 						 {printf(": declaration_specifiers->storage_class_specifier\n");}
 	| storage_class_specifier declaration_specifiers {printf(": declaration_specifiers->storage_class_specifier declaration_specifiers\n");}
-	| type_specifier								 {printf(": declaration_specifiers->type_specifier\n");}
-	| type_specifier declaration_specifiers	 		 {declaration_specifiers__type_specifier();}
+	| type_specifier								 {declaration_specifiers__type_specifier();}
+	| type_specifier declaration_specifiers	 		 {declaration_specifiers__type_specifier__declaration_specifiers();}
 	| type_qualifier 								 {printf(": declaration_specifiers->type_qualifier\n");}
 	| type_qualifier declaration_specifiers 		 {printf(": declaration_specifiers->type_qualifier declaration_specifiers\n");}
 	;
@@ -288,7 +288,7 @@ direct_declarator
 	| direct_declarator '[' ']' 					{printf(": direct_declarator->direct_declarator [ ]\n");}
 	| direct_declarator '(' parameter_type_list ')' {printf(": direct_declarator->direct_declarator ( parameter_type_list )\n");}
 	| direct_declarator '(' identifier_list ')' 	{printf(": direct_declarator->direct_declarator ( identifier_list )\n");}
-	| direct_declarator '(' ')' 					{printf(": direct_declarator->direct_declarator ( )\n");}
+	| direct_declarator '(' ')' 					{direct_declarator__direct_declarator__OPP__CLP();}
 	;
 
 pointer
@@ -375,7 +375,7 @@ labeled_statement
 	;
 
 compound_statement
-	: '{' '}' 								  {printf(": compound_statement->{ }\n");}
+	: '{' '}' 								  {compound_statement__OPB__CLB();}
 	| '{' statement_list '}' 				  {printf(": compound_statement->{ statement_list }\n");}
 	| '{' declaration_list '}' 				  {printf(": compound_statement->{ declaration_list }\n");}
 	| '{' declaration_list statement_list '}' {printf(": compound_statement->{ declaration_list statement_list }\n");}
@@ -429,7 +429,7 @@ external_declaration
 
 function_definition
 	: declaration_specifiers declarator declaration_list compound_statement {printf(": function_definition->declaration_specifiers declarator declaration_list compound_statement\n");}
-	| declaration_specifiers declarator compound_statement 					{printf(": function_definition->declaration_specifiers declarator compound_statement\n");}
+	| declaration_specifiers declarator compound_statement 					{function_definition__declaration_specifiers__declarator__compound_statement();}
 	| declarator declaration_list compound_statement 						{printf(": function_definition->declarator declaration_list compound_statement\n");}
 	| declarator compound_statement 										{printf(": function_definition->declarator compound_statement\n");}
 	;

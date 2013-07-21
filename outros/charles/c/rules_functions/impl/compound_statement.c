@@ -6,7 +6,7 @@
 
 void compound_statement__OPB__CLB()
 {
-	
+	if(debugMode) printf(": compound_statement->{ }\n");
 }
 
 
