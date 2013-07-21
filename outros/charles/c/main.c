@@ -6,15 +6,20 @@
 extern FILE * yyin;
 extern int yylineno;
 
-int debugMode = 1;
+int debugMode = 0;
 
 int main(int argc, char ** argv)
 {
-	if(argc != 2)
+	if(argc < 3)
 	{
 		printf("sabioCC: no input files\n");
 		return;
 	}
+
+	int i = 1;
+	for(; i < argc; i++)
+		if(strcmp("-debug", argv[i]) == 0)
+			debugMode = 1;
 
 	FILE * input = fopen(argv[1], "r");
 	if(!input){
