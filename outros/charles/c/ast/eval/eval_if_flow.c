@@ -9,6 +9,6 @@ void * eval_if_flow(ifElseStatement * if_else_flow)
 	// The symbol
 	if(debugMode) 
 	{
-		printf("End of if flow declaration\n");
+		printf("End of if_flow declaration\n");
 	}
 }
