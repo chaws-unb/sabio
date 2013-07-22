@@ -4,13 +4,13 @@
 #include "../cGrammar.h"
 
 
-void parameter_type_list__parameter_list()
+void * parameter_type_list__parameter_list()
 {
 	
 }
 
 
-void parameter_type_list__parameter_list__COMMA__ELLIPSIS()
+void * parameter_type_list__parameter_list__COMMA__ELLIPSIS()
 {
 	
 }

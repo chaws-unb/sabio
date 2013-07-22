@@ -4,13 +4,13 @@
 #include "../cGrammar.h"
 
 
-void expression__assignment_expression()
+void * expression__assignment_expression()
 {
 	
 }
 
 
-void expression__expression__COMMA__assignment_expression()
+void * expression__expression__COMMA__assignment_expression()
 {
 	
 }

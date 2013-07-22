@@ -4,13 +4,13 @@
 #include "../cGrammar.h"
 
 
-void declaration_list__declaration()
+void * declaration_list__declaration()
 {
 	
 }
 
 
-void declaration_list__declaration_list__declaration()
+void * declaration_list__declaration_list__declaration()
 {
 	
 }

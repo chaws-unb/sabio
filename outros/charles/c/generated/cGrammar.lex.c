@@ -1085,44 +1085,44 @@ YY_RULE_SETUP
 case 35:
 YY_RULE_SETUP
 #line 55 "grammar_rules/cGrammar.l"
-{ count(); return(CONSTANT); }
+{ count(); yylval.number = atof(yytext); return(CONSTANT); }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
 #line 56 "grammar_rules/cGrammar.l"
-{ count(); return(CONSTANT); }
+{ count(); yylval.number = atof(yytext); return(CONSTANT); }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
 #line 57 "grammar_rules/cGrammar.l"
-{ count(); return(CONSTANT); }
+{ count(); yylval.number = atof(yytext); return(CONSTANT); }
 	YY_BREAK
 case 38:
 /* rule 38 can match eol */
 YY_RULE_SETUP
 #line 58 "grammar_rules/cGrammar.l"
-{ count(); return(CONSTANT); }
+{ count(); yylval.number = atof(yytext); return(CONSTANT); }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
 #line 60 "grammar_rules/cGrammar.l"
-{ count(); return(CONSTANT); }
+{ count(); yylval.number = atof(yytext); return(CONSTANT); }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
 #line 61 "grammar_rules/cGrammar.l"
-{ count(); return(CONSTANT); }
+{ count(); yylval.number = atof(yytext); return(CONSTANT); }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
 #line 62 "grammar_rules/cGrammar.l"
-{ count(); return(CONSTANT); }
+{ count(); yylval.number = atof(yytext); return(CONSTANT); }
 	YY_BREAK
 case 42:
 /* rule 42 can match eol */
 YY_RULE_SETUP
 #line 64 "grammar_rules/cGrammar.l"
-{ count(); return(STRING_LITERAL); }
+{ count(); yylval.string = strdup(yytext); return(STRING_LITERAL); }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP

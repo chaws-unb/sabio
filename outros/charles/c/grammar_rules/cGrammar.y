@@ -7,18 +7,22 @@
 /* Declare data types to be used */
 %union {
 	int fn;	
-	double d;
+	double number;
+	char * string;
 	struct _ast * tree;
 	struct _symbol * sym;
 	struct _symbolList * list;
-	char * string;
 }
 
 /* My declarations */
-%token <string> IDENTIFIER
+%token <string> IDENTIFIER STRING_LITERAL
+%token <number> CONSTANT
+
+%type <tree> direct_declarator declarator init_declarator_list init_declarator
+%type <tree> additive_expression multiplicative_expression cast_expression
 
 
-%token CONSTANT STRING_LITERAL SIZEOF
+%token SIZEOF
 %token PTR_OP INC_OP DEC_OP LEFT_OP RIGHT_OP LE_OP GE_OP EQ_OP NE_OP
 %token AND_OP OR_OP MUL_ASSIGN DIV_ASSIGN MOD_ASSIGN ADD_ASSIGN
 %token SUB_ASSIGN LEFT_ASSIGN RIGHT_ASSIGN AND_ASSIGN
@@ -34,8 +38,8 @@
 %%
 
 primary_expression
-	: IDENTIFIER 		 {printf(": primary_expression->IDENTIFIER\n");}
-	| CONSTANT   		 {printf(": primary_expression->CONSTANT\n");}
+	: IDENTIFIER 		 {primary_expression__IDENTIFIER($1);}
+	| CONSTANT   		 {primary_expression__CONSTANT($1);}
 	| STRING_LITERAL 	 {printf(": primary_expression->STRING_LITERAL\n");}
 	| '(' expression ')' {printf(": primary_expression->(expression)\n");}
 	;
@@ -87,9 +91,9 @@ multiplicative_expression
 	;
 
 additive_expression
-	: multiplicative_expression 						{printf(": additive_expression->multiplicative_expression\n");}
-	| additive_expression '+' multiplicative_expression {printf(": additive_expression->additive_expression + multiplicative_expression\n");}
-	| additive_expression '-' multiplicative_expression {printf(": additive_expression->additive_expression - multiplicative_expression\n");}
+	: multiplicative_expression 						{additive_expression__multiplicative_expression();}
+	| additive_expression '+' multiplicative_expression {additive_expression__additive_expression__PLUS__multiplicative_expression();}
+	| additive_expression '-' multiplicative_expression {additive_expression__additive_expression__MINUS__multiplicative_expression();}
 	;
 
 shift_expression
@@ -185,8 +189,8 @@ declaration_specifiers
 	;
 
 init_declarator_list
-	: init_declarator 						   {printf(": init_declarator_list->init_declarator\n");}
-	| init_declarator_list ',' init_declarator {printf(": init_declarator_list->init_declarator_list , init_declarator\n");}
+	: init_declarator 						   {$$ = init_declarator_list__init_declarator($1);}
+	| init_declarator_list ',' init_declarator {$$ = init_declarator_list__init_declarator_list__COMMA__init_declarator($1, $3);}
 	;
 
 init_declarator
@@ -203,18 +207,18 @@ storage_class_specifier
 	;
 
 type_specifier
-	: VOID 						{printf(": type_specifier->VOID\n");}
-	| CHAR 						{printf(": type_specifier->CHAR\n");}
-	| SHORT 					{printf(": type_specifier->SHORT\n");}
+	: VOID 						{type_specifier__VOID();}
+	| CHAR 						{type_specifier__CHAR();}
+	| SHORT 					{type_specifier__SHORT();}
 	| INT 						{type_specifier__INT();}
-	| LONG 						{printf(": type_specifier->LONG\n");}
-	| FLOAT 					{printf(": type_specifier->FLOAT\n");}
-	| DOUBLE 					{printf(": type_specifier->DOUBLE\n");}
-	| SIGNED 					{printf(": type_specifier->SIGNED\n");}
-	| UNSIGNED 					{printf(": type_specifier->UNSIGNED\n");}
-	| struct_or_union_specifier {printf(": type_specifier->struct_or_union_specifier\n");}
-	| enum_specifier 			{printf(": type_specifier->enum_specifier\n");}
-	| TYPE_NAME 				{printf(": type_specifier->TYPE_NAME\n");}
+	| LONG 						{type_specifier__LONG();}
+	| FLOAT 					{type_specifier__FLOAT();}
+	| DOUBLE 					{type_specifier__DOUBLE();}
+	| SIGNED 					{type_specifier__SIGNED();}
+	| UNSIGNED 					{type_specifier__UNSIGNED();}
+	| struct_or_union_specifier {type_specifier__struct_or_union_specifier();}
+	| enum_specifier 			{type_specifier__enum_specifier();}
+	| TYPE_NAME 				{type_specifier__TYPE_NAME();}
 	;
 
 struct_or_union_specifier
@@ -278,12 +282,12 @@ type_qualifier
 
 declarator
 	: pointer direct_declarator {printf(": declarator->pointer direct_declarator\n");}
-	| direct_declarator 		{printf(": declarator->direct_declarator\n");}
+	| direct_declarator 		{$$ = declarator__direct_declarator($1);}
 	;
 
 direct_declarator
-	: IDENTIFIER 									{direct_declarator__IDENTIFIER($1);}
-	| '(' declarator ')' 							{printf(": direct_declarator->( declarator )\n");}
+	: IDENTIFIER 									{$$ = direct_declarator__IDENTIFIER($1);}
+	| '(' declarator ')' 							{$$ = direct_declarator__OPP__declarator__CLP($2)}
 	| direct_declarator '[' constant_expression ']' {printf(": direct_declarator->direct_declarator [ constant_expression ]\n");}
 	| direct_declarator '[' ']' 					{printf(": direct_declarator->direct_declarator [ ]\n");}
 	| direct_declarator '(' parameter_type_list ')' {printf(": direct_declarator->direct_declarator ( parameter_type_list )\n");}

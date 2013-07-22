@@ -1,10 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include "ast/ast.h"
+
+#ifndef new
+	#define new(type) ((type *)malloc(sizeof(type)))
+#endif
 
 // Input
 extern FILE * yyin;
 extern int yylineno;
+
+extern programNode * mainProgram;
 
 int debugMode = 0;
 
@@ -18,7 +25,7 @@ int main(int argc, char ** argv)
 
 	int i = 1;
 	for(; i < argc; i++)
-		if(strcmp("-debug", argv[i]) == 0)
+		if(strcmp("--debug", argv[i]) == 0)
 			debugMode = 1;
 
 	FILE * input = fopen(argv[1], "r");
@@ -27,16 +34,31 @@ int main(int argc, char ** argv)
 		return -1;  
 	}
 
+	if(debugMode) printf("\n*** START-DEBUGMODE ***\n");
+
 	yyin = input;
 
-	// Faz todo parsing
-	printf("\n*** INICIO ***\n");
+	// Some initial work to grammar init correctly
+	initGrammar();
+
+	// Before building things, get a reference of the first AST, this is the root of it
+	programNode * root = mainProgram;
+
 	do
 	{
 		yyparse();
 	}while(!feof(yyin));
 
-	printf("\n*** FIM ***\n"); 
+	// Now, it's time to evaluate!!!
+	programNode * temp = root;
+	while(temp)
+	{
+		if(debugMode) printf("Evaluating %s...\n", genericType2String(temp->node->type));
+		eval(temp->node);
+		temp = temp->next;
+	}
+
+	if(debugMode) printf("\n*** END-DEBUGMODE ***\n"); 
 	fclose(input);
 
 	return 0;

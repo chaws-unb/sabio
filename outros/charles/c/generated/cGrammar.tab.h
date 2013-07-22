@@ -38,8 +38,8 @@
       know about them.  */
    enum yytokentype {
      IDENTIFIER = 258,
-     CONSTANT = 259,
-     STRING_LITERAL = 260,
+     STRING_LITERAL = 259,
+     CONSTANT = 260,
      SIZEOF = 261,
      PTR_OP = 262,
      INC_OP = 263,
@@ -108,11 +108,11 @@ typedef union YYSTYPE
 #line 8 "grammar_rules/cGrammar.y"
 
 	int fn;	
-	double d;
+	double number;
+	char * string;
 	struct _ast * tree;
 	struct _symbol * sym;
 	struct _symbolList * list;
-	char * string;
 
 
 

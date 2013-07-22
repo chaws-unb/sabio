@@ -4,13 +4,13 @@
 #include "../cGrammar.h"
 
 
-void struct_or_union__STRUCT()
+void * struct_or_union__STRUCT()
 {
 	
 }
 
 
-void struct_or_union__UNION()
+void * struct_or_union__UNION()
 {
 	
 }

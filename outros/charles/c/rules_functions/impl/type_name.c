@@ -4,13 +4,13 @@
 #include "../cGrammar.h"
 
 
-void type_name__specifier_qualifier_list()
+void * type_name__specifier_qualifier_list()
 {
 	
 }
 
 
-void type_name__specifier_qualifier_list__abstract_declarator()
+void * type_name__specifier_qualifier_list__abstract_declarator()
 {
 	
 }

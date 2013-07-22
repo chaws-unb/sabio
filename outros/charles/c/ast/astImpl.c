@@ -2,66 +2,187 @@
 #include <stdlib.h>
 #include <string.h>
 #include "ast.h"
-#define new(type) ((type *)malloc(sizeof(type)))
 
-ast * newAst(astType type, ast * left, ast * right)
+#ifndef new
+	#define new(type) ((type *)malloc(sizeof(type)))
+#endif
+
+programNode * newProgramNode(ast * tree)
 {
-	return NULL;
+	programNode * returned = new(programNode);
+	returned->node = tree;
+	returned->next = NULL;
+	return returned;
 }
 
-ast * newDeclaration(astType type, symbol * sym)
+ast * newAst(genericType type, ast * left, ast * right)
 {
-	return NULL;
+	ast * returned = new(ast);
+	returned->type = type;
+	returned->left = left;
+	returned->right = right;
+	return returned;
 }
 
-// Hash function
-static unsigned int symbolHash(char * symbolName)
+ast * newDeclaration(symbol * sym)
 {
-    unsigned int hash = 0;
-	unsigned char c;
+	declaration * decl = new(declaration);
+	decl->type = DECLARATION;
+	decl->sym = sym;
+	decl->expression = NULL;
+	return (ast *)decl;
+}
 
-	if(strlen(symbolName) > 5)
+ast * newConstant(double consValue)
+{
+	constant * cons = new(constant);
+	cons->type = _CONSTANT;
+	cons->value = consValue;
+	return (ast *)cons;
+}
+
+ast * newMathOperation(genericType type, ast * left, ast * right)
+{
+	mathOperation * op = new(mathOperation);
+	op->type = type;
+	op->left = left;
+	op->right = right;
+	return (ast *)op;
+}
+
+ast * newIdentifier(symbol * sym)
+{
+	identifier * id = new(identifier);
+	id->type = _IDENTIFIER
+	id->sym = sym;
+	return (ast *)id;
+}
+
+// This is the generic eval, I think it's better this way so everyone can
+// edit at the same time
+void * eval(ast * tree)
+{
+	if(!tree)
 	{
-		printf("Symbol name %s is too long for this program!\n", symbolName);
-		exit(0);
+		if(debugMode) printf("Error: empty tree!\n");
+		return NULL;
 	}
 
-	while(c = *symbolName++)
-		hash = hash * 9 ^ c;
+	switch(tree->type)
+	{
+		case ROOT: 			
+			break;
+		case DECLARATION:	return eval_declaration((declaration *)tree);
+		case _CONSTANT: 	return eval_constant((constant *)tree);
 
-	return hash;
+		case SUM:
+		case SUB:
+		case DIV:
+		case MUL:
+		case MOD:
+			return eval_mathOperation((mathOperation *)tree);
+
+		case _IDENTIFIER:
+			return eval_identifier((identifier *)tree);
+
+		default:
+			printf("Unknown node!\n");
+	}
+	return NULL;
 }
 
-// Look up for a symbol name, otherwise insert it
-symbol * lookup(char * symbolName)
+void freeAst(ast * tree)
 {
-	// % here means AVOID BUFFER OVERFLOW!!!
-	symbol * sym = &(symbolTable[symbolHash(symbolName) % MAX_HASH]);
+	// IF WE HAVE TIME WRITE THIS FUNCTION
+	// OTHERWISE, LET'S JUST RESTART OUR MACHINE IN CASE OF MEMORY ERROR 
+	// LOL
+}
 
-	// Counter to track how many looked symbols
-	//int scount = MAX_HASH;
+char * dataType2String(symbolDataType type)
+{
+	switch(type)
+	{
+		case _VOID:
+			return "void";
+			break;
 
-	//while(--scount >= 0)
-	//{
-		// Check if already exists
-		if(sym->name && !strcmp(sym->name, symbolName))
-			return sym;
+		case _CHAR:
+			return "char";
+			break;
 
-		// Ops, no name means empty set
-		//if(!sym->name)
-		//{
-			sym->name = strdup(symbolName);
-			sym->value = 0;
-			sym->function = NULL;
-			sym->symbols = NULL;
-			return sym;
-		//}
+		case _SHORT:
+			return "short";
+			break;
 
-		// Let's try next hash table entry
-		//if(++sym >= (symbolTable + MAX_HASH))
-		//	sym = symbolTable; // OK, this line is useless!!!
-	//}
+		case _INT:
+			return "int";
+			break;
 
-	//yyerror("Symbol Table overflow! Watch out! \n");
-	//abort();
+		case _FLOAT:
+			return "float";
+			break;
+
+		case _DOUBLE:
+			return "double";
+			break;
+	}
+	return "Unknown data type";
+}
+
+char * genericType2String(genericType type)
+{
+	switch(type)
+	{
+		case ROOT:					return "root";
+		case ASSIGNMENT:			return "assignemnt";
+		case DECLARATION: 			return "declaration";
+		case FUNCTION_DEFINITION:	return "function definition";
+		case IF_FLOW:				return "if";
+		case IF_ELSE_FLOW:			return "if/else";
+		case _CONSTANT:				return "constant";
+		case SUM:					return "sum";
+		case SUB:					return "sub";
+		case DIV:					return "div";
+		case MUL:					return "mul";
+		case MOD:					return "mod";
+		case _IDENTIFIER:			return "identifier";
+		case VARIABLE:				return "var";
+		case USER_FUNCTION:			return "user function";
+		case BUILT_FUNCTION:		return "built-in function";
+	}
+	return "Unknown data type";
+}
+
+void printSymbol(symbol * sym)
+{
+	printf("Data type = %s, ", dataType2String(sym->dataType));
+	printf("Name = %s, ", sym->name);
+
+	if(sym->value)
+	{
+		switch(sym->dataType)
+		{
+			case _VOID:
+				printf("Value = %p, ", sym->value);
+				break;
+
+			case _CHAR:
+				printf("Value = %c[%i], ", *(char *)sym->value, *(char *)sym->value);
+				break;
+
+			case _SHORT:
+				printf("Value = %i, ", *(short *)sym->value);
+				break;
+
+			case _INT:
+				printf("Value = %i, ", *(int *)sym->value);
+				break;
+
+			case _FLOAT:
+			case _DOUBLE:
+				printf("Value = %4.4g, ", *(double *)sym->value);
+				break;
+		}
+	}
+	printf("\n");
 }

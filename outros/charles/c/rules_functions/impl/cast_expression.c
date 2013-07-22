@@ -4,13 +4,13 @@
 #include "../cGrammar.h"
 
 
-void cast_expression__unary_expression()
+void * cast_expression__unary_expression()
 {
 	
 }
 
 
-void cast_expression__OPP__type_name__CLP()
+void * cast_expression__OPP__type_name__CLP()
 {
 	
 }
