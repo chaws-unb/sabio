@@ -53,7 +53,7 @@ ast * newMathOperation(genericType type, ast * left, ast * right)
 ast * newIdentifier(symbol * sym)
 {
 	identifier * id = new(identifier);
-	id->type = _IDENTIFIER
+	id->type = _IDENTIFIER;
 	id->sym = sym;
 	return (ast *)id;
 }

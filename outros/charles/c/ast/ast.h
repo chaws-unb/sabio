@@ -82,16 +82,8 @@ typedef enum
 	_SHORT,
 	_INT,
 	_FLOAT,
-<<<<<<< HEAD
-	_DOUBLE,
-	_IF_EXP_STMT,
-	_IF_EXP_STMT_ELSE,
-	_SWITCH
-} symbolType;
-=======
 	_DOUBLE
 } symbolDataType;
->>>>>>> 601b81755b97125b0534cf825df0e6d9180394ce
 
 /**
  *	Pre-definition of symbol and symbolList, once both need each other
