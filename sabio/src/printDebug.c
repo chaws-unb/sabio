@@ -1,8 +1,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "printDebug.h"
-#include "symbolTable.h"
+#include <printDebug.h>
+#include <symbolTable.h>
+#include <dataType.h>
 
 /* print the references
  * sort the table alphabetically
@@ -13,20 +14,27 @@
 /* aux function for sorting */
 static int symcompare(const void *xa, const void *xb)
 {
-  const symbol *a = xa;
-  const symbol *b = xb;
+	const symbol *a = xa;
+	const symbol *b = xb;
 
-  if(!a->symbolName) {
-    if(!b->symbolName) return 0;	/* both empty */
-    return 1;			/* put empties at the end */
-  }
-  if(!b->symbolName) return -1;
-  return strcmp(a->symbolName, b->symbolName);
+	if(!a->symbolName)
+	{
+		if(!b->symbolName)
+		{
+			return 0;	/* both empty */
+		}
+		return 1;			/* put empties at the end */
+	}
+	if(!b->symbolName)
+	{
+		return -1;
+	}
+	return strcmp(a->symbolName, b->symbolName);
 }
 
 void printReferences()
 {
-	symbol *sp;
+	symbol * sp = 0;
 
 	qsort(symbolTableHash, SIZE_SYMBOL_TABLE, sizeof(symbol), symcompare); /* Organiza a tabela de simbolo */
 

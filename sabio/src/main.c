@@ -2,13 +2,15 @@
  * @file main.c
  **/
 #include <stdio.h>
-#include "clexer.h"
-#include "dataType.h"
-#include "handleFile.h"
-#include "printDebug.h"
+#include <clexer.h>
+#include <dataType.h>
+#include <handleFile.h>
+#include <printDebug.h>
+#include <cparser.tab.h>
 
 int main(int argc, char **argv)
 {
+	/*
 	int i = 0;
 
 	if(argc < 2)
@@ -23,4 +25,7 @@ int main(int argc, char **argv)
 
 	printReferences();
 	return 0;
+	*/
+	printf("> "); 
+	return yyparse();
 }
