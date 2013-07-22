@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #ifndef new
-	#define new(type) ((type *)malloc(sizeof(type)))
+#define new(type) ((type *)malloc(sizeof(type)))
 #endif
 
 /**
@@ -27,7 +27,7 @@ typedef enum
 	FUNCTION_DEFINITION, // int func(int a) {return 0;}
 	IF_FLOW, 			 // if(1);
 	IF_ELSE_FLOW, 		 // if(1);else;
-	_SWITCH,
+	_SWITCH,			 // switch(1){case 1: stmt}
 	_CONSTANT,			 // 0,1,2,3...9
 
 	/**
@@ -146,6 +146,29 @@ typedef struct
 	symbol * sym;
 } identifier;
 
+
+/**
+* An AST to if(1){stmt} and if(1){stmt}else{stmt} statements
+*
+*/
+typedef struct
+{
+	genericType type;
+	ast * expression;
+	ast * ifTrue;
+	ast * _else;
+}ifElseStatement;
+
+/**
+* An AST to switch(1){case 1: stmt} statement
+*
+*/
+typedef struct
+{
+	genericType type;
+	symbol * sym;
+}switchStatement;
+
 /**
  *	Create a program node
  */
@@ -180,6 +203,11 @@ ast * newMathOperation(genericType type, ast * left, ast * right);
  *	A new identifier
  */
 ast * newIdentifier(symbol * sym);
+
+/**
+ *	A new selection_statement
+ */
+ast * newIfElseStatement(ast * expression, ast * ifTrue, ast * _else);
 
 /**
  *	Eval can result in anything

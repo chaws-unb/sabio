@@ -4,13 +4,13 @@
 #include "../cGrammar.h"
 
 
-void * selection_statement__IF__OPP__expression__CLP__statement()
+void * selection_statement__IF__OPP__expression__CLP__statement(ast * expression, ast * statement)
 {
 	if(debugMode)
 		printf(": selection_statement->IF ( expression ) statement\n");
 
-	//genericType = IF_FLOW;
-	
+	mainProgram->next = newProgramNode(newIfElseStatement(expression, statement, NULL));
+	mainProgram = mainProgram->next;
 }
 
 

@@ -19,7 +19,7 @@
 %token <number> CONSTANT
 
 %type <tree> direct_declarator declarator init_declarator_list init_declarator
-%type <tree> additive_expression multiplicative_expression cast_expression
+%type <tree> additive_expression multiplicative_expression cast_expression expression statement
 
 
 %token SIZEOF
@@ -401,9 +401,9 @@ expression_statement
 	;
 
 selection_statement
-	: IF '(' expression ')' statement {selection_statement__IF__OPP__expression__CLP__statement();}
-	| IF '(' expression ')' statement ELSE statement {selection_statement__IF__OPP__expression__CLP__statement__ELSE__statement();}
-	| SWITCH '(' expression ')' statement 			 {selection_statement__SWITCH__OPP__expression__CLP__statement();}
+	: IF '(' expression ')' statement { return selection_statement__IF__OPP__expression__CLP__statement($3, $5);}
+	| IF '(' expression ')' statement ELSE statement { return selection_statement__IF__OPP__expression__CLP__statement__ELSE__statement();}
+	| SWITCH '(' expression ')' statement 			 { return selection_statement__SWITCH__OPP__expression__CLP__statement();}
 	;
 
 iteration_statement

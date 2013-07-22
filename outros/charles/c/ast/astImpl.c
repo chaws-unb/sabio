@@ -58,6 +58,23 @@ ast * newIdentifier(symbol * sym)
 	return (ast *)id;
 }
 
+ast * newIfElseStatement(ast * expression, ast * ifTrue, ast * _else)
+{
+	ifElseStatement * _if = new(ifElseStatement);
+	_if->expression = expression;
+	_if->ifTrue = ifTrue;
+
+	if(_else)
+	{
+		_if->_else = _else;
+		_if->type = IF_ELSE_FLOW;
+		return (ast *)_if;
+	}
+
+	return (ast *)_if;
+
+}
+
 // This is the generic eval, I think it's better this way so everyone can
 // edit at the same time
 void * eval(ast * tree)
@@ -84,6 +101,9 @@ void * eval(ast * tree)
 
 		case _IDENTIFIER:
 			return eval_identifier((identifier *)tree);
+
+		case IF_FLOW:
+			return eval_if_flow((ifElseStatement*)tree);
 
 		default:
 			printf("Unknown node!\n");

@@ -26,7 +26,15 @@ int main(int argc, char ** argv)
 	int i = 1;
 	for(; i < argc; i++)
 		if(strcmp("--debug", argv[i]) == 0)
+		{
 			debugMode = 1;
+		}
+		//else
+		//{
+		//	printf("Ops, unknown argument!\n");
+		//	return -1; 
+		//}
+
 
 	FILE * input = fopen(argv[1], "r");
 	if(!input){
