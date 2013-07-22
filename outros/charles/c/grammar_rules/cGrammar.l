@@ -52,16 +52,16 @@ void count();
 
 {L}({L}|{D})*		{ count(); yylval.string = strdup(yytext); return(check_type()); }
 
-0[xX]{H}+{IS}?		{ count(); return(CONSTANT); }
-0{D}+{IS}?			{ count(); return(CONSTANT); }
-{D}+{IS}?			{ count(); return(CONSTANT); }
-L?'(\\.|[^\\'])+'	{ count(); return(CONSTANT); }
+0[xX]{H}+{IS}?		{ count(); yylval.number = atof(yytext); return(CONSTANT); }
+0{D}+{IS}?			{ count(); yylval.number = atof(yytext); return(CONSTANT); }
+{D}+{IS}?			{ count(); yylval.number = atof(yytext); return(CONSTANT); }
+L?'(\\.|[^\\'])+'	{ count(); yylval.number = atof(yytext); return(CONSTANT); }
 
-{D}+{E}{FS}?			{ count(); return(CONSTANT); }
-{D}*"."{D}+({E})?{FS}?	{ count(); return(CONSTANT); }
-{D}+"."{D}*({E})?{FS}?	{ count(); return(CONSTANT); }
+{D}+{E}{FS}?			{ count(); yylval.number = atof(yytext); return(CONSTANT); }
+{D}*"."{D}+({E})?{FS}?	{ count(); yylval.number = atof(yytext); return(CONSTANT); }
+{D}+"."{D}*({E})?{FS}?	{ count(); yylval.number = atof(yytext); return(CONSTANT); }
 
-L?\"(\\.|[^\\"])*\"	{ count(); return(STRING_LITERAL); }
+L?\"(\\.|[^\\"])*\"	{ count(); yylval.string = strdup(yytext); return(STRING_LITERAL); }
 
 "..."			{ count(); return(ELLIPSIS); }
 ">>="			{ count(); return(RIGHT_ASSIGN); }

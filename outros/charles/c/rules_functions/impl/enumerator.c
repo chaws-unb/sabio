@@ -4,13 +4,13 @@
 #include "../cGrammar.h"
 
 
-void enumerator__IDENTIFIER()
+void * enumerator__IDENTIFIER()
 {
 	
 }
 
 
-void enumerator__IDENTIFIER__EQ__constant_expression()
+void * enumerator__IDENTIFIER__EQ__constant_expression()
 {
 	
 }

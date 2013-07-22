@@ -1,14 +1,26 @@
 #include "../ast/ast.h"
+#ifndef new
+	#define new(type) ((type *)malloc(sizeof(type)))
+#endif
 
 // YEAH, I KNOW, GLOBAL VARS SUCK, BUT HAVE A BETTER IDEA IN THIS SHORT AVAILABLE TIME ?
-// Store current symbol type read by the parser y
-symbolType currentSymbolType;
+symbolDataType  currentSymbolDataType;
+symbol * 		currentSymbol;
+void * 			currentValue;
+ast * 			currentAst;
+programNode * 	mainProgram;
 
-// Store current symbol
-symbol * currentSymbol;
+void initGrammar()
+{
+	// Do some initial work
+	currentAst  	  = new(ast);
+	currentAst->type  = ROOT;
+	currentAst->left  = NULL;
+	currentAst->right = NULL;
 
-// Store current value: CAN BE ANYTHING, SINCE AN ACTUAL VALUE TO A WHOLE AST
-void * currentValue;
+	// Set a default data type
+	currentSymbolDataType = _VOID;
 
-// Store current AST
-ast * currentAst;
+	// Create initial node and set next = NULL
+	mainProgram = newProgramNode(currentAst);
+}

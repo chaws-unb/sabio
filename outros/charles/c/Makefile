@@ -35,7 +35,7 @@ GENERATED_SOURCES = $(wildcard $(DIR_GENERATED_FILES)/*c)
 
 # AUX = Ast, stack, hash and xml
 AUX_HEADERS = $(wildcard $(DIR_AST)/*h) $(wildcard $(DIR_STACK)/*h) $(wildcard $(DIR_HASH)/*h) $(wildcard $(DIR_XML)/*h)
-AUX_SOURCES = $(wildcard $(DIR_AST)/*c) $(wildcard $(DIR_STACK)/*c) $(wildcard $(DIR_HASH)/*c) $(wildcard $(DIR_XML)/*c)
+AUX_SOURCES = $(wildcard $(DIR_AST)/*c) $(wildcard $(DIR_AST)/eval/*c) $(wildcard $(DIR_STACK)/*c) $(wildcard $(DIR_HASH)/*c) $(wildcard $(DIR_XML)/*c)
 
 # Implementations of Rules functions
 RULES_HEADERS = $(wildcard $(DIR_RULES_FUNCTIONS)/cGrammar.h)

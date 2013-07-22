@@ -4,7 +4,7 @@
 #include "../cGrammar.h"
 
 
-void constant_expression__conditional_expression()
+void * constant_expression__conditional_expression()
 {
 	
 }

@@ -4,13 +4,13 @@
 #include "../cGrammar.h"
 
 
-void external_declaration__function_definition()
+void * external_declaration__function_definition()
 {
 	
 }
 
 
-void external_declaration__declaration()
+void * external_declaration__declaration()
 {
 	
 }

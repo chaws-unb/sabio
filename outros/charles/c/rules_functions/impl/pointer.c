@@ -4,25 +4,25 @@
 #include "../cGrammar.h"
 
 
-void pointer__STAR()
+void * pointer__STAR()
 {
 	
 }
 
 
-void pointer__STAR__type_qualifier_list()
+void * pointer__STAR__type_qualifier_list()
 {
 	
 }
 
 
-void pointer__STAR__pointer()
+void * pointer__STAR__pointer()
 {
 	
 }
 
 
-void pointer__STAR__type_qualifier_list__pointer()
+void * pointer__STAR__type_qualifier_list__pointer()
 {
 	
 }

@@ -4,13 +4,13 @@
 #include "../cGrammar.h"
 
 
-void enumerator_list__enumerator()
+void * enumerator_list__enumerator()
 {
 	
 }
 
 
-void enumerator_list__enumerator_list__COMMA__enumerator()
+void * enumerator_list__enumerator_list__COMMA__enumerator()
 {
 	
 }

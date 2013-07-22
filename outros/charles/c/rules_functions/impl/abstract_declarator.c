@@ -4,19 +4,19 @@
 #include "../cGrammar.h"
 
 
-void abstract_declarator__pointer()
+void * abstract_declarator__pointer()
 {
 	
 }
 
 
-void abstract_declarator__direct_abstract_declarator()
+void * abstract_declarator__direct_abstract_declarator()
 {
 	
 }
 
 
-void abstract_declarator__pointer__direct_abstract_declarator()
+void * abstract_declarator__pointer__direct_abstract_declarator()
 {
 	
 }
