@@ -38,8 +38,8 @@
 %%
 
 primary_expression
-	: IDENTIFIER 		 {primary_expression__IDENTIFIER($1);}
-	| CONSTANT   		 {primary_expression__CONSTANT($1);}
+	: IDENTIFIER 		 {return primary_expression__IDENTIFIER($1);}
+	| CONSTANT   		 {return primary_expression__CONSTANT($1);}
 	| STRING_LITERAL 	 {printf(": primary_expression->STRING_LITERAL\n");}
 	| '(' expression ')' {printf(": primary_expression->(expression)\n");}
 	;

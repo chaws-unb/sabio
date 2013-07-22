@@ -15,7 +15,8 @@ void * primary_expression__CONSTANT(double cons)
 	if(debugMode) printf(": primary_expression->CONSTANT\n");
 
 	// Crate the current value
-	currentValue = newConstant(cons);
+	mainProgram->next = newProgramNode(newConstant(cons));
+	mainProgram = mainProgram->next;
 }
 
 

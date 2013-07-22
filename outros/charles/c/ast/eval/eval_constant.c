@@ -6,5 +6,8 @@
 
 void * eval_constant(constant * cons)
 {
+	if(debugMode)
+		printf("Evaluating constant. Value = %.2f", *(&cons->value));
+	
 	return &cons->value;
 }
