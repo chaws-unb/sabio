@@ -27,7 +27,7 @@ typedef enum
 	FUNCTION_DEFINITION, // int func(int a) {return 0;}
 	IF_FLOW, 			 // if(1);
 	IF_ELSE_FLOW, 		 // if(1);else;
-	SWITCH,
+	_SWITCH,
 	_CONSTANT,			 // 0,1,2,3...9
 
 	/**

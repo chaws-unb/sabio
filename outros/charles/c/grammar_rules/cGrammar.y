@@ -287,7 +287,7 @@ declarator
 
 direct_declarator
 	: IDENTIFIER 									{$$ = direct_declarator__IDENTIFIER($1);}
-	| '(' declarator ')' 							{$$ = direct_declarator__OPP__declarator__CLP($2)}
+	| '(' declarator ')' 							{$$ = direct_declarator__OPP__declarator__CLP($2);}
 	| direct_declarator '[' constant_expression ']' {printf(": direct_declarator->direct_declarator [ constant_expression ]\n");}
 	| direct_declarator '[' ']' 					{printf(": direct_declarator->direct_declarator [ ]\n");}
 	| direct_declarator '(' parameter_type_list ')' {printf(": direct_declarator->direct_declarator ( parameter_type_list )\n");}
