@@ -397,9 +397,9 @@ expression_statement
 	;
 
 selection_statement
-	: IF '(' expression ')' statement 				 {printf(": selection_statement->IF ( expression ) statement\n");}
-	| IF '(' expression ')' statement ELSE statement {printf(": selection_statement->IF ( expression ) statement ELSE statement\n");}
-	| SWITCH '(' expression ')' statement 			 {printf(": selection_statement->SWITCH ( expression ) statement\n");}
+	: IF '(' expression ')' statement {selection_statement__IF__OPP__expression__CLP__statement();}
+	| IF '(' expression ')' statement ELSE statement {selection_statement__IF__OPP__expression__CLP__statement__ELSE__statement();}
+	| SWITCH '(' expression ')' statement 			 {selection_statement__SWITCH__OPP__expression__CLP__statement();}
 	;
 
 iteration_statement

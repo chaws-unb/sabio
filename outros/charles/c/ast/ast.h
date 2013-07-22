@@ -36,7 +36,10 @@ typedef enum
 	_SHORT,
 	_INT,
 	_FLOAT,
-	_DOUBLE
+	_DOUBLE,
+	_IF_EXP_STMT,
+	_IF_EXP_STMT_ELSE,
+	_SWITCH
 } symbolType;
 
 typedef struct _symbol symbol;

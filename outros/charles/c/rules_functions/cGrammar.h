@@ -41,6 +41,8 @@ extern ast * currentAst;
 *	PERC = '%
 *	SLASH = '/'
 *	EQ = '='
+*	STMT = 'statement'
+*	EXP = 'expression'
 *	
 *	and so on...
 */
