@@ -85,6 +85,7 @@ void * eval(ast * tree)
 	switch(tree->type)
 	{
 		case ROOT: 			
+		case EMPTY: 			
 			break;
 		case DECLARATION:	return eval_declaration((declaration *)tree);
 		case _CONSTANT: 	return eval_constant((constant *)tree);
@@ -105,7 +106,6 @@ void * eval(ast * tree)
 		default:
 			printf("Unknown node!\n");
 	}
-	printf("Returning eval...\n");
 	return NULL;
 }
 
@@ -152,6 +152,7 @@ char * genericType2String(genericType type)
 	switch(type)
 	{
 		case ROOT:					return "root";
+		case EMPTY:					return "empy";
 		case ASSIGNMENT:			return "assignemnt";
 		case DECLARATION: 			return "declaration";
 		case FUNCTION_DEFINITION:	return "function definition";

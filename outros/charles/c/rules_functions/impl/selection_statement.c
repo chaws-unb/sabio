@@ -8,18 +8,18 @@ void * selection_statement__IF__OPP__expression__CLP__statement(ast * expr, ast 
 {
 	if(debugMode)
 		printf(": selection_statement->IF ( expression ) statement\n");
-	printf("Expression = %i\n", (int)((constant *)expr)->value);
+
 	mainProgram->next = newProgramNode(newIfStatement(expr, state, NULL));
 	mainProgram = mainProgram->next;
 }
 
 
-void * selection_statement__IF__OPP__expression__CLP__statement__ELSE__statement(ast * expression, ast * statement, ast * _else)
+void * selection_statement__IF__OPP__expression__CLP__statement__ELSE__statement(ast * expr, ast * state, ast * elseStmt)
 {
 	if(debugMode)
 		printf(": selection_statement->IF ( expression ) statement ELSE statement\n");
 
-	mainProgram->next = newProgramNode(newIfStatement(expression, statement, _else));
+	mainProgram->next = newProgramNode(newIfStatement(expr, state, elseStmt));
 	mainProgram = mainProgram->next;
 }
 

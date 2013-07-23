@@ -8,16 +8,16 @@ void * expression_statement__SEMICOLON()
 {
 	if(debugMode) printf(" : expression_statement->;\n");
 
-	
+	ast * tree = newAst(EMPTY, NULL, NULL);
 
 	// Make this node as the next step of previous AST
-	mainProgram->next = newProgramNode(newAst(EMPTY, NULL, NULL));
+	mainProgram->next = newProgramNode(tree);
 
 	// Now, the current tree is this node
 	// Remember the first tree is stored in main.c for later evaluation hehe
 	mainProgram = mainProgram->next;
 
-	return NULL;
+	return tree;
 }
 
 void * expression_statement__expression__SEMICOLON(ast * expr)
