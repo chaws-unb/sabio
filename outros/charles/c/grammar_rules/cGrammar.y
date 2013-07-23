@@ -20,7 +20,8 @@
 
 %type <tree> direct_declarator declarator init_declarator_list init_declarator
 %type <tree> additive_expression multiplicative_expression cast_expression expression statement
-%type <tree> equality_expression relational_expression
+%type <tree> equality_expression relational_expression primary_expression declaration declaration_specifiers
+%type <tree> type_specifier compound_statement expression_statement selection_statement
 
 
 %token SIZEOF
@@ -39,8 +40,8 @@
 %%
 
 primary_expression
-	: IDENTIFIER 		 {return primary_expression__IDENTIFIER($1);}
-	| CONSTANT   		 {primary_expression__CONSTANT($1);}
+	: IDENTIFIER 		 {$$ = primary_expression__IDENTIFIER($1);}
+	| CONSTANT   		 {$$ = primary_expression__CONSTANT($1);}
 	| STRING_LITERAL 	 {printf(": primary_expression->STRING_LITERAL\n");}
 	| '(' expression ')' {printf(": primary_expression->(expression)\n");}
 	;
@@ -92,9 +93,9 @@ multiplicative_expression
 	;
 
 additive_expression
-	: multiplicative_expression 						{additive_expression__multiplicative_expression();}
-	| additive_expression '+' multiplicative_expression {additive_expression__additive_expression__PLUS__multiplicative_expression();}
-	| additive_expression '-' multiplicative_expression {additive_expression__additive_expression__MINUS__multiplicative_expression();}
+	: multiplicative_expression 						{$$ = additive_expression__multiplicative_expression();}
+	| additive_expression '+' multiplicative_expression {$$ = additive_expression__additive_expression__PLUS__multiplicative_expression();}
+	| additive_expression '-' multiplicative_expression {$$ = additive_expression__additive_expression__MINUS__multiplicative_expression();}
 	;
 
 shift_expression
@@ -113,7 +114,7 @@ relational_expression
 
 equality_expression
 	: relational_expression 						  {printf(": equality_expression->relational_expression\n");}
-	| equality_expression EQ_OP relational_expression {printf("EQ_OP\n"); return equality_expression__equality_expression__EQ_OP__relational_expression($1, $3);}
+	| equality_expression EQ_OP relational_expression {printf("EQ_OP\n"); equality_expression__equality_expression__EQ_OP__relational_expression($1, $3);}
 	| equality_expression NE_OP relational_expression {printf(": equality_expression->equality_expression != relational_expression\n");}
 	;
 
@@ -177,14 +178,14 @@ constant_expression
 
 declaration
 	: declaration_specifiers ';' 					  {printf(": declaration->declaration_specifiers ;\n");}
-	| declaration_specifiers init_declarator_list ';' {declaration__declaration_specifiers__init_declarator_list__SEMICOLON();}
+	| declaration_specifiers init_declarator_list ';' {$$ = declaration__declaration_specifiers__init_declarator_list__SEMICOLON();}
 	;
 
 declaration_specifiers
 	: storage_class_specifier 						 {printf(": declaration_specifiers->storage_class_specifier\n");}
 	| storage_class_specifier declaration_specifiers {printf(": declaration_specifiers->storage_class_specifier declaration_specifiers\n");}
-	| type_specifier								 {declaration_specifiers__type_specifier();}
-	| type_specifier declaration_specifiers	 		 {declaration_specifiers__type_specifier__declaration_specifiers();}
+	| type_specifier								 {$$ = declaration_specifiers__type_specifier();}
+	| type_specifier declaration_specifiers	 		 {$$ = declaration_specifiers__type_specifier__declaration_specifiers();}
 	| type_qualifier 								 {printf(": declaration_specifiers->type_qualifier\n");}
 	| type_qualifier declaration_specifiers 		 {printf(": declaration_specifiers->type_qualifier declaration_specifiers\n");}
 	;
@@ -208,18 +209,18 @@ storage_class_specifier
 	;
 
 type_specifier
-	: VOID 						{type_specifier__VOID();}
-	| CHAR 						{type_specifier__CHAR();}
-	| SHORT 					{type_specifier__SHORT();}
-	| INT 						{type_specifier__INT();}
-	| LONG 						{type_specifier__LONG();}
-	| FLOAT 					{type_specifier__FLOAT();}
-	| DOUBLE 					{type_specifier__DOUBLE();}
-	| SIGNED 					{type_specifier__SIGNED();}
-	| UNSIGNED 					{type_specifier__UNSIGNED();}
-	| struct_or_union_specifier {type_specifier__struct_or_union_specifier();}
-	| enum_specifier 			{type_specifier__enum_specifier();}
-	| TYPE_NAME 				{type_specifier__TYPE_NAME();}
+	: VOID 						{$$ = type_specifier__VOID();}
+	| CHAR 						{$$ = type_specifier__CHAR();}
+	| SHORT 					{$$ = type_specifier__SHORT();}
+	| INT 						{$$ = type_specifier__INT();}
+	| LONG 						{$$ = type_specifier__LONG();}
+	| FLOAT 					{$$ = type_specifier__FLOAT();}
+	| DOUBLE 					{$$ = type_specifier__DOUBLE();}
+	| SIGNED 					{$$ = type_specifier__SIGNED();}
+	| UNSIGNED 					{$$ = type_specifier__UNSIGNED();}
+	| struct_or_union_specifier {$$ = type_specifier__struct_or_union_specifier();}
+	| enum_specifier 			{$$ = type_specifier__enum_specifier();}
+	| TYPE_NAME 				{$$ = type_specifier__TYPE_NAME();}
 	;
 
 struct_or_union_specifier
@@ -293,7 +294,7 @@ direct_declarator
 	| direct_declarator '[' ']' 					{printf(": direct_declarator->direct_declarator [ ]\n");}
 	| direct_declarator '(' parameter_type_list ')' {printf(": direct_declarator->direct_declarator ( parameter_type_list )\n");}
 	| direct_declarator '(' identifier_list ')' 	{printf(": direct_declarator->direct_declarator ( identifier_list )\n");}
-	| direct_declarator '(' ')' 					{direct_declarator__direct_declarator__OPP__CLP();}
+	| direct_declarator '(' ')' 					{$$ = direct_declarator__direct_declarator__OPP__CLP();}
 	;
 
 pointer
@@ -367,7 +368,7 @@ initializer_list
 statement
 	: labeled_statement    {printf(": statement->labeled_statement\n");}
 	| compound_statement   {printf(": statement->compound_statement\n");}
-	| expression_statement {statement__expression_statement();}
+	| expression_statement {$$ = statement__expression_statement();}
 	| selection_statement  {printf(": statement->selection_statement\n");}
 	| iteration_statement  {printf(": statement->iteration_statement\n");}
 	| jump_statement       {printf(": statement->jump_statement\n");}
@@ -380,7 +381,7 @@ labeled_statement
 	;
 
 compound_statement
-	: '{' '}' 								  {compound_statement__OPB__CLB();}
+	: '{' '}' 								  {$$ = compound_statement__OPB__CLB();}
 	| '{' statement_list '}' 				  {printf(": compound_statement->{ statement_list }\n");}
 	| '{' declaration_list '}' 				  {printf(": compound_statement->{ declaration_list }\n");}
 	| '{' declaration_list statement_list '}' {printf(": compound_statement->{ declaration_list statement_list }\n");}
@@ -397,14 +398,14 @@ statement_list
 	;
 
 expression_statement
-	: ';' 			 {expression_statement__SEMICOLON();}
-	| expression ';' {expression_statement__expression__SEMICOLON();}
+	: ';' 			 {$$ = expression_statement__SEMICOLON();}
+	| expression ';' {$$ = expression_statement__expression__SEMICOLON();}
 	;
 
 selection_statement
-	: IF '(' expression ')' statement { return selection_statement__IF__OPP__expression__CLP__statement($3, $5);}
-	| IF '(' expression ')' statement ELSE statement { return selection_statement__IF__OPP__expression__CLP__statement__ELSE__statement($3, $5, $7);}
-	| SWITCH '(' expression ')' statement 			 { return selection_statement__SWITCH__OPP__expression__CLP__statement();}
+	: IF '(' expression ')' statement {$$ =  selection_statement__IF__OPP__expression__CLP__statement($3, $5);}
+	| IF '(' expression ')' statement ELSE statement { $$ =  selection_statement__IF__OPP__expression__CLP__statement__ELSE__statement($3, $5, $7);}
+	| SWITCH '(' expression ')' statement 			 { $$ =  selection_statement__SWITCH__OPP__expression__CLP__statement();}
 	;
 
 iteration_statement
