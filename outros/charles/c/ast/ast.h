@@ -25,8 +25,7 @@ typedef enum
 	ASSIGNMENT,		 	 // a = b; a = func(); etc
 	DECLARATION, 		 // int a; 
 	FUNCTION_DEFINITION, // int func(int a) {return 0;}
-	IF_FLOW, 			 // if(1);
-	IF_ELSE_FLOW, 		 // if(1);else;
+	IF_FLOW, 			 // if(1);[else;]
 	_SWITCH,			 // switch(1){case 1: stmt}
 	_CONSTANT,			 // 0,1,2,3...9
 
@@ -154,10 +153,10 @@ typedef struct
 typedef struct
 {
 	genericType type;
-	ast * expression;
+	ast * expr;
 	ast * ifTrue;
-	ast * _else;
-}ifElseStatement;
+	ast * ifFalse;
+}ifStatement;
 
 /**
 * An AST to switch(1){case 1: stmt} statement
@@ -207,7 +206,7 @@ ast * newIdentifier(symbol * sym);
 /**
  *	A new selection_statement
  */
-ast * newIfElseStatement(ast * expression, ast * ifTrue, ast * _else);
+ast * newIfStatement(ast * expression, ast * ifTrue, ast * ifFalse);
 
 /**
  *	Eval can result in anything
@@ -223,6 +222,7 @@ void * eval_root(ast * tree);
 void * eval_declaration(declaration * decl);
 void * eval_constant(constant * cons);
 void * eval_mathOperation(mathOperation * op);
+void * eval_ifStatement(ifStatement * ifStmt);
 
 /**
  *	Create types

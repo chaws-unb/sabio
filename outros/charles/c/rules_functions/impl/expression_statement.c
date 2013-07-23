@@ -14,7 +14,6 @@ void * expression_statement__SEMICOLON()
 	mainProgram = mainProgram->next;
 }
 
-
 void * expression_statement__expression__SEMICOLON(ast * expr)
 {
 	if(debugMode) printf(" : expression_statement->expression ;\n");

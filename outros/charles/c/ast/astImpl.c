@@ -58,20 +58,17 @@ ast * newIdentifier(symbol * sym)
 	return (ast *)id;
 }
 
-ast * newIfElseStatement(ast * expression, ast * ifTrue, ast * _else)
+ast * newIfStatement(ast * expr, ast * ifTrue, ast * ifFalse)
 {
-	ifElseStatement * _if = new(ifElseStatement);
-	_if->expression = expression;
-	_if->ifTrue = ifTrue;
-	_if->type= IF_FLOW;
+	ifStatement * ifStmt = new(ifStatement);
+	ifStmt->type= IF_FLOW;
+	ifStmt->expr = expr;
+	ifStmt->ifTrue = ifTrue;
 
-	if(_else)
-	{
-		_if->_else = _else;
-	}
+	if(ifFalse)
+		ifStmt->ifFalse = ifFalse;
 
-	return (ast *)_if;
-
+	return (ast *)ifStmt;
 }
 
 // This is the generic eval, I think it's better this way so everyone can
@@ -102,7 +99,7 @@ void * eval(ast * tree)
 			return eval_identifier((identifier *)tree);
 
 		case IF_FLOW:
-			return eval_if_flow((ifElseStatement*)tree);
+			return eval_ifStatement((ifStatement*)tree);
 
 		default:
 			printf("Unknown node!\n");
@@ -156,8 +153,7 @@ char * genericType2String(genericType type)
 		case ASSIGNMENT:			return "assignemnt";
 		case DECLARATION: 			return "declaration";
 		case FUNCTION_DEFINITION:	return "function definition";
-		case IF_FLOW:				return "if";
-		case IF_ELSE_FLOW:			return "if/else";
+		case IF_FLOW:				return "if[else]";
 		case _CONSTANT:				return "constant";
 		case SUM:					return "sum";
 		case SUB:					return "sub";
