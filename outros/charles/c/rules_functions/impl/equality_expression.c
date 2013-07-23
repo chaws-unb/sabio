@@ -10,9 +10,9 @@ void * equality_expression__relational_expression()
 }
 
 
-void * equality_expression__equality_expression__EQ_OP__relational_expression()
+void * equality_expression__equality_expression__EQ_OP__relational_expression(ast * equality_expression, ast * relational_expression)
 {
-	
+	if(debugMode) printf(": equality_expression->equality_expression == relational_expression\n");
 }
 
 

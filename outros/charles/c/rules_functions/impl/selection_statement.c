@@ -14,12 +14,13 @@ void * selection_statement__IF__OPP__expression__CLP__statement(ast * expression
 }
 
 
-void * selection_statement__IF__OPP__expression__CLP__statement__ELSE__statement()
+void * selection_statement__IF__OPP__expression__CLP__statement__ELSE__statement(ast * expression, ast * statement, ast * _else)
 {
 	if(debugMode)
 		printf(": selection_statement->IF ( expression ) statement ELSE statement\n");
 
-	//genericType = IF_ELSE_FLOW;
+	mainProgram->next = newProgramNode(newIfElseStatement(expression, statement, _else));
+	mainProgram = mainProgram->next;
 }
 
 

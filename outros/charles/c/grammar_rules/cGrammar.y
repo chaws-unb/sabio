@@ -20,6 +20,7 @@
 
 %type <tree> direct_declarator declarator init_declarator_list init_declarator
 %type <tree> additive_expression multiplicative_expression cast_expression expression statement
+%type <tree> equality_expression relational_expression
 
 
 %token SIZEOF
@@ -112,7 +113,7 @@ relational_expression
 
 equality_expression
 	: relational_expression 						  {printf(": equality_expression->relational_expression\n");}
-	| equality_expression EQ_OP relational_expression {printf(": equality_expression->equality_expression == relational_expression\n");}
+	| equality_expression EQ_OP relational_expression {printf("EQ_OP\n"); return equality_expression__equality_expression__EQ_OP__relational_expression($1, $3);}
 	| equality_expression NE_OP relational_expression {printf(": equality_expression->equality_expression != relational_expression\n");}
 	;
 
@@ -366,7 +367,7 @@ initializer_list
 statement
 	: labeled_statement    {printf(": statement->labeled_statement\n");}
 	| compound_statement   {printf(": statement->compound_statement\n");}
-	| expression_statement {printf(": statement->expression_statement\n");}
+	| expression_statement {statement__expression_statement();}
 	| selection_statement  {printf(": statement->selection_statement\n");}
 	| iteration_statement  {printf(": statement->iteration_statement\n");}
 	| jump_statement       {printf(": statement->jump_statement\n");}
@@ -396,13 +397,13 @@ statement_list
 	;
 
 expression_statement
-	: ';' 			 {printf(": expression_statement->;\n");}
-	| expression ';' {printf(": expression_statement->expression ;\n");}
+	: ';' 			 {expression_statement__SEMICOLON();}
+	| expression ';' {expression_statement__expression__SEMICOLON();}
 	;
 
 selection_statement
 	: IF '(' expression ')' statement { return selection_statement__IF__OPP__expression__CLP__statement($3, $5);}
-	| IF '(' expression ')' statement ELSE statement { return selection_statement__IF__OPP__expression__CLP__statement__ELSE__statement();}
+	| IF '(' expression ')' statement ELSE statement { return selection_statement__IF__OPP__expression__CLP__statement__ELSE__statement($3, $5, $7);}
 	| SWITCH '(' expression ')' statement 			 { return selection_statement__SWITCH__OPP__expression__CLP__statement();}
 	;
 
