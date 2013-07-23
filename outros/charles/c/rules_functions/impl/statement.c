@@ -16,10 +16,10 @@ void * statement__compound_statement()
 }
 
 
-void * statement__expression_statement()
+void * statement__expression_statement(ast * expr)
 {
-	printf(" : statement->expression_statement\n");
-	
+	if(debugMode) printf(" : statement->expression_statement\n");
+	return expr;
 }
 
 

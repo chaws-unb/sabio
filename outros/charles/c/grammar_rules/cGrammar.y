@@ -370,7 +370,7 @@ initializer_list
 statement
 	: labeled_statement    {printf(": statement->labeled_statement\n");}
 	| compound_statement   {printf(": statement->compound_statement\n");}
-	| expression_statement {$$ = statement__expression_statement();}
+	| expression_statement {$$ = statement__expression_statement($1);}
 	| selection_statement  {printf(": statement->selection_statement\n");}
 	| iteration_statement  {printf(": statement->iteration_statement\n");}
 	| jump_statement       {printf(": statement->jump_statement\n");}
@@ -401,7 +401,7 @@ statement_list
 
 expression_statement
 	: ';' 			 {$$ = expression_statement__SEMICOLON();}
-	| expression ';' {$$ = expression_statement__expression__SEMICOLON();}
+	| expression ';' {$$ = expression_statement__expression__SEMICOLON($1);}
 	;
 
 selection_statement
