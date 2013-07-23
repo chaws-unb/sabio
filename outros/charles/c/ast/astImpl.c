@@ -60,8 +60,9 @@ ast * newIdentifier(symbol * sym)
 
 ast * newIfStatement(ast * expr, ast * ifTrue, ast * ifFalse)
 {
+	if(debugMode) printf("Creating new IF_FLOW\n");
 	ifStatement * ifStmt = new(ifStatement);
-	ifStmt->type= IF_FLOW;
+	ifStmt->type = IF_FLOW;
 	ifStmt->expr = expr;
 	ifStmt->ifTrue = ifTrue;
 
@@ -104,6 +105,7 @@ void * eval(ast * tree)
 		default:
 			printf("Unknown node!\n");
 	}
+	printf("Returning eval...\n");
 	return NULL;
 }
 

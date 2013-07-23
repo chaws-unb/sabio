@@ -4,12 +4,12 @@
 #include "../cGrammar.h"
 
 
-void * selection_statement__IF__OPP__expression__CLP__statement(ast * expression, ast * statement)
+void * selection_statement__IF__OPP__expression__CLP__statement(ast * expr, ast * state)
 {
 	if(debugMode)
 		printf(": selection_statement->IF ( expression ) statement\n");
-
-	mainProgram->next = newProgramNode(newIfStatement(expression, statement, NULL));
+	printf("Expression = %i\n", (int)((constant *)expr)->value);
+	mainProgram->next = newProgramNode(newIfStatement(expr, state, NULL));
 	mainProgram = mainProgram->next;
 }
 

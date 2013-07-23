@@ -22,6 +22,7 @@ extern int debugMode;
 typedef enum
 {
 	ROOT = 1,			 // First ast ever
+	EMPTY,			 	 // Empty statement
 	ASSIGNMENT,		 	 // a = b; a = func(); etc
 	DECLARATION, 		 // int a; 
 	FUNCTION_DEFINITION, // int func(int a) {return 0;}

@@ -405,7 +405,7 @@ expression_statement
 	;
 
 selection_statement
-	: IF '(' expression ')' statement {$$ =  selection_statement__IF__OPP__expression__CLP__statement($3, $5);}
+	: IF '(' expression ')' statement {$$ = selection_statement__IF__OPP__expression__CLP__statement($3, $5);}
 	| IF '(' expression ')' statement ELSE statement { $$ =  selection_statement__IF__OPP__expression__CLP__statement__ELSE__statement($3, $5, $7);}
 	| SWITCH '(' expression ')' statement 			 { $$ =  selection_statement__SWITCH__OPP__expression__CLP__statement();}
 	;

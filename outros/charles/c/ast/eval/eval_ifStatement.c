@@ -5,6 +5,8 @@
 
 void * eval_ifStatement(ifStatement * ifStmt)
 {
+	printf("Chamando a bagaca!!!\n");
+	return NULL;
 	int expressionResult = (int)(*(double *)eval(ifStmt->expr));
 
 	if(expressionResult)
