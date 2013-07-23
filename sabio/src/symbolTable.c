@@ -13,7 +13,7 @@ static unsigned calcHash(char * _nameForHash)
 	unsigned int hashTmp = 0;
 	unsigned character = 0;
 
-	while(character = *_nameForHash++)
+	while((character = *_nameForHash++))
 	{
 		hashTmp = hashTmp * HASH_CALC ^ character;
 	}

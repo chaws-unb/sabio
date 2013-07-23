@@ -1,0 +1,15 @@
+====================================================================================================
+============================= LISTA DE PROBLEMAS E SOLUÇÕES USADAS =================================
+====================================================================================================
+
+===== yyunput =====
+1 - Problema:
+warning: ‘yyunput’ defined but not used
+2 - Solução:
+Adicione %option nounput no arquivo .l
+
+===== yyparse =====
+1 - Problema:
+warning: implicit declaration of function ‘yyparse’
+2 - Solução:
+No arquivo que dipara o warning adicione: extern int yyparse (void);

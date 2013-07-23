@@ -8,9 +8,10 @@
 #include <printDebug.h>
 #include <cparser.tab.h>
 
+extern int yyparse (void);
+
 int main(int argc, char **argv)
 {
-	/*
 	int i = 0;
 
 	if(argc < 2)
@@ -24,8 +25,9 @@ int main(int argc, char **argv)
 	}
 
 	printReferences();
+
+
+	yyparse();
+
 	return 0;
-	*/
-	printf("> "); 
-	return yyparse();
 }

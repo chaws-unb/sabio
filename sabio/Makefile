@@ -46,7 +46,7 @@ sabio: lexerCode bisonCode $(CSOURCES:src/%.c=obj/%.o) confBuild
 	@echo "________________________________________________"
 	@echo "### Build binary ###"
 
-	$(CC) $(PACKBUILD)/lexer.lex.c build/cparser.tab.c $(PACKBUILD)/*.o -o bin/$@ -I./$(PACKBUILD) $(LEXFLAGS) $(CFLAGS) -I./build -lm
+	$(CC) $(PACKBUILD)/lexer.lex.c build/cparser.tab.c $(PACKBUILD)/*.o -o bin/$@ $(LEXFLAGS) $(CFLAGS) -I./$(PACKBUILD) -I./build -lm
 	@echo "________________________________________________"
 
 # Generate lexer Code
@@ -54,8 +54,7 @@ lexerCode: $(LEXSOURCES)
 	@echo "_______________________________________________"
 	@echo "### Generate C code with flex ###"
 
-	$(LEXER) -o $(PACKBUILD)/lexer.lex.c $^
-	mv clexer.h build/clexer.h
+	$(LEXER) --outfile=$(PACKBUILD)/lexer.lex.c $^
 	@echo "_______________________________________________"
 
 # Generate bison Code
