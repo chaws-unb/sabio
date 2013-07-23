@@ -4,9 +4,10 @@
 #include "../cGrammar.h"
 
 
-void * multiplicative_expression__cast_expression()
+void * multiplicative_expression__cast_expression(ast * expr)
 {
-	
+	if(debugMode) printf(": multiplicative_expression->cast_expression\n");
+	return expr;
 }
 
 

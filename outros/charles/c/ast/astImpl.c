@@ -63,13 +63,11 @@ ast * newIfElseStatement(ast * expression, ast * ifTrue, ast * _else)
 	ifElseStatement * _if = new(ifElseStatement);
 	_if->expression = expression;
 	_if->ifTrue = ifTrue;
-	_if->type= IF_ELSE_FLOW;
+	_if->type= IF_FLOW;
 
 	if(_else)
 	{
 		_if->_else = _else;
-		_if->type = IF_ELSE_FLOW;
-		return (ast *)_if;
 	}
 
 	return (ast *)_if;
@@ -104,9 +102,6 @@ void * eval(ast * tree)
 			return eval_identifier((identifier *)tree);
 
 		case IF_FLOW:
-			return eval_if_flow((ifElseStatement*)tree);
-
-		case IF_ELSE_FLOW:
 			return eval_if_flow((ifElseStatement*)tree);
 
 		default:

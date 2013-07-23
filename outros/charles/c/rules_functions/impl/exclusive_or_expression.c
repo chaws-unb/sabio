@@ -4,9 +4,10 @@
 #include "../cGrammar.h"
 
 
-void * exclusive_or_expression__and_expression()
+void * exclusive_or_expression__and_expression(ast * expr)
 {
-	
+	if(debugMode) printf(": exclusive_or_expression->and_expression\n");
+	return expr;
 }
 
 

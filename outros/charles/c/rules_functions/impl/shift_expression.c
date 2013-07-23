@@ -4,9 +4,10 @@
 #include "../cGrammar.h"
 
 
-void * shift_expression__additive_expression()
+void * shift_expression__additive_expression(ast * expr)
 {
-	
+	if(debugMode) printf(": shift_expression->additive_expression\n");
+	return expr;
 }
 
 

@@ -4,9 +4,10 @@
 #include "../cGrammar.h"
 
 
-void * equality_expression__relational_expression()
+void * equality_expression__relational_expression(ast * expr)
 {
-	
+	if(debugMode) printf(": equality_expression->relational_expression\n");
+	return expr;
 }
 
 

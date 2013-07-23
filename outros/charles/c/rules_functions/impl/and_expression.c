@@ -4,9 +4,10 @@
 #include "../cGrammar.h"
 
 
-void * and_expression__equality_expression()
+void * and_expression__equality_expression(ast * expr)
 {
-	
+	if(debugMode) printf(": and_expression->equality_expression\n");
+	return expr;
 }
 
 

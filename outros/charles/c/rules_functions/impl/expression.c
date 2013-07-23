@@ -4,9 +4,10 @@
 #include "../cGrammar.h"
 
 
-void * expression__assignment_expression()
+void * expression__assignment_expression(ast * tree)
 {
-	printf("BLAH : expression_statement->expression ;\n");
+	if(debugMode) printf(": expression->assignment_expression\n");
+	return tree;
 }
 
 

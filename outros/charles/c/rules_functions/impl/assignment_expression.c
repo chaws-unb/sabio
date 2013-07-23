@@ -4,9 +4,10 @@
 #include "../cGrammar.h"
 
 
-void * assignment_expression__conditional_expression()
+void * assignment_expression__conditional_expression(ast * expr)
 {
-	
+	if(debugMode) printf(": assignment_expression->conditional_expression\n");
+	return expr;
 }
 
 

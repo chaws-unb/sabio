@@ -4,9 +4,10 @@
 #include "../cGrammar.h"
 
 
-void * cast_expression__unary_expression()
+void * cast_expression__unary_expression(ast * expr)
 {
-	
+	if(debugMode) printf(": cast_expression->unary_expression\n");
+	return expr;
 }
 
 

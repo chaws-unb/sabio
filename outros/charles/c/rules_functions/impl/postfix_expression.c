@@ -4,9 +4,10 @@
 #include "../cGrammar.h"
 
 
-void * postfix_expression__primary_expression()
+void * postfix_expression__primary_expression(ast * expr)
 {
-	
+	if(debugMode) printf(": postfix_expression->primary_expression\n");
+	return expr;
 }
 
 

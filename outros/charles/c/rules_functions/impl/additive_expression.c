@@ -3,9 +3,10 @@
 #include <string.h>
 #include "../cGrammar.h"
 
-void * additive_expression__multiplicative_expression()
+void * additive_expression__multiplicative_expression(ast * expr)
 {
 	if(debugMode) printf(": additive_expression->multiplicative_expression\n");
+	return expr;
 }
 
 void * additive_expression__additive_expression__PLUS__multiplicative_expression()
