@@ -4,9 +4,10 @@
 #include "../cGrammar.h"
 
 
-void * init_declarator__declarator()
+void * init_declarator__declarator(ast * tree)
 {
-	
+	if(debugMode) printf(": init_declarator->declarator\n");
+	return tree;
 }
 
 

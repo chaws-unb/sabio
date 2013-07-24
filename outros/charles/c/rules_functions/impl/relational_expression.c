@@ -11,9 +11,11 @@ void * relational_expression__shift_expression(ast * expr)
 }
 
 
-void * relational_expression__relational_expression__LT__shift_expression()
+void * relational_expression__relational_expression__LT__shift_expression(ast * left, ast * right)
 {
-	
+	if(debugMode) printf(": relational_expression->relational_expression < shift_expression\n");
+printf("lalalalala");
+	return newRelationalExpression(LT, left, right);
 }
 
 

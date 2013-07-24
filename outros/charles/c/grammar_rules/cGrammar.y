@@ -22,7 +22,7 @@
 %type <tree> additive_expression multiplicative_expression cast_expression expression statement
 %type <tree> equality_expression relational_expression primary_expression declaration declaration_specifiers
 %type <tree> type_specifier compound_statement expression_statement selection_statement
-%type <tree> postfix_expression unary_expression shift_expression initializer
+%type <tree> postfix_expression unary_expression shift_expression initializer initializer_list
 %type <tree> and_expression exclusive_or_expression inclusive_or_expression logical_and_expression
 %type <tree> logical_or_expression conditional_expression assignment_expression
 
@@ -108,7 +108,7 @@ shift_expression
 
 relational_expression
 	: shift_expression 							   {$$ = relational_expression__shift_expression($1);}
-	| relational_expression '<' shift_expression   {printf(": relational_expression->relational_expression < shift_expression\n");}
+	| relational_expression '<' shift_expression   {$$ = relational_expression__relational_expression__LT__shift_expression($1, $3);}
 	| relational_expression '>' shift_expression   {printf(": relational_expression->relational_expression > shift_expression\n");}
 	| relational_expression LE_OP shift_expression {printf(": relational_expression->relational_expression >= shift_expression\n");}
 	| relational_expression GE_OP shift_expression {printf(": relational_expression->relational_expression <= shift_expression\n");}
@@ -198,7 +198,7 @@ init_declarator_list
 	;
 
 init_declarator
-	: declarator 				 {printf(": init_declarator->declarator\n");}
+	: declarator 				 {$$ = init_declarator__declarator($1);}
 	| declarator '=' initializer {$$ = init_declarator__declarator__EQ__initializer($1, $3);}
 	;
 
@@ -357,14 +357,14 @@ direct_abstract_declarator
 	;
 
 initializer
-	: assignment_expression 	   {printf(": initializer->assignment_expression\n");}
-	| '{' initializer_list '}'	   {printf(": initializer->{ initializer_list }\n");}
-	| '{' initializer_list ',' '}' {printf(": initializer->{ initializer_list , }\n");}
+	: assignment_expression 	   {$$ = initializer__assignment_expression($1);}
+	| '{' initializer_list '}'	   {$$ = initializer__OPB__initializer_list__CLB($2);}
+	| '{' initializer_list ',' '}' {$$ = initializer__OPB__initializer_list__COMMA__CLB($2);}
 	;
 
 initializer_list
-	: initializer 					   {printf(": initializer_list->initializer\n");}
-	| initializer_list ',' initializer {printf(": initializer_list->initializer_list , initializer\n");}
+	: initializer 					   {$$ = initializer_list__initializer($1);}
+	| initializer_list ',' initializer {$$ = initializer_list__initializer_list__COMMA__initializer($1, $3);}
 	;
 
 statement

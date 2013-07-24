@@ -46,6 +46,8 @@ typedef enum
 
 	_SPECIFIER, // Data type specifier
 
+	RELATIONAL_EXPRESSION, // logical expressions
+
 	/**
 	 *	Symbol's type: global function, local function, global var, etc
  	 *	Let's do only bascis one for less complexity
@@ -54,6 +56,31 @@ typedef enum
 	USER_FUNCTION,
 	BUILT_FUNCTION
 } genericType;
+
+/**
+ *	Symbol's data type: int, char, short, double, void etc
+ */
+typedef enum
+{
+	_VOID = 1,
+	_CHAR,
+	_SHORT,
+	_INT,
+	_FLOAT,
+	_DOUBLE
+} symbolDataType;
+
+typedef enum
+{
+	LT = 1, // '<' 
+	GT, 	// '>' 
+	LTE,	// <=
+	GTE,	// >=
+	EQ, 	// ==
+	NEQ,	// !=
+	OR, 	// ||
+	AND 	// &&
+} logicRelationType;
 
 /**
  *	Nodes in the abstract syntax tree all have commom initial node type
@@ -74,19 +101,6 @@ typedef struct _programNode
 	ast * node;
 	struct _programNode * next;
 } programNode;
-
-/**
- *	Symbol's data type: int, char, short, double, void etc
- */
-typedef enum
-{
-	_VOID = 1,
-	_CHAR,
-	_SHORT,
-	_INT,
-	_FLOAT,
-	_DOUBLE
-} symbolDataType;
 
 /**
  *	Pre-definition of symbol and symbolList, once both need each other
@@ -167,6 +181,17 @@ typedef struct
 }ifStatement;
 
 /**
+ *	Relational expression
+ */
+typedef struct ast
+{
+	genericType type;
+	logicRelationType relationType;
+	ast * left;
+	ast * right;
+} relationalExpression;
+
+/**
 * An AST to switch(1){case 1: stmt} statement
 *
 */
@@ -177,14 +202,16 @@ typedef struct
 }switchStatement;
 
 /**
- *	Create a program node
+ *	Create each of AST subtypes
  */
-programNode * newProgramNode(ast * tree);
-
-/**
- *	Create an abstract AST
- */
-ast * newAst(genericType type, ast * left, ast * right);
+ast * newAst(genericType type, ast * left, ast * right); // Most generic one
+ast * newDeclaration(ast * sym, ast * expr);
+ast * newConstant(double consValue);
+ast * newMathOperation(genericType type, ast * left, ast * right);
+ast * newIdentifier(symbol * sym);
+ast * newSpecifier(symbolDataType dataType);
+ast * newIfStatement(ast * expression, ast * ifTrue, ast * ifFalse);
+ast * newRelationalExpression(logicRelationType type, ast * left, ast * right);
 
 /**
  *	Free an AST
@@ -192,45 +219,11 @@ ast * newAst(genericType type, ast * left, ast * right);
 void freeAst(ast * tree);
 
 /**
- *	Create a Declaration
- */
-ast * newDeclaration(ast * sym, ast * expr);
-
-/**
- *	Create a Constant
- */
-ast * newConstant(double consValue);
-
-/**
- *	Create a Math operation
- */
-ast * newMathOperation(genericType type, ast * left, ast * right);
-
-/**
- *	A new identifier
- */
-ast * newIdentifier(symbol * sym);
-
-/**
- *	Data type
- */
-ast * newSpecifier(symbolDataType dataType);
-
-/**
- *	A new selection_statement
- */
-ast * newIfStatement(ast * expression, ast * ifTrue, ast * ifFalse);
-
-/**
- *	Eval can result in anything
- */
-void * eval(ast * tree);
-
-/**
  *	This evals each ast node type. This is better for shared code editing
  *	So more people can edit the project at the same time
  *	without intereferring in others commit/updates
  */
+void * eval(ast * tree); // Most generic one
 void * eval_root(ast * tree);
 void * eval_declaration(declaration * decl);
 void * eval_identifier(identifier * id);
@@ -238,6 +231,12 @@ void * eval_specifier(specifier * spec);
 void * eval_constant(constant * cons);
 void * eval_mathOperation(mathOperation * op);
 void * eval_ifStatement(ifStatement * ifStmt);
+void * eval_relationalExpression(relationalExpression * rel);
+
+/**
+ *	Create a program node
+ */
+programNode * newProgramNode(ast * tree);
 
 /**
  *	Create types

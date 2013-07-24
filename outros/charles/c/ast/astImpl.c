@@ -68,7 +68,6 @@ ast * newSpecifier(symbolDataType dataType)
 
 ast * newIfStatement(ast * expr, ast * ifTrue, ast * ifFalse)
 {
-	if(debugMode) printf("Creating new IF_FLOW\n");
 	ifStatement * ifStmt = new(ifStatement);
 	ifStmt->type = IF_FLOW;
 	ifStmt->expr = expr;
@@ -80,6 +79,16 @@ ast * newIfStatement(ast * expr, ast * ifTrue, ast * ifFalse)
 	return (ast *)ifStmt;
 }
 
+ast * newRelationalExpression(logicRelationType type, ast * left, ast * right)
+{
+	relationalExpression * rel = new(relationalExpression);
+	rel->type = RELATIONAL_EXPRESSION;
+	rel->relationType = type;
+	rel->left = left;
+	rel->right = right;
+	return (ast *)rel;
+}
+
 // This is the generic eval, I think it's better this way so everyone can
 // edit at the same time
 void * eval(ast * tree)
@@ -89,7 +98,7 @@ void * eval(ast * tree)
 		if(debugMode) printf("Error: empty tree!\n");
 		return NULL;
 	}
-
+	if(debugMode) printf("Evaluating %s...\n", genericType2String(tree->type));
 	switch(tree->type)
 	{
 		case ROOT: 			
@@ -110,6 +119,9 @@ void * eval(ast * tree)
 
 		case _SPECIFIER:
 			return eval_specifier((specifier *)tree);
+
+		case RELATIONAL_EXPRESSION:
+			return eval_relationalExpression((relationalExpression *)tree);
 
 		case IF_FLOW:
 			return eval_ifStatement((ifStatement*)tree);
@@ -176,6 +188,7 @@ char * genericType2String(genericType type)
 		case MOD:					return "mod";
 		case _IDENTIFIER:			return "identifier";
 		case _SPECIFIER:			return "specifier";
+		case RELATIONAL_EXPRESSION:	return "relational expression";
 		case VARIABLE:				return "var";
 		case USER_FUNCTION:			return "user function";
 		case BUILT_FUNCTION:		return "built-in function";

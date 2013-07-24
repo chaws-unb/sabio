@@ -61,7 +61,6 @@ int main(int argc, char ** argv)
 	programNode * temp = root;
 	while(temp)
 	{
-		if(debugMode) printf("Evaluating %s...\n", genericType2String(temp->node->type));
 		eval(temp->node);
 		temp = temp->next;
 	}
