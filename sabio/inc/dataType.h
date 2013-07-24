@@ -17,6 +17,42 @@
  **/
 #define HASH_CALC 9
 
+typedef enum
+{
+	ROOT = 1,			 // First ast ever
+	EMPTY,			 	 // Empty statement
+	ASSIGNMENT,		 	 // a = b; a = func(); etc
+	DECLARATION, 		 // int a; 
+	FUNCTION_DEFINITION, // int func(int a) {return 0;}
+	IF_FLOW, 			 // if(1);[else;]
+	_SWITCH,			 // switch(1){case 1: stmt}
+	_CONSTANT,			 // 0,1,2,3...9
+
+	/**
+	 *	Math operations
+	 */
+	SUM,
+	SUB,
+	DIV,
+	MUL,
+	MOD,
+
+	/**
+	 *	A Symbol/Reference
+	 */
+	_IDENTIFIER,
+
+	_SPECIFIER, // Data type specifier
+
+	/**
+	 *	Symbol's type: global function, local function, global var, etc
+ 	 *	Let's do only bascis one for less complexity
+ 	 */
+	VARIABLE,
+	USER_FUNCTION,
+	BUILT_FUNCTION
+}genericType;
+
 /**
  * @enum _builtInfFunction
  * @brief Keeps some codes for internal function.
@@ -29,16 +65,32 @@ typedef enum _builtInfFunction
 	B_print
 }builtInFunction;
 
+typedef enum
+{
+	_VOID = 1,
+	_CHAR,
+	_SHORT,
+	_INT,
+	_FLOAT,
+	_DOUBLE
+}symbolDataType;
+
 /**
  * @struct _abstractTree
  * @brief Nodes of abstract tree.
  **/
 typedef struct _abstractTree
 {
-	int nodeType;
+	genericType nodeType;
 	struct _abstractTree * left;
 	struct _abstractTree * right;
 }abstractTree;
+
+typedef struct _programNode
+{
+	abstractTree * node;
+	struct _programNode * next;
+} programNode;
 
 /**
  * @struct _refList
@@ -58,6 +110,7 @@ typedef struct _refList
 */
 typedef struct _symbol
 {
+	symbolDataType dataType;
 	char * symbolName;		/**< Name of symbol.*/
 	double value;
 	abstractTree * function;	/**< stmt for the function.*/

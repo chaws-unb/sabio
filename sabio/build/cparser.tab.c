@@ -76,10 +76,11 @@
 #include <dataType.h>
 #include <abstractTree.h>
 #include <clexer.h>
+#include <cGrammar.h>
 
 
 /* Line 189 of yacc.c  */
-#line 83 "cparser.tab.c"
+#line 84 "cparser.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -181,7 +182,7 @@ typedef int YYSTYPE;
 
 
 /* Line 264 of yacc.c  */
-#line 185 "cparser.tab.c"
+#line 186 "cparser.tab.c"
 
 #ifdef short
 # undef short
@@ -555,28 +556,28 @@ static const yytype_int16 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,    30,    30,    31,    32,    33,    37,    38,    39,    40,
-      41,    42,    43,    44,    48,    49,    53,    54,    55,    56,
-      57,    58,    62,    63,    64,    65,    66,    67,    71,    72,
-      76,    77,    78,    79,    83,    84,    85,    89,    90,    91,
-      95,    96,    97,    98,    99,   103,   104,   105,   109,   110,
-     114,   115,   119,   120,   124,   125,   129,   130,   134,   135,
-     139,   140,   144,   145,   146,   147,   148,   149,   150,   151,
-     152,   153,   154,   158,   159,   163,   167,   168,   172,   173,
-     174,   175,   176,   177,   181,   182,   186,   187,   191,   192,
-     193,   194,   195,   199,   200,   201,   202,   203,   204,   205,
-     206,   207,   208,   209,   210,   214,   215,   216,   220,   221,
-     225,   226,   230,   234,   235,   236,   237,   241,   242,   246,
-     247,   248,   252,   253,   254,   258,   259,   263,   264,   268,
-     269,   273,   274,   278,   279,   280,   281,   282,   283,   284,
-     288,   289,   290,   291,   295,   296,   301,   302,   306,   307,
-     311,   312,   313,   317,   318,   322,   323,   327,   328,   329,
-     333,   334,   335,   336,   337,   338,   339,   340,   341,   345,
-     346,   347,   351,   352,   356,   357,   358,   359,   360,   361,
-     365,   366,   367,   371,   372,   373,   374,   378,   379,   383,
-     384,   388,   389,   393,   394,   395,   399,   400,   401,   402,
-     406,   407,   408,   409,   410,   414,   415,   419,   420,   424,
-     425,   426,   427
+       0,    31,    31,    32,    33,    34,    38,    39,    40,    41,
+      42,    43,    44,    45,    49,    50,    54,    55,    56,    57,
+      58,    59,    63,    64,    65,    66,    67,    68,    72,    73,
+      77,    78,    79,    80,    84,    85,    86,    90,    91,    92,
+      96,    97,    98,    99,   100,   104,   105,   106,   110,   111,
+     115,   116,   120,   121,   125,   126,   130,   131,   135,   136,
+     140,   141,   145,   146,   147,   148,   149,   150,   151,   152,
+     153,   154,   155,   159,   160,   164,   168,   169,   173,   174,
+     175,   176,   177,   178,   182,   183,   187,   188,   192,   193,
+     194,   195,   196,   200,   201,   202,   203,   204,   205,   206,
+     207,   208,   209,   210,   211,   215,   216,   217,   221,   222,
+     226,   227,   231,   235,   236,   237,   238,   242,   243,   247,
+     248,   249,   253,   254,   255,   259,   260,   264,   265,   269,
+     270,   274,   275,   279,   280,   281,   282,   283,   284,   285,
+     289,   290,   291,   292,   296,   297,   302,   303,   307,   308,
+     312,   313,   314,   318,   319,   323,   324,   328,   329,   330,
+     334,   335,   336,   337,   338,   339,   340,   341,   342,   346,
+     347,   348,   352,   353,   357,   358,   359,   360,   361,   362,
+     366,   367,   368,   372,   373,   374,   375,   379,   380,   384,
+     385,   389,   390,   394,   395,   396,   400,   401,   402,   403,
+     407,   408,   409,   410,   411,   415,   416,   420,   421,   425,
+     426,   427,   428
 };
 #endif
 
@@ -1928,1484 +1929,1484 @@ yyreduce:
         case 2:
 
 /* Line 1455 of yacc.c  */
-#line 30 "par/cparser.y"
+#line 31 "par/cparser.y"
     {printf(": primary_expression->IDENTIFIER\n");;}
     break;
 
   case 3:
 
 /* Line 1455 of yacc.c  */
-#line 31 "par/cparser.y"
+#line 32 "par/cparser.y"
     {printf(": primary_expression->CONSTANT\n");;}
     break;
 
   case 4:
 
 /* Line 1455 of yacc.c  */
-#line 32 "par/cparser.y"
+#line 33 "par/cparser.y"
     {printf(": primary_expression->STRING_LITERAL\n");;}
     break;
 
   case 5:
 
 /* Line 1455 of yacc.c  */
-#line 33 "par/cparser.y"
+#line 34 "par/cparser.y"
     {printf(": primary_expression->(expression)\n");;}
     break;
 
   case 6:
 
 /* Line 1455 of yacc.c  */
-#line 37 "par/cparser.y"
+#line 38 "par/cparser.y"
     {printf(": postfix_expression->primary_expression\n");;}
     break;
 
   case 7:
 
 /* Line 1455 of yacc.c  */
-#line 38 "par/cparser.y"
+#line 39 "par/cparser.y"
     {printf(": postfix_expression->[expression]\n");;}
     break;
 
   case 8:
 
 /* Line 1455 of yacc.c  */
-#line 39 "par/cparser.y"
+#line 40 "par/cparser.y"
     {printf(": postfix_expression->()\n");;}
     break;
 
   case 9:
 
 /* Line 1455 of yacc.c  */
-#line 40 "par/cparser.y"
+#line 41 "par/cparser.y"
     {printf(": postfix_expression->(argument_expression_list)\n");;}
     break;
 
   case 10:
 
 /* Line 1455 of yacc.c  */
-#line 41 "par/cparser.y"
+#line 42 "par/cparser.y"
     {printf(": postfix_expression->IDENTIFIER\n");;}
     break;
 
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 42 "par/cparser.y"
+#line 43 "par/cparser.y"
     {printf(": postfix_expression->'->'IDENTIFIER\n");;}
     break;
 
   case 12:
 
 /* Line 1455 of yacc.c  */
-#line 43 "par/cparser.y"
+#line 44 "par/cparser.y"
     {printf(": postfix_expression->++\n");;}
     break;
 
   case 13:
 
 /* Line 1455 of yacc.c  */
-#line 44 "par/cparser.y"
+#line 45 "par/cparser.y"
     {printf(": postfix_expression->--\n");;}
     break;
 
   case 14:
 
 /* Line 1455 of yacc.c  */
-#line 48 "par/cparser.y"
+#line 49 "par/cparser.y"
     {printf(": argument_expression_list->assignment_expression \n");;}
     break;
 
   case 15:
 
 /* Line 1455 of yacc.c  */
-#line 49 "par/cparser.y"
+#line 50 "par/cparser.y"
     {printf(": argument_expression_list->argument_expression_list,assignment_expression \n");;}
     break;
 
   case 16:
 
 /* Line 1455 of yacc.c  */
-#line 53 "par/cparser.y"
+#line 54 "par/cparser.y"
     {printf(": unary_expression->postfix_expression \n");;}
     break;
 
   case 17:
 
 /* Line 1455 of yacc.c  */
-#line 54 "par/cparser.y"
+#line 55 "par/cparser.y"
     {printf(": unary_expression->++ unary_expression \n");;}
     break;
 
   case 18:
 
 /* Line 1455 of yacc.c  */
-#line 55 "par/cparser.y"
+#line 56 "par/cparser.y"
     {printf(": unary_expression->-- unary_expression \n");;}
     break;
 
   case 19:
 
 /* Line 1455 of yacc.c  */
-#line 56 "par/cparser.y"
+#line 57 "par/cparser.y"
     {printf(": unary_expression->unary_operator cast_expression \n");;}
     break;
 
   case 20:
 
 /* Line 1455 of yacc.c  */
-#line 57 "par/cparser.y"
+#line 58 "par/cparser.y"
     {printf(": unary_expression->sizeof unary_operator\n");;}
     break;
 
   case 21:
 
 /* Line 1455 of yacc.c  */
-#line 58 "par/cparser.y"
+#line 59 "par/cparser.y"
     {printf(": unary_expression->sizeof (type_name)\n");;}
     break;
 
   case 22:
 
 /* Line 1455 of yacc.c  */
-#line 62 "par/cparser.y"
+#line 63 "par/cparser.y"
     {printf(": unary_operator->&\n");;}
     break;
 
   case 23:
 
 /* Line 1455 of yacc.c  */
-#line 63 "par/cparser.y"
+#line 64 "par/cparser.y"
     {printf(": unary_operator->*\n");;}
     break;
 
   case 24:
 
 /* Line 1455 of yacc.c  */
-#line 64 "par/cparser.y"
+#line 65 "par/cparser.y"
     {printf(": unary_operator->+\n");;}
     break;
 
   case 25:
 
 /* Line 1455 of yacc.c  */
-#line 65 "par/cparser.y"
+#line 66 "par/cparser.y"
     {printf(": unary_operator->-\n");;}
     break;
 
   case 26:
 
 /* Line 1455 of yacc.c  */
-#line 66 "par/cparser.y"
+#line 67 "par/cparser.y"
     {printf(": unary_operator->~\n");;}
     break;
 
   case 27:
 
 /* Line 1455 of yacc.c  */
-#line 67 "par/cparser.y"
+#line 68 "par/cparser.y"
     {printf(": unary_operator->!\n");;}
     break;
 
   case 28:
 
 /* Line 1455 of yacc.c  */
-#line 71 "par/cparser.y"
+#line 72 "par/cparser.y"
     {printf(": cast_expression->unary_expression\n");;}
     break;
 
   case 29:
 
 /* Line 1455 of yacc.c  */
-#line 72 "par/cparser.y"
+#line 73 "par/cparser.y"
     {printf(": cast_expression->(type_name)\n");;}
     break;
 
   case 30:
 
 /* Line 1455 of yacc.c  */
-#line 76 "par/cparser.y"
+#line 77 "par/cparser.y"
     {printf(": multiplicative_expression->cast_expression\n");;}
     break;
 
   case 31:
 
 /* Line 1455 of yacc.c  */
-#line 77 "par/cparser.y"
+#line 78 "par/cparser.y"
     {printf(": multiplicative_expression->multiplicative_expression * cast_expression\n");;}
     break;
 
   case 32:
 
 /* Line 1455 of yacc.c  */
-#line 78 "par/cparser.y"
+#line 79 "par/cparser.y"
     {printf(": multiplicative_expression->multiplicative_expression / cast_expression\n");;}
     break;
 
   case 33:
 
 /* Line 1455 of yacc.c  */
-#line 79 "par/cparser.y"
+#line 80 "par/cparser.y"
     {printf(": multiplicative_expression->multiplicative_expression %% cast_expression\n");;}
     break;
 
   case 34:
 
 /* Line 1455 of yacc.c  */
-#line 83 "par/cparser.y"
+#line 84 "par/cparser.y"
     {printf(": additive_expression->multiplicative_expression\n");;}
     break;
 
   case 35:
 
 /* Line 1455 of yacc.c  */
-#line 84 "par/cparser.y"
+#line 85 "par/cparser.y"
     {printf(": additive_expression->additive_expression + multiplicative_expression\n");;}
     break;
 
   case 36:
 
 /* Line 1455 of yacc.c  */
-#line 85 "par/cparser.y"
+#line 86 "par/cparser.y"
     {printf(": additive_expression->additive_expression - multiplicative_expression\n");;}
     break;
 
   case 37:
 
 /* Line 1455 of yacc.c  */
-#line 89 "par/cparser.y"
+#line 90 "par/cparser.y"
     {printf(": shift_expression->additive_expression\n");;}
     break;
 
   case 38:
 
 /* Line 1455 of yacc.c  */
-#line 90 "par/cparser.y"
+#line 91 "par/cparser.y"
     {printf(": shift_expression->shift_expression << additive_expression\n");;}
     break;
 
   case 39:
 
 /* Line 1455 of yacc.c  */
-#line 91 "par/cparser.y"
+#line 92 "par/cparser.y"
     {printf(": shift_expression->shift_expression >> additive_expression\n");;}
     break;
 
   case 40:
 
 /* Line 1455 of yacc.c  */
-#line 95 "par/cparser.y"
+#line 96 "par/cparser.y"
     {printf(": relational_expression->shift_expression\n");;}
     break;
 
   case 41:
 
 /* Line 1455 of yacc.c  */
-#line 96 "par/cparser.y"
+#line 97 "par/cparser.y"
     {printf(": relational_expression->relational_expression < shift_expression\n");;}
     break;
 
   case 42:
 
 /* Line 1455 of yacc.c  */
-#line 97 "par/cparser.y"
+#line 98 "par/cparser.y"
     {printf(": relational_expression->relational_expression > shift_expression\n");;}
     break;
 
   case 43:
 
 /* Line 1455 of yacc.c  */
-#line 98 "par/cparser.y"
+#line 99 "par/cparser.y"
     {printf(": relational_expression->relational_expression >= shift_expression\n");;}
     break;
 
   case 44:
 
 /* Line 1455 of yacc.c  */
-#line 99 "par/cparser.y"
+#line 100 "par/cparser.y"
     {printf(": relational_expression->relational_expression <= shift_expression\n");;}
     break;
 
   case 45:
 
 /* Line 1455 of yacc.c  */
-#line 103 "par/cparser.y"
+#line 104 "par/cparser.y"
     {printf(": equality_expression->relational_expression\n");;}
     break;
 
   case 46:
 
 /* Line 1455 of yacc.c  */
-#line 104 "par/cparser.y"
+#line 105 "par/cparser.y"
     {printf(": equality_expression->equality_expression == relational_expression\n");;}
     break;
 
   case 47:
 
 /* Line 1455 of yacc.c  */
-#line 105 "par/cparser.y"
+#line 106 "par/cparser.y"
     {printf(": equality_expression->equality_expression != relational_expression\n");;}
     break;
 
   case 48:
 
 /* Line 1455 of yacc.c  */
-#line 109 "par/cparser.y"
+#line 110 "par/cparser.y"
     {printf(": and_expression->equality_expression\n");;}
     break;
 
   case 49:
 
 /* Line 1455 of yacc.c  */
-#line 110 "par/cparser.y"
+#line 111 "par/cparser.y"
     {printf(": and_expression->and_expression '&' equality_expression\n");;}
     break;
 
   case 50:
 
 /* Line 1455 of yacc.c  */
-#line 114 "par/cparser.y"
+#line 115 "par/cparser.y"
     {printf(": exclusive_or_expression->and_expression\n");;}
     break;
 
   case 51:
 
 /* Line 1455 of yacc.c  */
-#line 115 "par/cparser.y"
+#line 116 "par/cparser.y"
     {printf(": exclusive_or_expression->exclusive_or_expression ^ and_expression\n");;}
     break;
 
   case 52:
 
 /* Line 1455 of yacc.c  */
-#line 119 "par/cparser.y"
+#line 120 "par/cparser.y"
     {printf(": inclusive_or_expression->exclusive_or_expression\n");;}
     break;
 
   case 53:
 
 /* Line 1455 of yacc.c  */
-#line 120 "par/cparser.y"
+#line 121 "par/cparser.y"
     {printf(": inclusive_or_expression->inclusive_or_expression | exclusive_or_expression\n");;}
     break;
 
   case 54:
 
 /* Line 1455 of yacc.c  */
-#line 124 "par/cparser.y"
+#line 125 "par/cparser.y"
     {printf(": logical_and_expression->inclusive_or_expression\n");;}
     break;
 
   case 55:
 
 /* Line 1455 of yacc.c  */
-#line 125 "par/cparser.y"
+#line 126 "par/cparser.y"
     {printf(": logical_and_expression->logical_and_expression && inclusive_or_expression\n");;}
     break;
 
   case 56:
 
 /* Line 1455 of yacc.c  */
-#line 129 "par/cparser.y"
+#line 130 "par/cparser.y"
     {printf(": logical_or_expression->logical_and_expression\n");;}
     break;
 
   case 57:
 
 /* Line 1455 of yacc.c  */
-#line 130 "par/cparser.y"
+#line 131 "par/cparser.y"
     {printf(": logical_or_expression->logical_or_expression || logical_and_expression\n");;}
     break;
 
   case 58:
 
 /* Line 1455 of yacc.c  */
-#line 134 "par/cparser.y"
+#line 135 "par/cparser.y"
     {printf(": conditional_expression->logical_or_expression\n");;}
     break;
 
   case 59:
 
 /* Line 1455 of yacc.c  */
-#line 135 "par/cparser.y"
+#line 136 "par/cparser.y"
     {printf(": conditional_expression->logical_or_expression ? expression : conditional_expression\n");;}
     break;
 
   case 60:
 
 /* Line 1455 of yacc.c  */
-#line 139 "par/cparser.y"
+#line 140 "par/cparser.y"
     {printf(": assignment_expression->conditional_expression\n");;}
     break;
 
   case 61:
 
 /* Line 1455 of yacc.c  */
-#line 140 "par/cparser.y"
+#line 141 "par/cparser.y"
     {printf(": assignment_expression->unary_expression assignment_operator assignment_expression\n");;}
     break;
 
   case 62:
 
 /* Line 1455 of yacc.c  */
-#line 144 "par/cparser.y"
+#line 145 "par/cparser.y"
     {printf(": assignment_operator->=\n");;}
     break;
 
   case 63:
 
 /* Line 1455 of yacc.c  */
-#line 145 "par/cparser.y"
+#line 146 "par/cparser.y"
     {printf(": assignment_operator->*=\n");;}
     break;
 
   case 64:
 
 /* Line 1455 of yacc.c  */
-#line 146 "par/cparser.y"
+#line 147 "par/cparser.y"
     {printf(": assignment_operator->/=\n");;}
     break;
 
   case 65:
 
 /* Line 1455 of yacc.c  */
-#line 147 "par/cparser.y"
+#line 148 "par/cparser.y"
     {printf(": assignment_operator->%%=\n");;}
     break;
 
   case 66:
 
 /* Line 1455 of yacc.c  */
-#line 148 "par/cparser.y"
+#line 149 "par/cparser.y"
     {printf(": assignment_operator->+=\n");;}
     break;
 
   case 67:
 
 /* Line 1455 of yacc.c  */
-#line 149 "par/cparser.y"
+#line 150 "par/cparser.y"
     {printf(": assignment_operator->-=\n");;}
     break;
 
   case 68:
 
 /* Line 1455 of yacc.c  */
-#line 150 "par/cparser.y"
+#line 151 "par/cparser.y"
     {printf(": assignment_operator-><<=\n");;}
     break;
 
   case 69:
 
 /* Line 1455 of yacc.c  */
-#line 151 "par/cparser.y"
+#line 152 "par/cparser.y"
     {printf(": assignment_operator->>>=\n");;}
     break;
 
   case 70:
 
 /* Line 1455 of yacc.c  */
-#line 152 "par/cparser.y"
+#line 153 "par/cparser.y"
     {printf(": assignment_operator->&=\n");;}
     break;
 
   case 71:
 
 /* Line 1455 of yacc.c  */
-#line 153 "par/cparser.y"
+#line 154 "par/cparser.y"
     {printf(": assignment_operator->^=\n");;}
     break;
 
   case 72:
 
 /* Line 1455 of yacc.c  */
-#line 154 "par/cparser.y"
+#line 155 "par/cparser.y"
     {printf(": assignment_operator->|=\n");;}
     break;
 
   case 73:
 
 /* Line 1455 of yacc.c  */
-#line 158 "par/cparser.y"
+#line 159 "par/cparser.y"
     {printf(": expression->assignment_expression\n");;}
     break;
 
   case 74:
 
 /* Line 1455 of yacc.c  */
-#line 159 "par/cparser.y"
+#line 160 "par/cparser.y"
     {printf(": expression->expression , assignment_expression\n");;}
     break;
 
   case 75:
 
 /* Line 1455 of yacc.c  */
-#line 163 "par/cparser.y"
+#line 164 "par/cparser.y"
     {printf(": constant_expression->conditional_expression\n");;}
     break;
 
   case 76:
 
 /* Line 1455 of yacc.c  */
-#line 167 "par/cparser.y"
+#line 168 "par/cparser.y"
     {printf(": declaration->declaration_specifiers ;\n");;}
     break;
 
   case 77:
 
 /* Line 1455 of yacc.c  */
-#line 168 "par/cparser.y"
+#line 169 "par/cparser.y"
     {printf(": declaration->declaration_specifiers init_declarator_list ;\n");;}
     break;
 
   case 78:
 
 /* Line 1455 of yacc.c  */
-#line 172 "par/cparser.y"
+#line 173 "par/cparser.y"
     {printf(": declaration_specifiers->storage_class_specifier\n");;}
     break;
 
   case 79:
 
 /* Line 1455 of yacc.c  */
-#line 173 "par/cparser.y"
+#line 174 "par/cparser.y"
     {printf(": declaration_specifiers->storage_class_specifier declaration_specifiers\n");;}
     break;
 
   case 80:
 
 /* Line 1455 of yacc.c  */
-#line 174 "par/cparser.y"
+#line 175 "par/cparser.y"
     {printf(": declaration_specifiers->type_specifier\n");;}
     break;
 
   case 81:
 
 /* Line 1455 of yacc.c  */
-#line 175 "par/cparser.y"
+#line 176 "par/cparser.y"
     {printf(": declaration_specifiers->type_specifier declaration_specifiers\n");;}
     break;
 
   case 82:
 
 /* Line 1455 of yacc.c  */
-#line 176 "par/cparser.y"
+#line 177 "par/cparser.y"
     {printf(": declaration_specifiers->type_qualifier\n");;}
     break;
 
   case 83:
 
 /* Line 1455 of yacc.c  */
-#line 177 "par/cparser.y"
+#line 178 "par/cparser.y"
     {printf(": declaration_specifiers->type_qualifier declaration_specifiers\n");;}
     break;
 
   case 84:
 
 /* Line 1455 of yacc.c  */
-#line 181 "par/cparser.y"
+#line 182 "par/cparser.y"
     {printf(": init_declarator_list->init_declarator\n");;}
     break;
 
   case 85:
 
 /* Line 1455 of yacc.c  */
-#line 182 "par/cparser.y"
+#line 183 "par/cparser.y"
     {printf(": init_declarator_list->init_declarator_list , init_declarator\n");;}
     break;
 
   case 86:
 
 /* Line 1455 of yacc.c  */
-#line 186 "par/cparser.y"
+#line 187 "par/cparser.y"
     {printf(": init_declarator->declarator\n");;}
     break;
 
   case 87:
 
 /* Line 1455 of yacc.c  */
-#line 187 "par/cparser.y"
+#line 188 "par/cparser.y"
     {printf(": init_declarator->declarator = initializer\n");;}
     break;
 
   case 88:
 
 /* Line 1455 of yacc.c  */
-#line 191 "par/cparser.y"
+#line 192 "par/cparser.y"
     {printf(": storage_class_specifier->TYPEDEF\n");;}
     break;
 
   case 89:
 
 /* Line 1455 of yacc.c  */
-#line 192 "par/cparser.y"
+#line 193 "par/cparser.y"
     {printf(": storage_class_specifier->EXTERN\n");;}
     break;
 
   case 90:
 
 /* Line 1455 of yacc.c  */
-#line 193 "par/cparser.y"
+#line 194 "par/cparser.y"
     {printf(": storage_class_specifier->STATIC\n");;}
     break;
 
   case 91:
 
 /* Line 1455 of yacc.c  */
-#line 194 "par/cparser.y"
+#line 195 "par/cparser.y"
     {printf(": storage_class_specifier->AUTO\n");;}
     break;
 
   case 92:
 
 /* Line 1455 of yacc.c  */
-#line 195 "par/cparser.y"
+#line 196 "par/cparser.y"
     {printf(": storage_class_specifier->REGISTER\n");;}
     break;
 
   case 93:
 
 /* Line 1455 of yacc.c  */
-#line 199 "par/cparser.y"
+#line 200 "par/cparser.y"
     {printf(": type_specifier->VOID\n");;}
     break;
 
   case 94:
 
 /* Line 1455 of yacc.c  */
-#line 200 "par/cparser.y"
+#line 201 "par/cparser.y"
     {printf(": type_specifier->CHAR\n");;}
     break;
 
   case 95:
 
 /* Line 1455 of yacc.c  */
-#line 201 "par/cparser.y"
+#line 202 "par/cparser.y"
     {printf(": type_specifier->SHORT\n");;}
     break;
 
   case 96:
 
 /* Line 1455 of yacc.c  */
-#line 202 "par/cparser.y"
+#line 203 "par/cparser.y"
     {printf(": type_specifier->INT\n");;}
     break;
 
   case 97:
 
 /* Line 1455 of yacc.c  */
-#line 203 "par/cparser.y"
+#line 204 "par/cparser.y"
     {printf(": type_specifier->LONG\n");;}
     break;
 
   case 98:
 
 /* Line 1455 of yacc.c  */
-#line 204 "par/cparser.y"
+#line 205 "par/cparser.y"
     {printf(": type_specifier->FLOAT\n");;}
     break;
 
   case 99:
 
 /* Line 1455 of yacc.c  */
-#line 205 "par/cparser.y"
+#line 206 "par/cparser.y"
     {printf(": type_specifier->DOUBLE\n");;}
     break;
 
   case 100:
 
 /* Line 1455 of yacc.c  */
-#line 206 "par/cparser.y"
+#line 207 "par/cparser.y"
     {printf(": type_specifier->SIGNED\n");;}
     break;
 
   case 101:
 
 /* Line 1455 of yacc.c  */
-#line 207 "par/cparser.y"
+#line 208 "par/cparser.y"
     {printf(": type_specifier->UNSIGNED\n");;}
     break;
 
   case 102:
 
 /* Line 1455 of yacc.c  */
-#line 208 "par/cparser.y"
+#line 209 "par/cparser.y"
     {printf(": type_specifier->struct_or_union_specifier\n");;}
     break;
 
   case 103:
 
 /* Line 1455 of yacc.c  */
-#line 209 "par/cparser.y"
+#line 210 "par/cparser.y"
     {printf(": type_specifier->enum_specifier\n");;}
     break;
 
   case 104:
 
 /* Line 1455 of yacc.c  */
-#line 210 "par/cparser.y"
+#line 211 "par/cparser.y"
     {printf(": type_specifier->TYPE_NAME\n");;}
     break;
 
   case 105:
 
 /* Line 1455 of yacc.c  */
-#line 214 "par/cparser.y"
+#line 215 "par/cparser.y"
     {printf(": struct_or_union_specifier->struct_or_union IDENTIFIER { struct_declaration_list }\n");;}
     break;
 
   case 106:
 
 /* Line 1455 of yacc.c  */
-#line 215 "par/cparser.y"
+#line 216 "par/cparser.y"
     {printf(": struct_or_union_specifier->struct_or_union { struct_declaration_list }\n");;}
     break;
 
   case 107:
 
 /* Line 1455 of yacc.c  */
-#line 216 "par/cparser.y"
+#line 217 "par/cparser.y"
     {printf(": struct_or_union_specifier->struct_or_union IDENTIFIER\n");;}
     break;
 
   case 108:
 
 /* Line 1455 of yacc.c  */
-#line 220 "par/cparser.y"
+#line 221 "par/cparser.y"
     {printf(": struct_or_union->STRUCT\n");;}
     break;
 
   case 109:
 
 /* Line 1455 of yacc.c  */
-#line 221 "par/cparser.y"
+#line 222 "par/cparser.y"
     {printf(": struct_or_union->UNION\n");;}
     break;
 
   case 110:
 
 /* Line 1455 of yacc.c  */
-#line 225 "par/cparser.y"
+#line 226 "par/cparser.y"
     {printf(": struct_declaration_list->struct_declaration\n");;}
     break;
 
   case 111:
 
 /* Line 1455 of yacc.c  */
-#line 226 "par/cparser.y"
+#line 227 "par/cparser.y"
     {printf(": struct_declaration_list->struct_declaration_list struct_declaration\n");;}
     break;
 
   case 112:
 
 /* Line 1455 of yacc.c  */
-#line 230 "par/cparser.y"
+#line 231 "par/cparser.y"
     {printf(": struct_declaration->specifier_qualifier_list struct_declarator_list ;\n");;}
     break;
 
   case 113:
 
 /* Line 1455 of yacc.c  */
-#line 234 "par/cparser.y"
+#line 235 "par/cparser.y"
     {printf(": specifier_qualifier_list->type_specifier specifier_qualifier_list\n");;}
     break;
 
   case 114:
 
 /* Line 1455 of yacc.c  */
-#line 235 "par/cparser.y"
+#line 236 "par/cparser.y"
     {printf(": specifier_qualifier_list->type_specifier\n");;}
     break;
 
   case 115:
 
 /* Line 1455 of yacc.c  */
-#line 236 "par/cparser.y"
+#line 237 "par/cparser.y"
     {printf(": specifier_qualifier_list->type_qualifier specifier_qualifier_list\n");;}
     break;
 
   case 116:
 
 /* Line 1455 of yacc.c  */
-#line 237 "par/cparser.y"
+#line 238 "par/cparser.y"
     {printf(": specifier_qualifier_list->type_qualifier\n");;}
     break;
 
   case 117:
 
 /* Line 1455 of yacc.c  */
-#line 241 "par/cparser.y"
+#line 242 "par/cparser.y"
     {printf(": struct_declarator_list->struct_declarator\n");;}
     break;
 
   case 118:
 
 /* Line 1455 of yacc.c  */
-#line 242 "par/cparser.y"
+#line 243 "par/cparser.y"
     {printf(": struct_declarator_list->struct_declarator_list , struct_declarator\n");;}
     break;
 
   case 119:
 
 /* Line 1455 of yacc.c  */
-#line 246 "par/cparser.y"
+#line 247 "par/cparser.y"
     {printf(": struct_declarator->declarator\n");;}
     break;
 
   case 120:
 
 /* Line 1455 of yacc.c  */
-#line 247 "par/cparser.y"
+#line 248 "par/cparser.y"
     {printf(": struct_declarator->: constant_expression\n");;}
     break;
 
   case 121:
 
 /* Line 1455 of yacc.c  */
-#line 248 "par/cparser.y"
+#line 249 "par/cparser.y"
     {printf(": struct_declarator->declarator : constant_expression\n");;}
     break;
 
   case 122:
 
 /* Line 1455 of yacc.c  */
-#line 252 "par/cparser.y"
+#line 253 "par/cparser.y"
     {printf(": enum_specifier->ENUM { enumerator_list }\n");;}
     break;
 
   case 123:
 
 /* Line 1455 of yacc.c  */
-#line 253 "par/cparser.y"
+#line 254 "par/cparser.y"
     {printf(": enum_specifier->ENUM IDENTIFIER { enumerator_list }\n");;}
     break;
 
   case 124:
 
 /* Line 1455 of yacc.c  */
-#line 254 "par/cparser.y"
+#line 255 "par/cparser.y"
     {printf(": enum_specifier->ENUM IDENTIFIER\n");;}
     break;
 
   case 125:
 
 /* Line 1455 of yacc.c  */
-#line 258 "par/cparser.y"
+#line 259 "par/cparser.y"
     {printf(": enumerator_list->enumerator\n");;}
     break;
 
   case 126:
 
 /* Line 1455 of yacc.c  */
-#line 259 "par/cparser.y"
+#line 260 "par/cparser.y"
     {printf(": enumerator_list->enumerator_list , enumerator\n");;}
     break;
 
   case 127:
 
 /* Line 1455 of yacc.c  */
-#line 263 "par/cparser.y"
+#line 264 "par/cparser.y"
     {printf(": enumerator->IDENTIFIER\n");;}
     break;
 
   case 128:
 
 /* Line 1455 of yacc.c  */
-#line 264 "par/cparser.y"
+#line 265 "par/cparser.y"
     {printf(": enumerator->IDENTIFIER = constant_expression\n");;}
     break;
 
   case 129:
 
 /* Line 1455 of yacc.c  */
-#line 268 "par/cparser.y"
+#line 269 "par/cparser.y"
     {printf(": type_qualifier->CONST\n");;}
     break;
 
   case 130:
 
 /* Line 1455 of yacc.c  */
-#line 269 "par/cparser.y"
+#line 270 "par/cparser.y"
     {printf(": type_qualifier->VOLATILE\n");;}
     break;
 
   case 131:
 
 /* Line 1455 of yacc.c  */
-#line 273 "par/cparser.y"
+#line 274 "par/cparser.y"
     {printf(": declarator->pointer direct_declarator\n");;}
     break;
 
   case 132:
 
 /* Line 1455 of yacc.c  */
-#line 274 "par/cparser.y"
+#line 275 "par/cparser.y"
     {printf(": declarator->direct_declarator\n");;}
     break;
 
   case 133:
 
 /* Line 1455 of yacc.c  */
-#line 278 "par/cparser.y"
-    {printf(": direct_declarator->IDENTIFIER\n");;}
+#line 279 "par/cparser.y"
+    {(yyval) = postfixExpression_IDENTIFIER((yyvsp[(1) - (1)]));;}
     break;
 
   case 134:
 
 /* Line 1455 of yacc.c  */
-#line 279 "par/cparser.y"
+#line 280 "par/cparser.y"
     {printf(": direct_declarator->( declarator )\n");;}
     break;
 
   case 135:
 
 /* Line 1455 of yacc.c  */
-#line 280 "par/cparser.y"
+#line 281 "par/cparser.y"
     {printf(": direct_declarator->direct_declarator [ constant_expression ]\n");;}
     break;
 
   case 136:
 
 /* Line 1455 of yacc.c  */
-#line 281 "par/cparser.y"
+#line 282 "par/cparser.y"
     {printf(": direct_declarator->direct_declarator [ ]\n");;}
     break;
 
   case 137:
 
 /* Line 1455 of yacc.c  */
-#line 282 "par/cparser.y"
+#line 283 "par/cparser.y"
     {printf(": direct_declarator->direct_declarator ( parameter_type_list )\n");;}
     break;
 
   case 138:
 
 /* Line 1455 of yacc.c  */
-#line 283 "par/cparser.y"
+#line 284 "par/cparser.y"
     {printf(": direct_declarator->direct_declarator ( identifier_list )\n");;}
     break;
 
   case 139:
 
 /* Line 1455 of yacc.c  */
-#line 284 "par/cparser.y"
+#line 285 "par/cparser.y"
     {printf(": direct_declarator->direct_declarator ( )\n");;}
     break;
 
   case 140:
 
 /* Line 1455 of yacc.c  */
-#line 288 "par/cparser.y"
+#line 289 "par/cparser.y"
     {printf(": pointer->*\n");;}
     break;
 
   case 141:
 
 /* Line 1455 of yacc.c  */
-#line 289 "par/cparser.y"
+#line 290 "par/cparser.y"
     {printf(": pointer->* type_qualifier_list\n");;}
     break;
 
   case 142:
 
 /* Line 1455 of yacc.c  */
-#line 290 "par/cparser.y"
+#line 291 "par/cparser.y"
     {printf(": pointer->* pointer\n");;}
     break;
 
   case 143:
 
 /* Line 1455 of yacc.c  */
-#line 291 "par/cparser.y"
+#line 292 "par/cparser.y"
     {printf(": pointer->* type_qualifier_list pointer\n");;}
     break;
 
   case 144:
 
 /* Line 1455 of yacc.c  */
-#line 295 "par/cparser.y"
+#line 296 "par/cparser.y"
     {printf(": type_qualifier_list->type_qualifier\n");;}
     break;
 
   case 145:
 
 /* Line 1455 of yacc.c  */
-#line 296 "par/cparser.y"
+#line 297 "par/cparser.y"
     {printf(": type_qualifier_list->type_qualifier_list type_qualifier\n");;}
     break;
 
   case 146:
 
 /* Line 1455 of yacc.c  */
-#line 301 "par/cparser.y"
+#line 302 "par/cparser.y"
     {printf(": parameter_type_list->parameter_list\n");;}
     break;
 
   case 147:
 
 /* Line 1455 of yacc.c  */
-#line 302 "par/cparser.y"
+#line 303 "par/cparser.y"
     {printf(": parameter_type_list->parameter_list , ...\n");;}
     break;
 
   case 148:
 
 /* Line 1455 of yacc.c  */
-#line 306 "par/cparser.y"
+#line 307 "par/cparser.y"
     {printf(": parameter_list->parameter_declaration\n");;}
     break;
 
   case 149:
 
 /* Line 1455 of yacc.c  */
-#line 307 "par/cparser.y"
+#line 308 "par/cparser.y"
     {printf(": parameter_list->parameter_list , parameter_declaration\n");;}
     break;
 
   case 150:
 
 /* Line 1455 of yacc.c  */
-#line 311 "par/cparser.y"
+#line 312 "par/cparser.y"
     {printf(": parameter_declaration->declaration_specifiers declarator\n");;}
     break;
 
   case 151:
 
 /* Line 1455 of yacc.c  */
-#line 312 "par/cparser.y"
+#line 313 "par/cparser.y"
     {printf(": parameter_declaration->declaration_specifiers abstract_declarator\n");;}
     break;
 
   case 152:
 
 /* Line 1455 of yacc.c  */
-#line 313 "par/cparser.y"
+#line 314 "par/cparser.y"
     {printf(": parameter_declaration->declaration_specifiers\n");;}
     break;
 
   case 153:
 
 /* Line 1455 of yacc.c  */
-#line 317 "par/cparser.y"
+#line 318 "par/cparser.y"
     {printf(": identifier_list->IDENTIFIER\n");;}
     break;
 
   case 154:
 
 /* Line 1455 of yacc.c  */
-#line 318 "par/cparser.y"
+#line 319 "par/cparser.y"
     {printf(": identifier_list->identifier_list , IDENTIFIER\n");;}
     break;
 
   case 155:
 
 /* Line 1455 of yacc.c  */
-#line 322 "par/cparser.y"
+#line 323 "par/cparser.y"
     {printf(": type_name->specifier_qualifier_list\n");;}
     break;
 
   case 156:
 
 /* Line 1455 of yacc.c  */
-#line 323 "par/cparser.y"
+#line 324 "par/cparser.y"
     {printf(": type_name->specifier_qualifier_list abstract_declarator\n");;}
     break;
 
   case 157:
 
 /* Line 1455 of yacc.c  */
-#line 327 "par/cparser.y"
+#line 328 "par/cparser.y"
     {printf(": abstract_declarator->pointer\n");;}
     break;
 
   case 158:
 
 /* Line 1455 of yacc.c  */
-#line 328 "par/cparser.y"
+#line 329 "par/cparser.y"
     {printf(": abstract_declarator->direct_abstract_declarator\n");;}
     break;
 
   case 159:
 
 /* Line 1455 of yacc.c  */
-#line 329 "par/cparser.y"
+#line 330 "par/cparser.y"
     {printf(": abstract_declarator->pointer direct_abstract_declarator\n");;}
     break;
 
   case 160:
 
 /* Line 1455 of yacc.c  */
-#line 333 "par/cparser.y"
+#line 334 "par/cparser.y"
     {printf(": direct_abstract_declarator->( abstract_declarator )\n");;}
     break;
 
   case 161:
 
 /* Line 1455 of yacc.c  */
-#line 334 "par/cparser.y"
+#line 335 "par/cparser.y"
     {printf(": direct_abstract_declarator->[ ]\n");;}
     break;
 
   case 162:
 
 /* Line 1455 of yacc.c  */
-#line 335 "par/cparser.y"
+#line 336 "par/cparser.y"
     {printf(": direct_abstract_declarator->[ constant_expression ]\n");;}
     break;
 
   case 163:
 
 /* Line 1455 of yacc.c  */
-#line 336 "par/cparser.y"
+#line 337 "par/cparser.y"
     {printf(": direct_abstract_declarator->direct_abstract_declarator [ ]\n");;}
     break;
 
   case 164:
 
 /* Line 1455 of yacc.c  */
-#line 337 "par/cparser.y"
+#line 338 "par/cparser.y"
     {printf(": direct_abstract_declarator->direct_abstract_declarator [ constant_expression ]\n");;}
     break;
 
   case 165:
 
 /* Line 1455 of yacc.c  */
-#line 338 "par/cparser.y"
+#line 339 "par/cparser.y"
     {printf(": direct_abstract_declarator->( )\n");;}
     break;
 
   case 166:
 
 /* Line 1455 of yacc.c  */
-#line 339 "par/cparser.y"
+#line 340 "par/cparser.y"
     {printf(": direct_abstract_declarator->( parameter_type_list )\n");;}
     break;
 
   case 167:
 
 /* Line 1455 of yacc.c  */
-#line 340 "par/cparser.y"
+#line 341 "par/cparser.y"
     {printf(": direct_abstract_declarator->direct_abstract_declarator ( )\n");;}
     break;
 
   case 168:
 
 /* Line 1455 of yacc.c  */
-#line 341 "par/cparser.y"
+#line 342 "par/cparser.y"
     {printf(": direct_abstract_declarator->direct_abstract_declarator ( parameter_type_list )\n");;}
     break;
 
   case 169:
 
 /* Line 1455 of yacc.c  */
-#line 345 "par/cparser.y"
+#line 346 "par/cparser.y"
     {printf(": initializer->assignment_expression\n");;}
     break;
 
   case 170:
 
 /* Line 1455 of yacc.c  */
-#line 346 "par/cparser.y"
+#line 347 "par/cparser.y"
     {printf(": initializer->{ initializer_list }\n");;}
     break;
 
   case 171:
 
 /* Line 1455 of yacc.c  */
-#line 347 "par/cparser.y"
+#line 348 "par/cparser.y"
     {printf(": initializer->{ initializer_list , }\n");;}
     break;
 
   case 172:
 
 /* Line 1455 of yacc.c  */
-#line 351 "par/cparser.y"
+#line 352 "par/cparser.y"
     {printf(": initializer_list->initializer\n");;}
     break;
 
   case 173:
 
 /* Line 1455 of yacc.c  */
-#line 352 "par/cparser.y"
+#line 353 "par/cparser.y"
     {printf(": initializer_list->initializer_list , initializer\n");;}
     break;
 
   case 174:
 
 /* Line 1455 of yacc.c  */
-#line 356 "par/cparser.y"
+#line 357 "par/cparser.y"
     {printf(": statement->labeled_statement\n");;}
     break;
 
   case 175:
 
 /* Line 1455 of yacc.c  */
-#line 357 "par/cparser.y"
+#line 358 "par/cparser.y"
     {printf(": statement->compound_statement\n");;}
     break;
 
   case 176:
 
 /* Line 1455 of yacc.c  */
-#line 358 "par/cparser.y"
+#line 359 "par/cparser.y"
     {printf(": statement->expression_statement\n");;}
     break;
 
   case 177:
 
 /* Line 1455 of yacc.c  */
-#line 359 "par/cparser.y"
+#line 360 "par/cparser.y"
     {printf(": statement->selection_statement\n");;}
     break;
 
   case 178:
 
 /* Line 1455 of yacc.c  */
-#line 360 "par/cparser.y"
+#line 361 "par/cparser.y"
     {printf(": statement->iteration_statement\n");;}
     break;
 
   case 179:
 
 /* Line 1455 of yacc.c  */
-#line 361 "par/cparser.y"
+#line 362 "par/cparser.y"
     {printf(": statement->jump_statement\n");;}
     break;
 
   case 180:
 
 /* Line 1455 of yacc.c  */
-#line 365 "par/cparser.y"
+#line 366 "par/cparser.y"
     {printf(": labeled_statement->IDENTIFIER : statement\n");;}
     break;
 
   case 181:
 
 /* Line 1455 of yacc.c  */
-#line 366 "par/cparser.y"
+#line 367 "par/cparser.y"
     {printf(": labeled_statement->CASE constant_expression : statement\n");;}
     break;
 
   case 182:
 
 /* Line 1455 of yacc.c  */
-#line 367 "par/cparser.y"
+#line 368 "par/cparser.y"
     {printf(": labeled_statement->DEFAULT : statement\n");;}
     break;
 
   case 183:
 
 /* Line 1455 of yacc.c  */
-#line 371 "par/cparser.y"
+#line 372 "par/cparser.y"
     {printf(": compound_statement->{ }\n");;}
     break;
 
   case 184:
 
 /* Line 1455 of yacc.c  */
-#line 372 "par/cparser.y"
+#line 373 "par/cparser.y"
     {printf(": compound_statement->{ statement_list }\n");;}
     break;
 
   case 185:
 
 /* Line 1455 of yacc.c  */
-#line 373 "par/cparser.y"
+#line 374 "par/cparser.y"
     {printf(": compound_statement->{ declaration_list }\n");;}
     break;
 
   case 186:
 
 /* Line 1455 of yacc.c  */
-#line 374 "par/cparser.y"
+#line 375 "par/cparser.y"
     {printf(": compound_statement->{ declaration_list statement_list }\n");;}
     break;
 
   case 187:
 
 /* Line 1455 of yacc.c  */
-#line 378 "par/cparser.y"
+#line 379 "par/cparser.y"
     {printf(": declaration_list->declaration\n");;}
     break;
 
   case 188:
 
 /* Line 1455 of yacc.c  */
-#line 379 "par/cparser.y"
+#line 380 "par/cparser.y"
     {printf(": declaration_list->declaration_list declaration\n");;}
     break;
 
   case 189:
 
 /* Line 1455 of yacc.c  */
-#line 383 "par/cparser.y"
+#line 384 "par/cparser.y"
     {printf(": statement_list->statement\n");;}
     break;
 
   case 190:
 
 /* Line 1455 of yacc.c  */
-#line 384 "par/cparser.y"
+#line 385 "par/cparser.y"
     {printf(": statement_list->statement_list statement\n");;}
     break;
 
   case 191:
 
 /* Line 1455 of yacc.c  */
-#line 388 "par/cparser.y"
+#line 389 "par/cparser.y"
     {printf(": expression_statement->;\n");;}
     break;
 
   case 192:
 
 /* Line 1455 of yacc.c  */
-#line 389 "par/cparser.y"
+#line 390 "par/cparser.y"
     {printf(": expression_statement->expression ;\n");;}
     break;
 
   case 193:
 
 /* Line 1455 of yacc.c  */
-#line 393 "par/cparser.y"
+#line 394 "par/cparser.y"
     {printf(": selection_statement->IF ( expression ) statement\n");;}
     break;
 
   case 194:
 
 /* Line 1455 of yacc.c  */
-#line 394 "par/cparser.y"
+#line 395 "par/cparser.y"
     {printf(": selection_statement->IF ( expression ) statement ELSE statement\n");;}
     break;
 
   case 195:
 
 /* Line 1455 of yacc.c  */
-#line 395 "par/cparser.y"
+#line 396 "par/cparser.y"
     {printf(": selection_statement->SWITCH ( expression ) statement\n");;}
     break;
 
   case 196:
 
 /* Line 1455 of yacc.c  */
-#line 399 "par/cparser.y"
+#line 400 "par/cparser.y"
     {printf(": iteration_statement->WHILE ( expression ) statement\n");;}
     break;
 
   case 197:
 
 /* Line 1455 of yacc.c  */
-#line 400 "par/cparser.y"
+#line 401 "par/cparser.y"
     {printf(": iteration_statement->DO statement WHILE ( expression ) ;\n");;}
     break;
 
   case 198:
 
 /* Line 1455 of yacc.c  */
-#line 401 "par/cparser.y"
+#line 402 "par/cparser.y"
     {printf(": iteration_statement->FOR ( expression_statement expression_statement ) statement\n");;}
     break;
 
   case 199:
 
 /* Line 1455 of yacc.c  */
-#line 402 "par/cparser.y"
+#line 403 "par/cparser.y"
     {printf(": iteration_statement->FOR ( expression_statement expression_statement expression ) statement\n");;}
     break;
 
   case 200:
 
 /* Line 1455 of yacc.c  */
-#line 406 "par/cparser.y"
+#line 407 "par/cparser.y"
     {printf(": jump_statement->GOTO IDENTIFIER ;\n");;}
     break;
 
   case 201:
 
 /* Line 1455 of yacc.c  */
-#line 407 "par/cparser.y"
+#line 408 "par/cparser.y"
     {printf(": jump_statement->CONTINUE ;\n");;}
     break;
 
   case 202:
 
 /* Line 1455 of yacc.c  */
-#line 408 "par/cparser.y"
+#line 409 "par/cparser.y"
     {printf(": jump_statement->BREAK ;\n");;}
     break;
 
   case 203:
 
 /* Line 1455 of yacc.c  */
-#line 409 "par/cparser.y"
+#line 410 "par/cparser.y"
     {printf(": jump_statement->RETURN ;\n");;}
     break;
 
   case 204:
 
 /* Line 1455 of yacc.c  */
-#line 410 "par/cparser.y"
+#line 411 "par/cparser.y"
     {printf(": jump_statement->RETURN expression ;\n");;}
     break;
 
   case 205:
 
 /* Line 1455 of yacc.c  */
-#line 414 "par/cparser.y"
+#line 415 "par/cparser.y"
     {printf(": translation_unit->external_declaration\n");;}
     break;
 
   case 206:
 
 /* Line 1455 of yacc.c  */
-#line 415 "par/cparser.y"
+#line 416 "par/cparser.y"
     {printf(": translation_unit->translation_unit external_declaration\n");;}
     break;
 
   case 207:
 
 /* Line 1455 of yacc.c  */
-#line 419 "par/cparser.y"
+#line 420 "par/cparser.y"
     {printf(": external_declaration->function_definition\n");;}
     break;
 
   case 208:
 
 /* Line 1455 of yacc.c  */
-#line 420 "par/cparser.y"
+#line 421 "par/cparser.y"
     {printf(": external_declaration->declaration\n");;}
     break;
 
   case 209:
 
 /* Line 1455 of yacc.c  */
-#line 424 "par/cparser.y"
+#line 425 "par/cparser.y"
     {printf(": function_definition->declaration_specifiers declarator declaration_list compound_statement\n");;}
     break;
 
   case 210:
 
 /* Line 1455 of yacc.c  */
-#line 425 "par/cparser.y"
+#line 426 "par/cparser.y"
     {printf(": function_definition->declaration_specifiers declarator compound_statement\n");;}
     break;
 
   case 211:
 
 /* Line 1455 of yacc.c  */
-#line 426 "par/cparser.y"
+#line 427 "par/cparser.y"
     {printf(": function_definition->declarator declaration_list compound_statement\n");;}
     break;
 
   case 212:
 
 /* Line 1455 of yacc.c  */
-#line 427 "par/cparser.y"
+#line 428 "par/cparser.y"
     {printf(": function_definition->declarator compound_statement\n");;}
     break;
 
 
 
 /* Line 1455 of yacc.c  */
-#line 3409 "cparser.tab.c"
+#line 3410 "cparser.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -3617,6 +3618,6 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 429 "par/cparser.y"
+#line 430 "par/cparser.y"
 
 

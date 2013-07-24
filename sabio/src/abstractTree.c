@@ -534,3 +534,12 @@ void dumpabstractTree(abstractTree * _absTree, int _level)
 			return;
 	}
 }
+
+abstractTree * newIdentifier(symbol * sym)
+{
+	identifier * id = ((identifier *)malloc(sizeof(identifier)));
+
+	id->type = _IDENTIFIER;
+	id->sym = sym;
+	return (abstractTree *)id;
+}

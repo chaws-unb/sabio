@@ -1,8 +1,10 @@
-/* A Bison parser, made by GNU Bison 2.5.  */
 
-/* Bison implementation for Yacc-like parsers in C
+/* A Bison parser, made by GNU Bison 2.4.1.  */
+
+/* Skeleton implementation for Bison's Yacc-like parsers in C
    
-      Copyright (C) 1984, 1989-1990, 2000-2011 Free Software Foundation, Inc.
+      Copyright (C) 1984, 1989, 1990, 2000, 2001, 2002, 2003, 2004, 2005, 2006
+   Free Software Foundation, Inc.
    
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -44,7 +46,7 @@
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "2.5"
+#define YYBISON_VERSION "2.4.1"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -65,7 +67,7 @@
 
 /* Copy the first part of user declarations.  */
 
-/* Line 268 of yacc.c  */
+/* Line 189 of yacc.c  */
 #line 1 "grammar_rules/cGrammar.y"
 
 #include <stdio.h>
@@ -73,8 +75,8 @@
 #include "../rules_functions/cGrammar.h"
 
 
-/* Line 268 of yacc.c  */
-#line 78 "cGrammar.tab.c"
+/* Line 189 of yacc.c  */
+#line 80 "cGrammar.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -168,7 +170,7 @@
 typedef union YYSTYPE
 {
 
-/* Line 293 of yacc.c  */
+/* Line 214 of yacc.c  */
 #line 8 "grammar_rules/cGrammar.y"
 
 	int fn;	
@@ -180,8 +182,8 @@ typedef union YYSTYPE
 
 
 
-/* Line 293 of yacc.c  */
-#line 185 "cGrammar.tab.c"
+/* Line 214 of yacc.c  */
+#line 187 "cGrammar.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -192,8 +194,8 @@ typedef union YYSTYPE
 /* Copy the second part of user declarations.  */
 
 
-/* Line 343 of yacc.c  */
-#line 197 "cGrammar.tab.c"
+/* Line 264 of yacc.c  */
+#line 199 "cGrammar.tab.c"
 
 #ifdef short
 # undef short
@@ -243,7 +245,7 @@ typedef short int yytype_int16;
 #define YYSIZE_MAXIMUM ((YYSIZE_T) -1)
 
 #ifndef YY_
-# if defined YYENABLE_NLS && YYENABLE_NLS
+# if YYENABLE_NLS
 #  if ENABLE_NLS
 #   include <libintl.h> /* INFRINGES ON USER NAME SPACE */
 #   define YY_(msgid) dgettext ("bison-runtime", msgid)
@@ -296,11 +298,11 @@ YYID (yyi)
 #    define alloca _alloca
 #   else
 #    define YYSTACK_ALLOC alloca
-#    if ! defined _ALLOCA_H && ! defined EXIT_SUCCESS && (defined __STDC__ || defined __C99__FUNC__ \
+#    if ! defined _ALLOCA_H && ! defined _STDLIB_H && (defined __STDC__ || defined __C99__FUNC__ \
      || defined __cplusplus || defined _MSC_VER)
 #     include <stdlib.h> /* INFRINGES ON USER NAME SPACE */
-#     ifndef EXIT_SUCCESS
-#      define EXIT_SUCCESS 0
+#     ifndef _STDLIB_H
+#      define _STDLIB_H 1
 #     endif
 #    endif
 #   endif
@@ -323,24 +325,24 @@ YYID (yyi)
 #  ifndef YYSTACK_ALLOC_MAXIMUM
 #   define YYSTACK_ALLOC_MAXIMUM YYSIZE_MAXIMUM
 #  endif
-#  if (defined __cplusplus && ! defined EXIT_SUCCESS \
+#  if (defined __cplusplus && ! defined _STDLIB_H \
        && ! ((defined YYMALLOC || defined malloc) \
 	     && (defined YYFREE || defined free)))
 #   include <stdlib.h> /* INFRINGES ON USER NAME SPACE */
-#   ifndef EXIT_SUCCESS
-#    define EXIT_SUCCESS 0
+#   ifndef _STDLIB_H
+#    define _STDLIB_H 1
 #   endif
 #  endif
 #  ifndef YYMALLOC
 #   define YYMALLOC malloc
-#   if ! defined malloc && ! defined EXIT_SUCCESS && (defined __STDC__ || defined __C99__FUNC__ \
+#   if ! defined malloc && ! defined _STDLIB_H && (defined __STDC__ || defined __C99__FUNC__ \
      || defined __cplusplus || defined _MSC_VER)
 void *malloc (YYSIZE_T); /* INFRINGES ON USER NAME SPACE */
 #   endif
 #  endif
 #  ifndef YYFREE
 #   define YYFREE free
-#   if ! defined free && ! defined EXIT_SUCCESS && (defined __STDC__ || defined __C99__FUNC__ \
+#   if ! defined free && ! defined _STDLIB_H && (defined __STDC__ || defined __C99__FUNC__ \
      || defined __cplusplus || defined _MSC_VER)
 void free (void *); /* INFRINGES ON USER NAME SPACE */
 #   endif
@@ -369,7 +371,23 @@ union yyalloc
      ((N) * (sizeof (yytype_int16) + sizeof (YYSTYPE)) \
       + YYSTACK_GAP_MAXIMUM)
 
-# define YYCOPY_NEEDED 1
+/* Copy COUNT objects from FROM to TO.  The source and destination do
+   not overlap.  */
+# ifndef YYCOPY
+#  if defined __GNUC__ && 1 < __GNUC__
+#   define YYCOPY(To, From, Count) \
+      __builtin_memcpy (To, From, (Count) * sizeof (*(From)))
+#  else
+#   define YYCOPY(To, From, Count)		\
+      do					\
+	{					\
+	  YYSIZE_T yyi;				\
+	  for (yyi = 0; yyi < (Count); yyi++)	\
+	    (To)[yyi] = (From)[yyi];		\
+	}					\
+      while (YYID (0))
+#  endif
+# endif
 
 /* Relocate STACK from its old location to the new one.  The
    local variables YYSIZE and YYSTACKSIZE give the old and new number of
@@ -388,26 +406,6 @@ union yyalloc
     while (YYID (0))
 
 #endif
-
-#if defined YYCOPY_NEEDED && YYCOPY_NEEDED
-/* Copy COUNT objects from FROM to TO.  The source and destination do
-   not overlap.  */
-# ifndef YYCOPY
-#  if defined __GNUC__ && 1 < __GNUC__
-#   define YYCOPY(To, From, Count) \
-      __builtin_memcpy (To, From, (Count) * sizeof (*(From)))
-#  else
-#   define YYCOPY(To, From, Count)		\
-      do					\
-	{					\
-	  YYSIZE_T yyi;				\
-	  for (yyi = 0; yyi < (Count); yyi++)	\
-	    (To)[yyi] = (From)[yyi];		\
-	}					\
-      while (YYID (0))
-#  endif
-# endif
-#endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  61
@@ -571,28 +569,28 @@ static const yytype_int16 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,    40,    40,    41,    42,    43,    47,    48,    49,    50,
-      51,    52,    53,    54,    58,    59,    63,    64,    65,    66,
-      67,    68,    72,    73,    74,    75,    76,    77,    81,    82,
-      86,    87,    88,    89,    93,    94,    95,    99,   100,   101,
-     105,   106,   107,   108,   109,   113,   114,   115,   119,   120,
-     124,   125,   129,   130,   134,   135,   139,   140,   144,   145,
-     149,   150,   154,   155,   156,   157,   158,   159,   160,   161,
-     162,   163,   164,   168,   169,   173,   177,   178,   182,   183,
-     184,   185,   186,   187,   191,   192,   196,   197,   201,   202,
-     203,   204,   205,   209,   210,   211,   212,   213,   214,   215,
-     216,   217,   218,   219,   220,   224,   225,   226,   230,   231,
-     235,   236,   240,   244,   245,   246,   247,   251,   252,   256,
-     257,   258,   262,   263,   264,   268,   269,   273,   274,   278,
-     279,   283,   284,   288,   289,   290,   291,   292,   293,   294,
-     298,   299,   300,   301,   305,   306,   311,   312,   316,   317,
-     321,   322,   323,   327,   328,   332,   333,   337,   338,   339,
-     343,   344,   345,   346,   347,   348,   349,   350,   351,   355,
-     356,   357,   361,   362,   366,   367,   368,   369,   370,   371,
-     375,   376,   377,   381,   382,   383,   384,   388,   389,   393,
-     394,   398,   399,   403,   404,   405,   409,   410,   411,   412,
-     416,   417,   418,   419,   420,   424,   425,   429,   430,   434,
-     435,   436,   437
+       0,    45,    45,    46,    47,    48,    52,    53,    54,    55,
+      56,    57,    58,    59,    63,    64,    68,    69,    70,    71,
+      72,    73,    77,    78,    79,    80,    81,    82,    86,    87,
+      91,    92,    93,    94,    98,    99,   100,   104,   105,   106,
+     110,   111,   112,   113,   114,   118,   119,   120,   124,   125,
+     129,   130,   134,   135,   139,   140,   144,   145,   149,   150,
+     154,   155,   159,   160,   161,   162,   163,   164,   165,   166,
+     167,   168,   169,   173,   174,   178,   182,   183,   187,   188,
+     189,   190,   191,   192,   196,   197,   201,   202,   206,   207,
+     208,   209,   210,   214,   215,   216,   217,   218,   219,   220,
+     221,   222,   223,   224,   225,   229,   230,   231,   235,   236,
+     240,   241,   245,   249,   250,   251,   252,   256,   257,   261,
+     262,   263,   267,   268,   269,   273,   274,   278,   279,   283,
+     284,   288,   289,   293,   294,   295,   296,   297,   298,   299,
+     303,   304,   305,   306,   310,   311,   316,   317,   321,   322,
+     326,   327,   328,   332,   333,   337,   338,   342,   343,   344,
+     348,   349,   350,   351,   352,   353,   354,   355,   356,   360,
+     361,   362,   366,   367,   371,   372,   373,   374,   375,   376,
+     380,   381,   382,   386,   387,   388,   389,   393,   394,   398,
+     399,   403,   404,   408,   409,   410,   414,   415,   416,   417,
+     421,   422,   423,   424,   425,   429,   430,   434,   435,   439,
+     440,   441,   442
 };
 #endif
 
@@ -709,8 +707,8 @@ static const yytype_uint8 yyr2[] =
        3,     3,     2
 };
 
-/* YYDEFACT[STATE-NAME] -- Default reduction number in state STATE-NUM.
-   Performed when YYTABLE doesn't specify something else to do.  Zero
+/* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
+   STATE-NUM when YYTABLE doesn't specify something else to do.  Zero
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
@@ -819,7 +817,8 @@ static const yytype_int16 yypgoto[] =
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
    positive, shift that token.  If negative, reduce the rule which
-   number is the opposite.  If YYTABLE_NINF, syntax error.  */
+   number is the opposite.  If zero, do what YYDEFACT says.
+   If YYTABLE_NINF, syntax error.  */
 #define YYTABLE_NINF -1
 static const yytype_uint16 yytable[] =
 {
@@ -955,12 +954,6 @@ static const yytype_uint16 yytable[] =
       10,    11,    12,    13,    14,    15,    16,    17,    18,    19,
       20,    21
 };
-
-#define yypact_value_is_default(yystate) \
-  ((yystate) == (-223))
-
-#define yytable_value_is_error(yytable_value) \
-  YYID (0)
 
 static const yytype_int16 yycheck[] =
 {
@@ -1150,18 +1143,9 @@ static const yytype_uint8 yystos[] =
 
 /* Like YYERROR except do call yyerror.  This remains here temporarily
    to ease the transition to the new meaning of YYERROR, for GCC.
-   Once GCC version 2 has supplanted version 1, this can go.  However,
-   YYFAIL appears to be in use.  Nevertheless, it is formally deprecated
-   in Bison 2.4.2's NEWS entry, where a plan to phase it out is
-   discussed.  */
+   Once GCC version 2 has supplanted version 1, this can go.  */
 
 #define YYFAIL		goto yyerrlab
-#if defined YYFAIL
-  /* This is here to suppress warnings from the GCC cpp's
-     -Wunused-macros.  Normally we don't worry about that warning, but
-     some users do, and we want to make it easy for users to remove
-     YYFAIL uses, which will produce warnings from Bison 2.5.  */
-#endif
 
 #define YYRECOVERING()  (!!yyerrstatus)
 
@@ -1171,6 +1155,7 @@ do								\
     {								\
       yychar = (Token);						\
       yylval = (Value);						\
+      yytoken = YYTRANSLATE (yychar);				\
       YYPOPSTACK (1);						\
       goto yybackup;						\
     }								\
@@ -1212,10 +1197,19 @@ while (YYID (0))
 #endif
 
 
-/* This macro is provided for backward compatibility. */
+/* YY_LOCATION_PRINT -- Print the location on the stream.
+   This macro was not mandated originally: define only if we know
+   we won't break user code: when these are the locations we know.  */
 
 #ifndef YY_LOCATION_PRINT
-# define YY_LOCATION_PRINT(File, Loc) ((void) 0)
+# if YYLTYPE_IS_TRIVIAL
+#  define YY_LOCATION_PRINT(File, Loc)			\
+     fprintf (File, "%d.%d-%d.%d",			\
+	      (Loc).first_line, (Loc).first_column,	\
+	      (Loc).last_line,  (Loc).last_column)
+# else
+#  define YY_LOCATION_PRINT(File, Loc) ((void) 0)
+# endif
 #endif
 
 
@@ -1407,6 +1401,7 @@ int yydebug;
 # define YYMAXDEPTH 10000
 #endif
 
+
 
 #if YYERROR_VERBOSE
 
@@ -1509,142 +1504,115 @@ yytnamerr (char *yyres, const char *yystr)
 }
 # endif
 
-/* Copy into *YYMSG, which is of size *YYMSG_ALLOC, an error message
-   about the unexpected token YYTOKEN for the state stack whose top is
-   YYSSP.
-
-   Return 0 if *YYMSG was successfully written.  Return 1 if *YYMSG is
-   not large enough to hold the message.  In that case, also set
-   *YYMSG_ALLOC to the required number of bytes.  Return 2 if the
-   required number of bytes is too large to store.  */
-static int
-yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
-                yytype_int16 *yyssp, int yytoken)
+/* Copy into YYRESULT an error message about the unexpected token
+   YYCHAR while in state YYSTATE.  Return the number of bytes copied,
+   including the terminating null byte.  If YYRESULT is null, do not
+   copy anything; just return the number of bytes that would be
+   copied.  As a special case, return 0 if an ordinary "syntax error"
+   message will do.  Return YYSIZE_MAXIMUM if overflow occurs during
+   size calculation.  */
+static YYSIZE_T
+yysyntax_error (char *yyresult, int yystate, int yychar)
 {
-  YYSIZE_T yysize0 = yytnamerr (0, yytname[yytoken]);
-  YYSIZE_T yysize = yysize0;
-  YYSIZE_T yysize1;
-  enum { YYERROR_VERBOSE_ARGS_MAXIMUM = 5 };
-  /* Internationalized format string. */
-  const char *yyformat = 0;
-  /* Arguments of yyformat. */
-  char const *yyarg[YYERROR_VERBOSE_ARGS_MAXIMUM];
-  /* Number of reported tokens (one for the "unexpected", one per
-     "expected"). */
-  int yycount = 0;
+  int yyn = yypact[yystate];
 
-  /* There are many possibilities here to consider:
-     - Assume YYFAIL is not used.  It's too flawed to consider.  See
-       <http://lists.gnu.org/archive/html/bison-patches/2009-12/msg00024.html>
-       for details.  YYERROR is fine as it does not invoke this
-       function.
-     - If this state is a consistent state with a default action, then
-       the only way this function was invoked is if the default action
-       is an error action.  In that case, don't check for expected
-       tokens because there are none.
-     - The only way there can be no lookahead present (in yychar) is if
-       this state is a consistent state with a default action.  Thus,
-       detecting the absence of a lookahead is sufficient to determine
-       that there is no unexpected or expected token to report.  In that
-       case, just report a simple "syntax error".
-     - Don't assume there isn't a lookahead just because this state is a
-       consistent state with a default action.  There might have been a
-       previous inconsistent state, consistent state with a non-default
-       action, or user semantic action that manipulated yychar.
-     - Of course, the expected token list depends on states to have
-       correct lookahead information, and it depends on the parser not
-       to perform extra reductions after fetching a lookahead from the
-       scanner and before detecting a syntax error.  Thus, state merging
-       (from LALR or IELR) and default reductions corrupt the expected
-       token list.  However, the list is correct for canonical LR with
-       one exception: it will still contain any token that will not be
-       accepted due to an error action in a later state.
-  */
-  if (yytoken != YYEMPTY)
+  if (! (YYPACT_NINF < yyn && yyn <= YYLAST))
+    return 0;
+  else
     {
-      int yyn = yypact[*yyssp];
-      yyarg[yycount++] = yytname[yytoken];
-      if (!yypact_value_is_default (yyn))
-        {
-          /* Start YYX at -YYN if negative to avoid negative indexes in
-             YYCHECK.  In other words, skip the first -YYN actions for
-             this state because they are default actions.  */
-          int yyxbegin = yyn < 0 ? -yyn : 0;
-          /* Stay within bounds of both yycheck and yytname.  */
-          int yychecklim = YYLAST - yyn + 1;
-          int yyxend = yychecklim < YYNTOKENS ? yychecklim : YYNTOKENS;
-          int yyx;
+      int yytype = YYTRANSLATE (yychar);
+      YYSIZE_T yysize0 = yytnamerr (0, yytname[yytype]);
+      YYSIZE_T yysize = yysize0;
+      YYSIZE_T yysize1;
+      int yysize_overflow = 0;
+      enum { YYERROR_VERBOSE_ARGS_MAXIMUM = 5 };
+      char const *yyarg[YYERROR_VERBOSE_ARGS_MAXIMUM];
+      int yyx;
 
-          for (yyx = yyxbegin; yyx < yyxend; ++yyx)
-            if (yycheck[yyx + yyn] == yyx && yyx != YYTERROR
-                && !yytable_value_is_error (yytable[yyx + yyn]))
-              {
-                if (yycount == YYERROR_VERBOSE_ARGS_MAXIMUM)
-                  {
-                    yycount = 1;
-                    yysize = yysize0;
-                    break;
-                  }
-                yyarg[yycount++] = yytname[yyx];
-                yysize1 = yysize + yytnamerr (0, yytname[yyx]);
-                if (! (yysize <= yysize1
-                       && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
-                  return 2;
-                yysize = yysize1;
-              }
-        }
+# if 0
+      /* This is so xgettext sees the translatable formats that are
+	 constructed on the fly.  */
+      YY_("syntax error, unexpected %s");
+      YY_("syntax error, unexpected %s, expecting %s");
+      YY_("syntax error, unexpected %s, expecting %s or %s");
+      YY_("syntax error, unexpected %s, expecting %s or %s or %s");
+      YY_("syntax error, unexpected %s, expecting %s or %s or %s or %s");
+# endif
+      char *yyfmt;
+      char const *yyf;
+      static char const yyunexpected[] = "syntax error, unexpected %s";
+      static char const yyexpecting[] = ", expecting %s";
+      static char const yyor[] = " or %s";
+      char yyformat[sizeof yyunexpected
+		    + sizeof yyexpecting - 1
+		    + ((YYERROR_VERBOSE_ARGS_MAXIMUM - 2)
+		       * (sizeof yyor - 1))];
+      char const *yyprefix = yyexpecting;
+
+      /* Start YYX at -YYN if negative to avoid negative indexes in
+	 YYCHECK.  */
+      int yyxbegin = yyn < 0 ? -yyn : 0;
+
+      /* Stay within bounds of both yycheck and yytname.  */
+      int yychecklim = YYLAST - yyn + 1;
+      int yyxend = yychecklim < YYNTOKENS ? yychecklim : YYNTOKENS;
+      int yycount = 1;
+
+      yyarg[0] = yytname[yytype];
+      yyfmt = yystpcpy (yyformat, yyunexpected);
+
+      for (yyx = yyxbegin; yyx < yyxend; ++yyx)
+	if (yycheck[yyx + yyn] == yyx && yyx != YYTERROR)
+	  {
+	    if (yycount == YYERROR_VERBOSE_ARGS_MAXIMUM)
+	      {
+		yycount = 1;
+		yysize = yysize0;
+		yyformat[sizeof yyunexpected - 1] = '\0';
+		break;
+	      }
+	    yyarg[yycount++] = yytname[yyx];
+	    yysize1 = yysize + yytnamerr (0, yytname[yyx]);
+	    yysize_overflow |= (yysize1 < yysize);
+	    yysize = yysize1;
+	    yyfmt = yystpcpy (yyfmt, yyprefix);
+	    yyprefix = yyor;
+	  }
+
+      yyf = YY_(yyformat);
+      yysize1 = yysize + yystrlen (yyf);
+      yysize_overflow |= (yysize1 < yysize);
+      yysize = yysize1;
+
+      if (yysize_overflow)
+	return YYSIZE_MAXIMUM;
+
+      if (yyresult)
+	{
+	  /* Avoid sprintf, as that infringes on the user's name space.
+	     Don't have undefined behavior even if the translation
+	     produced a string with the wrong number of "%s"s.  */
+	  char *yyp = yyresult;
+	  int yyi = 0;
+	  while ((*yyp = *yyf) != '\0')
+	    {
+	      if (*yyp == '%' && yyf[1] == 's' && yyi < yycount)
+		{
+		  yyp += yytnamerr (yyp, yyarg[yyi++]);
+		  yyf += 2;
+		}
+	      else
+		{
+		  yyp++;
+		  yyf++;
+		}
+	    }
+	}
+      return yysize;
     }
-
-  switch (yycount)
-    {
-# define YYCASE_(N, S)                      \
-      case N:                               \
-        yyformat = S;                       \
-      break
-      YYCASE_(0, YY_("syntax error"));
-      YYCASE_(1, YY_("syntax error, unexpected %s"));
-      YYCASE_(2, YY_("syntax error, unexpected %s, expecting %s"));
-      YYCASE_(3, YY_("syntax error, unexpected %s, expecting %s or %s"));
-      YYCASE_(4, YY_("syntax error, unexpected %s, expecting %s or %s or %s"));
-      YYCASE_(5, YY_("syntax error, unexpected %s, expecting %s or %s or %s or %s"));
-# undef YYCASE_
-    }
-
-  yysize1 = yysize + yystrlen (yyformat);
-  if (! (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
-    return 2;
-  yysize = yysize1;
-
-  if (*yymsg_alloc < yysize)
-    {
-      *yymsg_alloc = 2 * yysize;
-      if (! (yysize <= *yymsg_alloc
-             && *yymsg_alloc <= YYSTACK_ALLOC_MAXIMUM))
-        *yymsg_alloc = YYSTACK_ALLOC_MAXIMUM;
-      return 1;
-    }
-
-  /* Avoid sprintf, as that infringes on the user's name space.
-     Don't have undefined behavior even if the translation
-     produced a string with the wrong number of "%s"s.  */
-  {
-    char *yyp = *yymsg;
-    int yyi = 0;
-    while ((*yyp = *yyformat) != '\0')
-      if (*yyp == '%' && yyformat[1] == 's' && yyi < yycount)
-        {
-          yyp += yytnamerr (yyp, yyarg[yyi++]);
-          yyformat += 2;
-        }
-      else
-        {
-          yyp++;
-          yyformat++;
-        }
-  }
-  return 0;
 }
 #endif /* YYERROR_VERBOSE */
+
 
 /*-----------------------------------------------.
 | Release the memory associated to this symbol.  |
@@ -1677,7 +1645,6 @@ yydestruct (yymsg, yytype, yyvaluep)
     }
 }
 
-
 /* Prevent warnings from -Wmissing-prototypes.  */
 #ifdef YYPARSE_PARAM
 #if defined __STDC__ || defined __cplusplus
@@ -1704,9 +1671,10 @@ YYSTYPE yylval;
 int yynerrs;
 
 
-/*----------.
-| yyparse.  |
-`----------*/
+
+/*-------------------------.
+| yyparse or yypush_parse.  |
+`-------------------------*/
 
 #ifdef YYPARSE_PARAM
 #if (defined __STDC__ || defined __C99__FUNC__ \
@@ -1730,6 +1698,8 @@ yyparse ()
 #endif
 #endif
 {
+
+
     int yystate;
     /* Number of tokens to shift before error messages enabled.  */
     int yyerrstatus;
@@ -1884,7 +1854,7 @@ yybackup:
 
   /* First try to decide what to do without reference to lookahead token.  */
   yyn = yypact[yystate];
-  if (yypact_value_is_default (yyn))
+  if (yyn == YYPACT_NINF)
     goto yydefault;
 
   /* Not known => get a lookahead token if don't already have one.  */
@@ -1915,8 +1885,8 @@ yybackup:
   yyn = yytable[yyn];
   if (yyn <= 0)
     {
-      if (yytable_value_is_error (yyn))
-        goto yyerrlab;
+      if (yyn == 0 || yyn == YYTABLE_NINF)
+	goto yyerrlab;
       yyn = -yyn;
       goto yyreduce;
     }
@@ -1971,1498 +1941,1487 @@ yyreduce:
     {
         case 2:
 
-/* Line 1806 of yacc.c  */
-#line 40 "grammar_rules/cGrammar.y"
-    {primary_expression__IDENTIFIER((yyvsp[(1) - (1)].string));}
+/* Line 1455 of yacc.c  */
+#line 45 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = primary_expression__IDENTIFIER((yyvsp[(1) - (1)].string));;}
     break;
 
   case 3:
 
-/* Line 1806 of yacc.c  */
-#line 41 "grammar_rules/cGrammar.y"
-    {primary_expression__CONSTANT((yyvsp[(1) - (1)].number));}
+/* Line 1455 of yacc.c  */
+#line 46 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = primary_expression__CONSTANT((yyvsp[(1) - (1)].number));;}
     break;
 
   case 4:
 
-/* Line 1806 of yacc.c  */
-#line 42 "grammar_rules/cGrammar.y"
-    {printf(": primary_expression->STRING_LITERAL\n");}
+/* Line 1455 of yacc.c  */
+#line 47 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = primary_expression__STRING_LITERAL((yyvsp[(1) - (1)].string));;}
     break;
 
   case 5:
 
-/* Line 1806 of yacc.c  */
-#line 43 "grammar_rules/cGrammar.y"
-    {printf(": primary_expression->(expression)\n");}
+/* Line 1455 of yacc.c  */
+#line 48 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = primary_expression__OPP__expression__CLP((yyvsp[(2) - (3)].tree));;}
     break;
 
   case 6:
 
-/* Line 1806 of yacc.c  */
-#line 47 "grammar_rules/cGrammar.y"
-    {printf(": postfix_expression->primary_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 52 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = postfix_expression__primary_expression((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 7:
 
-/* Line 1806 of yacc.c  */
-#line 48 "grammar_rules/cGrammar.y"
-    {printf(": postfix_expression->[expression]\n");}
+/* Line 1455 of yacc.c  */
+#line 53 "grammar_rules/cGrammar.y"
+    {printf(": postfix_expression->[expression]\n");;}
     break;
 
   case 8:
 
-/* Line 1806 of yacc.c  */
-#line 49 "grammar_rules/cGrammar.y"
-    {printf(": postfix_expression->()\n");}
+/* Line 1455 of yacc.c  */
+#line 54 "grammar_rules/cGrammar.y"
+    {printf(": postfix_expression->()\n");;}
     break;
 
   case 9:
 
-/* Line 1806 of yacc.c  */
-#line 50 "grammar_rules/cGrammar.y"
-    {printf(": postfix_expression->(argument_expression_list)\n");}
+/* Line 1455 of yacc.c  */
+#line 55 "grammar_rules/cGrammar.y"
+    {printf(": postfix_expression->(argument_expression_list)\n");;}
     break;
 
   case 10:
 
-/* Line 1806 of yacc.c  */
-#line 51 "grammar_rules/cGrammar.y"
-    {printf(": postfix_expression->IDENTIFIER\n");}
+/* Line 1455 of yacc.c  */
+#line 56 "grammar_rules/cGrammar.y"
+    {printf(": postfix_expression->IDENTIFIER\n");;}
     break;
 
   case 11:
 
-/* Line 1806 of yacc.c  */
-#line 52 "grammar_rules/cGrammar.y"
-    {printf(": postfix_expression->'->'IDENTIFIER\n");}
+/* Line 1455 of yacc.c  */
+#line 57 "grammar_rules/cGrammar.y"
+    {printf(": postfix_expression->'->'IDENTIFIER\n");;}
     break;
 
   case 12:
 
-/* Line 1806 of yacc.c  */
-#line 53 "grammar_rules/cGrammar.y"
-    {printf(": postfix_expression->++\n");}
+/* Line 1455 of yacc.c  */
+#line 58 "grammar_rules/cGrammar.y"
+    {printf(": postfix_expression->++\n");;}
     break;
 
   case 13:
 
-/* Line 1806 of yacc.c  */
-#line 54 "grammar_rules/cGrammar.y"
-    {printf(": postfix_expression->--\n");}
+/* Line 1455 of yacc.c  */
+#line 59 "grammar_rules/cGrammar.y"
+    {printf(": postfix_expression->--\n");;}
     break;
 
   case 14:
 
-/* Line 1806 of yacc.c  */
-#line 58 "grammar_rules/cGrammar.y"
-    {printf(": argument_expression_list->assignment_expression \n");}
+/* Line 1455 of yacc.c  */
+#line 63 "grammar_rules/cGrammar.y"
+    {printf(": argument_expression_list->assignment_expression \n");;}
     break;
 
   case 15:
 
-/* Line 1806 of yacc.c  */
-#line 59 "grammar_rules/cGrammar.y"
-    {printf(": argument_expression_list->argument_expression_list,assignment_expression \n");}
+/* Line 1455 of yacc.c  */
+#line 64 "grammar_rules/cGrammar.y"
+    {printf(": argument_expression_list->argument_expression_list,assignment_expression \n");;}
     break;
 
   case 16:
 
-/* Line 1806 of yacc.c  */
-#line 63 "grammar_rules/cGrammar.y"
-    {printf(": unary_expression->postfix_expression \n");}
+/* Line 1455 of yacc.c  */
+#line 68 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = unary_expression__postfix_expression((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 17:
 
-/* Line 1806 of yacc.c  */
-#line 64 "grammar_rules/cGrammar.y"
-    {printf(": unary_expression->++ unary_expression \n");}
+/* Line 1455 of yacc.c  */
+#line 69 "grammar_rules/cGrammar.y"
+    {printf(": unary_expression->++ unary_expression \n");;}
     break;
 
   case 18:
 
-/* Line 1806 of yacc.c  */
-#line 65 "grammar_rules/cGrammar.y"
-    {printf(": unary_expression->-- unary_expression \n");}
+/* Line 1455 of yacc.c  */
+#line 70 "grammar_rules/cGrammar.y"
+    {printf(": unary_expression->-- unary_expression \n");;}
     break;
 
   case 19:
 
-/* Line 1806 of yacc.c  */
-#line 66 "grammar_rules/cGrammar.y"
-    {printf(": unary_expression->unary_operator cast_expression \n");}
+/* Line 1455 of yacc.c  */
+#line 71 "grammar_rules/cGrammar.y"
+    {printf(": unary_expression->unary_operator cast_expression \n");;}
     break;
 
   case 20:
 
-/* Line 1806 of yacc.c  */
-#line 67 "grammar_rules/cGrammar.y"
-    {printf(": unary_expression->sizeof unary_operator\n");}
+/* Line 1455 of yacc.c  */
+#line 72 "grammar_rules/cGrammar.y"
+    {printf(": unary_expression->sizeof unary_operator\n");;}
     break;
 
   case 21:
 
-/* Line 1806 of yacc.c  */
-#line 68 "grammar_rules/cGrammar.y"
-    {printf(": unary_expression->sizeof (type_name)\n");}
+/* Line 1455 of yacc.c  */
+#line 73 "grammar_rules/cGrammar.y"
+    {printf(": unary_expression->sizeof (type_name)\n");;}
     break;
 
   case 22:
 
-/* Line 1806 of yacc.c  */
-#line 72 "grammar_rules/cGrammar.y"
-    {printf(": unary_operator->&\n");}
+/* Line 1455 of yacc.c  */
+#line 77 "grammar_rules/cGrammar.y"
+    {printf(": unary_operator->&\n");;}
     break;
 
   case 23:
 
-/* Line 1806 of yacc.c  */
-#line 73 "grammar_rules/cGrammar.y"
-    {printf(": unary_operator->*\n");}
+/* Line 1455 of yacc.c  */
+#line 78 "grammar_rules/cGrammar.y"
+    {printf(": unary_operator->*\n");;}
     break;
 
   case 24:
 
-/* Line 1806 of yacc.c  */
-#line 74 "grammar_rules/cGrammar.y"
-    {printf(": unary_operator->+\n");}
+/* Line 1455 of yacc.c  */
+#line 79 "grammar_rules/cGrammar.y"
+    {printf(": unary_operator->+\n");;}
     break;
 
   case 25:
 
-/* Line 1806 of yacc.c  */
-#line 75 "grammar_rules/cGrammar.y"
-    {printf(": unary_operator->-\n");}
+/* Line 1455 of yacc.c  */
+#line 80 "grammar_rules/cGrammar.y"
+    {printf(": unary_operator->-\n");;}
     break;
 
   case 26:
 
-/* Line 1806 of yacc.c  */
-#line 76 "grammar_rules/cGrammar.y"
-    {printf(": unary_operator->~\n");}
+/* Line 1455 of yacc.c  */
+#line 81 "grammar_rules/cGrammar.y"
+    {printf(": unary_operator->~\n");;}
     break;
 
   case 27:
 
-/* Line 1806 of yacc.c  */
-#line 77 "grammar_rules/cGrammar.y"
-    {printf(": unary_operator->!\n");}
+/* Line 1455 of yacc.c  */
+#line 82 "grammar_rules/cGrammar.y"
+    {printf(": unary_operator->!\n");;}
     break;
 
   case 28:
 
-/* Line 1806 of yacc.c  */
-#line 81 "grammar_rules/cGrammar.y"
-    {printf(": cast_expression->unary_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 86 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = cast_expression__unary_expression((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 29:
 
-/* Line 1806 of yacc.c  */
-#line 82 "grammar_rules/cGrammar.y"
-    {printf(": cast_expression->(type_name)\n");}
+/* Line 1455 of yacc.c  */
+#line 87 "grammar_rules/cGrammar.y"
+    {printf(": cast_expression->(type_name)\n");;}
     break;
 
   case 30:
 
-/* Line 1806 of yacc.c  */
-#line 86 "grammar_rules/cGrammar.y"
-    {printf(": multiplicative_expression->cast_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 91 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = multiplicative_expression__cast_expression((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 31:
 
-/* Line 1806 of yacc.c  */
-#line 87 "grammar_rules/cGrammar.y"
-    {printf(": multiplicative_expression->multiplicative_expression * cast_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 92 "grammar_rules/cGrammar.y"
+    {printf(": multiplicative_expression->multiplicative_expression * cast_expression\n");;}
     break;
 
   case 32:
 
-/* Line 1806 of yacc.c  */
-#line 88 "grammar_rules/cGrammar.y"
-    {printf(": multiplicative_expression->multiplicative_expression / cast_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 93 "grammar_rules/cGrammar.y"
+    {printf(": multiplicative_expression->multiplicative_expression / cast_expression\n");;}
     break;
 
   case 33:
 
-/* Line 1806 of yacc.c  */
-#line 89 "grammar_rules/cGrammar.y"
-    {printf(": multiplicative_expression->multiplicative_expression %% cast_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 94 "grammar_rules/cGrammar.y"
+    {printf(": multiplicative_expression->multiplicative_expression %% cast_expression\n");;}
     break;
 
   case 34:
 
-/* Line 1806 of yacc.c  */
-#line 93 "grammar_rules/cGrammar.y"
-    {additive_expression__multiplicative_expression();}
+/* Line 1455 of yacc.c  */
+#line 98 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = additive_expression__multiplicative_expression((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 35:
 
-/* Line 1806 of yacc.c  */
-#line 94 "grammar_rules/cGrammar.y"
-    {additive_expression__additive_expression__PLUS__multiplicative_expression();}
+/* Line 1455 of yacc.c  */
+#line 99 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = additive_expression__additive_expression__PLUS__multiplicative_expression();;}
     break;
 
   case 36:
 
-/* Line 1806 of yacc.c  */
-#line 95 "grammar_rules/cGrammar.y"
-    {additive_expression__additive_expression__MINUS__multiplicative_expression();}
+/* Line 1455 of yacc.c  */
+#line 100 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = additive_expression__additive_expression__MINUS__multiplicative_expression();;}
     break;
 
   case 37:
 
-/* Line 1806 of yacc.c  */
-#line 99 "grammar_rules/cGrammar.y"
-    {printf(": shift_expression->additive_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 104 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = shift_expression__additive_expression((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 38:
 
-/* Line 1806 of yacc.c  */
-#line 100 "grammar_rules/cGrammar.y"
-    {printf(": shift_expression->shift_expression << additive_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 105 "grammar_rules/cGrammar.y"
+    {printf(": shift_expression->shift_expression << additive_expression\n");;}
     break;
 
   case 39:
 
-/* Line 1806 of yacc.c  */
-#line 101 "grammar_rules/cGrammar.y"
-    {printf(": shift_expression->shift_expression >> additive_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 106 "grammar_rules/cGrammar.y"
+    {printf(": shift_expression->shift_expression >> additive_expression\n");;}
     break;
 
   case 40:
 
-/* Line 1806 of yacc.c  */
-#line 105 "grammar_rules/cGrammar.y"
-    {printf(": relational_expression->shift_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 110 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = relational_expression__shift_expression((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 41:
 
-/* Line 1806 of yacc.c  */
-#line 106 "grammar_rules/cGrammar.y"
-    {printf(": relational_expression->relational_expression < shift_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 111 "grammar_rules/cGrammar.y"
+    {printf(": relational_expression->relational_expression < shift_expression\n");;}
     break;
 
   case 42:
 
-/* Line 1806 of yacc.c  */
-#line 107 "grammar_rules/cGrammar.y"
-    {printf(": relational_expression->relational_expression > shift_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 112 "grammar_rules/cGrammar.y"
+    {printf(": relational_expression->relational_expression > shift_expression\n");;}
     break;
 
   case 43:
 
-/* Line 1806 of yacc.c  */
-#line 108 "grammar_rules/cGrammar.y"
-    {printf(": relational_expression->relational_expression >= shift_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 113 "grammar_rules/cGrammar.y"
+    {printf(": relational_expression->relational_expression >= shift_expression\n");;}
     break;
 
   case 44:
 
-/* Line 1806 of yacc.c  */
-#line 109 "grammar_rules/cGrammar.y"
-    {printf(": relational_expression->relational_expression <= shift_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 114 "grammar_rules/cGrammar.y"
+    {printf(": relational_expression->relational_expression <= shift_expression\n");;}
     break;
 
   case 45:
 
-/* Line 1806 of yacc.c  */
-#line 113 "grammar_rules/cGrammar.y"
-    {printf(": equality_expression->relational_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 118 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = equality_expression__relational_expression((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 46:
 
-/* Line 1806 of yacc.c  */
-#line 114 "grammar_rules/cGrammar.y"
-    {printf(": equality_expression->equality_expression == relational_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 119 "grammar_rules/cGrammar.y"
+    {printf("EQ_OP\n"); equality_expression__equality_expression__EQ_OP__relational_expression((yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree));;}
     break;
 
   case 47:
 
-/* Line 1806 of yacc.c  */
-#line 115 "grammar_rules/cGrammar.y"
-    {printf(": equality_expression->equality_expression != relational_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 120 "grammar_rules/cGrammar.y"
+    {printf(": equality_expression->equality_expression != relational_expression\n");;}
     break;
 
   case 48:
 
-/* Line 1806 of yacc.c  */
-#line 119 "grammar_rules/cGrammar.y"
-    {printf(": and_expression->equality_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 124 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = and_expression__equality_expression((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 49:
 
-/* Line 1806 of yacc.c  */
-#line 120 "grammar_rules/cGrammar.y"
-    {printf(": and_expression->and_expression '&' equality_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 125 "grammar_rules/cGrammar.y"
+    {printf(": and_expression->and_expression '&' equality_expression\n");;}
     break;
 
   case 50:
 
-/* Line 1806 of yacc.c  */
-#line 124 "grammar_rules/cGrammar.y"
-    {printf(": exclusive_or_expression->and_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 129 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = exclusive_or_expression__and_expression((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 51:
 
-/* Line 1806 of yacc.c  */
-#line 125 "grammar_rules/cGrammar.y"
-    {printf(": exclusive_or_expression->exclusive_or_expression ^ and_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 130 "grammar_rules/cGrammar.y"
+    {printf(": exclusive_or_expression->exclusive_or_expression ^ and_expression\n");;}
     break;
 
   case 52:
 
-/* Line 1806 of yacc.c  */
-#line 129 "grammar_rules/cGrammar.y"
-    {printf(": inclusive_or_expression->exclusive_or_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 134 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = inclusive_or_expression__exclusive_or_expression((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 53:
 
-/* Line 1806 of yacc.c  */
-#line 130 "grammar_rules/cGrammar.y"
-    {printf(": inclusive_or_expression->inclusive_or_expression | exclusive_or_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 135 "grammar_rules/cGrammar.y"
+    {printf(": inclusive_or_expression->inclusive_or_expression | exclusive_or_expression\n");;}
     break;
 
   case 54:
 
-/* Line 1806 of yacc.c  */
-#line 134 "grammar_rules/cGrammar.y"
-    {printf(": logical_and_expression->inclusive_or_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 139 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = logical_and_expression__inclusive_or_expression((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 55:
 
-/* Line 1806 of yacc.c  */
-#line 135 "grammar_rules/cGrammar.y"
-    {printf(": logical_and_expression->logical_and_expression && inclusive_or_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 140 "grammar_rules/cGrammar.y"
+    {printf(": logical_and_expression->logical_and_expression && inclusive_or_expression\n");;}
     break;
 
   case 56:
 
-/* Line 1806 of yacc.c  */
-#line 139 "grammar_rules/cGrammar.y"
-    {printf(": logical_or_expression->logical_and_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 144 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = logical_or_expression__logical_and_expression((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 57:
 
-/* Line 1806 of yacc.c  */
-#line 140 "grammar_rules/cGrammar.y"
-    {printf(": logical_or_expression->logical_or_expression || logical_and_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 145 "grammar_rules/cGrammar.y"
+    {printf(": logical_or_expression->logical_or_expression || logical_and_expression\n");;}
     break;
 
   case 58:
 
-/* Line 1806 of yacc.c  */
-#line 144 "grammar_rules/cGrammar.y"
-    {printf(": conditional_expression->logical_or_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 149 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = conditional_expression__logical_or_expression((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 59:
 
-/* Line 1806 of yacc.c  */
-#line 145 "grammar_rules/cGrammar.y"
-    {printf(": conditional_expression->logical_or_expression ? expression : conditional_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 150 "grammar_rules/cGrammar.y"
+    {printf(": conditional_expression->logical_or_expression ? expression : conditional_expression\n");;}
     break;
 
   case 60:
 
-/* Line 1806 of yacc.c  */
-#line 149 "grammar_rules/cGrammar.y"
-    {printf(": assignment_expression->conditional_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 154 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = assignment_expression__conditional_expression((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 61:
 
-/* Line 1806 of yacc.c  */
-#line 150 "grammar_rules/cGrammar.y"
-    {printf(": assignment_expression->unary_expression assignment_operator assignment_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 155 "grammar_rules/cGrammar.y"
+    {printf(": assignment_expression->unary_expression assignment_operator assignment_expression\n");;}
     break;
 
   case 62:
 
-/* Line 1806 of yacc.c  */
-#line 154 "grammar_rules/cGrammar.y"
-    {printf(": assignment_operator->=\n");}
+/* Line 1455 of yacc.c  */
+#line 159 "grammar_rules/cGrammar.y"
+    {printf(": assignment_operator->=\n");;}
     break;
 
   case 63:
 
-/* Line 1806 of yacc.c  */
-#line 155 "grammar_rules/cGrammar.y"
-    {printf(": assignment_operator->*=\n");}
+/* Line 1455 of yacc.c  */
+#line 160 "grammar_rules/cGrammar.y"
+    {printf(": assignment_operator->*=\n");;}
     break;
 
   case 64:
 
-/* Line 1806 of yacc.c  */
-#line 156 "grammar_rules/cGrammar.y"
-    {printf(": assignment_operator->/=\n");}
+/* Line 1455 of yacc.c  */
+#line 161 "grammar_rules/cGrammar.y"
+    {printf(": assignment_operator->/=\n");;}
     break;
 
   case 65:
 
-/* Line 1806 of yacc.c  */
-#line 157 "grammar_rules/cGrammar.y"
-    {printf(": assignment_operator->%%=\n");}
+/* Line 1455 of yacc.c  */
+#line 162 "grammar_rules/cGrammar.y"
+    {printf(": assignment_operator->%%=\n");;}
     break;
 
   case 66:
 
-/* Line 1806 of yacc.c  */
-#line 158 "grammar_rules/cGrammar.y"
-    {printf(": assignment_operator->+=\n");}
+/* Line 1455 of yacc.c  */
+#line 163 "grammar_rules/cGrammar.y"
+    {printf(": assignment_operator->+=\n");;}
     break;
 
   case 67:
 
-/* Line 1806 of yacc.c  */
-#line 159 "grammar_rules/cGrammar.y"
-    {printf(": assignment_operator->-=\n");}
+/* Line 1455 of yacc.c  */
+#line 164 "grammar_rules/cGrammar.y"
+    {printf(": assignment_operator->-=\n");;}
     break;
 
   case 68:
 
-/* Line 1806 of yacc.c  */
-#line 160 "grammar_rules/cGrammar.y"
-    {printf(": assignment_operator-><<=\n");}
+/* Line 1455 of yacc.c  */
+#line 165 "grammar_rules/cGrammar.y"
+    {printf(": assignment_operator-><<=\n");;}
     break;
 
   case 69:
 
-/* Line 1806 of yacc.c  */
-#line 161 "grammar_rules/cGrammar.y"
-    {printf(": assignment_operator->>>=\n");}
+/* Line 1455 of yacc.c  */
+#line 166 "grammar_rules/cGrammar.y"
+    {printf(": assignment_operator->>>=\n");;}
     break;
 
   case 70:
 
-/* Line 1806 of yacc.c  */
-#line 162 "grammar_rules/cGrammar.y"
-    {printf(": assignment_operator->&=\n");}
+/* Line 1455 of yacc.c  */
+#line 167 "grammar_rules/cGrammar.y"
+    {printf(": assignment_operator->&=\n");;}
     break;
 
   case 71:
 
-/* Line 1806 of yacc.c  */
-#line 163 "grammar_rules/cGrammar.y"
-    {printf(": assignment_operator->^=\n");}
+/* Line 1455 of yacc.c  */
+#line 168 "grammar_rules/cGrammar.y"
+    {printf(": assignment_operator->^=\n");;}
     break;
 
   case 72:
 
-/* Line 1806 of yacc.c  */
-#line 164 "grammar_rules/cGrammar.y"
-    {printf(": assignment_operator->|=\n");}
+/* Line 1455 of yacc.c  */
+#line 169 "grammar_rules/cGrammar.y"
+    {printf(": assignment_operator->|=\n");;}
     break;
 
   case 73:
 
-/* Line 1806 of yacc.c  */
-#line 168 "grammar_rules/cGrammar.y"
-    {printf(": expression->assignment_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 173 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = expression__assignment_expression((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 74:
 
-/* Line 1806 of yacc.c  */
-#line 169 "grammar_rules/cGrammar.y"
-    {printf(": expression->expression , assignment_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 174 "grammar_rules/cGrammar.y"
+    {printf(": expression->expression , assignment_expression\n");;}
     break;
 
   case 75:
 
-/* Line 1806 of yacc.c  */
-#line 173 "grammar_rules/cGrammar.y"
-    {printf(": constant_expression->conditional_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 178 "grammar_rules/cGrammar.y"
+    {printf(": constant_expression->conditional_expression\n");;}
     break;
 
   case 76:
 
-/* Line 1806 of yacc.c  */
-#line 177 "grammar_rules/cGrammar.y"
-    {printf(": declaration->declaration_specifiers ;\n");}
+/* Line 1455 of yacc.c  */
+#line 182 "grammar_rules/cGrammar.y"
+    {printf(": declaration->declaration_specifiers ;\n");;}
     break;
 
   case 77:
 
-/* Line 1806 of yacc.c  */
-#line 178 "grammar_rules/cGrammar.y"
-    {declaration__declaration_specifiers__init_declarator_list__SEMICOLON();}
+/* Line 1455 of yacc.c  */
+#line 183 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = declaration__declaration_specifiers__init_declarator_list__SEMICOLON((yyvsp[(2) - (3)].tree));;}
     break;
 
   case 78:
 
-/* Line 1806 of yacc.c  */
-#line 182 "grammar_rules/cGrammar.y"
-    {printf(": declaration_specifiers->storage_class_specifier\n");}
+/* Line 1455 of yacc.c  */
+#line 187 "grammar_rules/cGrammar.y"
+    {printf(": declaration_specifiers->storage_class_specifier\n");;}
     break;
 
   case 79:
 
-/* Line 1806 of yacc.c  */
-#line 183 "grammar_rules/cGrammar.y"
-    {printf(": declaration_specifiers->storage_class_specifier declaration_specifiers\n");}
+/* Line 1455 of yacc.c  */
+#line 188 "grammar_rules/cGrammar.y"
+    {printf(": declaration_specifiers->storage_class_specifier declaration_specifiers\n");;}
     break;
 
   case 80:
 
-/* Line 1806 of yacc.c  */
-#line 184 "grammar_rules/cGrammar.y"
-    {declaration_specifiers__type_specifier();}
+/* Line 1455 of yacc.c  */
+#line 189 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = declaration_specifiers__type_specifier();;}
     break;
 
   case 81:
 
-/* Line 1806 of yacc.c  */
-#line 185 "grammar_rules/cGrammar.y"
-    {declaration_specifiers__type_specifier__declaration_specifiers();}
+/* Line 1455 of yacc.c  */
+#line 190 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = declaration_specifiers__type_specifier__declaration_specifiers();;}
     break;
 
   case 82:
 
-/* Line 1806 of yacc.c  */
-#line 186 "grammar_rules/cGrammar.y"
-    {printf(": declaration_specifiers->type_qualifier\n");}
+/* Line 1455 of yacc.c  */
+#line 191 "grammar_rules/cGrammar.y"
+    {printf(": declaration_specifiers->type_qualifier\n");;}
     break;
 
   case 83:
 
-/* Line 1806 of yacc.c  */
-#line 187 "grammar_rules/cGrammar.y"
-    {printf(": declaration_specifiers->type_qualifier declaration_specifiers\n");}
+/* Line 1455 of yacc.c  */
+#line 192 "grammar_rules/cGrammar.y"
+    {printf(": declaration_specifiers->type_qualifier declaration_specifiers\n");;}
     break;
 
   case 84:
 
-/* Line 1806 of yacc.c  */
-#line 191 "grammar_rules/cGrammar.y"
-    {printf(": init_declarator_list->init_declarator\n");}
+/* Line 1455 of yacc.c  */
+#line 196 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = init_declarator_list__init_declarator((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 85:
 
-/* Line 1806 of yacc.c  */
-#line 192 "grammar_rules/cGrammar.y"
-    {printf(": init_declarator_list->init_declarator_list , init_declarator\n");}
+/* Line 1455 of yacc.c  */
+#line 197 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = init_declarator_list__init_declarator_list__COMMA__init_declarator((yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree));;}
     break;
 
   case 86:
 
-/* Line 1806 of yacc.c  */
-#line 196 "grammar_rules/cGrammar.y"
-    {printf(": init_declarator->declarator\n");}
+/* Line 1455 of yacc.c  */
+#line 201 "grammar_rules/cGrammar.y"
+    {printf(": init_declarator->declarator\n");;}
     break;
 
   case 87:
 
-/* Line 1806 of yacc.c  */
-#line 197 "grammar_rules/cGrammar.y"
-    {printf(": init_declarator->declarator = initializer\n");}
+/* Line 1455 of yacc.c  */
+#line 202 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = init_declarator__declarator__EQ__initializer((yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree));;}
     break;
 
   case 88:
 
-/* Line 1806 of yacc.c  */
-#line 201 "grammar_rules/cGrammar.y"
-    {printf(": storage_class_specifier->TYPEDEF\n");}
+/* Line 1455 of yacc.c  */
+#line 206 "grammar_rules/cGrammar.y"
+    {printf(": storage_class_specifier->TYPEDEF\n");;}
     break;
 
   case 89:
 
-/* Line 1806 of yacc.c  */
-#line 202 "grammar_rules/cGrammar.y"
-    {printf(": storage_class_specifier->EXTERN\n");}
+/* Line 1455 of yacc.c  */
+#line 207 "grammar_rules/cGrammar.y"
+    {printf(": storage_class_specifier->EXTERN\n");;}
     break;
 
   case 90:
 
-/* Line 1806 of yacc.c  */
-#line 203 "grammar_rules/cGrammar.y"
-    {printf(": storage_class_specifier->STATIC\n");}
+/* Line 1455 of yacc.c  */
+#line 208 "grammar_rules/cGrammar.y"
+    {printf(": storage_class_specifier->STATIC\n");;}
     break;
 
   case 91:
 
-/* Line 1806 of yacc.c  */
-#line 204 "grammar_rules/cGrammar.y"
-    {printf(": storage_class_specifier->AUTO\n");}
+/* Line 1455 of yacc.c  */
+#line 209 "grammar_rules/cGrammar.y"
+    {printf(": storage_class_specifier->AUTO\n");;}
     break;
 
   case 92:
 
-/* Line 1806 of yacc.c  */
-#line 205 "grammar_rules/cGrammar.y"
-    {printf(": storage_class_specifier->REGISTER\n");}
+/* Line 1455 of yacc.c  */
+#line 210 "grammar_rules/cGrammar.y"
+    {printf(": storage_class_specifier->REGISTER\n");;}
     break;
 
   case 93:
 
-/* Line 1806 of yacc.c  */
-#line 209 "grammar_rules/cGrammar.y"
-    {type_specifier__VOID();}
+/* Line 1455 of yacc.c  */
+#line 214 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = type_specifier__VOID();;}
     break;
 
   case 94:
 
-/* Line 1806 of yacc.c  */
-#line 210 "grammar_rules/cGrammar.y"
-    {type_specifier__CHAR();}
+/* Line 1455 of yacc.c  */
+#line 215 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = type_specifier__CHAR();;}
     break;
 
   case 95:
 
-/* Line 1806 of yacc.c  */
-#line 211 "grammar_rules/cGrammar.y"
-    {type_specifier__SHORT();}
+/* Line 1455 of yacc.c  */
+#line 216 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = type_specifier__SHORT();;}
     break;
 
   case 96:
 
-/* Line 1806 of yacc.c  */
-#line 212 "grammar_rules/cGrammar.y"
-    {type_specifier__INT();}
+/* Line 1455 of yacc.c  */
+#line 217 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = type_specifier__INT();;}
     break;
 
   case 97:
 
-/* Line 1806 of yacc.c  */
-#line 213 "grammar_rules/cGrammar.y"
-    {type_specifier__LONG();}
+/* Line 1455 of yacc.c  */
+#line 218 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = type_specifier__LONG();;}
     break;
 
   case 98:
 
-/* Line 1806 of yacc.c  */
-#line 214 "grammar_rules/cGrammar.y"
-    {type_specifier__FLOAT();}
+/* Line 1455 of yacc.c  */
+#line 219 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = type_specifier__FLOAT();;}
     break;
 
   case 99:
 
-/* Line 1806 of yacc.c  */
-#line 215 "grammar_rules/cGrammar.y"
-    {type_specifier__DOUBLE();}
+/* Line 1455 of yacc.c  */
+#line 220 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = type_specifier__DOUBLE();;}
     break;
 
   case 100:
 
-/* Line 1806 of yacc.c  */
-#line 216 "grammar_rules/cGrammar.y"
-    {type_specifier__SIGNED();}
+/* Line 1455 of yacc.c  */
+#line 221 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = type_specifier__SIGNED();;}
     break;
 
   case 101:
 
-/* Line 1806 of yacc.c  */
-#line 217 "grammar_rules/cGrammar.y"
-    {type_specifier__UNSIGNED();}
+/* Line 1455 of yacc.c  */
+#line 222 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = type_specifier__UNSIGNED();;}
     break;
 
   case 102:
 
-/* Line 1806 of yacc.c  */
-#line 218 "grammar_rules/cGrammar.y"
-    {type_specifier__struct_or_union_specifier();}
+/* Line 1455 of yacc.c  */
+#line 223 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = type_specifier__struct_or_union_specifier();;}
     break;
 
   case 103:
 
-/* Line 1806 of yacc.c  */
-#line 219 "grammar_rules/cGrammar.y"
-    {type_specifier__enum_specifier();}
+/* Line 1455 of yacc.c  */
+#line 224 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = type_specifier__enum_specifier();;}
     break;
 
   case 104:
 
-/* Line 1806 of yacc.c  */
-#line 220 "grammar_rules/cGrammar.y"
-    {type_specifier__TYPE_NAME();}
+/* Line 1455 of yacc.c  */
+#line 225 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = type_specifier__TYPE_NAME();;}
     break;
 
   case 105:
 
-/* Line 1806 of yacc.c  */
-#line 224 "grammar_rules/cGrammar.y"
-    {printf(": struct_or_union_specifier->struct_or_union IDENTIFIER { struct_declaration_list }\n");}
+/* Line 1455 of yacc.c  */
+#line 229 "grammar_rules/cGrammar.y"
+    {printf(": struct_or_union_specifier->struct_or_union IDENTIFIER { struct_declaration_list }\n");;}
     break;
 
   case 106:
 
-/* Line 1806 of yacc.c  */
-#line 225 "grammar_rules/cGrammar.y"
-    {printf(": struct_or_union_specifier->struct_or_union { struct_declaration_list }\n");}
+/* Line 1455 of yacc.c  */
+#line 230 "grammar_rules/cGrammar.y"
+    {printf(": struct_or_union_specifier->struct_or_union { struct_declaration_list }\n");;}
     break;
 
   case 107:
 
-/* Line 1806 of yacc.c  */
-#line 226 "grammar_rules/cGrammar.y"
-    {printf(": struct_or_union_specifier->struct_or_union IDENTIFIER\n");}
+/* Line 1455 of yacc.c  */
+#line 231 "grammar_rules/cGrammar.y"
+    {printf(": struct_or_union_specifier->struct_or_union IDENTIFIER\n");;}
     break;
 
   case 108:
 
-/* Line 1806 of yacc.c  */
-#line 230 "grammar_rules/cGrammar.y"
-    {printf(": struct_or_union->STRUCT\n");}
+/* Line 1455 of yacc.c  */
+#line 235 "grammar_rules/cGrammar.y"
+    {printf(": struct_or_union->STRUCT\n");;}
     break;
 
   case 109:
 
-/* Line 1806 of yacc.c  */
-#line 231 "grammar_rules/cGrammar.y"
-    {printf(": struct_or_union->UNION\n");}
+/* Line 1455 of yacc.c  */
+#line 236 "grammar_rules/cGrammar.y"
+    {printf(": struct_or_union->UNION\n");;}
     break;
 
   case 110:
 
-/* Line 1806 of yacc.c  */
-#line 235 "grammar_rules/cGrammar.y"
-    {printf(": struct_declaration_list->struct_declaration\n");}
+/* Line 1455 of yacc.c  */
+#line 240 "grammar_rules/cGrammar.y"
+    {printf(": struct_declaration_list->struct_declaration\n");;}
     break;
 
   case 111:
 
-/* Line 1806 of yacc.c  */
-#line 236 "grammar_rules/cGrammar.y"
-    {printf(": struct_declaration_list->struct_declaration_list struct_declaration\n");}
+/* Line 1455 of yacc.c  */
+#line 241 "grammar_rules/cGrammar.y"
+    {printf(": struct_declaration_list->struct_declaration_list struct_declaration\n");;}
     break;
 
   case 112:
 
-/* Line 1806 of yacc.c  */
-#line 240 "grammar_rules/cGrammar.y"
-    {printf(": struct_declaration->specifier_qualifier_list struct_declarator_list ;\n");}
+/* Line 1455 of yacc.c  */
+#line 245 "grammar_rules/cGrammar.y"
+    {printf(": struct_declaration->specifier_qualifier_list struct_declarator_list ;\n");;}
     break;
 
   case 113:
 
-/* Line 1806 of yacc.c  */
-#line 244 "grammar_rules/cGrammar.y"
-    {printf(": specifier_qualifier_list->type_specifier specifier_qualifier_list\n");}
+/* Line 1455 of yacc.c  */
+#line 249 "grammar_rules/cGrammar.y"
+    {printf(": specifier_qualifier_list->type_specifier specifier_qualifier_list\n");;}
     break;
 
   case 114:
 
-/* Line 1806 of yacc.c  */
-#line 245 "grammar_rules/cGrammar.y"
-    {printf(": specifier_qualifier_list->type_specifier\n");}
+/* Line 1455 of yacc.c  */
+#line 250 "grammar_rules/cGrammar.y"
+    {printf(": specifier_qualifier_list->type_specifier\n");;}
     break;
 
   case 115:
 
-/* Line 1806 of yacc.c  */
-#line 246 "grammar_rules/cGrammar.y"
-    {printf(": specifier_qualifier_list->type_qualifier specifier_qualifier_list\n");}
+/* Line 1455 of yacc.c  */
+#line 251 "grammar_rules/cGrammar.y"
+    {printf(": specifier_qualifier_list->type_qualifier specifier_qualifier_list\n");;}
     break;
 
   case 116:
 
-/* Line 1806 of yacc.c  */
-#line 247 "grammar_rules/cGrammar.y"
-    {printf(": specifier_qualifier_list->type_qualifier\n");}
+/* Line 1455 of yacc.c  */
+#line 252 "grammar_rules/cGrammar.y"
+    {printf(": specifier_qualifier_list->type_qualifier\n");;}
     break;
 
   case 117:
 
-/* Line 1806 of yacc.c  */
-#line 251 "grammar_rules/cGrammar.y"
-    {printf(": struct_declarator_list->struct_declarator\n");}
+/* Line 1455 of yacc.c  */
+#line 256 "grammar_rules/cGrammar.y"
+    {printf(": struct_declarator_list->struct_declarator\n");;}
     break;
 
   case 118:
 
-/* Line 1806 of yacc.c  */
-#line 252 "grammar_rules/cGrammar.y"
-    {printf(": struct_declarator_list->struct_declarator_list , struct_declarator\n");}
+/* Line 1455 of yacc.c  */
+#line 257 "grammar_rules/cGrammar.y"
+    {printf(": struct_declarator_list->struct_declarator_list , struct_declarator\n");;}
     break;
 
   case 119:
 
-/* Line 1806 of yacc.c  */
-#line 256 "grammar_rules/cGrammar.y"
-    {printf(": struct_declarator->declarator\n");}
+/* Line 1455 of yacc.c  */
+#line 261 "grammar_rules/cGrammar.y"
+    {printf(": struct_declarator->declarator\n");;}
     break;
 
   case 120:
 
-/* Line 1806 of yacc.c  */
-#line 257 "grammar_rules/cGrammar.y"
-    {printf(": struct_declarator->: constant_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 262 "grammar_rules/cGrammar.y"
+    {printf(": struct_declarator->: constant_expression\n");;}
     break;
 
   case 121:
 
-/* Line 1806 of yacc.c  */
-#line 258 "grammar_rules/cGrammar.y"
-    {printf(": struct_declarator->declarator : constant_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 263 "grammar_rules/cGrammar.y"
+    {printf(": struct_declarator->declarator : constant_expression\n");;}
     break;
 
   case 122:
 
-/* Line 1806 of yacc.c  */
-#line 262 "grammar_rules/cGrammar.y"
-    {printf(": enum_specifier->ENUM { enumerator_list }\n");}
+/* Line 1455 of yacc.c  */
+#line 267 "grammar_rules/cGrammar.y"
+    {printf(": enum_specifier->ENUM { enumerator_list }\n");;}
     break;
 
   case 123:
 
-/* Line 1806 of yacc.c  */
-#line 263 "grammar_rules/cGrammar.y"
-    {printf(": enum_specifier->ENUM IDENTIFIER { enumerator_list }\n");}
+/* Line 1455 of yacc.c  */
+#line 268 "grammar_rules/cGrammar.y"
+    {printf(": enum_specifier->ENUM IDENTIFIER { enumerator_list }\n");;}
     break;
 
   case 124:
 
-/* Line 1806 of yacc.c  */
-#line 264 "grammar_rules/cGrammar.y"
-    {printf(": enum_specifier->ENUM IDENTIFIER\n");}
+/* Line 1455 of yacc.c  */
+#line 269 "grammar_rules/cGrammar.y"
+    {printf(": enum_specifier->ENUM IDENTIFIER\n");;}
     break;
 
   case 125:
 
-/* Line 1806 of yacc.c  */
-#line 268 "grammar_rules/cGrammar.y"
-    {printf(": enumerator_list->enumerator\n");}
+/* Line 1455 of yacc.c  */
+#line 273 "grammar_rules/cGrammar.y"
+    {printf(": enumerator_list->enumerator\n");;}
     break;
 
   case 126:
 
-/* Line 1806 of yacc.c  */
-#line 269 "grammar_rules/cGrammar.y"
-    {printf(": enumerator_list->enumerator_list , enumerator\n");}
+/* Line 1455 of yacc.c  */
+#line 274 "grammar_rules/cGrammar.y"
+    {printf(": enumerator_list->enumerator_list , enumerator\n");;}
     break;
 
   case 127:
 
-/* Line 1806 of yacc.c  */
-#line 273 "grammar_rules/cGrammar.y"
-    {printf(": enumerator->IDENTIFIER\n");}
+/* Line 1455 of yacc.c  */
+#line 278 "grammar_rules/cGrammar.y"
+    {printf(": enumerator->IDENTIFIER\n");;}
     break;
 
   case 128:
 
-/* Line 1806 of yacc.c  */
-#line 274 "grammar_rules/cGrammar.y"
-    {printf(": enumerator->IDENTIFIER = constant_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 279 "grammar_rules/cGrammar.y"
+    {printf(": enumerator->IDENTIFIER = constant_expression\n");;}
     break;
 
   case 129:
 
-/* Line 1806 of yacc.c  */
-#line 278 "grammar_rules/cGrammar.y"
-    {printf(": type_qualifier->CONST\n");}
+/* Line 1455 of yacc.c  */
+#line 283 "grammar_rules/cGrammar.y"
+    {printf(": type_qualifier->CONST\n");;}
     break;
 
   case 130:
 
-/* Line 1806 of yacc.c  */
-#line 279 "grammar_rules/cGrammar.y"
-    {printf(": type_qualifier->VOLATILE\n");}
+/* Line 1455 of yacc.c  */
+#line 284 "grammar_rules/cGrammar.y"
+    {printf(": type_qualifier->VOLATILE\n");;}
     break;
 
   case 131:
 
-/* Line 1806 of yacc.c  */
-#line 283 "grammar_rules/cGrammar.y"
-    {printf(": declarator->pointer direct_declarator\n");}
+/* Line 1455 of yacc.c  */
+#line 288 "grammar_rules/cGrammar.y"
+    {printf(": declarator->pointer direct_declarator\n");;}
     break;
 
   case 132:
 
-/* Line 1806 of yacc.c  */
-#line 284 "grammar_rules/cGrammar.y"
-    {printf(": declarator->direct_declarator\n");}
+/* Line 1455 of yacc.c  */
+#line 289 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = declarator__direct_declarator((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 133:
 
-/* Line 1806 of yacc.c  */
-#line 288 "grammar_rules/cGrammar.y"
-    {direct_declarator__IDENTIFIER((yyvsp[(1) - (1)].string));}
+/* Line 1455 of yacc.c  */
+#line 293 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = direct_declarator__IDENTIFIER((yyvsp[(1) - (1)].string));;}
     break;
 
   case 134:
 
-/* Line 1806 of yacc.c  */
-#line 289 "grammar_rules/cGrammar.y"
-    {printf(": direct_declarator->( declarator )\n");}
+/* Line 1455 of yacc.c  */
+#line 294 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = direct_declarator__OPP__declarator__CLP((yyvsp[(2) - (3)].tree));;}
     break;
 
   case 135:
 
-/* Line 1806 of yacc.c  */
-#line 290 "grammar_rules/cGrammar.y"
-    {printf(": direct_declarator->direct_declarator [ constant_expression ]\n");}
+/* Line 1455 of yacc.c  */
+#line 295 "grammar_rules/cGrammar.y"
+    {printf(": direct_declarator->direct_declarator [ constant_expression ]\n");;}
     break;
 
   case 136:
 
-/* Line 1806 of yacc.c  */
-#line 291 "grammar_rules/cGrammar.y"
-    {printf(": direct_declarator->direct_declarator [ ]\n");}
+/* Line 1455 of yacc.c  */
+#line 296 "grammar_rules/cGrammar.y"
+    {printf(": direct_declarator->direct_declarator [ ]\n");;}
     break;
 
   case 137:
 
-/* Line 1806 of yacc.c  */
-#line 292 "grammar_rules/cGrammar.y"
-    {printf(": direct_declarator->direct_declarator ( parameter_type_list )\n");}
+/* Line 1455 of yacc.c  */
+#line 297 "grammar_rules/cGrammar.y"
+    {printf(": direct_declarator->direct_declarator ( parameter_type_list )\n");;}
     break;
 
   case 138:
 
-/* Line 1806 of yacc.c  */
-#line 293 "grammar_rules/cGrammar.y"
-    {printf(": direct_declarator->direct_declarator ( identifier_list )\n");}
+/* Line 1455 of yacc.c  */
+#line 298 "grammar_rules/cGrammar.y"
+    {printf(": direct_declarator->direct_declarator ( identifier_list )\n");;}
     break;
 
   case 139:
 
-/* Line 1806 of yacc.c  */
-#line 294 "grammar_rules/cGrammar.y"
-    {direct_declarator__direct_declarator__OPP__CLP();}
+/* Line 1455 of yacc.c  */
+#line 299 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = direct_declarator__direct_declarator__OPP__CLP((yyvsp[(1) - (3)].tree));;}
     break;
 
   case 140:
 
-/* Line 1806 of yacc.c  */
-#line 298 "grammar_rules/cGrammar.y"
-    {printf(": pointer->*\n");}
+/* Line 1455 of yacc.c  */
+#line 303 "grammar_rules/cGrammar.y"
+    {printf(": pointer->*\n");;}
     break;
 
   case 141:
 
-/* Line 1806 of yacc.c  */
-#line 299 "grammar_rules/cGrammar.y"
-    {printf(": pointer->* type_qualifier_list\n");}
+/* Line 1455 of yacc.c  */
+#line 304 "grammar_rules/cGrammar.y"
+    {printf(": pointer->* type_qualifier_list\n");;}
     break;
 
   case 142:
 
-/* Line 1806 of yacc.c  */
-#line 300 "grammar_rules/cGrammar.y"
-    {printf(": pointer->* pointer\n");}
+/* Line 1455 of yacc.c  */
+#line 305 "grammar_rules/cGrammar.y"
+    {printf(": pointer->* pointer\n");;}
     break;
 
   case 143:
 
-/* Line 1806 of yacc.c  */
-#line 301 "grammar_rules/cGrammar.y"
-    {printf(": pointer->* type_qualifier_list pointer\n");}
+/* Line 1455 of yacc.c  */
+#line 306 "grammar_rules/cGrammar.y"
+    {printf(": pointer->* type_qualifier_list pointer\n");;}
     break;
 
   case 144:
 
-/* Line 1806 of yacc.c  */
-#line 305 "grammar_rules/cGrammar.y"
-    {printf(": type_qualifier_list->type_qualifier\n");}
+/* Line 1455 of yacc.c  */
+#line 310 "grammar_rules/cGrammar.y"
+    {printf(": type_qualifier_list->type_qualifier\n");;}
     break;
 
   case 145:
 
-/* Line 1806 of yacc.c  */
-#line 306 "grammar_rules/cGrammar.y"
-    {printf(": type_qualifier_list->type_qualifier_list type_qualifier\n");}
+/* Line 1455 of yacc.c  */
+#line 311 "grammar_rules/cGrammar.y"
+    {printf(": type_qualifier_list->type_qualifier_list type_qualifier\n");;}
     break;
 
   case 146:
 
-/* Line 1806 of yacc.c  */
-#line 311 "grammar_rules/cGrammar.y"
-    {printf(": parameter_type_list->parameter_list\n");}
+/* Line 1455 of yacc.c  */
+#line 316 "grammar_rules/cGrammar.y"
+    {printf(": parameter_type_list->parameter_list\n");;}
     break;
 
   case 147:
 
-/* Line 1806 of yacc.c  */
-#line 312 "grammar_rules/cGrammar.y"
-    {printf(": parameter_type_list->parameter_list , ...\n");}
+/* Line 1455 of yacc.c  */
+#line 317 "grammar_rules/cGrammar.y"
+    {printf(": parameter_type_list->parameter_list , ...\n");;}
     break;
 
   case 148:
 
-/* Line 1806 of yacc.c  */
-#line 316 "grammar_rules/cGrammar.y"
-    {printf(": parameter_list->parameter_declaration\n");}
+/* Line 1455 of yacc.c  */
+#line 321 "grammar_rules/cGrammar.y"
+    {printf(": parameter_list->parameter_declaration\n");;}
     break;
 
   case 149:
 
-/* Line 1806 of yacc.c  */
-#line 317 "grammar_rules/cGrammar.y"
-    {printf(": parameter_list->parameter_list , parameter_declaration\n");}
+/* Line 1455 of yacc.c  */
+#line 322 "grammar_rules/cGrammar.y"
+    {printf(": parameter_list->parameter_list , parameter_declaration\n");;}
     break;
 
   case 150:
 
-/* Line 1806 of yacc.c  */
-#line 321 "grammar_rules/cGrammar.y"
-    {printf(": parameter_declaration->declaration_specifiers declarator\n");}
+/* Line 1455 of yacc.c  */
+#line 326 "grammar_rules/cGrammar.y"
+    {printf(": parameter_declaration->declaration_specifiers declarator\n");;}
     break;
 
   case 151:
 
-/* Line 1806 of yacc.c  */
-#line 322 "grammar_rules/cGrammar.y"
-    {printf(": parameter_declaration->declaration_specifiers abstract_declarator\n");}
+/* Line 1455 of yacc.c  */
+#line 327 "grammar_rules/cGrammar.y"
+    {printf(": parameter_declaration->declaration_specifiers abstract_declarator\n");;}
     break;
 
   case 152:
 
-/* Line 1806 of yacc.c  */
-#line 323 "grammar_rules/cGrammar.y"
-    {printf(": parameter_declaration->declaration_specifiers\n");}
+/* Line 1455 of yacc.c  */
+#line 328 "grammar_rules/cGrammar.y"
+    {printf(": parameter_declaration->declaration_specifiers\n");;}
     break;
 
   case 153:
 
-/* Line 1806 of yacc.c  */
-#line 327 "grammar_rules/cGrammar.y"
-    {printf(": identifier_list->IDENTIFIER\n");}
+/* Line 1455 of yacc.c  */
+#line 332 "grammar_rules/cGrammar.y"
+    {printf(": identifier_list->IDENTIFIER\n");;}
     break;
 
   case 154:
 
-/* Line 1806 of yacc.c  */
-#line 328 "grammar_rules/cGrammar.y"
-    {printf(": identifier_list->identifier_list , IDENTIFIER\n");}
+/* Line 1455 of yacc.c  */
+#line 333 "grammar_rules/cGrammar.y"
+    {printf(": identifier_list->identifier_list , IDENTIFIER\n");;}
     break;
 
   case 155:
 
-/* Line 1806 of yacc.c  */
-#line 332 "grammar_rules/cGrammar.y"
-    {printf(": type_name->specifier_qualifier_list\n");}
+/* Line 1455 of yacc.c  */
+#line 337 "grammar_rules/cGrammar.y"
+    {printf(": type_name->specifier_qualifier_list\n");;}
     break;
 
   case 156:
 
-/* Line 1806 of yacc.c  */
-#line 333 "grammar_rules/cGrammar.y"
-    {printf(": type_name->specifier_qualifier_list abstract_declarator\n");}
+/* Line 1455 of yacc.c  */
+#line 338 "grammar_rules/cGrammar.y"
+    {printf(": type_name->specifier_qualifier_list abstract_declarator\n");;}
     break;
 
   case 157:
 
-/* Line 1806 of yacc.c  */
-#line 337 "grammar_rules/cGrammar.y"
-    {printf(": abstract_declarator->pointer\n");}
+/* Line 1455 of yacc.c  */
+#line 342 "grammar_rules/cGrammar.y"
+    {printf(": abstract_declarator->pointer\n");;}
     break;
 
   case 158:
 
-/* Line 1806 of yacc.c  */
-#line 338 "grammar_rules/cGrammar.y"
-    {printf(": abstract_declarator->direct_abstract_declarator\n");}
+/* Line 1455 of yacc.c  */
+#line 343 "grammar_rules/cGrammar.y"
+    {printf(": abstract_declarator->direct_abstract_declarator\n");;}
     break;
 
   case 159:
 
-/* Line 1806 of yacc.c  */
-#line 339 "grammar_rules/cGrammar.y"
-    {printf(": abstract_declarator->pointer direct_abstract_declarator\n");}
+/* Line 1455 of yacc.c  */
+#line 344 "grammar_rules/cGrammar.y"
+    {printf(": abstract_declarator->pointer direct_abstract_declarator\n");;}
     break;
 
   case 160:
 
-/* Line 1806 of yacc.c  */
-#line 343 "grammar_rules/cGrammar.y"
-    {printf(": direct_abstract_declarator->( abstract_declarator )\n");}
+/* Line 1455 of yacc.c  */
+#line 348 "grammar_rules/cGrammar.y"
+    {printf(": direct_abstract_declarator->( abstract_declarator )\n");;}
     break;
 
   case 161:
 
-/* Line 1806 of yacc.c  */
-#line 344 "grammar_rules/cGrammar.y"
-    {printf(": direct_abstract_declarator->[ ]\n");}
+/* Line 1455 of yacc.c  */
+#line 349 "grammar_rules/cGrammar.y"
+    {printf(": direct_abstract_declarator->[ ]\n");;}
     break;
 
   case 162:
 
-/* Line 1806 of yacc.c  */
-#line 345 "grammar_rules/cGrammar.y"
-    {printf(": direct_abstract_declarator->[ constant_expression ]\n");}
+/* Line 1455 of yacc.c  */
+#line 350 "grammar_rules/cGrammar.y"
+    {printf(": direct_abstract_declarator->[ constant_expression ]\n");;}
     break;
 
   case 163:
 
-/* Line 1806 of yacc.c  */
-#line 346 "grammar_rules/cGrammar.y"
-    {printf(": direct_abstract_declarator->direct_abstract_declarator [ ]\n");}
+/* Line 1455 of yacc.c  */
+#line 351 "grammar_rules/cGrammar.y"
+    {printf(": direct_abstract_declarator->direct_abstract_declarator [ ]\n");;}
     break;
 
   case 164:
 
-/* Line 1806 of yacc.c  */
-#line 347 "grammar_rules/cGrammar.y"
-    {printf(": direct_abstract_declarator->direct_abstract_declarator [ constant_expression ]\n");}
+/* Line 1455 of yacc.c  */
+#line 352 "grammar_rules/cGrammar.y"
+    {printf(": direct_abstract_declarator->direct_abstract_declarator [ constant_expression ]\n");;}
     break;
 
   case 165:
 
-/* Line 1806 of yacc.c  */
-#line 348 "grammar_rules/cGrammar.y"
-    {printf(": direct_abstract_declarator->( )\n");}
+/* Line 1455 of yacc.c  */
+#line 353 "grammar_rules/cGrammar.y"
+    {printf(": direct_abstract_declarator->( )\n");;}
     break;
 
   case 166:
 
-/* Line 1806 of yacc.c  */
-#line 349 "grammar_rules/cGrammar.y"
-    {printf(": direct_abstract_declarator->( parameter_type_list )\n");}
+/* Line 1455 of yacc.c  */
+#line 354 "grammar_rules/cGrammar.y"
+    {printf(": direct_abstract_declarator->( parameter_type_list )\n");;}
     break;
 
   case 167:
 
-/* Line 1806 of yacc.c  */
-#line 350 "grammar_rules/cGrammar.y"
-    {printf(": direct_abstract_declarator->direct_abstract_declarator ( )\n");}
+/* Line 1455 of yacc.c  */
+#line 355 "grammar_rules/cGrammar.y"
+    {printf(": direct_abstract_declarator->direct_abstract_declarator ( )\n");;}
     break;
 
   case 168:
 
-/* Line 1806 of yacc.c  */
-#line 351 "grammar_rules/cGrammar.y"
-    {printf(": direct_abstract_declarator->direct_abstract_declarator ( parameter_type_list )\n");}
+/* Line 1455 of yacc.c  */
+#line 356 "grammar_rules/cGrammar.y"
+    {printf(": direct_abstract_declarator->direct_abstract_declarator ( parameter_type_list )\n");;}
     break;
 
   case 169:
 
-/* Line 1806 of yacc.c  */
-#line 355 "grammar_rules/cGrammar.y"
-    {printf(": initializer->assignment_expression\n");}
+/* Line 1455 of yacc.c  */
+#line 360 "grammar_rules/cGrammar.y"
+    {printf(": initializer->assignment_expression\n");;}
     break;
 
   case 170:
 
-/* Line 1806 of yacc.c  */
-#line 356 "grammar_rules/cGrammar.y"
-    {printf(": initializer->{ initializer_list }\n");}
+/* Line 1455 of yacc.c  */
+#line 361 "grammar_rules/cGrammar.y"
+    {printf(": initializer->{ initializer_list }\n");;}
     break;
 
   case 171:
 
-/* Line 1806 of yacc.c  */
-#line 357 "grammar_rules/cGrammar.y"
-    {printf(": initializer->{ initializer_list , }\n");}
+/* Line 1455 of yacc.c  */
+#line 362 "grammar_rules/cGrammar.y"
+    {printf(": initializer->{ initializer_list , }\n");;}
     break;
 
   case 172:
 
-/* Line 1806 of yacc.c  */
-#line 361 "grammar_rules/cGrammar.y"
-    {printf(": initializer_list->initializer\n");}
+/* Line 1455 of yacc.c  */
+#line 366 "grammar_rules/cGrammar.y"
+    {printf(": initializer_list->initializer\n");;}
     break;
 
   case 173:
 
-/* Line 1806 of yacc.c  */
-#line 362 "grammar_rules/cGrammar.y"
-    {printf(": initializer_list->initializer_list , initializer\n");}
+/* Line 1455 of yacc.c  */
+#line 367 "grammar_rules/cGrammar.y"
+    {printf(": initializer_list->initializer_list , initializer\n");;}
     break;
 
   case 174:
 
-/* Line 1806 of yacc.c  */
-#line 366 "grammar_rules/cGrammar.y"
-    {printf(": statement->labeled_statement\n");}
+/* Line 1455 of yacc.c  */
+#line 371 "grammar_rules/cGrammar.y"
+    {printf(": statement->labeled_statement\n");;}
     break;
 
   case 175:
 
-/* Line 1806 of yacc.c  */
-#line 367 "grammar_rules/cGrammar.y"
-    {printf(": statement->compound_statement\n");}
+/* Line 1455 of yacc.c  */
+#line 372 "grammar_rules/cGrammar.y"
+    {printf(": statement->compound_statement\n");;}
     break;
 
   case 176:
 
-/* Line 1806 of yacc.c  */
-#line 368 "grammar_rules/cGrammar.y"
-    {printf(": statement->expression_statement\n");}
+/* Line 1455 of yacc.c  */
+#line 373 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = statement__expression_statement((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 177:
 
-/* Line 1806 of yacc.c  */
-#line 369 "grammar_rules/cGrammar.y"
-    {printf(": statement->selection_statement\n");}
+/* Line 1455 of yacc.c  */
+#line 374 "grammar_rules/cGrammar.y"
+    {printf(": statement->selection_statement\n");;}
     break;
 
   case 178:
 
-/* Line 1806 of yacc.c  */
-#line 370 "grammar_rules/cGrammar.y"
-    {printf(": statement->iteration_statement\n");}
+/* Line 1455 of yacc.c  */
+#line 375 "grammar_rules/cGrammar.y"
+    {printf(": statement->iteration_statement\n");;}
     break;
 
   case 179:
 
-/* Line 1806 of yacc.c  */
-#line 371 "grammar_rules/cGrammar.y"
-    {printf(": statement->jump_statement\n");}
+/* Line 1455 of yacc.c  */
+#line 376 "grammar_rules/cGrammar.y"
+    {printf(": statement->jump_statement\n");;}
     break;
 
   case 180:
 
-/* Line 1806 of yacc.c  */
-#line 375 "grammar_rules/cGrammar.y"
-    {printf(": labeled_statement->IDENTIFIER : statement\n");}
+/* Line 1455 of yacc.c  */
+#line 380 "grammar_rules/cGrammar.y"
+    {printf(": labeled_statement->IDENTIFIER : statement\n");;}
     break;
 
   case 181:
 
-/* Line 1806 of yacc.c  */
-#line 376 "grammar_rules/cGrammar.y"
-    {printf(": labeled_statement->CASE constant_expression : statement\n");}
+/* Line 1455 of yacc.c  */
+#line 381 "grammar_rules/cGrammar.y"
+    {printf(": labeled_statement->CASE constant_expression : statement\n");;}
     break;
 
   case 182:
 
-/* Line 1806 of yacc.c  */
-#line 377 "grammar_rules/cGrammar.y"
-    {printf(": labeled_statement->DEFAULT : statement\n");}
+/* Line 1455 of yacc.c  */
+#line 382 "grammar_rules/cGrammar.y"
+    {printf(": labeled_statement->DEFAULT : statement\n");;}
     break;
 
   case 183:
 
-/* Line 1806 of yacc.c  */
-#line 381 "grammar_rules/cGrammar.y"
-    {compound_statement__OPB__CLB();}
+/* Line 1455 of yacc.c  */
+#line 386 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = compound_statement__OPB__CLB();;}
     break;
 
   case 184:
 
-/* Line 1806 of yacc.c  */
-#line 382 "grammar_rules/cGrammar.y"
-    {printf(": compound_statement->{ statement_list }\n");}
+/* Line 1455 of yacc.c  */
+#line 387 "grammar_rules/cGrammar.y"
+    {printf(": compound_statement->{ statement_list }\n");;}
     break;
 
   case 185:
 
-/* Line 1806 of yacc.c  */
-#line 383 "grammar_rules/cGrammar.y"
-    {printf(": compound_statement->{ declaration_list }\n");}
+/* Line 1455 of yacc.c  */
+#line 388 "grammar_rules/cGrammar.y"
+    {printf(": compound_statement->{ declaration_list }\n");;}
     break;
 
   case 186:
 
-/* Line 1806 of yacc.c  */
-#line 384 "grammar_rules/cGrammar.y"
-    {printf(": compound_statement->{ declaration_list statement_list }\n");}
+/* Line 1455 of yacc.c  */
+#line 389 "grammar_rules/cGrammar.y"
+    {printf(": compound_statement->{ declaration_list statement_list }\n");;}
     break;
 
   case 187:
 
-/* Line 1806 of yacc.c  */
-#line 388 "grammar_rules/cGrammar.y"
-    {printf(": declaration_list->declaration\n");}
+/* Line 1455 of yacc.c  */
+#line 393 "grammar_rules/cGrammar.y"
+    {printf(": declaration_list->declaration\n");;}
     break;
 
   case 188:
 
-/* Line 1806 of yacc.c  */
-#line 389 "grammar_rules/cGrammar.y"
-    {printf(": declaration_list->declaration_list declaration\n");}
+/* Line 1455 of yacc.c  */
+#line 394 "grammar_rules/cGrammar.y"
+    {printf(": declaration_list->declaration_list declaration\n");;}
     break;
 
   case 189:
 
-/* Line 1806 of yacc.c  */
-#line 393 "grammar_rules/cGrammar.y"
-    {printf(": statement_list->statement\n");}
+/* Line 1455 of yacc.c  */
+#line 398 "grammar_rules/cGrammar.y"
+    {printf(": statement_list->statement\n");;}
     break;
 
   case 190:
 
-/* Line 1806 of yacc.c  */
-#line 394 "grammar_rules/cGrammar.y"
-    {printf(": statement_list->statement_list statement\n");}
+/* Line 1455 of yacc.c  */
+#line 399 "grammar_rules/cGrammar.y"
+    {printf(": statement_list->statement_list statement\n");;}
     break;
 
   case 191:
 
-/* Line 1806 of yacc.c  */
-#line 398 "grammar_rules/cGrammar.y"
-    {printf(": expression_statement->;\n");}
+/* Line 1455 of yacc.c  */
+#line 403 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = expression_statement__SEMICOLON();;}
     break;
 
   case 192:
 
-/* Line 1806 of yacc.c  */
-#line 399 "grammar_rules/cGrammar.y"
-    {printf(": expression_statement->expression ;\n");}
+/* Line 1455 of yacc.c  */
+#line 404 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = expression_statement__expression__SEMICOLON((yyvsp[(1) - (2)].tree));;}
     break;
 
   case 193:
 
-/* Line 1806 of yacc.c  */
-#line 403 "grammar_rules/cGrammar.y"
-    {printf(": selection_statement->IF ( expression ) statement\n");}
+/* Line 1455 of yacc.c  */
+#line 408 "grammar_rules/cGrammar.y"
+    {(yyval.tree) = selection_statement__IF__OPP__expression__CLP__statement((yyvsp[(3) - (5)].tree), (yyvsp[(5) - (5)].tree));;}
     break;
 
   case 194:
 
-/* Line 1806 of yacc.c  */
-#line 404 "grammar_rules/cGrammar.y"
-    {printf(": selection_statement->IF ( expression ) statement ELSE statement\n");}
+/* Line 1455 of yacc.c  */
+#line 409 "grammar_rules/cGrammar.y"
+    { (yyval.tree) =  selection_statement__IF__OPP__expression__CLP__statement__ELSE__statement((yyvsp[(3) - (7)].tree), (yyvsp[(5) - (7)].tree), (yyvsp[(7) - (7)].tree));;}
     break;
 
   case 195:
 
-/* Line 1806 of yacc.c  */
-#line 405 "grammar_rules/cGrammar.y"
-    {printf(": selection_statement->SWITCH ( expression ) statement\n");}
+/* Line 1455 of yacc.c  */
+#line 410 "grammar_rules/cGrammar.y"
+    { (yyval.tree) =  selection_statement__SWITCH__OPP__expression__CLP__statement();;}
     break;
 
   case 196:
 
-/* Line 1806 of yacc.c  */
-#line 409 "grammar_rules/cGrammar.y"
-    {printf(": iteration_statement->WHILE ( expression ) statement\n");}
+/* Line 1455 of yacc.c  */
+#line 414 "grammar_rules/cGrammar.y"
+    {printf(": iteration_statement->WHILE ( expression ) statement\n");;}
     break;
 
   case 197:
 
-/* Line 1806 of yacc.c  */
-#line 410 "grammar_rules/cGrammar.y"
-    {printf(": iteration_statement->DO statement WHILE ( expression ) ;\n");}
+/* Line 1455 of yacc.c  */
+#line 415 "grammar_rules/cGrammar.y"
+    {printf(": iteration_statement->DO statement WHILE ( expression ) ;\n");;}
     break;
 
   case 198:
 
-/* Line 1806 of yacc.c  */
-#line 411 "grammar_rules/cGrammar.y"
-    {printf(": iteration_statement->FOR ( expression_statement expression_statement ) statement\n");}
+/* Line 1455 of yacc.c  */
+#line 416 "grammar_rules/cGrammar.y"
+    {printf(": iteration_statement->FOR ( expression_statement expression_statement ) statement\n");;}
     break;
 
   case 199:
 
-/* Line 1806 of yacc.c  */
-#line 412 "grammar_rules/cGrammar.y"
-    {printf(": iteration_statement->FOR ( expression_statement expression_statement expression ) statement\n");}
+/* Line 1455 of yacc.c  */
+#line 417 "grammar_rules/cGrammar.y"
+    {printf(": iteration_statement->FOR ( expression_statement expression_statement expression ) statement\n");;}
     break;
 
   case 200:
 
-/* Line 1806 of yacc.c  */
-#line 416 "grammar_rules/cGrammar.y"
-    {printf(": jump_statement->GOTO IDENTIFIER ;\n");}
+/* Line 1455 of yacc.c  */
+#line 421 "grammar_rules/cGrammar.y"
+    {printf(": jump_statement->GOTO IDENTIFIER ;\n");;}
     break;
 
   case 201:
 
-/* Line 1806 of yacc.c  */
-#line 417 "grammar_rules/cGrammar.y"
-    {printf(": jump_statement->CONTINUE ;\n");}
+/* Line 1455 of yacc.c  */
+#line 422 "grammar_rules/cGrammar.y"
+    {printf(": jump_statement->CONTINUE ;\n");;}
     break;
 
   case 202:
 
-/* Line 1806 of yacc.c  */
-#line 418 "grammar_rules/cGrammar.y"
-    {printf(": jump_statement->BREAK ;\n");}
+/* Line 1455 of yacc.c  */
+#line 423 "grammar_rules/cGrammar.y"
+    {printf(": jump_statement->BREAK ;\n");;}
     break;
 
   case 203:
 
-/* Line 1806 of yacc.c  */
-#line 419 "grammar_rules/cGrammar.y"
-    {printf(": jump_statement->RETURN ;\n");}
+/* Line 1455 of yacc.c  */
+#line 424 "grammar_rules/cGrammar.y"
+    {printf(": jump_statement->RETURN ;\n");;}
     break;
 
   case 204:
 
-/* Line 1806 of yacc.c  */
-#line 420 "grammar_rules/cGrammar.y"
-    {printf(": jump_statement->RETURN expression ;\n");}
+/* Line 1455 of yacc.c  */
+#line 425 "grammar_rules/cGrammar.y"
+    {printf(": jump_statement->RETURN expression ;\n");;}
     break;
 
   case 205:
 
-/* Line 1806 of yacc.c  */
-#line 424 "grammar_rules/cGrammar.y"
-    {printf(": translation_unit->external_declaration\n");}
+/* Line 1455 of yacc.c  */
+#line 429 "grammar_rules/cGrammar.y"
+    {printf(": translation_unit->external_declaration\n");;}
     break;
 
   case 206:
 
-/* Line 1806 of yacc.c  */
-#line 425 "grammar_rules/cGrammar.y"
-    {printf(": translation_unit->translation_unit external_declaration\n");}
+/* Line 1455 of yacc.c  */
+#line 430 "grammar_rules/cGrammar.y"
+    {printf(": translation_unit->translation_unit external_declaration\n");;}
     break;
 
   case 207:
 
-/* Line 1806 of yacc.c  */
-#line 429 "grammar_rules/cGrammar.y"
-    {printf(": external_declaration->function_definition\n");}
+/* Line 1455 of yacc.c  */
+#line 434 "grammar_rules/cGrammar.y"
+    {printf(": external_declaration->function_definition\n");;}
     break;
 
   case 208:
 
-/* Line 1806 of yacc.c  */
-#line 430 "grammar_rules/cGrammar.y"
-    {printf(": external_declaration->declaration\n");}
+/* Line 1455 of yacc.c  */
+#line 435 "grammar_rules/cGrammar.y"
+    {printf(": external_declaration->declaration\n");;}
     break;
 
   case 209:
 
-/* Line 1806 of yacc.c  */
-#line 434 "grammar_rules/cGrammar.y"
-    {printf(": function_definition->declaration_specifiers declarator declaration_list compound_statement\n");}
+/* Line 1455 of yacc.c  */
+#line 439 "grammar_rules/cGrammar.y"
+    {printf(": function_definition->declaration_specifiers declarator declaration_list compound_statement\n");;}
     break;
 
   case 210:
 
-/* Line 1806 of yacc.c  */
-#line 435 "grammar_rules/cGrammar.y"
-    {function_definition__declaration_specifiers__declarator__compound_statement();}
+/* Line 1455 of yacc.c  */
+#line 440 "grammar_rules/cGrammar.y"
+    {function_definition__declaration_specifiers__declarator__compound_statement();;}
     break;
 
   case 211:
 
-/* Line 1806 of yacc.c  */
-#line 436 "grammar_rules/cGrammar.y"
-    {printf(": function_definition->declarator declaration_list compound_statement\n");}
+/* Line 1455 of yacc.c  */
+#line 441 "grammar_rules/cGrammar.y"
+    {printf(": function_definition->declarator declaration_list compound_statement\n");;}
     break;
 
   case 212:
 
-/* Line 1806 of yacc.c  */
-#line 437 "grammar_rules/cGrammar.y"
-    {printf(": function_definition->declarator compound_statement\n");}
+/* Line 1455 of yacc.c  */
+#line 442 "grammar_rules/cGrammar.y"
+    {printf(": function_definition->declarator compound_statement\n");;}
     break;
 
 
 
-/* Line 1806 of yacc.c  */
-#line 3453 "cGrammar.tab.c"
+/* Line 1455 of yacc.c  */
+#line 3423 "cGrammar.tab.c"
       default: break;
     }
-  /* User semantic actions sometimes alter yychar, and that requires
-     that yytoken be updated with the new translation.  We take the
-     approach of translating immediately before every use of yytoken.
-     One alternative is translating here after every semantic action,
-     but that translation would be missed if the semantic action invokes
-     YYABORT, YYACCEPT, or YYERROR immediately after altering yychar or
-     if it invokes YYBACKUP.  In the case of YYABORT or YYACCEPT, an
-     incorrect destructor might then be invoked immediately.  In the
-     case of YYERROR or YYBACKUP, subsequent parser actions might lead
-     to an incorrect destructor call or verbose syntax error message
-     before the lookahead is translated.  */
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
 
   YYPOPSTACK (yylen);
@@ -3490,10 +3449,6 @@ yyreduce:
 | yyerrlab -- here on detecting error |
 `------------------------------------*/
 yyerrlab:
-  /* Make sure we have latest lookahead translation.  See comments at
-     user semantic actions for why this is necessary.  */
-  yytoken = yychar == YYEMPTY ? YYEMPTY : YYTRANSLATE (yychar);
-
   /* If not already recovering from an error, report this error.  */
   if (!yyerrstatus)
     {
@@ -3501,36 +3456,37 @@ yyerrlab:
 #if ! YYERROR_VERBOSE
       yyerror (YY_("syntax error"));
 #else
-# define YYSYNTAX_ERROR yysyntax_error (&yymsg_alloc, &yymsg, \
-                                        yyssp, yytoken)
       {
-        char const *yymsgp = YY_("syntax error");
-        int yysyntax_error_status;
-        yysyntax_error_status = YYSYNTAX_ERROR;
-        if (yysyntax_error_status == 0)
-          yymsgp = yymsg;
-        else if (yysyntax_error_status == 1)
-          {
-            if (yymsg != yymsgbuf)
-              YYSTACK_FREE (yymsg);
-            yymsg = (char *) YYSTACK_ALLOC (yymsg_alloc);
-            if (!yymsg)
-              {
-                yymsg = yymsgbuf;
-                yymsg_alloc = sizeof yymsgbuf;
-                yysyntax_error_status = 2;
-              }
-            else
-              {
-                yysyntax_error_status = YYSYNTAX_ERROR;
-                yymsgp = yymsg;
-              }
-          }
-        yyerror (yymsgp);
-        if (yysyntax_error_status == 2)
-          goto yyexhaustedlab;
+	YYSIZE_T yysize = yysyntax_error (0, yystate, yychar);
+	if (yymsg_alloc < yysize && yymsg_alloc < YYSTACK_ALLOC_MAXIMUM)
+	  {
+	    YYSIZE_T yyalloc = 2 * yysize;
+	    if (! (yysize <= yyalloc && yyalloc <= YYSTACK_ALLOC_MAXIMUM))
+	      yyalloc = YYSTACK_ALLOC_MAXIMUM;
+	    if (yymsg != yymsgbuf)
+	      YYSTACK_FREE (yymsg);
+	    yymsg = (char *) YYSTACK_ALLOC (yyalloc);
+	    if (yymsg)
+	      yymsg_alloc = yyalloc;
+	    else
+	      {
+		yymsg = yymsgbuf;
+		yymsg_alloc = sizeof yymsgbuf;
+	      }
+	  }
+
+	if (0 < yysize && yysize <= yymsg_alloc)
+	  {
+	    (void) yysyntax_error (yymsg, yystate, yychar);
+	    yyerror (yymsg);
+	  }
+	else
+	  {
+	    yyerror (YY_("syntax error"));
+	    if (yysize != 0)
+	      goto yyexhaustedlab;
+	  }
       }
-# undef YYSYNTAX_ERROR
 #endif
     }
 
@@ -3589,7 +3545,7 @@ yyerrlab1:
   for (;;)
     {
       yyn = yypact[yystate];
-      if (!yypact_value_is_default (yyn))
+      if (yyn != YYPACT_NINF)
 	{
 	  yyn += YYTERROR;
 	  if (0 <= yyn && yyn <= YYLAST && yycheck[yyn] == YYTERROR)
@@ -3648,13 +3604,8 @@ yyexhaustedlab:
 
 yyreturn:
   if (yychar != YYEMPTY)
-    {
-      /* Make sure we have latest lookahead translation.  See comments at
-         user semantic actions for why this is necessary.  */
-      yytoken = YYTRANSLATE (yychar);
-      yydestruct ("Cleanup: discarding lookahead",
-                  yytoken, &yylval);
-    }
+     yydestruct ("Cleanup: discarding lookahead",
+		 yytoken, &yylval);
   /* Do not reclaim the symbols of the rule which action triggered
      this YYABORT or YYACCEPT.  */
   YYPOPSTACK (yylen);
@@ -3679,7 +3630,7 @@ yyreturn:
 
 
 
-/* Line 2067 of yacc.c  */
-#line 440 "grammar_rules/cGrammar.y"
+/* Line 1675 of yacc.c  */
+#line 445 "grammar_rules/cGrammar.y"
 
 

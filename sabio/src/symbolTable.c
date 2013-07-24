@@ -13,6 +13,12 @@ static unsigned calcHash(char * _nameForHash)
 	unsigned int hashTmp = 0;
 	unsigned character = 0;
 
+	if(strlen(_nameForHash) > 5)
+	{
+		printf("Symbol name %s is too long for this program!\n", _nameForHash);
+		exit(0);
+	}
+
 	while((character = *_nameForHash++))
 	{
 		hashTmp = hashTmp * HASH_CALC ^ character;

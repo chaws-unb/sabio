@@ -9,6 +9,7 @@
 #include <dataType.h>
 #include <abstractTree.h>
 #include <clexer.h>
+#include <cGrammar.h>
 %}
 
 %token IDENTIFIER CONSTANT STRING_LITERAL SIZEOF
@@ -275,7 +276,7 @@ declarator
 	;
 
 direct_declarator
-	: IDENTIFIER 									{printf(": direct_declarator->IDENTIFIER\n");}
+	: IDENTIFIER 									{$$ = postfixExpression_IDENTIFIER($1);}
 	| '(' declarator ')' 							{printf(": direct_declarator->( declarator )\n");}
 	| direct_declarator '[' constant_expression ']' {printf(": direct_declarator->direct_declarator [ constant_expression ]\n");}
 	| direct_declarator '[' ']' 					{printf(": direct_declarator->direct_declarator [ ]\n");}

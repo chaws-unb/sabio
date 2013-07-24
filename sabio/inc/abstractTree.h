@@ -6,6 +6,13 @@
 #define _ABSTRACT_TREE_H_
 
 #include <dataType.h>
+
+typedef struct 
+{
+	genericType type;
+	symbol * sym;
+} identifier;
+
 /**
  * @param _nodeType Node type of new node.
  * @param _left Reference to left side of tree.
@@ -81,6 +88,10 @@ extern double eval(abstractTree * _stmt);
 extern abstractTree * newNum(double _value);
 /* delete and free an abstractTree */
 extern void treefree(abstractTree * );
+
+extern void * eval_identifier(identifier * id);
+
+extern abstractTree * newIdentifier(symbol * sym);
 
 /* interface to the lexer */
 extern int yylineno; /* from lexer */
