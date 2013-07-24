@@ -4,9 +4,10 @@
 #include "../cGrammar.h"
 
 
-void * declaration__declaration_specifiers__SEMICOLON()
+void * declaration__declaration_specifiers__SEMICOLON(ast * decl)
 {
-	
+	if(debugMode) printf(": declaration->declaration_specifiers ;\n");
+	return decl;
 }
 
 // THIS FUNCTION MUST DO SOMETHING ELSE, EVAL??, SINCE IT FOUND A SEMICOLON
@@ -17,28 +18,5 @@ void * declaration__declaration_specifiers__SEMICOLON()
 void * declaration__declaration_specifiers__init_declarator_list__SEMICOLON(/*ast * spec,*/ ast * init)
 {
 	if(debugMode) printf(": declaration->declaration_specifiers init_declarator_list ;\n");
-
-	mainProgram->next = newProgramNode(init);
-	mainProgram = mainProgram->next;
-
-/*
-	// Create a new AST as a declaration node
-	ast * newNode = newDeclaration(currentSymbol);
-
-	// Set the currentValue, which is another AST of a constant, expression, etc
-	newNode->right = (ast *)currentValue; // yeah, we cast void * * to ast *
-
-	// Make this node as the next step of previous AST
-	mainProgram->next = newProgramNode(newNode);
-
-	// Now, the current tree is this node
-	// Remember the first tree is stored in main.c for later evaluation hehe
-	mainProgram = mainProgram->next;
-
-	// Clean all other things
-	currentSymbol = NULL;
-	currentValue  = NULL;
-	currentAst    = NULL;
-	currentSymbolDataType = _VOID;
-	*/
+	return init;
 }

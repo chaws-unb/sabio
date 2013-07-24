@@ -10,33 +10,27 @@ void * compound_statement__OPB__CLB()
 
 	ast * tree = newAst(EMPTY, NULL, NULL);
 
-	// Make this node as the next step of previous AST
-	//mainProgram->next = newProgramNode(tree);
-
-	// Now, the current tree is this node
-	// Remember the first tree is stored in main.c for later evaluation hehe
-	//mainProgram = mainProgram->next;
-
 	return tree;
 }
 
 
-void * compound_statement__OPB__statement_list__CLB()
+void * compound_statement__OPB__statement_list__CLB(ast * list)
 {
-	
+	if(debugMode) printf(": compound_statement->{ statement_list }\n");
+	return list;
 }
 
 
-void * compound_statement__OPB__declaration_list__CLB()
+void * compound_statement__OPB__declaration_list__CLB(ast * list)
 {
-	
+	if(debugMode) printf(": compound_statement->{ declaration_list }\n");
+	return list;
 }
 
 
-void * compound_statement__OPB__declaration_list__statement_list__CLB()
+void * compound_statement__OPB__declaration_list__statement_list__CLB(ast * leftList, ast * rightList)
 {
-	
+	if(debugMode) printf(": compound_statement->{ declaration_list statement_list }\n");
+	return newAstList(leftList, rightList);
 }
-
-
 

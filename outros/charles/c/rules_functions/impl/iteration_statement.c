@@ -11,8 +11,7 @@ void * iteration_statement__WHILE__OPP__expression__CLP__statement(ast * _expres
 		printf(": iteration_statement->WHILE ( expression ) statement\n");
 	}
 	//Here we have a new node in the trunk. Therefore we create and returns.
-	mainProgram->next = newProgramNode(newWhileStatement(_expression, _statement));
-	mainProgram = mainProgram->next;
+	return newWhileStatement(_expression, _statement);
 }
 
 

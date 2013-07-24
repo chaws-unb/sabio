@@ -6,12 +6,9 @@
 
 /* Declare data types to be used */
 %union {
-	int fn;	
 	double number;
 	char * string;
 	struct _ast * tree;
-	struct _symbol * sym;
-	struct _symbolList * list;
 }
 
 /* My declarations */
@@ -25,7 +22,7 @@
 %type <tree> postfix_expression unary_expression shift_expression initializer initializer_list
 %type <tree> and_expression exclusive_or_expression inclusive_or_expression logical_and_expression
 %type <tree> logical_or_expression conditional_expression assignment_expression statement_list argument_expression_list
-%type <tree> jump_statement labeled_statement
+%type <tree> jump_statement labeled_statement declaration_list
 
 %token SIZEOF
 %token PTR_OP INC_OP DEC_OP LEFT_OP RIGHT_OP LE_OP GE_OP EQ_OP NE_OP
@@ -90,15 +87,15 @@ cast_expression
 
 multiplicative_expression
 	: cast_expression 								{$$ = multiplicative_expression__cast_expression($1);}
-	| multiplicative_expression '*' cast_expression {printf(": multiplicative_expression->multiplicative_expression * cast_expression\n");}
-	| multiplicative_expression '/' cast_expression {printf(": multiplicative_expression->multiplicative_expression / cast_expression\n");}
-	| multiplicative_expression '%' cast_expression {printf(": multiplicative_expression->multiplicative_expression %% cast_expression\n");}
+	| multiplicative_expression '*' cast_expression {$$ = multiplicative_expression__multiplicative_expression__STAR__cast_expression($1, $3);}
+	| multiplicative_expression '/' cast_expression {$$ = multiplicative_expression__multiplicative_expression__SLASH__cast_expression($1, $3);}
+	| multiplicative_expression '%' cast_expression {$$ = multiplicative_expression__multiplicative_expression__PERC__cast_expression($1, $3);}
 	;
 
 additive_expression
 	: multiplicative_expression 						{$$ = additive_expression__multiplicative_expression($1);}
-	| additive_expression '+' multiplicative_expression {$$ = additive_expression__additive_expression__PLUS__multiplicative_expression();}
-	| additive_expression '-' multiplicative_expression {$$ = additive_expression__additive_expression__MINUS__multiplicative_expression();}
+	| additive_expression '+' multiplicative_expression {$$ = additive_expression__additive_expression__PLUS__multiplicative_expression($1, $3);}
+	| additive_expression '-' multiplicative_expression {$$ = additive_expression__additive_expression__MINUS__multiplicative_expression($1, $3);}
 	;
 
 shift_expression
@@ -117,8 +114,8 @@ relational_expression
 
 equality_expression
 	: relational_expression 						  {$$ = equality_expression__relational_expression($1);}
-	| equality_expression EQ_OP relational_expression {printf("EQ_OP\n"); equality_expression__equality_expression__EQ_OP__relational_expression($1, $3);}
-	| equality_expression NE_OP relational_expression {printf(": equality_expression->equality_expression != relational_expression\n");}
+	| equality_expression EQ_OP relational_expression {$$ = equality_expression__equality_expression__EQ_OP__relational_expression($1, $3);}
+	| equality_expression NE_OP relational_expression {$$ = equality_expression__equality_expression__NE_OP__relational_expression($1, $3);}
 	;
 
 and_expression
@@ -138,12 +135,12 @@ inclusive_or_expression
 
 logical_and_expression
 	: inclusive_or_expression 								{$$ = logical_and_expression__inclusive_or_expression($1);}
-	| logical_and_expression AND_OP inclusive_or_expression {printf(": logical_and_expression->logical_and_expression && inclusive_or_expression\n");}
+	| logical_and_expression AND_OP inclusive_or_expression {$$ = logical_and_expression__logical_and_expression__AND_OP__inclusive_or_expression($1, $3);}
 	;
 
 logical_or_expression
 	: logical_and_expression 							 {$$ = logical_or_expression__logical_and_expression($1);}
-	| logical_or_expression OR_OP logical_and_expression {printf(": logical_or_expression->logical_or_expression || logical_and_expression\n");}
+	| logical_or_expression OR_OP logical_and_expression {$$ = logical_or_expression__logical_or_expression__OR_OP__logical_and_expression($1, $3);}
 	;
 
 conditional_expression
@@ -180,7 +177,7 @@ constant_expression
 	;
 
 declaration
-	: declaration_specifiers ';' 					  {printf(": declaration->declaration_specifiers ;\n");}
+	: declaration_specifiers ';' 					  {$$ = declaration__declaration_specifiers__SEMICOLON($1);}
 	| declaration_specifiers init_declarator_list ';' {$$ = declaration__declaration_specifiers__init_declarator_list__SEMICOLON($2);}
 	;
 
@@ -385,14 +382,14 @@ labeled_statement
 
 compound_statement
 	: '{' '}' 								  {$$ = compound_statement__OPB__CLB();}
-	| '{' statement_list '}' 				  {printf(": compound_statement->{ statement_list }\n");}
-	| '{' declaration_list '}' 				  {printf(": compound_statement->{ declaration_list }\n");}
-	| '{' declaration_list statement_list '}' {printf(": compound_statement->{ declaration_list statement_list }\n");}
+	| '{' statement_list '}' 				  {$$ = compound_statement__OPB__statement_list__CLB($2);}
+	| '{' declaration_list '}' 				  {$$ = compound_statement__OPB__declaration_list__CLB($2);}
+	| '{' declaration_list statement_list '}' {$$ = compound_statement__OPB__declaration_list__statement_list__CLB($2, $3);}
 	;
 
 declaration_list
-	: declaration 				   {printf(": declaration_list->declaration\n");}
-	| declaration_list declaration {printf(": declaration_list->declaration_list declaration\n");}
+	: declaration 				   {$$ = declaration_list__declaration($1);}
+	| declaration_list declaration {$$ = declaration_list__declaration_list__declaration($1, $2);}
 	;
 
 statement_list
@@ -433,7 +430,7 @@ translation_unit
 
 external_declaration
 	: function_definition {printf(": external_declaration->function_definition\n");}
-	| declaration 		  {printf(": external_declaration->declaration\n");}
+	| declaration 		  {external_declaration__declaration($1);}
 	;
 
 function_definition

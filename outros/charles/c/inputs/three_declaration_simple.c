@@ -15,5 +15,3 @@ float
 c
 
 ;
-
-int;

@@ -9,8 +9,7 @@ void * selection_statement__IF__OPP__expression__CLP__statement(ast * expr, ast 
 	if(debugMode)
 		printf(": selection_statement->IF ( expression ) statement\n");
 
-	mainProgram->next = newProgramNode(newIfStatement(expr, state, NULL));
-	mainProgram = mainProgram->next;
+	return newIfStatement(expr, state, NULL);
 }
 
 
@@ -19,8 +18,7 @@ void * selection_statement__IF__OPP__expression__CLP__statement__ELSE__statement
 	if(debugMode)
 		printf(": selection_statement->IF ( expression ) statement ELSE statement\n");
 
-	mainProgram->next = newProgramNode(newIfStatement(expr, state, elseStmt));
-	mainProgram = mainProgram->next;
+	return newIfStatement(expr, state, elseStmt);
 }
 
 

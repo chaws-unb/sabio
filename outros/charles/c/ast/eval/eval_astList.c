@@ -8,7 +8,7 @@ void * eval_astList(astList * list)
 	astList * temp = list;
 	while(temp)
 	{
-		eval(temp);
+		eval(temp->node);
 		temp = temp->next;
 	}
 	

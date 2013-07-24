@@ -100,10 +100,23 @@ ast * newWhileStatement(ast * _expression, ast * _statment)
 
 ast * newAstList(astList * list, ast * newNode)
 {
-	astList * newList = new(astList);
-	newList->type = AST_LIST;
-	newList->node = newNode;
-	newList->next = list;
+	astList * newList;
+
+	// Check if it's an append of two lists
+	if(newNode && newNode->type == AST_LIST)
+		newList = (astList *)newNode;
+	else
+	{
+		newList = new(astList);
+		newList->type = AST_LIST;
+		newList->node = newNode;
+	}
+
+	// Creates a list with two nodes, it's probably the first time call
+	if(list && ((ast *)list)->type != AST_LIST)
+		newList->next = (astList *)newAstList(NULL, (ast *)list);
+	else
+		newList->next = list;
 	return (ast *)newList;
 }
 
