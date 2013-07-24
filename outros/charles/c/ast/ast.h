@@ -1,6 +1,7 @@
 #ifndef AST
 #define AST 
 #include <stdlib.h>
+#include "../xml/simpleXML.h"
 
 #ifndef new
 #define new(type) ((type *)malloc(sizeof(type)))
@@ -13,6 +14,11 @@ extern int yylineno; 				// Current line number
 extern void yyerror(char * s, ...); // Error handling
 extern int yylex(); 				// Lexer
 extern int debugMode;
+
+/**
+ *	Xml output
+ */
+extern xmlNode * xml;
 
 /**
  *	Node types for all kinds of tree
@@ -245,18 +251,17 @@ void freeAst(ast * tree);
  *	So more people can edit the project at the same time
  *	without intereferring in others commit/updates
  */
-void * eval(ast * tree); // Most generic one
-void * eval_root(ast * tree);
-void * eval_declaration(declaration * decl);
-void * eval_identifier(identifier * id);
-void * eval_specifier(specifier * spec);
-void * eval_constant(constant * cons);
-void * eval_mathOperation(mathOperation * op);
-void * eval_ifStatement(ifStatement * ifStmt);
-void * eval_whileStatement(whileStatement * _whileStmt);
-void * eval_relationalExpression(relationalExpression * rel);
-void * eval_functionDefinition(declaration * func); // OBS: there's no typedef for functionDefinition since it's the same as declaration!!!
-void * eval_astList(astList * list); // This only will call every node of the list
+void * eval(ast * tree, xmlNode * out); // Most generic one
+void * eval_declaration(declaration * decl, xmlNode * out);
+void * eval_identifier(identifier * id, xmlNode * out);
+void * eval_specifier(specifier * spec, xmlNode * out);
+void * eval_constant(constant * cons, xmlNode * out);
+void * eval_mathOperation(mathOperation * op, xmlNode * out);
+void * eval_ifStatement(ifStatement * ifStmt, xmlNode * out);
+void * eval_whileStatement(whileStatement * _whileStmt, xmlNode * out);
+void * eval_relationalExpression(relationalExpression * rel, xmlNode * out);
+void * eval_functionDefinition(declaration * func, xmlNode * out); // OBS: there's no typedef for functionDefinition since it's the same as declaration!!!
+void * eval_astList(astList * list, xmlNode * out); // This only will call every node of the list
 
 /**
  *	Create a program node

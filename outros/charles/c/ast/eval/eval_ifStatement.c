@@ -3,12 +3,19 @@
 #include <string.h>
 #include "../ast.h"
 
-void * eval_ifStatement(ifStatement * ifStmt)
+void * eval_ifStatement(ifStatement * ifStmt, xmlNode * out)
 {
-	int expressionResult = (int)(*(double *)eval(ifStmt->expr));
+	xmlNode * center = createNode(out, "if");
+	xmlNode * expr = createNode(center, "expression");
+	xmlNode * stmtTrue = createNode(center, "true");
+
+	int expressionResult = (int)(*(double *)eval(ifStmt->expr, expr));
 
 	if(expressionResult)
-		eval(ifStmt->ifTrue);
+		eval(ifStmt->ifTrue, stmtTrue);
 	else if(ifStmt->ifFalse)
-		eval(ifStmt->ifFalse);
+	{
+		xmlNode * stmtFalse = createNode(center, "false");
+		eval(ifStmt->ifFalse, stmtFalse);
+	}
 }

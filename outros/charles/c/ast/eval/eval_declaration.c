@@ -3,9 +3,12 @@
 #include <string.h>
 #include "../ast.h"
 
-void * eval_declaration(declaration * decl)
+void * eval_declaration(declaration * decl, xmlNode * out)
 {
 	if(debugMode) printf("Begin of '%s' declaration...", decl->sym->name);
+
+	xmlNode * center = createNode(out, "declaration");
+	addAttribute(center, "name", decl->sym->name);
 
 	// Aux vars
 	char *  charVal;
@@ -17,7 +20,7 @@ void * eval_declaration(declaration * decl)
 	{
 		if(debugMode) printf("Eval its expression...");
 
-		decl->sym->value = eval(decl->expr);
+		decl->sym->value = eval(decl->expr, center);
 		// Try to convert to correct type
 		decl->sym->dataType = _DOUBLE;
 		switch(decl->sym->dataType)

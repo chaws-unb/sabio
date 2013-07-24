@@ -4,7 +4,7 @@
 
 #include "../ast.h"
 
-void * eval_specifier(specifier * spec)
+void * eval_specifier(specifier * spec, xmlNode * out)
 {
 	return &spec->dataType;
 }

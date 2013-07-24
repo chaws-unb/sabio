@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <string.h>
 #include "ast/ast.h"
 
 #ifndef new
@@ -10,8 +11,10 @@
 // Input
 extern FILE * yyin;
 extern int yylineno;
-
 extern programNode * mainProgram;
+
+// Xml output
+xmlNode * xml;
 
 int debugMode = 0;
 
@@ -57,16 +60,32 @@ int main(int argc, char ** argv)
 		yyparse();
 	}while(!feof(yyin));
 
+	// Prepare the xml output
+     xml = NULL;
+     xml = newSimpleXml("source");
+     addAttribute(xml, "file", argv[1]);
+     char fileName[250];
+     strcpy(fileName, argv[1]);
+     strcat(fileName, ".xml");
+
+     printf("XML filename = %s\n", fileName);
+
 	// Now, it's time to evaluate!!!
 	programNode * temp = root;
 	while(temp)
 	{
-		eval(temp->node);
+		eval(temp->node, xml);
 		temp = temp->next;
 	}
 
 	if(debugMode) printf("\n*** END-DEBUGMODE ***\n"); 
 	fclose(input);
+
+	if(!saveToFile(xml, fileName))
+		printf("Done serializing the tree!\n");
+	 else
+		printf("Ops, something wrong happened serializing the tree!\n");
+	 destroyNode(xml);
 
 	return 0;
 }

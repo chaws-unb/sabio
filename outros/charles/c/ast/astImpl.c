@@ -101,9 +101,15 @@ ast * newWhileStatement(ast * _expression, ast * _statment)
 ast * newAstList(astList * list, ast * newNode)
 {
 	astList * newList;
+	astList * otherList;
+	if(!newNode)
+	{
+		printf("Error! New node to an ast tree MUST be non-NULL");
+		return NULL;
+	}
 
 	// Check if it's an append of two lists
-	if(newNode && newNode->type == AST_LIST)
+	if(newNode->type == AST_LIST)
 		newList = (astList *)newNode;
 	else
 	{
@@ -113,16 +119,28 @@ ast * newAstList(astList * list, ast * newNode)
 	}
 
 	// Creates a list with two nodes, it's probably the first time call
-	if(list && ((ast *)list)->type != AST_LIST)
-		newList->next = (astList *)newAstList(NULL, (ast *)list);
-	else
-		newList->next = list;
+	if(list)
+	{
+		if(list->type == AST_LIST)
+		{
+			list->next = newList;
+			return (ast *)list;
+		}
+		else
+		{
+			otherList = (astList *)newAstList(NULL, (ast *)list);
+			otherList->next = newList;
+			return (ast *)otherList;
+		}
+
+	}
+
 	return (ast *)newList;
 }
 
 // This is the generic eval, I think it's better this way so everyone can
 // edit at the same time
-void * eval(ast * tree)
+void * eval(ast * tree, xmlNode * out)
 {
 	if(!tree)
 	{
@@ -135,36 +153,36 @@ void * eval(ast * tree)
 		case ROOT: 			
 		case EMPTY: 			
 			break;
-		case DECLARATION:	return eval_declaration((declaration *)tree);
-		case _CONSTANT: 	return eval_constant((constant *)tree);
+		case DECLARATION:	return eval_declaration((declaration *)tree, out);
+		case _CONSTANT: 	return eval_constant((constant *)tree, out);
 
 		case SUM:
 		case SUB:
 		case DIV:
 		case MUL:
 		case MOD:
-			return eval_mathOperation((mathOperation *)tree);
+			return eval_mathOperation((mathOperation *)tree, out);
 
 		case _IDENTIFIER:
-			return eval_identifier((identifier *)tree);
+			return eval_identifier((identifier *)tree, out);
 
 		case _SPECIFIER:
-			return eval_specifier((specifier *)tree);
+			return eval_specifier((specifier *)tree, out);
 
 		case RELATIONAL_EXPRESSION:
-			return eval_relationalExpression((relationalExpression *)tree);
+			return eval_relationalExpression((relationalExpression *)tree, out);
 
 		case FUNCTION_DEFINITION:
-			return eval_functionDefinition((declaration *)tree);
+			return eval_functionDefinition((declaration *)tree, out);
 
 		case IF_FLOW:
-			return eval_ifStatement((ifStatement*)tree);
+			return eval_ifStatement((ifStatement*)tree, out);
 
 		case WHILE_FLOW:
-			return eval_whileStatement((whileStatement *)tree);
+			return eval_whileStatement((whileStatement *)tree, out);
 
 		case AST_LIST:
-			return eval_astList((astList *)tree);
+			return eval_astList((astList *)tree, out);
 
 		default:
 			printf("Unknown node!\n");

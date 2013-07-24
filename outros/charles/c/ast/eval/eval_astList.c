@@ -3,12 +3,12 @@
 #include <string.h>
 #include "../ast.h"
 
-void * eval_astList(astList * list)
+void * eval_astList(astList * list, xmlNode * out)
 {
 	astList * temp = list;
 	while(temp)
 	{
-		eval(temp->node);
+		eval(temp->node, out);
 		temp = temp->next;
 	}
 	

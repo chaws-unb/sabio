@@ -3,10 +3,13 @@
 #include <string.h>
 #include "../ast.h"
 
-void * eval_functionDefinition(declaration * func)
+void * eval_functionDefinition(declaration * func, xmlNode * out)
 {
 	if(debugMode) printf("Begin of '%s' defintion...", func->sym->name);
 
+	xmlNode * center = createNode(out, "functionDefinition");
+	addAttribute(center, "name", func->sym->name);
+
 	// Only evaluate its body
-	return eval(func->sym->function);
+	return eval(func->sym->function, center);
 }

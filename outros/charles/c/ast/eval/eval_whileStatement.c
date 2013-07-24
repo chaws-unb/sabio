@@ -3,15 +3,15 @@
 #include <string.h>
 #include "../ast.h"
 
-void * eval_whileStatement(whileStatement * _whileStmt)
+void * eval_whileStatement(whileStatement * _whileStmt, xmlNode * out)
 {
-	int expressionResult = (int)(*(double *)eval(_whileStmt->expr));
+	int expressionResult = (int)(*(double *)eval(_whileStmt->expr, out));
 
 	if(expressionResult)
 	{
-		while(eval(_whileStmt->expr) != 0)
+		while(eval(_whileStmt->expr, out) != 0)
 		{
-			expressionResult = eval(_whileStmt->statm);
+			eval(_whileStmt->statm, out);
 		}
 	}
 
