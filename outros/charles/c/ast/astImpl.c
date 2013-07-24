@@ -137,7 +137,10 @@ void * eval(ast * tree)
 
 		case IF_FLOW:
 			return eval_ifStatement((ifStatement*)tree);
-		//case WHILE_FLOW:
+
+		case WHILE_FLOW:
+			return eval_whileStatement((whileStatement*)tree);
+
 		default:
 			printf("Unknown node!\n");
 	}

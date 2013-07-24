@@ -14,7 +14,7 @@ void * statement__compound_statement(ast * _compound)
 {
 	if(debugMode)
 	{
-		printf(" >>>: statement->compound_statement\n");
+		printf(" : statement->compound_statement\n");
 	}
 	return _compound;
 }

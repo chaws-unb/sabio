@@ -5,6 +5,15 @@
 
 void * eval_whileStatement(whileStatement * _whileStmt)
 {
-	//int expressionResult = (int)(*(double *)eval(ifStmt->expr));
+	int expressionResult = (int)(*(double *)eval(_whileStmt->expr));
+
+	if(expressionResult)
+	{
+		while(eval(_whileStmt->expr) != 0)
+		{
+			expressionResult = eval(_whileStmt->statm);
+		}
+	}
+
 	return 0;
 }
