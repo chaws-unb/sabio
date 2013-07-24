@@ -232,6 +232,8 @@ void * eval_constant(constant * cons);
 void * eval_mathOperation(mathOperation * op);
 void * eval_ifStatement(ifStatement * ifStmt);
 void * eval_relationalExpression(relationalExpression * rel);
+void * eval_functionDefinition(declaration * func); // OBS: there's no typedef for functionDefinition since it's the same as declaration!!!
+
 
 /**
  *	Create a program node

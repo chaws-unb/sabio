@@ -123,6 +123,9 @@ void * eval(ast * tree)
 		case RELATIONAL_EXPRESSION:
 			return eval_relationalExpression((relationalExpression *)tree);
 
+		case FUNCTION_DEFINITION:
+			return eval_functionDefinition((declaration *)tree);
+
 		case IF_FLOW:
 			return eval_ifStatement((ifStatement*)tree);
 
@@ -175,7 +178,7 @@ char * genericType2String(genericType type)
 	switch(type)
 	{
 		case ROOT:					return "root";
-		case EMPTY:					return "empy";
+		case EMPTY:					return "empty";
 		case ASSIGNMENT:			return "assignemnt";
 		case DECLARATION: 			return "declaration";
 		case FUNCTION_DEFINITION:	return "function definition";
@@ -193,7 +196,7 @@ char * genericType2String(genericType type)
 		case USER_FUNCTION:			return "user function";
 		case BUILT_FUNCTION:		return "built-in function";
 	}
-	return "Unknown data type";
+	return "Unknown generic type";
 }
 
 void printSymbol(symbol * sym)

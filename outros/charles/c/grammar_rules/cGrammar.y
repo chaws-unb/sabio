@@ -437,7 +437,7 @@ external_declaration
 
 function_definition
 	: declaration_specifiers declarator declaration_list compound_statement {printf(": function_definition->declaration_specifiers declarator declaration_list compound_statement\n");}
-	| declaration_specifiers declarator compound_statement 					{function_definition__declaration_specifiers__declarator__compound_statement();}
+	| declaration_specifiers declarator compound_statement 					{function_definition__declaration_specifiers__declarator__compound_statement($1, $2, $3);}
 	| declarator declaration_list compound_statement 						{printf(": function_definition->declarator declaration_list compound_statement\n");}
 	| declarator compound_statement 										{printf(": function_definition->declarator compound_statement\n");}
 	;
