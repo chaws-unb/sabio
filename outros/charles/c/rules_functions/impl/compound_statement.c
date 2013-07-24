@@ -7,6 +7,17 @@
 void * compound_statement__OPB__CLB()
 {
 	if(debugMode) printf(": compound_statement->{ }\n");
+
+	ast * tree = newAst(EMPTY, NULL, NULL);
+
+	// Make this node as the next step of previous AST
+	//mainProgram->next = newProgramNode(tree);
+
+	// Now, the current tree is this node
+	// Remember the first tree is stored in main.c for later evaluation hehe
+	//mainProgram = mainProgram->next;
+
+	return tree;
 }
 
 
