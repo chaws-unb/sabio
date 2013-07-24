@@ -339,7 +339,7 @@ void * initializer_list__initializer_list__COMMA__initializer();
 
 // statement
 void * statement__labeled_statement();
-void * statement__compound_statement();
+void * statement__compound_statement(ast * _compound);
 void * statement__expression_statement();
 void * statement__selection_statement();
 void * statement__iteration_statement();
@@ -374,7 +374,7 @@ void * selection_statement__IF__OPP__expression__CLP__statement__ELSE__statement
 void * selection_statement__SWITCH__OPP__expression__CLP__statement();
 
 // iteration_statement
-void * iteration_statement__WHILE__OPP__expression__CLP__statement();
+void * iteration_statement__WHILE__OPP__expression__CLP__statement(ast * _expression, ast * _statement);
 void * iteration_statement__DO__statement__WHILE__OPP__expression__CLP__SEMICOLON();
 void * iteration_statement__FOR__OPP__expression_statement__expression_statement__CLP__statement();
 void * iteration_statement__FOR__OPP__expression_statement__expression_statement__expression__CLP__statement();

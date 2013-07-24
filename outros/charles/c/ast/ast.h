@@ -27,6 +27,7 @@ typedef enum
 	DECLARATION, 		 // int a; 
 	FUNCTION_DEFINITION, // int func(int a) {return 0;}
 	IF_FLOW, 			 // if(1);[else;]
+	WHILE_FLOW,
 	_SWITCH,			 // switch(1){case 1: stmt}
 	_CONSTANT,			 // 0,1,2,3...9
 
@@ -180,6 +181,13 @@ typedef struct
 	ast * ifFalse;
 }ifStatement;
 
+typedef struct
+{
+	genericType type;
+	ast * expr;
+	ast * statm;
+}whileStatement;
+
 /**
  *	Relational expression
  */
@@ -211,6 +219,7 @@ ast * newMathOperation(genericType type, ast * left, ast * right);
 ast * newIdentifier(symbol * sym);
 ast * newSpecifier(symbolDataType dataType);
 ast * newIfStatement(ast * expression, ast * ifTrue, ast * ifFalse);
+ast * newWhileStatement(ast * _espression, ast * _statment);
 ast * newRelationalExpression(logicRelationType type, ast * left, ast * right);
 
 /**
@@ -231,6 +240,7 @@ void * eval_specifier(specifier * spec);
 void * eval_constant(constant * cons);
 void * eval_mathOperation(mathOperation * op);
 void * eval_ifStatement(ifStatement * ifStmt);
+void * eval_whileStatement(whileStatement * _whileStmt);
 void * eval_relationalExpression(relationalExpression * rel);
 void * eval_functionDefinition(declaration * func); // OBS: there's no typedef for functionDefinition since it's the same as declaration!!!
 

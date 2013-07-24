@@ -2216,28 +2216,28 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 111 "grammar_rules/cGrammar.y"
-    {printf(": relational_expression->relational_expression < shift_expression\n");;}
+    {(yyval.tree) = relational_expression__relational_expression__LT__shift_expression((yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree));;}
     break;
 
   case 42:
 
 /* Line 1455 of yacc.c  */
 #line 112 "grammar_rules/cGrammar.y"
-    {printf(": relational_expression->relational_expression > shift_expression\n");;}
+    {(yyval.tree) = relational_expression__relational_expression__GT__shift_expression((yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree));;}
     break;
 
   case 43:
 
 /* Line 1455 of yacc.c  */
 #line 113 "grammar_rules/cGrammar.y"
-    {printf(": relational_expression->relational_expression >= shift_expression\n");;}
+    {(yyval.tree) = relational_expression__relational_expression__LE_OP__shift_expression((yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree));;}
     break;
 
   case 44:
 
 /* Line 1455 of yacc.c  */
 #line 114 "grammar_rules/cGrammar.y"
-    {printf(": relational_expression->relational_expression <= shift_expression\n");;}
+    {(yyval.tree) = relational_expression__relational_expression__GE_OP__shift_expression((yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree));;}
     break;
 
   case 45:
@@ -2531,7 +2531,7 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 201 "grammar_rules/cGrammar.y"
-    {printf(": init_declarator->declarator\n");;}
+    {(yyval.tree) = init_declarator__declarator((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 87:
@@ -3112,35 +3112,35 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 360 "grammar_rules/cGrammar.y"
-    {printf(": initializer->assignment_expression\n");;}
+    {(yyval.tree) = initializer__assignment_expression((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 170:
 
 /* Line 1455 of yacc.c  */
 #line 361 "grammar_rules/cGrammar.y"
-    {printf(": initializer->{ initializer_list }\n");;}
+    {(yyval.tree) = initializer__OPB__initializer_list__CLB((yyvsp[(2) - (3)].tree));;}
     break;
 
   case 171:
 
 /* Line 1455 of yacc.c  */
 #line 362 "grammar_rules/cGrammar.y"
-    {printf(": initializer->{ initializer_list , }\n");;}
+    {(yyval.tree) = initializer__OPB__initializer_list__COMMA__CLB((yyvsp[(2) - (4)].tree));;}
     break;
 
   case 172:
 
 /* Line 1455 of yacc.c  */
 #line 366 "grammar_rules/cGrammar.y"
-    {printf(": initializer_list->initializer\n");;}
+    {(yyval.tree) = initializer_list__initializer((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 173:
 
 /* Line 1455 of yacc.c  */
 #line 367 "grammar_rules/cGrammar.y"
-    {printf(": initializer_list->initializer_list , initializer\n");;}
+    {(yyval.tree) = initializer_list__initializer_list__COMMA__initializer((yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree));;}
     break;
 
   case 174:
@@ -3154,7 +3154,7 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 372 "grammar_rules/cGrammar.y"
-    {printf(": statement->compound_statement\n");;}
+    {(yyval.tree) = statement__compound_statement((yyvsp[(1) - (1)].tree));;}
     break;
 
   case 176:
@@ -3301,7 +3301,7 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 414 "grammar_rules/cGrammar.y"
-    {printf(": iteration_statement->WHILE ( expression ) statement\n");;}
+    {(yyval.tree) = iteration_statement__WHILE__OPP__expression__CLP__statement((yyvsp[(3) - (5)].tree), (yyvsp[(5) - (5)].tree)); ;}
     break;
 
   case 197:
@@ -3399,7 +3399,7 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 440 "grammar_rules/cGrammar.y"
-    {function_definition__declaration_specifiers__declarator__compound_statement();;}
+    {function_definition__declaration_specifiers__declarator__compound_statement((yyvsp[(1) - (3)].tree), (yyvsp[(2) - (3)].tree), (yyvsp[(3) - (3)].tree));;}
     break;
 
   case 211:

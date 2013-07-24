@@ -89,6 +89,15 @@ ast * newRelationalExpression(logicRelationType type, ast * left, ast * right)
 	return (ast *)rel;
 }
 
+ast * newWhileStatement(ast * _expression, ast * _statment)
+{
+	whileStatement * whileStmt = new(whileStatement);
+	whileStmt->type = WHILE_FLOW;
+	whileStmt->expr = _expression;
+	whileStmt->statm = _statment;
+	return (ast *)whileStmt;
+}
+
 // This is the generic eval, I think it's better this way so everyone can
 // edit at the same time
 void * eval(ast * tree)
@@ -128,7 +137,7 @@ void * eval(ast * tree)
 
 		case IF_FLOW:
 			return eval_ifStatement((ifStatement*)tree);
-
+		//case WHILE_FLOW:
 		default:
 			printf("Unknown node!\n");
 	}

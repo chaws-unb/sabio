@@ -18,7 +18,7 @@
 %token <string> IDENTIFIER STRING_LITERAL
 %token <number> CONSTANT
 
-%type <tree> direct_declarator declarator init_declarator_list init_declarator
+%type <tree> direct_declarator declarator init_declarator_list init_declarator iteration_statement
 %type <tree> additive_expression multiplicative_expression cast_expression expression statement
 %type <tree> equality_expression relational_expression primary_expression declaration declaration_specifiers
 %type <tree> type_specifier compound_statement expression_statement selection_statement
@@ -369,10 +369,10 @@ initializer_list
 
 statement
 	: labeled_statement    {printf(": statement->labeled_statement\n");}
-	| compound_statement   {printf(": statement->compound_statement\n");}
+	| compound_statement   {$$ = statement__compound_statement($1);} //": statement->compound_statement\n"
 	| expression_statement {$$ = statement__expression_statement($1);}
 	| selection_statement  {printf(": statement->selection_statement\n");}
-	| iteration_statement  {printf(": statement->iteration_statement\n");}
+	| iteration_statement  {printf(": statement->iteration_statement\n");} //statement__iteration_statement()
 	| jump_statement       {printf(": statement->jump_statement\n");}
 	;
 
@@ -411,8 +411,8 @@ selection_statement
 	;
 
 iteration_statement
-	: WHILE '(' expression ')' statement 										 {printf(": iteration_statement->WHILE ( expression ) statement\n");}
-	| DO statement WHILE '(' expression ')' ';' 								 {printf(": iteration_statement->DO statement WHILE ( expression ) ;\n");}
+	: WHILE '(' expression ')' statement	{$$ = iteration_statement__WHILE__OPP__expression__CLP__statement($3, $5); }
+	| DO statement WHILE '(' expression ')' ';' 	{printf(": iteration_statement->DO statement WHILE ( expression ) ;\n");}
 	| FOR '(' expression_statement expression_statement ')' statement 			 {printf(": iteration_statement->FOR ( expression_statement expression_statement ) statement\n");}
 	| FOR '(' expression_statement expression_statement expression ')' statement {printf(": iteration_statement->FOR ( expression_statement expression_statement expression ) statement\n");}
 	;

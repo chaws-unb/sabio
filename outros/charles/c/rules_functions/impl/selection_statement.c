@@ -31,6 +31,3 @@ void * selection_statement__SWITCH__OPP__expression__CLP__statement()
 
 	//genericType = SWITCH;
 }
-
-
-
