@@ -24,7 +24,8 @@
 %type <tree> type_specifier compound_statement expression_statement selection_statement
 %type <tree> postfix_expression unary_expression shift_expression initializer initializer_list
 %type <tree> and_expression exclusive_or_expression inclusive_or_expression logical_and_expression
-%type <tree> logical_or_expression conditional_expression assignment_expression
+%type <tree> logical_or_expression conditional_expression assignment_expression statement_list argument_expression_list
+%type <tree> jump_statement labeled_statement
 
 %token SIZEOF
 %token PTR_OP INC_OP DEC_OP LEFT_OP RIGHT_OP LE_OP GE_OP EQ_OP NE_OP
@@ -60,8 +61,8 @@ postfix_expression
 	;
 
 argument_expression_list
-	: assignment_expression 							 {printf(": argument_expression_list->assignment_expression \n");}
-	| argument_expression_list ',' assignment_expression {printf(": argument_expression_list->argument_expression_list,assignment_expression \n");}
+	: assignment_expression 							 {$$ = argument_expression_list__assignment_expression($1);}
+	| argument_expression_list ',' assignment_expression {$$ = argument_expression_list__argument_expression_list__COMMA__assignment_expression($1, $3);}
 	;
 
 unary_expression
@@ -368,12 +369,12 @@ initializer_list
 	;
 
 statement
-	: labeled_statement    {printf(": statement->labeled_statement\n");}
-	| compound_statement   {$$ = statement__compound_statement($1);} //": statement->compound_statement\n"
+	: labeled_statement    {$$ = statement__labeled_statement($1);}
+	| compound_statement   {$$ = statement__compound_statement($1);}
 	| expression_statement {$$ = statement__expression_statement($1);}
-	| selection_statement  {printf(": statement->selection_statement\n");}
-	| iteration_statement  {printf(": statement->iteration_statement\n");} //statement__iteration_statement()
-	| jump_statement       {printf(": statement->jump_statement\n");}
+	| selection_statement  {$$ = statement__selection_statement($1);}
+	| iteration_statement  {$$ = statement__iteration_statement($1);}
+	| jump_statement       {$$ = statement__jump_statement($1);}
 	;
 
 labeled_statement
@@ -395,8 +396,8 @@ declaration_list
 	;
 
 statement_list
-	: statement 			   {printf(": statement_list->statement\n");}
-	| statement_list statement {printf(": statement_list->statement_list statement\n");}
+	: statement 			   {$$ = statement_list__statement($1);}
+	| statement_list statement {$$ = statement_list__statement_list__statement($1, $2);}
 	;
 
 expression_statement
