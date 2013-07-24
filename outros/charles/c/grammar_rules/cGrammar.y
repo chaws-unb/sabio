@@ -109,9 +109,9 @@ shift_expression
 relational_expression
 	: shift_expression 							   {$$ = relational_expression__shift_expression($1);}
 	| relational_expression '<' shift_expression   {$$ = relational_expression__relational_expression__LT__shift_expression($1, $3);}
-	| relational_expression '>' shift_expression   {printf(": relational_expression->relational_expression > shift_expression\n");}
-	| relational_expression LE_OP shift_expression {printf(": relational_expression->relational_expression >= shift_expression\n");}
-	| relational_expression GE_OP shift_expression {printf(": relational_expression->relational_expression <= shift_expression\n");}
+	| relational_expression '>' shift_expression   {$$ = relational_expression__relational_expression__GT__shift_expression($1, $3);}
+	| relational_expression LE_OP shift_expression {$$ = relational_expression__relational_expression__LE_OP__shift_expression($1, $3);}
+	| relational_expression GE_OP shift_expression {$$ = relational_expression__relational_expression__GE_OP__shift_expression($1, $3);}
 	;
 
 equality_expression
