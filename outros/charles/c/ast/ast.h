@@ -49,6 +49,8 @@ typedef enum
 
 	RELATIONAL_EXPRESSION, // logical expressions
 
+	AST_LIST, // list of expressions or statements
+
 	/**
 	 *	Symbol's type: global function, local function, global var, etc
  	 *	Let's do only bascis one for less complexity
@@ -92,6 +94,16 @@ typedef struct _ast
 	struct _ast * left;
 	struct _ast * right;
 } ast;
+
+/**
+ *	List of ASTs
+ */
+typedef struct _astList
+{
+	genericType type;
+	ast * node;
+	struct _astList * next;
+} astList;
 
 /**
  *	THIS IS THE MAIN PROGRAM structure
@@ -221,6 +233,7 @@ ast * newSpecifier(symbolDataType dataType);
 ast * newIfStatement(ast * expression, ast * ifTrue, ast * ifFalse);
 ast * newWhileStatement(ast * _espression, ast * _statment);
 ast * newRelationalExpression(logicRelationType type, ast * left, ast * right);
+ast * newAstList(astList * list, ast * newNode);
 
 /**
  *	Free an AST
@@ -243,7 +256,7 @@ void * eval_ifStatement(ifStatement * ifStmt);
 void * eval_whileStatement(whileStatement * _whileStmt);
 void * eval_relationalExpression(relationalExpression * rel);
 void * eval_functionDefinition(declaration * func); // OBS: there's no typedef for functionDefinition since it's the same as declaration!!!
-
+void * eval_astList(astList * list); // This only will call every node of the list
 
 /**
  *	Create a program node
