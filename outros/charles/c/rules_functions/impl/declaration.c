@@ -14,13 +14,14 @@ void * declaration__declaration_specifiers__SEMICOLON()
  *	This is the kind: int a;
  *	So we probably have current symbol set
  */
-void * declaration__declaration_specifiers__init_declarator_list__SEMICOLON()
+void * declaration__declaration_specifiers__init_declarator_list__SEMICOLON(/*ast * spec,*/ ast * init)
 {
 	if(debugMode) printf(": declaration->declaration_specifiers init_declarator_list ;\n");
 
-	// Take the declaration built until now and creates an AST of it
-	//currentSymbol->value = currentValue;
+	mainProgram->next = newProgramNode(init);
+	mainProgram = mainProgram->next;
 
+/*
 	// Create a new AST as a declaration node
 	ast * newNode = newDeclaration(currentSymbol);
 
@@ -39,4 +40,5 @@ void * declaration__declaration_specifiers__init_declarator_list__SEMICOLON()
 	currentValue  = NULL;
 	currentAst    = NULL;
 	currentSymbolDataType = _VOID;
+	*/
 }

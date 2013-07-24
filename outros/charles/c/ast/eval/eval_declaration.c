@@ -13,12 +13,13 @@ void * eval_declaration(declaration * decl)
 	int *   intVal;
 
 	// The value is going to be an eval of the right node of this tree
-	if(decl->expression)
+	if(decl->expr)
 	{
 		if(debugMode) printf("Eval its expression...");
 
-		decl->sym->value = eval(decl->expression);
+		decl->sym->value = eval(decl->expr);
 		// Try to convert to correct type
+		decl->sym->dataType = _DOUBLE;
 		switch(decl->sym->dataType)
 		{
 

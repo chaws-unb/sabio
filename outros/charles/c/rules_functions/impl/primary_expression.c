@@ -3,7 +3,6 @@
 #include <string.h>
 #include "../cGrammar.h"
 
-
 void * primary_expression__IDENTIFIER(char * name)
 {
 	if(debugMode) printf(": primary_expression->IDENTIFIER\n");
@@ -12,7 +11,6 @@ void * primary_expression__IDENTIFIER(char * name)
 	identifier * id = newIdentifier(sym);
 	return id;
 }
-
 
 void * primary_expression__CONSTANT(double cons)
 {

@@ -22,7 +22,7 @@
 %type <tree> additive_expression multiplicative_expression cast_expression expression statement
 %type <tree> equality_expression relational_expression primary_expression declaration declaration_specifiers
 %type <tree> type_specifier compound_statement expression_statement selection_statement
-%type <tree> postfix_expression unary_expression shift_expression
+%type <tree> postfix_expression unary_expression shift_expression initializer
 %type <tree> and_expression exclusive_or_expression inclusive_or_expression logical_and_expression
 %type <tree> logical_or_expression conditional_expression assignment_expression
 
@@ -180,7 +180,7 @@ constant_expression
 
 declaration
 	: declaration_specifiers ';' 					  {printf(": declaration->declaration_specifiers ;\n");}
-	| declaration_specifiers init_declarator_list ';' {$$ = declaration__declaration_specifiers__init_declarator_list__SEMICOLON();}
+	| declaration_specifiers init_declarator_list ';' {$$ = declaration__declaration_specifiers__init_declarator_list__SEMICOLON($2);}
 	;
 
 declaration_specifiers
@@ -199,7 +199,7 @@ init_declarator_list
 
 init_declarator
 	: declarator 				 {printf(": init_declarator->declarator\n");}
-	| declarator '=' initializer {printf(": init_declarator->declarator = initializer\n");}
+	| declarator '=' initializer {$$ = init_declarator__declarator__EQ__initializer($1, $3);}
 	;
 
 storage_class_specifier
@@ -296,7 +296,7 @@ direct_declarator
 	| direct_declarator '[' ']' 					{printf(": direct_declarator->direct_declarator [ ]\n");}
 	| direct_declarator '(' parameter_type_list ')' {printf(": direct_declarator->direct_declarator ( parameter_type_list )\n");}
 	| direct_declarator '(' identifier_list ')' 	{printf(": direct_declarator->direct_declarator ( identifier_list )\n");}
-	| direct_declarator '(' ')' 					{$$ = direct_declarator__direct_declarator__OPP__CLP();}
+	| direct_declarator '(' ')' 					{$$ = direct_declarator__direct_declarator__OPP__CLP($1);}
 	;
 
 pointer

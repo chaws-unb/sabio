@@ -24,12 +24,12 @@ ast * newAst(genericType type, ast * left, ast * right)
 	return returned;
 }
 
-ast * newDeclaration(symbol * sym)
+ast * newDeclaration(ast * sym, ast * expr)
 {
 	declaration * decl = new(declaration);
 	decl->type = DECLARATION;
-	decl->sym = sym;
-	decl->expression = NULL;
+	decl->sym = ((identifier *)sym)->sym;
+	decl->expr = expr;
 	return (ast *)decl;
 }
 
@@ -56,6 +56,14 @@ ast * newIdentifier(symbol * sym)
 	id->type = _IDENTIFIER;
 	id->sym = sym;
 	return (ast *)id;
+}
+
+ast * newSpecifier(symbolDataType dataType)
+{
+	specifier * spec = new(specifier);
+	spec->type = _SPECIFIER;
+	spec->dataType = dataType;
+	return (ast *)spec;
 }
 
 ast * newIfStatement(ast * expr, ast * ifTrue, ast * ifFalse)
@@ -99,6 +107,9 @@ void * eval(ast * tree)
 
 		case _IDENTIFIER:
 			return eval_identifier((identifier *)tree);
+
+		case _SPECIFIER:
+			return eval_specifier((specifier *)tree);
 
 		case IF_FLOW:
 			return eval_ifStatement((ifStatement*)tree);
@@ -164,6 +175,7 @@ char * genericType2String(genericType type)
 		case MUL:					return "mul";
 		case MOD:					return "mod";
 		case _IDENTIFIER:			return "identifier";
+		case _SPECIFIER:			return "specifier";
 		case VARIABLE:				return "var";
 		case USER_FUNCTION:			return "user function";
 		case BUILT_FUNCTION:		return "built-in function";

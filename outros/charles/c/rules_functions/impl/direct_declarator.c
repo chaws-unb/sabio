@@ -26,6 +26,8 @@ void * direct_declarator__IDENTIFIER(char * identifier)
 void * direct_declarator__OPP__declarator__CLP(ast * tree)
 {
 	if(debugMode) printf(": direct_declarator->( declarator )\n");
+
+	return tree;
 }
 
 
@@ -53,7 +55,9 @@ void * direct_declarator__direct_declarator__OPP__identifier_list__CLP()
 }
 
 
-void * direct_declarator__direct_declarator__OPP__CLP()
+void * direct_declarator__direct_declarator__OPP__CLP(ast * tree)
 {
 	if(debugMode) printf(": direct_declarator->direct_declarator ( )\n");
+
+	return tree;
 }

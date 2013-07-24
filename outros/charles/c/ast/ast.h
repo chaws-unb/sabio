@@ -44,6 +44,8 @@ typedef enum
 	 */
 	_IDENTIFIER,
 
+	_SPECIFIER, // Data type specifier
+
 	/**
 	 *	Symbol's type: global function, local function, global var, etc
  	 *	Let's do only bascis one for less complexity
@@ -120,7 +122,7 @@ typedef struct
 {
 	genericType type;
 	symbol * sym;
-	ast * expression; // everything after '=' sign
+	ast * expr; // everything after '=' sign
 } declaration;
 
 /**
@@ -146,6 +148,11 @@ typedef struct
 	symbol * sym;
 } identifier;
 
+typedef struct 
+{
+	genericType type;
+	symbolDataType dataType;
+} specifier;
 
 /**
 * An AST to if(1){stmt} and if(1){stmt}else{stmt} statements
@@ -187,7 +194,7 @@ void freeAst(ast * tree);
 /**
  *	Create a Declaration
  */
-ast * newDeclaration(symbol * sym);
+ast * newDeclaration(ast * sym, ast * expr);
 
 /**
  *	Create a Constant
@@ -203,6 +210,11 @@ ast * newMathOperation(genericType type, ast * left, ast * right);
  *	A new identifier
  */
 ast * newIdentifier(symbol * sym);
+
+/**
+ *	Data type
+ */
+ast * newSpecifier(symbolDataType dataType);
 
 /**
  *	A new selection_statement
@@ -221,6 +233,8 @@ void * eval(ast * tree);
  */
 void * eval_root(ast * tree);
 void * eval_declaration(declaration * decl);
+void * eval_identifier(identifier * id);
+void * eval_specifier(specifier * spec);
 void * eval_constant(constant * cons);
 void * eval_mathOperation(mathOperation * op);
 void * eval_ifStatement(ifStatement * ifStmt);
