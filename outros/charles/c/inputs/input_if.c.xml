@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<source file="inputs/input_if.c">
+	<functionDefinition name="main">
+		<body>
+			<if>
+				<expression>
+					<relationalExpression type="&&">
+						<left>
+							<relationalExpression type="<">
+								<left>
+									<constant value="1">
+									</constant>
+								</left>
+								<right>
+									<constant value="2">
+									</constant>
+								</right>
+							</relationalExpression>
+						</left>
+						<right>
+							<constant value="1">
+							</constant>
+						</right>
+					</relationalExpression>
+				</expression>
+				<true>
+				</true>
+			</if>
+		</body>
+	</functionDefinition>
+</source>

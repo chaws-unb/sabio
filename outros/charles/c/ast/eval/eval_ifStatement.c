@@ -13,7 +13,8 @@ void * eval_ifStatement(ifStatement * ifStmt, xmlNode * out)
 
 	if(expressionResult)
 		eval(ifStmt->ifTrue, stmtTrue);
-	else if(ifStmt->ifFalse)
+	// Not execute else 
+	if(ifStmt->ifFalse)
 	{
 		xmlNode * stmtFalse = createNode(center, "false");
 		eval(ifStmt->ifFalse, stmtFalse);

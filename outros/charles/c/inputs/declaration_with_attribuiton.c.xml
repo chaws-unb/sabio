@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <source file="inputs/declaration_with_attribuiton.c">
 	<declaration name="ca">
+		<expression>
+			<constant value="1">
+			</constant>
+		</expression>
 	</declaration>
 </source>

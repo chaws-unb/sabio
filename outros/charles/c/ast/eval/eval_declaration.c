@@ -9,6 +9,8 @@ void * eval_declaration(declaration * decl, xmlNode * out)
 
 	xmlNode * center = createNode(out, "declaration");
 	addAttribute(center, "name", decl->sym->name);
+	
+	xmlNode * expr = createNode(center, "expression");
 
 	// Aux vars
 	char *  charVal;
@@ -20,7 +22,7 @@ void * eval_declaration(declaration * decl, xmlNode * out)
 	{
 		if(debugMode) printf("Eval its expression...");
 
-		decl->sym->value = eval(decl->expr, center);
+		decl->sym->value = eval(decl->expr, expr);
 		// Try to convert to correct type
 		decl->sym->dataType = _DOUBLE;
 		switch(decl->sym->dataType)

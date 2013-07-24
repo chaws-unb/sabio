@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <source file="inputs/declaration_with_logicAttribuiton.c">
 	<declaration name="ca">
+		<expression>
+			<relationalExpression type="<">
+				<left>
+					<constant value="2">
+					</constant>
+				</left>
+				<right>
+					<constant value="1">
+					</constant>
+				</right>
+			</relationalExpression>
+		</expression>
 	</declaration>
-	<relationalExpression type="<">
-		<left>
-			<constant value="2">
-			</constant>
-		</left>
-		<right>
-			<constant value="1">
-			</constant>
-		</right>
-	</relationalExpression>
 </source>

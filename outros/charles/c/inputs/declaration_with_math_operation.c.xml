@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<source file="inputs/declaration_with_math_operation.c">
+	<declaration name="a">
+		<expression>
+			<mathOperation type="+">
+				<left>
+					<constant value="1">
+					</constant>
+				</left>
+				<right>
+					<constant value="2">
+					</constant>
+				</right>
+			</mathOperation>
+		</expression>
+	</declaration>
+</source>
