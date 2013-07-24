@@ -5,7 +5,7 @@
 #ifndef _SYMBOL_H_
 #define _SYMBOL_H_
 
-#include "dataType.h"
+#include <dataType.h>
 
 symbol symbolTableHash[SIZE_SYMBOL_TABLE];
 
