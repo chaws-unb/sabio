@@ -36,5 +36,5 @@ void * relational_expression__relational_expression__LE_OP__shift_expression(ast
 void * relational_expression__relational_expression__GE_OP__shift_expression(ast * left, ast * right)
 {
 	if(debugMode) printf(": relational_expression->relational_expression >= shift_expression\n");
-	return newRelationalExpression(LT, left, right);
+	return newRelationalExpression(GTE, left, right);
 }

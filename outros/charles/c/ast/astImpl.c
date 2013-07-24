@@ -98,6 +98,15 @@ ast * newWhileStatement(ast * _expression, ast * _statment)
 	return (ast *)whileStmt;
 }
 
+ast * newAstList(astList * list, ast * newNode)
+{
+	astList * newList = new(astList);
+	newList->type = AST_LIST;
+	newList->node = newNode;
+	newList->next = list;
+	return (ast *)newList;
+}
+
 // This is the generic eval, I think it's better this way so everyone can
 // edit at the same time
 void * eval(ast * tree)
@@ -139,7 +148,10 @@ void * eval(ast * tree)
 			return eval_ifStatement((ifStatement*)tree);
 
 		case WHILE_FLOW:
-			return eval_whileStatement((whileStatement*)tree);
+			return eval_whileStatement((whileStatement *)tree);
+
+		case AST_LIST:
+			return eval_astList((astList *)tree);
 
 		default:
 			printf("Unknown node!\n");
@@ -195,6 +207,7 @@ char * genericType2String(genericType type)
 		case DECLARATION: 			return "declaration";
 		case FUNCTION_DEFINITION:	return "function definition";
 		case IF_FLOW:				return "if[else]";
+		case WHILE_FLOW:			return "while";
 		case _CONSTANT:				return "constant";
 		case SUM:					return "sum";
 		case SUB:					return "sub";
@@ -204,6 +217,7 @@ char * genericType2String(genericType type)
 		case _IDENTIFIER:			return "identifier";
 		case _SPECIFIER:			return "specifier";
 		case RELATIONAL_EXPRESSION:	return "relational expression";
+		case AST_LIST:				return "ast list";
 		case VARIABLE:				return "var";
 		case USER_FUNCTION:			return "user function";
 		case BUILT_FUNCTION:		return "built-in function";
